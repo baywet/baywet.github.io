@@ -33,6 +33,11 @@ github_username:  baywet
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-seo-tags
+  - jekyll-paginate
+  - jekyll-mentions
+  - jekyll-sitemap
+  - jekyll-titles-from-headings
 
 # Exclude from processing.
 # The following items will not be processed, by default.
