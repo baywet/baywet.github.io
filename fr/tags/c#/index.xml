@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>c# on Le blog de baywet</title><link>https://baywet.github.io/fr/tags/c#/</link><description>Recent content in c# on Le blog de baywet</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 07 Nov 2013 02:59:00 +0000</lastBuildDate><atom:link href="https://baywet.github.io/fr/tags/c#/index.xml" rel="self" type="application/rss+xml"/><item><title>Entity Framework et référence au dataContext pour une application web</title><link>https://baywet.github.io/fr/entity-framework-et-reference/</link><pubDate>Thu, 07 Nov 2013 02:59:00 +0000</pubDate><guid>https://baywet.github.io/fr/entity-framework-et-reference/</guid><description>Lorsque l’on utilise l’entity framework et un datacontext on se pose souvent la question suivante :
+Faut-il favoriser la performance et la simplicité d’utilisation ou bien la flexibilité (scalability) ?
+(non ? vous ne vous posez pas ce genre de question existentielle ?)
+Je détaille ma question :
+Référence statique
+Dans un premier cas vous faites une référence static au contexte, avec certaines fois du lazy loading et/ou une gestion du dispose dans le global.</description></item></channel></rss>
