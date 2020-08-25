@@ -11,14 +11,14 @@ Ensuite il ne vous rester plus qu’à mettre à jour les références et versio
 unable to find version &lsquo;3.1.2&rsquo; of package &lsquo;appforsharepointonlinewebtoolkit&rsquo;
 Et ce lorsque vous effectuez un « update-package » dans la console nuget ou que vous avez une étape de restauration des packages dans votre processus de build.</p></div></article><article class=media><div class=media-content><p class=title><a href=https://baywet.github.io/fr/build-automatise-de-solutions/>Build automatisé de solutions SharePoint (full trust) 2013 – Où sont mes solutions?</a></p><p class="subtitle is-flex" style=justify-content:space-between><span>Dec 4, 2014</span>
 <span>1 min.</span></p><p>Suite de la série sur le build automatisé de solutions SharePoint 2013 (full trust) avec tfs 2013 et visual studio 2013.
-/fr/build-automatise-de-solution-s
+build-automatise-de-solution-s
 Si vous avez suivit ma série vous avez dû vous rendre compte que les dll étaient compilées mais que les wsp étaient absents.
 C’est parce que par défault msbuild ne package pas vos solutions. C’est dommage hein ?
 Voici un peu de documentation supplémentaire qui indique d’ajouter IsPackaging=true à la définition de build en tant que paramètre.</p></div></article><article class=media><div class=media-content><p class=title><a href=https://baywet.github.io/fr/visual-studio-2013-update-4-et/>Visual Studio 2013 Update 4 et build automatisé de solutions SharePoint (full trust)</a></p><p class="subtitle is-flex" style=justify-content:space-between><span>Dec 1, 2014</span>
 <span>1 min.</span></p><p>Pour faire suite à ma série sur le build automatisé de solutions full trust pour SharePoint voici une mise à jour de mon correctif.
 En effet si vous regardez la seconde erreur expliquée icivous verrez qu’il faut remplacer des lignes pour faire fonctionner le tout.
 Avec l’update 4 on sent que Microsoft prépare l’arrivée complète du 64 bits puisque les nouvelles lignes de remplacement sont désormais.
-&lt;Import Condition=&rdquo;&lsquo;$(Language)&rsquo; == &lsquo;C#'&rdquo; Project="$(MSBuildExtensionsPath32)\Microsoft\Windows Workflow Foundation\v3.</p></div></article><article class=media><div class=media-content><p class=title><a href=https://baywet.github.io/fr/mise-a-jour-de-novembre-des-ou/>Mise à jour de Novembre des outils développeurs Office</a></p><p class="subtitle is-flex" style=justify-content:space-between><span>Nov 28, 2014</span>
+&lt;Import Condition="'$(Language)' == 'C#'" Project="$(MSBuildExtensionsPath32)\Microsoft\Windows Workflow Foundation\v3.</p></div></article><article class=media><div class=media-content><p class=title><a href=https://baywet.github.io/fr/mise-a-jour-de-novembre-des-ou/>Mise à jour de Novembre des outils développeurs Office</a></p><p class="subtitle is-flex" style=justify-content:space-between><span>Nov 28, 2014</span>
 <span>1 min.</span></p><p>Si vous faites du développement SharePoint vous avez sûrement remarqué que les outils ont une nouvelle mise à jour de disponible.
 Avec les précédentes versions, les dll’s Microsoft.SharePoint.Client.Search et Microsoft.SharePoint.Client.Search.Applications n’étaient pas présentes (probablement un oubli).
 Deux solutions s’offraient alors à vous :

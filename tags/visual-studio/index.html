@@ -12,15 +12,14 @@ In order to do so, you need a 2016 dev machine (vs 2015 up to date with the late
 https://www.microsoft.com/en-us/download/details.aspx?id=51683&WT.mc_id=rss_alldownloads_all&utm_source=twitterfeed&utm_medium=twitter
 Then you only need to update references and targeted versions.</p></div></article><article class=media><div class=media-content><p class=title><a href=https://baywet.github.io/automated-build-for-sharepoint-2014-12-04-01-12-13/>Automated build for SharePoint 2013 full trust solutions – Where are my solutions?</a></p><p class="subtitle is-flex" style=justify-content:space-between><span>Dec 4, 2014</span>
 <span>1 min.</span></p><p>Another episode of my series about automated build of SharePoint full trust solutions with tfs 2013 and visual studio 2013.
-/en/automated-build-for-sharepoint-2014-10-29-02-22-54
+/automated-build-for-sharepoint-2014-10-29-02-22-54
 If you followed my posts you must have noticed you dll’s were built but you didn’t have any wsp.
 This is because by default msbuild doesn’t package your solutions. That’s pity isn’t it?
 Here is some documentation telling us to add IsPackaging=true to the build definition as a parameter.</p></div></article><article class=media><div class=media-content><p class=title><a href=https://baywet.github.io/visual-studio-2013-update-4-an/>Visual studio 2013 Update 4 and SharePoint full trust solutions automated build</a></p><p class="subtitle is-flex" style=justify-content:space-between><span>Dec 1, 2014</span>
 <span>1 min.</span></p><p>Quick update on my serie about automated build for sharepoint full trust solutions.
 If you take a look at the second error I’m describing hereyou will notice that you have to replace two lines in order to make it work.
 With update 4 it looks like Microsoft is preparing full 64 bits support for visual studio. New fix lines are now
-&lt;Import Condition=&rdquo;&lsquo;$(Language)&rsquo; == &lsquo;C#'&rdquo; Project="$(MSBuildExtensionsPath32)\Microsoft\Windows Workflow Foundation\v3.5\Workflow.Targets&rdquo; />
-&lt;Import Condition=&rdquo;&lsquo;$(Language)&rsquo; == &lsquo;VB&rsquo;&rdquo; Project="$(MSBuildExtensionsPath32)\Microsoft\Windows Workflow Foundation\v3.</p></div></article><article class=media><div class=media-content><p class=title><a href=https://baywet.github.io/office-developers-tools-novemb/>Office developers tools november 2014 update</a></p><p class="subtitle is-flex" style=justify-content:space-between><span>Nov 28, 2014</span>
+&lt;Import Condition="'$(Language)' == 'C#'" Project="$(MSBuildExtensionsPath32)\Microsoft\Windows Workflow Foundation\v3.5\Workflow.Targets" /> &lt;Import Condition="'$(Language)' == 'VB'" Project="$(MSBuildExtensionsPath32)\Microsoft\Windows Workflow Foundation\v3.</p></div></article><article class=media><div class=media-content><p class=title><a href=https://baywet.github.io/office-developers-tools-novemb/>Office developers tools november 2014 update</a></p><p class="subtitle is-flex" style=justify-content:space-between><span>Nov 28, 2014</span>
 <span>1 min.</span></p><p>If you work in SharePoint development you probably already have noticed that the tools are getting a new update.
 With previous versions Microsoft.SharePoint.Client.Search and Microsoft.SharePoint.Client.Search.Applications dll’s were not included (it most likely has been forgotten)
 You then had two solutions:
