@@ -1,47 +1,308 @@
-<!doctype html><html lang=fr dir=ltr itemscope itemtype=https://schema.org/Article><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>ItemUpdating et ItemUpdated levé deux fois dans des SPDocuementLibrary</title><meta name=author content="Vincent Biret"><meta name=description content="Effectivement, ça arrive, et c’est assez ennuyeux car ça signifie code appelé deux fois, actions effectuées deux fois… bref pas pratique.
-N’oublions pas que la première cause d’un évènement levé deux..."><meta name=generator content="Hugo 0.85.0"><meta itemprop=name content="ItemUpdating et ItemUpdated levé deux fois dans des SPDocuementLibrary"><meta itemprop=description content="Effectivement, ça arrive, et c’est assez ennuyeux car ça signifie code appelé deux fois, actions effectuées deux fois… bref pas pratique.
-N’oublions pas que la première cause d’un évènement levé deux..."><meta itemprop=image content="/img/logo.svg"><meta property="og:title" content="ItemUpdating et ItemUpdated levé deux fois dans des SPDocuementLibrary"><meta property="og:type" content="article"><meta property="og:url" content="https://baywet.github.io/fr/itemupdating-et-itemupdated-le/"><meta property="og:image" content="/img/logo.svg"><meta property="og:description" content="Effectivement, ça arrive, et c’est assez ennuyeux car ça signifie code appelé deux fois, actions effectuées deux fois… bref pas pratique.
-N’oublions pas que la première cause d’un évènement levé deux..."><meta property="og:site_name" content="Le blog de baywet"><meta property="og:updated_time" content="2021-07-12T07:07:04-04:00"><meta property="article:published_time" content="2012-11-22T02:59:50+00:00"><meta property="article:modified_time" content="2021-07-12T07:07:04-04:00"><meta property="article:section" content><meta property="article:tag" content="workaround"><meta property="article:tag" content="eventreceiver"><meta property="article:tag" content="sharepoint"><meta name=twitter:card content="summary"><meta name=twitter:site content><meta name=twitter:title content="ItemUpdating et ItemUpdated levé deux fois dans des SPDocuementLibrary"><meta name=twitter:description content="Effectivement, ça arrive, et c’est assez ennuyeux car ça signifie code appelé deux fois, actions effectuées deux fois… bref pas pratique.
-N’oublions pas que la première cause d’un évènement levé deux..."><meta name=twitter:creator content><meta name=twitter:image:src content="/img/logo.svg"><link rel=stylesheet type=text/css href=/css/capsule.min.css><script>(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-176061333-1','auto'),ga('send','pageview')</script><link rel=apple-touch-icon href=/img/apple-touch-icon.png><link rel=icon href=/img/favicon.ico></head><body style=min-height:100vh;display:flex;flex-direction:column><nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation"><div class=container><div class=navbar-brand><a class=navbar-item href=/fr><div class="title is-4">&nbsp;Le blog de baywet</div></a><label class="button navbar-burger is-white" for=navbar-burger-state><span></span><span></span><span></span></label></div><input type=checkbox id=navbar-burger-state><div class=navbar-menu><div class=navbar-end><a class=navbar-item href=/en>English</a></div></div></div></nav><section class=section style=flex:1><div class=container><h1 class=title>ItemUpdating et ItemUpdated levé deux fois dans des SPDocuementLibrary</h1><p class=subtitle>Nov 22, 2012</p><div class=content><p>Effectivement, ça arrive, et c’est assez ennuyeux car ça signifie code appelé deux fois, actions effectuées deux fois… bref pas pratique.</p><p>N’oublions pas que la première cause d’un évènement levé deux fois est dans la plupart des cas le fait d’avoir cet évènement référencé deux fois. Et dans ce cas un outil comme <a href=https://speventreceiverman.codeplex.com/>https://speventreceiverman.codeplex.com/</a> est très utile.</p><p>Autre chose à vérifier, que ce ne soit pas vos utilisateurs qui accomplissent deux fois la même action quelque chose de similaire. (si si, j’ai confiance en mes utilisateurs finaux, mais quand même j’ai appris à me méfier)</p><p>Mais admettons qu’aujourd’hui ce n’est pas un de ces cas, et que votre code est bien appelé deux fois.</p><p>Avant tout assurez-vous que vous n’êtes pas dans un de ces cas présentés par Microsoft <a href=https://msdn.microsoft.com/en-us/library/aa979520.aspx>https://msdn.microsoft.com/en-us/library/aa979520.aspx</a></p><p>Non ce n’est pas le cas ? Ne désespérez pas tout de suite, il reste toujours quelque chose qui pourrait faire en sorte que vos évènement soient levés deux fois : les options d’extraction/d’archivage.</p><p>Le cas est décrit ici pour SharePoint 2007 <a href=https://support.microsoft.com/kb/939307>https://support.microsoft.com/kb/939307</a> il n’est cependant pas indiqué si SharePoint 2010 (et 2013 ?) est concerné ou non.</p><p>C’est apparemment le cas puisque ce n’est pas un bug à proprement parler mais un comportement natif : Quand l’option exiger l’extraction est activée dans une librairie de documents voici ce qu’il se passe.</p><p>L’utilisateur upload le document ItemAdding puis ItemAdded sont appelés, avec aucune propriété de renseignée (les champs que vous avez ajoutés en plus sur la doc lib).</p><p>Ensuite l’utilisateur est redirigé vers la page de détails, il remplit les propriétés et enregistre. ItemUpdating et ItemUpdated sont appelés une première fois car mise à jour des données.</p><p>A ce moment l’ER de gestion des archivages/extractions rentre en jeu et décide d’archiver le document, la notion d’archivage étant cachées dans une propriété cachée, il est obligé de mettre à jour le SPListItem et donc nouvelle levée de nos ER.</p><p>Vous commencez à saisir le problème ?</p><p>Maintenant voici comment le fixer, le workaround de Microsoft fonctionne très bien pour ItemUpdating, mais sous 2010, selon les paramètres d’archivage/extraction et parce que les valeurs controlées sont mises à jour entre ItemUpdating et ItemUpdated, ça ne marche pas parfaitement.</p><p>Voici ce que j’ai trouvé pour contourner le problème dans SharePoint 2010 sur l’ER ItemUpdated :</p><p>properties.ListItem.File.CheckOutType == SPFile.SPCheckOutType.None</p><p>En espérant que ça fasse gagner du temps à certains d’entre vous.</p></div><br><p class=heading>Edité la dernière fois le
-<a href=https://github.com/baywet/blogsource/commit/b5bf1517e86bc24dbb6ffc929d807a6653d189bd>12 Jul 2021</a> par <a href=https://github.com/baywet>Vincent Biret</a></p><br><div class=heading>Tags:</div><div class="field is-grouped is-grouped-multiline"><div class=control><a href=/fr/tags/workaround><span class=tag>Workaround</span></a></div><div class=control><a href=/fr/tags/eventreceiver><span class=tag>Eventreceiver</span></a></div><div class=control><a href=/fr/tags/sharepoint><span class=tag>Sharepoint</span></a></div></div></div></section><section class=section><div class=container><div class=level><div class=level-left><div class=level-item><p class="control has-addons"><a class=button href=https://baywet.github.io/fr/configuration-de-la-topologie/><span class="icon is-small"><i class="fa fa-chevron-left"></i></span>
-<span class="is-hidden-touch is-hidden-desktop-only">Configuration de la topologie de recherche d’entreprise dans SharePoint 2013</span>
-<span class="is-hidden-touch is-hidden-widescreen">Configuration de la topologie de recherche d’entreprise dans SharePoint...</span>
-<span class="is-hidden-mobile is-hidden-desktop">Configuration de la topologie de recherche...</span>
-<span class=is-hidden-tablet>Configuration de la topologie de...</span></a></p></div></div><div class=level-right><div class=level-item><p class="control has-addons"><a class=button href=https://baywet.github.io/fr/organisation-dun-hakcathon-re/><span class="is-hidden-touch is-hidden-desktop-only">Organisation d’un Hakcathon – retour d’expérience</span>
-<span class="is-hidden-touch is-hidden-widescreen">Organisation d’un Hakcathon – retour d’expérience</span>
-<span class="is-hidden-mobile is-hidden-desktop">Organisation d’un Hakcathon – retour d’expérience</span>
-<span class=is-hidden-tablet>Organisation d’un Hakcathon – retour...</span>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span></a></p></div></div></div></div><br><br><div class=container><div id=disqus_thread></div><script>var disqus_config=function(){this.page.url="https://baywet.github.io/fr/itemupdating-et-itemupdated-le/",this.page.identifier=window.location.pathname};(function(){var a=document,b=a.createElement('script');b.src='https://baywet.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div><br><div class=container><nav class=panel><p class=panel-heading>Related</p><a class=panel-block href=https://baywet.github.io/fr/les-joies-de-spitemeventproper/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<!doctype html><html lang=fr dir=ltr itemscope itemtype=https://schema.org/Article>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>ItemUpdating et ItemUpdated levé deux fois dans des SPDocuementLibrary</title>
+<meta name=author content="Vincent Biret">
+<meta name=description content="Effectivement, ça arrive, et c’est assez ennuyeux car ça signifie code appelé deux fois, actions effectuées deux fois… bref pas pratique.
+N’oublions pas que la première cause d’un évènement levé deux...">
+<meta name=generator content="Hugo 0.88.1">
+<meta itemprop=name content="ItemUpdating et ItemUpdated levé deux fois dans des SPDocuementLibrary">
+<meta itemprop=description content="Effectivement, ça arrive, et c’est assez ennuyeux car ça signifie code appelé deux fois, actions effectuées deux fois… bref pas pratique.
+N’oublions pas que la première cause d’un évènement levé deux...">
+<meta itemprop=image content="/img/logo.svg">
+<meta property="og:title" content="ItemUpdating et ItemUpdated levé deux fois dans des SPDocuementLibrary">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://baywet.github.io/fr/itemupdating-et-itemupdated-le/">
+<meta property="og:image" content="/img/logo.svg">
+<meta property="og:description" content="Effectivement, ça arrive, et c’est assez ennuyeux car ça signifie code appelé deux fois, actions effectuées deux fois… bref pas pratique.
+N’oublions pas que la première cause d’un évènement levé deux...">
+<meta property="og:site_name" content="Le blog de baywet">
+<meta property="og:updated_time" content="2021-09-06T09:54:53-07:00">
+<meta property="article:published_time" content="2012-11-22T02:59:50+00:00">
+<meta property="article:modified_time" content="2021-09-06T09:54:53-07:00">
+<meta property="article:section" content>
+<meta property="article:tag" content="workaround">
+<meta property="article:tag" content="eventreceiver">
+<meta property="article:tag" content="sharepoint">
+<meta name=twitter:card content="summary">
+<meta name=twitter:site content>
+<meta name=twitter:title content="ItemUpdating et ItemUpdated levé deux fois dans des SPDocuementLibrary">
+<meta name=twitter:description content="Effectivement, ça arrive, et c’est assez ennuyeux car ça signifie code appelé deux fois, actions effectuées deux fois… bref pas pratique.
+N’oublions pas que la première cause d’un évènement levé deux...">
+<meta name=twitter:creator content>
+<meta name=twitter:image:src content="/img/logo.svg">
+<link rel=stylesheet type=text/css href=/css/capsule.min.css>
+<script>(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-176061333-1','auto'),ga('send','pageview')</script>
+<link rel=apple-touch-icon href=/img/apple-touch-icon.png>
+<link rel=icon href=/img/favicon.ico>
+</head>
+<body style=min-height:100vh;display:flex;flex-direction:column>
+<nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation">
+<div class=container>
+<div class=navbar-brand>
+<a class=navbar-item href=/fr>
+<div class="title is-4">&nbsp;Le blog de baywet</div>
+</a>
+<label class="button navbar-burger is-white" for=navbar-burger-state>
+<span></span>
+<span></span>
+<span></span>
+</label>
+</div>
+<input type=checkbox id=navbar-burger-state>
+<div class=navbar-menu>
+<div class=navbar-end>
+<a class=navbar-item href=/en>English</a>
+</div>
+</div>
+</div>
+</nav>
+<section class=section style=flex:1>
+<div class=container>
+<h1 class=title>ItemUpdating et ItemUpdated levé deux fois dans des SPDocuementLibrary</h1>
+<p class=subtitle>Nov 22, 2012</p>
+<div class=content>
+<p>Effectivement, ça arrive, et c’est assez ennuyeux car ça signifie code appelé deux fois, actions effectuées deux fois… bref pas pratique.</p>
+<p>N’oublions pas que la première cause d’un évènement levé deux fois est dans la plupart des cas le fait d’avoir cet évènement référencé deux fois. Et dans ce cas un outil comme <a href=https://speventreceiverman.codeplex.com/>https://speventreceiverman.codeplex.com/</a> est très utile.</p>
+<p>Autre chose à vérifier, que ce ne soit pas vos utilisateurs qui accomplissent deux fois la même action quelque chose de similaire. (si si, j’ai confiance en mes utilisateurs finaux, mais quand même j’ai appris à me méfier)</p>
+<p>Mais admettons qu’aujourd’hui ce n’est pas un de ces cas, et que votre code est bien appelé deux fois.</p>
+<p>Avant tout assurez-vous que vous n’êtes pas dans un de ces cas présentés par Microsoft <a href=https://msdn.microsoft.com/en-us/library/aa979520.aspx>https://msdn.microsoft.com/en-us/library/aa979520.aspx</a></p>
+<p>Non ce n’est pas le cas ? Ne désespérez pas tout de suite, il reste toujours quelque chose qui pourrait faire en sorte que vos évènement soient levés deux fois : les options d’extraction/d’archivage.</p>
+<p>Le cas est décrit ici pour SharePoint 2007 <a href=https://support.microsoft.com/kb/939307>https://support.microsoft.com/kb/939307</a> il n’est cependant pas indiqué si SharePoint 2010 (et 2013 ?) est concerné ou non.</p>
+<p>C’est apparemment le cas puisque ce n’est pas un bug à proprement parler mais un comportement natif : Quand l’option exiger l’extraction est activée dans une librairie de documents voici ce qu’il se passe.</p>
+<p>L’utilisateur upload le document ItemAdding puis ItemAdded sont appelés, avec aucune propriété de renseignée (les champs que vous avez ajoutés en plus sur la doc lib).</p>
+<p>Ensuite l’utilisateur est redirigé vers la page de détails, il remplit les propriétés et enregistre. ItemUpdating et ItemUpdated sont appelés une première fois car mise à jour des données.</p>
+<p>A ce moment l’ER de gestion des archivages/extractions rentre en jeu et décide d’archiver le document, la notion d’archivage étant cachées dans une propriété cachée, il est obligé de mettre à jour le SPListItem et donc nouvelle levée de nos ER.</p>
+<p>Vous commencez à saisir le problème ?</p>
+<p>Maintenant voici comment le fixer, le workaround de Microsoft fonctionne très bien pour ItemUpdating, mais sous 2010, selon les paramètres d’archivage/extraction et parce que les valeurs controlées sont mises à jour entre ItemUpdating et ItemUpdated, ça ne marche pas parfaitement.</p>
+<p>Voici ce que j’ai trouvé pour contourner le problème dans SharePoint 2010 sur l’ER ItemUpdated :</p>
+<p>properties.ListItem.File.CheckOutType == SPFile.SPCheckOutType.None</p>
+<p>En espérant que ça fasse gagner du temps à certains d’entre vous.</p>
+</div>
+<br>
+<p class=heading>
+Edité la dernière fois le
+<a href=https://github.com/baywet/blogsource/commit/f1c07980424f8c88fce2580454819da383433fb8>
+6 Sep 2021
+</a> par <a href=https://github.com/baywet>Vincent Biret</a>
+</p>
+<br>
+<div class=heading>Tags:</div>
+<div class="field is-grouped is-grouped-multiline">
+<div class=control>
+<a href=/fr/tags/workaround>
+<span class=tag>Workaround</span>
+</a>
+</div>
+<div class=control>
+<a href=/fr/tags/eventreceiver>
+<span class=tag>Eventreceiver</span>
+</a>
+</div>
+<div class=control>
+<a href=/fr/tags/sharepoint>
+<span class=tag>Sharepoint</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<section class=section>
+<div class=container>
+<div class=level>
+<div class=level-left>
+<div class=level-item>
+<p class="control has-addons">
+<a class=button href=https://baywet.github.io/fr/configuration-de-la-topologie/>
+<span class="icon is-small"><i class="fa fa-chevron-left"></i></span>
+<span class="is-hidden-touch is-hidden-desktop-only">
+Configuration de la topologie de recherche d’entreprise dans SharePoint 2013
+</span>
+<span class="is-hidden-touch is-hidden-widescreen">
+Configuration de la topologie de recherche d’entreprise dans SharePoint...
+</span>
+<span class="is-hidden-mobile is-hidden-desktop">
+Configuration de la topologie de recherche...
+</span>
+<span class=is-hidden-tablet>
+Configuration de la topologie de...
+</span>
+</a>
+</p>
+</div>
+</div>
+<div class=level-right>
+<div class=level-item>
+<p class="control has-addons">
+<a class=button href=https://baywet.github.io/fr/organisation-dun-hakcathon-re/>
+<span class="is-hidden-touch is-hidden-desktop-only">
+Organisation d’un Hakcathon – retour d’expérience
+</span>
+<span class="is-hidden-touch is-hidden-widescreen">
+Organisation d’un Hakcathon – retour d’expérience
+</span>
+<span class="is-hidden-mobile is-hidden-desktop">
+Organisation d’un Hakcathon – retour d’expérience
+</span>
+<span class=is-hidden-tablet>
+Organisation d’un Hakcathon – retour...
+</span>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<br>
+<br>
+<div class=container>
+<div id=disqus_thread></div>
+<script>var disqus_config=function(){this.page.url="https://baywet.github.io/fr/itemupdating-et-itemupdated-le/",this.page.identifier=window.location.pathname};(function(){var a=document,b=a.createElement('script');b.src='https://baywet.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script>
+<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
+</div>
+<br>
+<div class=container>
+<nav class=panel>
+<p class=panel-heading>Related</p>
+<a class=panel-block href=https://baywet.github.io/fr/les-joies-de-spitemeventproper/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Les joies de SPItemEventProperties.AfterProperties&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/upgrade-sharepoint-2013-sche/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Les joies de SPItemEventProperties.AfterProperties&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/upgrade-sharepoint-2013-sche/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Upgrade SharePoint 2013 - Schemas&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/sharepoint-2013-rtm-disponible/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Upgrade SharePoint 2013 - Schemas&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/sharepoint-2013-rtm-disponible/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>SharePoint 2013 RTM disponible pour les abonnés MSDN!&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/fldtype-custom-field-qui-ne-s/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>SharePoint 2013 RTM disponible pour les abonnés MSDN!&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/fldtype-custom-field-qui-ne-s/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Fldtype / custom field qui ne s’affiche pas dans la liste des colonnes de la liste (paramètres) après ajout.&nbsp;<div class=tag>Workaround</div><div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/traduire-sharepoint-2013/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Fldtype / custom field qui ne s’affiche pas dans la liste des colonnes de la liste (paramètres) après ajout.&nbsp;
+<div class=tag>Workaround</div>
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/traduire-sharepoint-2013/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Traduire SharePoint 2013&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/sharepoint-2013-beta-failed-t/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Traduire SharePoint 2013&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/sharepoint-2013-beta-failed-t/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>SharePoint 2013 beta – failed to open sms.resx&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/warmmeup-warmup-sharepoint-20/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>SharePoint 2013 beta – failed to open sms.resx&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/warmmeup-warmup-sharepoint-20/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>WarmMeUp – WarmUp SharePoint 2013 (et 2010)&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/sharepoint-2013-app-et-wsp/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>WarmMeUp – WarmUp SharePoint 2013 (et 2010)&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/sharepoint-2013-app-et-wsp/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>SharePoint 2013 App et WSP&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/sharepoint-2013-et-les-workflo/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>SharePoint 2013 App et WSP&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/sharepoint-2013-et-les-workflo/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>SharePoint 2013 et les workflows - nouveautés&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/sortie-de-la-preview-publique/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>SharePoint 2013 et les workflows - nouveautés&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/sortie-de-la-preview-publique/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Sortie de la Preview publique de SharePoint 2013&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/les-outils-de-developpement-po/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Sortie de la Preview publique de SharePoint 2013&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/les-outils-de-developpement-po/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Les outils de développement pour SharePoint dans Visual Studio 2012&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/creer-des-librairies-pour-les/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Les outils de développement pour SharePoint dans Visual Studio 2012&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/creer-des-librairies-pour-les/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Créer des librairies pour les projets SharePoint&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/sharepoint-auto-upgrade-soluti/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Créer des librairies pour les projets SharePoint&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/sharepoint-auto-upgrade-soluti/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>SharePoint Auto Upgrade Solution&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/video-de-ma-session-aux-techda/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>SharePoint Auto Upgrade Solution&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/video-de-ma-session-aux-techda/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Video de ma session aux techdays&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/session-aux-microsoft-techdays/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Video de ma session aux techdays&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/session-aux-microsoft-techdays/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Session aux Microsoft Techdays 2012&nbsp;<div class=tag>Sharepoint</div></span></a></nav></div></section><footer class=footer><div class=container><nav class=level></nav><nav class=level><div class="level-left has-text-centered"><div class=level-item><form class="control has-icons has-icons-right" method=get action=https://bing.com><input class=input type=text name=q maxlength=255 placeholder=Search>
+<span>Session aux Microsoft Techdays 2012&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+</nav>
+</div>
+</section>
+<footer class=footer>
+<div class=container>
+<nav class=level>
+</nav>
+<nav class=level>
+<div class="level-left has-text-centered">
+<div class=level-item>
+<form class="control has-icons has-icons-right" method=get action=https://bing.com>
+<input class=input type=text name=q maxlength=255 placeholder=Search>
 <input class=input type=hidden name=sites value=https://baywet.github.io/>
-<span class="icon is-small is-right"><i class="fa fa-search"></i></span></form></div></div><div class="level-right has-text-centered"><div class=level-item><a class=button href=https://baywet.github.io/fr><span class=icon><i class="fa fa-home"></i></span></a> &nbsp;
-<a class=button href><span class=icon><i class="fa fa-rss"></i></span></a></div></div></nav></div></footer><script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script></body></html>
+<span class="icon is-small is-right"><i class="fa fa-search"></i></span>
+</form>
+</div>
+</div>
+<div class="level-right has-text-centered">
+<div class=level-item>
+<a class=button href=https://baywet.github.io/fr>
+<span class=icon><i class="fa fa-home"></i></span>
+</a> &nbsp;
+<a class=button href>
+<span class=icon><i class="fa fa-rss"></i></span>
+</a>
+</div>
+</div>
+</nav>
+</div>
+</footer>
+<script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script>
+</body>
+</html>

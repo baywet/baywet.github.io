@@ -1,47 +1,310 @@
-<!doctype html><html lang=fr dir=ltr itemscope itemtype=https://schema.org/Article><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>Ecrire du code sécurisé pour SharePoint</title><meta name=author content="Vincent Biret"><meta name=description content="Lors du SharePoint summit de Québec 2013 j&rsquo;ai eu la chance de rencontrer et d&rsquo;assister à une session d&rsquo;Eli Robillard.
-Pour information ce monsieur est MVP SharePoint depuis 6 ans,..."><meta name=generator content="Hugo 0.85.0"><meta itemprop=name content="Ecrire du code sécurisé pour SharePoint"><meta itemprop=description content="Lors du SharePoint summit de Québec 2013 j&rsquo;ai eu la chance de rencontrer et d&rsquo;assister à une session d&rsquo;Eli Robillard.
-Pour information ce monsieur est MVP SharePoint depuis 6 ans,..."><meta itemprop=image content="/img/logo.svg"><meta property="og:title" content="Ecrire du code sécurisé pour SharePoint"><meta property="og:type" content="article"><meta property="og:url" content="https://baywet.github.io/fr/ecrire-du-code-securise-pour-s/"><meta property="og:image" content="/img/logo.svg"><meta property="og:description" content="Lors du SharePoint summit de Québec 2013 j&rsquo;ai eu la chance de rencontrer et d&rsquo;assister à une session d&rsquo;Eli Robillard.
-Pour information ce monsieur est MVP SharePoint depuis 6 ans,..."><meta property="og:site_name" content="Le blog de baywet"><meta property="og:updated_time" content="2021-07-12T07:07:04-04:00"><meta property="article:published_time" content="2013-05-07T04:56:00+00:00"><meta property="article:modified_time" content="2021-07-12T07:07:04-04:00"><meta property="article:section" content><meta property="article:tag" content="communauté"><meta property="article:tag" content="mvp"><meta property="article:tag" content="sécurité"><meta property="article:tag" content="slides"><meta property="article:tag" content="sharepoint"><meta name=twitter:card content="summary"><meta name=twitter:site content><meta name=twitter:title content="Ecrire du code sécurisé pour SharePoint"><meta name=twitter:description content="Lors du SharePoint summit de Québec 2013 j&rsquo;ai eu la chance de rencontrer et d&rsquo;assister à une session d&rsquo;Eli Robillard.
-Pour information ce monsieur est MVP SharePoint depuis 6 ans,..."><meta name=twitter:creator content><meta name=twitter:image:src content="/img/logo.svg"><link rel=stylesheet type=text/css href=/css/capsule.min.css><script>(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-176061333-1','auto'),ga('send','pageview')</script><link rel=apple-touch-icon href=/img/apple-touch-icon.png><link rel=icon href=/img/favicon.ico></head><body style=min-height:100vh;display:flex;flex-direction:column><nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation"><div class=container><div class=navbar-brand><a class=navbar-item href=/fr><div class="title is-4">&nbsp;Le blog de baywet</div></a><label class="button navbar-burger is-white" for=navbar-burger-state><span></span><span></span><span></span></label></div><input type=checkbox id=navbar-burger-state><div class=navbar-menu><div class=navbar-end><a class=navbar-item href=/en>English</a></div></div></div></nav><section class=section style=flex:1><div class=container><h1 class=title>Ecrire du code sécurisé pour SharePoint</h1><p class=subtitle>May 7, 2013</p><div class=content><p>Lors du SharePoint summit de Québec 2013 j&rsquo;ai eu la chance de rencontrer et d&rsquo;assister à une session d&rsquo;Eli Robillard.</p><p>Pour information ce monsieur est MVP SharePoint depuis 6 ans, fondateur des SharePoint Saturday, auteur de livres sur SharePoint et a un (plusieurs) blogs assez intéressants.</p><p><a href=https://weblogs.asp.net/erobillard/>https://weblogs.asp.net/erobillard/</a></p><p><a href=https://elirobillard.com/>https://elirobillard.com/</a></p><p>La session &ldquo;writing secure code for SharePoint&rdquo; était vraiment intéressante, aussi je lui ai demandé son powerpoint pour pouvoir la rejouer en interne devant les développeurs SharePoint AlphaMosaik.</p><p>En contre-partie il m&rsquo;a demandé si je pouvais la traduire en Français puisqu&rsquo;il ne parle pas Anglais, c&rsquo;est chose faite, la voici à disposition.</p><p>Enjoy!</p></div><br><p class=heading>Edité la dernière fois le
-<a href=https://github.com/baywet/blogsource/commit/b5bf1517e86bc24dbb6ffc929d807a6653d189bd>12 Jul 2021</a> par <a href=https://github.com/baywet>Vincent Biret</a></p><br><div class=heading>Tags:</div><div class="field is-grouped is-grouped-multiline"><div class=control><a href=/fr/tags/communaut%c3%a9><span class=tag>Communauté</span></a></div><div class=control><a href=/fr/tags/mvp><span class=tag>Mvp</span></a></div><div class=control><a href=/fr/tags/s%c3%a9curit%c3%a9><span class=tag>Sécurité</span></a></div><div class=control><a href=/fr/tags/slides><span class=tag>Slides</span></a></div><div class=control><a href=/fr/tags/sharepoint><span class=tag>Sharepoint</span></a></div></div></div></section><section class=section><div class=container><div class=level><div class=level-left><div class=level-item><p class="control has-addons"><a class=button href=https://baywet.github.io/fr/selectionne-pour-les-10-plus-g/><span class="icon is-small"><i class="fa fa-chevron-left"></i></span>
-<span class="is-hidden-touch is-hidden-desktop-only">Sélectionné pour les 10 plus grands influenceurs SharePoint Francophones!</span>
-<span class="is-hidden-touch is-hidden-widescreen">Sélectionné pour les 10 plus grands influenceurs SharePoint Francophones!</span>
-<span class="is-hidden-mobile is-hidden-desktop">Sélectionné pour les 10 plus grands influenceurs...</span>
-<span class=is-hidden-tablet>Sélectionné pour les 10 plus grands...</span></a></p></div></div><div class=level-right><div class=level-item><p class="control has-addons"><a class=button href=https://baywet.github.io/fr/retour-sur-le-sharepoint-summi/><span class="is-hidden-touch is-hidden-desktop-only">Retour sur le SharePoint Summit de Québec 2013</span>
-<span class="is-hidden-touch is-hidden-widescreen">Retour sur le SharePoint Summit de Québec 2013</span>
-<span class="is-hidden-mobile is-hidden-desktop">Retour sur le SharePoint Summit de Québec 2013</span>
-<span class=is-hidden-tablet>Retour sur le SharePoint Summit de...</span>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span></a></p></div></div></div></div><br><br><div class=container><div id=disqus_thread></div><script>var disqus_config=function(){this.page.url="https://baywet.github.io/fr/ecrire-du-code-securise-pour-s/",this.page.identifier=window.location.pathname};(function(){var a=document,b=a.createElement('script');b.src='https://baywet.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div><br><div class=container><nav class=panel><p class=panel-heading>Related</p><a class=panel-block href=https://baywet.github.io/fr/retour-sur-le-sharepoint-summi/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<!doctype html><html lang=fr dir=ltr itemscope itemtype=https://schema.org/Article>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Ecrire du code sécurisé pour SharePoint</title>
+<meta name=author content="Vincent Biret">
+<meta name=description content="Lors du SharePoint summit de Québec 2013 j&rsquo;ai eu la chance de rencontrer et d&rsquo;assister à une session d&rsquo;Eli Robillard.
+Pour information ce monsieur est MVP SharePoint depuis 6 ans,...">
+<meta name=generator content="Hugo 0.88.1">
+<meta itemprop=name content="Ecrire du code sécurisé pour SharePoint">
+<meta itemprop=description content="Lors du SharePoint summit de Québec 2013 j&rsquo;ai eu la chance de rencontrer et d&rsquo;assister à une session d&rsquo;Eli Robillard.
+Pour information ce monsieur est MVP SharePoint depuis 6 ans,...">
+<meta itemprop=image content="/img/logo.svg">
+<meta property="og:title" content="Ecrire du code sécurisé pour SharePoint">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://baywet.github.io/fr/ecrire-du-code-securise-pour-s/">
+<meta property="og:image" content="/img/logo.svg">
+<meta property="og:description" content="Lors du SharePoint summit de Québec 2013 j&rsquo;ai eu la chance de rencontrer et d&rsquo;assister à une session d&rsquo;Eli Robillard.
+Pour information ce monsieur est MVP SharePoint depuis 6 ans,...">
+<meta property="og:site_name" content="Le blog de baywet">
+<meta property="og:updated_time" content="2021-09-06T09:54:53-07:00">
+<meta property="article:published_time" content="2013-05-07T04:56:00+00:00">
+<meta property="article:modified_time" content="2021-09-06T09:54:53-07:00">
+<meta property="article:section" content>
+<meta property="article:tag" content="communauté">
+<meta property="article:tag" content="mvp">
+<meta property="article:tag" content="sécurité">
+<meta property="article:tag" content="slides">
+<meta property="article:tag" content="sharepoint">
+<meta name=twitter:card content="summary">
+<meta name=twitter:site content>
+<meta name=twitter:title content="Ecrire du code sécurisé pour SharePoint">
+<meta name=twitter:description content="Lors du SharePoint summit de Québec 2013 j&rsquo;ai eu la chance de rencontrer et d&rsquo;assister à une session d&rsquo;Eli Robillard.
+Pour information ce monsieur est MVP SharePoint depuis 6 ans,...">
+<meta name=twitter:creator content>
+<meta name=twitter:image:src content="/img/logo.svg">
+<link rel=stylesheet type=text/css href=/css/capsule.min.css>
+<script>(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-176061333-1','auto'),ga('send','pageview')</script>
+<link rel=apple-touch-icon href=/img/apple-touch-icon.png>
+<link rel=icon href=/img/favicon.ico>
+</head>
+<body style=min-height:100vh;display:flex;flex-direction:column>
+<nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation">
+<div class=container>
+<div class=navbar-brand>
+<a class=navbar-item href=/fr>
+<div class="title is-4">&nbsp;Le blog de baywet</div>
+</a>
+<label class="button navbar-burger is-white" for=navbar-burger-state>
+<span></span>
+<span></span>
+<span></span>
+</label>
+</div>
+<input type=checkbox id=navbar-burger-state>
+<div class=navbar-menu>
+<div class=navbar-end>
+<a class=navbar-item href=/en>English</a>
+</div>
+</div>
+</div>
+</nav>
+<section class=section style=flex:1>
+<div class=container>
+<h1 class=title>Ecrire du code sécurisé pour SharePoint</h1>
+<p class=subtitle>May 7, 2013</p>
+<div class=content>
+<p>Lors du SharePoint summit de Québec 2013 j&rsquo;ai eu la chance de rencontrer et d&rsquo;assister à une session d&rsquo;Eli Robillard.</p>
+<p>Pour information ce monsieur est MVP SharePoint depuis 6 ans, fondateur des SharePoint Saturday, auteur de livres sur SharePoint et a un (plusieurs) blogs assez intéressants.</p>
+<p><a href=https://weblogs.asp.net/erobillard/>https://weblogs.asp.net/erobillard/</a></p>
+<p><a href=https://elirobillard.com/>https://elirobillard.com/</a></p>
+<p>La session &ldquo;writing secure code for SharePoint&rdquo; était vraiment intéressante, aussi je lui ai demandé son powerpoint pour pouvoir la rejouer en interne devant les développeurs SharePoint AlphaMosaik.</p>
+<p>En contre-partie il m&rsquo;a demandé si je pouvais la traduire en Français puisqu&rsquo;il ne parle pas Anglais, c&rsquo;est chose faite, la voici à disposition.</p>
+<p>Enjoy!</p>
+</div>
+<br>
+<p class=heading>
+Edité la dernière fois le
+<a href=https://github.com/baywet/blogsource/commit/f1c07980424f8c88fce2580454819da383433fb8>
+6 Sep 2021
+</a> par <a href=https://github.com/baywet>Vincent Biret</a>
+</p>
+<br>
+<div class=heading>Tags:</div>
+<div class="field is-grouped is-grouped-multiline">
+<div class=control>
+<a href=/fr/tags/communaut%c3%a9>
+<span class=tag>Communauté</span>
+</a>
+</div>
+<div class=control>
+<a href=/fr/tags/mvp>
+<span class=tag>Mvp</span>
+</a>
+</div>
+<div class=control>
+<a href=/fr/tags/s%c3%a9curit%c3%a9>
+<span class=tag>Sécurité</span>
+</a>
+</div>
+<div class=control>
+<a href=/fr/tags/slides>
+<span class=tag>Slides</span>
+</a>
+</div>
+<div class=control>
+<a href=/fr/tags/sharepoint>
+<span class=tag>Sharepoint</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<section class=section>
+<div class=container>
+<div class=level>
+<div class=level-left>
+<div class=level-item>
+<p class="control has-addons">
+<a class=button href=https://baywet.github.io/fr/selectionne-pour-les-10-plus-g/>
+<span class="icon is-small"><i class="fa fa-chevron-left"></i></span>
+<span class="is-hidden-touch is-hidden-desktop-only">
+Sélectionné pour les 10 plus grands influenceurs SharePoint Francophones!
+</span>
+<span class="is-hidden-touch is-hidden-widescreen">
+Sélectionné pour les 10 plus grands influenceurs SharePoint Francophones!
+</span>
+<span class="is-hidden-mobile is-hidden-desktop">
+Sélectionné pour les 10 plus grands influenceurs...
+</span>
+<span class=is-hidden-tablet>
+Sélectionné pour les 10 plus grands...
+</span>
+</a>
+</p>
+</div>
+</div>
+<div class=level-right>
+<div class=level-item>
+<p class="control has-addons">
+<a class=button href=https://baywet.github.io/fr/retour-sur-le-sharepoint-summi/>
+<span class="is-hidden-touch is-hidden-desktop-only">
+Retour sur le SharePoint Summit de Québec 2013
+</span>
+<span class="is-hidden-touch is-hidden-widescreen">
+Retour sur le SharePoint Summit de Québec 2013
+</span>
+<span class="is-hidden-mobile is-hidden-desktop">
+Retour sur le SharePoint Summit de Québec 2013
+</span>
+<span class=is-hidden-tablet>
+Retour sur le SharePoint Summit de...
+</span>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<br>
+<br>
+<div class=container>
+<div id=disqus_thread></div>
+<script>var disqus_config=function(){this.page.url="https://baywet.github.io/fr/ecrire-du-code-securise-pour-s/",this.page.identifier=window.location.pathname};(function(){var a=document,b=a.createElement('script');b.src='https://baywet.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script>
+<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
+</div>
+<br>
+<div class=container>
+<nav class=panel>
+<p class=panel-heading>Related</p>
+<a class=panel-block href=https://baywet.github.io/fr/retour-sur-le-sharepoint-summi/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Retour sur le SharePoint Summit de Québec 2013&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/la-mise-a-jour-davril-2013-pou/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Retour sur le SharePoint Summit de Québec 2013&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/la-mise-a-jour-davril-2013-pou/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>La mise à jour d’avril 2013 pour SharePoint est disponible&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/the-name-initializecontrol-doe/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>La mise à jour d’avril 2013 pour SharePoint est disponible&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/the-name-initializecontrol-doe/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>The name 'InitializeControl' does not exist in the current context Controles utilisateur, SharePoint 2013 et Ressources&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/sharepoint-2013-disponibilite/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>The name 'InitializeControl' does not exist in the current context Controles utilisateur, SharePoint 2013 et Ressources&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/sharepoint-2013-disponibilite/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>SharePoint 2013 – Disponibilité Générale et Mise à jour obligatoire de Mars&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/sharepoint-summit-2013-a-quebe/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>SharePoint 2013 – Disponibilité Générale et Mise à jour obligatoire de Mars&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/sharepoint-summit-2013-a-quebe/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>SharePoint Summit 2013 à Québec&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/conferences-a-venir-en-2013/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>SharePoint Summit 2013 à Québec&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/conferences-a-venir-en-2013/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Conférences à venir en 2013&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/service-de-cache-distribue-de/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Conférences à venir en 2013&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/service-de-cache-distribue-de/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Service de Cache distribué de SharePoint 2013 – SPDistributedCacheService – comment ne pas se manger ?&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/configuration-de-la-topologie/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Service de Cache distribué de SharePoint 2013 – SPDistributedCacheService – comment ne pas se manger ?&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/configuration-de-la-topologie/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Configuration de la topologie de recherche d’entreprise dans SharePoint 2013&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/itemupdating-et-itemupdated-le/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Configuration de la topologie de recherche d’entreprise dans SharePoint 2013&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/itemupdating-et-itemupdated-le/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>ItemUpdating et ItemUpdated levé deux fois dans des SPDocuementLibrary&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/les-joies-de-spitemeventproper/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>ItemUpdating et ItemUpdated levé deux fois dans des SPDocuementLibrary&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/les-joies-de-spitemeventproper/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Les joies de SPItemEventProperties.AfterProperties&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/upgrade-sharepoint-2013-sche/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Les joies de SPItemEventProperties.AfterProperties&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/upgrade-sharepoint-2013-sche/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Upgrade SharePoint 2013 - Schemas&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/sharepoint-2013-rtm-disponible/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Upgrade SharePoint 2013 - Schemas&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/sharepoint-2013-rtm-disponible/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>SharePoint 2013 RTM disponible pour les abonnés MSDN!&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/fldtype-custom-field-qui-ne-s/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>SharePoint 2013 RTM disponible pour les abonnés MSDN!&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/fldtype-custom-field-qui-ne-s/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Fldtype / custom field qui ne s’affiche pas dans la liste des colonnes de la liste (paramètres) après ajout.&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/traduire-sharepoint-2013/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Fldtype / custom field qui ne s’affiche pas dans la liste des colonnes de la liste (paramètres) après ajout.&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/traduire-sharepoint-2013/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Traduire SharePoint 2013&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/sharepoint-2013-beta-failed-t/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Traduire SharePoint 2013&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/sharepoint-2013-beta-failed-t/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>SharePoint 2013 beta – failed to open sms.resx&nbsp;<div class=tag>Sharepoint</div></span></a></nav></div></section><footer class=footer><div class=container><nav class=level></nav><nav class=level><div class="level-left has-text-centered"><div class=level-item><form class="control has-icons has-icons-right" method=get action=https://bing.com><input class=input type=text name=q maxlength=255 placeholder=Search>
+<span>SharePoint 2013 beta – failed to open sms.resx&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+</nav>
+</div>
+</section>
+<footer class=footer>
+<div class=container>
+<nav class=level>
+</nav>
+<nav class=level>
+<div class="level-left has-text-centered">
+<div class=level-item>
+<form class="control has-icons has-icons-right" method=get action=https://bing.com>
+<input class=input type=text name=q maxlength=255 placeholder=Search>
 <input class=input type=hidden name=sites value=https://baywet.github.io/>
-<span class="icon is-small is-right"><i class="fa fa-search"></i></span></form></div></div><div class="level-right has-text-centered"><div class=level-item><a class=button href=https://baywet.github.io/fr><span class=icon><i class="fa fa-home"></i></span></a> &nbsp;
-<a class=button href><span class=icon><i class="fa fa-rss"></i></span></a></div></div></nav></div></footer><script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script></body></html>
+<span class="icon is-small is-right"><i class="fa fa-search"></i></span>
+</form>
+</div>
+</div>
+<div class="level-right has-text-centered">
+<div class=level-item>
+<a class=button href=https://baywet.github.io/fr>
+<span class=icon><i class="fa fa-home"></i></span>
+</a> &nbsp;
+<a class=button href>
+<span class=icon><i class="fa fa-rss"></i></span>
+</a>
+</div>
+</div>
+</nav>
+</div>
+</footer>
+<script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script>
+</body>
+</html>

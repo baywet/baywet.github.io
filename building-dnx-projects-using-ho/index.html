@@ -1,29 +1,256 @@
-<!doctype html><html lang=en dir=ltr itemscope itemtype=https://schema.org/Article><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>Building DNX projects using home installed build agent (TFS, VSTS)</title><meta name=author content="Vincent Biret"><meta name=description content="With DNX/DNU soon to be RTM there’ll be more and more developers eagers to build and deploy ASP.NET core 1 (formerly ASP.NET MVC 5) projects.
-If the procedure is well described when you are using..."><meta name=generator content="Hugo 0.85.0"><meta itemprop=name content="Building DNX projects using home installed build agent (TFS, VSTS)"><meta itemprop=description content="With DNX/DNU soon to be RTM there’ll be more and more developers eagers to build and deploy ASP.NET core 1 (formerly ASP.NET MVC 5) projects.
-If the procedure is well described when you are using..."><meta itemprop=image content="/img/logo.svg"><meta property="og:title" content="Building DNX projects using home installed build agent (TFS, VSTS)"><meta property="og:type" content="article"><meta property="og:url" content="https://baywet.github.io/building-dnx-projects-using-ho/"><meta property="og:image" content="/img/logo.svg"><meta property="og:description" content="With DNX/DNU soon to be RTM there’ll be more and more developers eagers to build and deploy ASP.NET core 1 (formerly ASP.NET MVC 5) projects.
-If the procedure is well described when you are using..."><meta property="og:site_name" content="Baywet's blog"><meta property="og:updated_time" content="2021-07-12T07:07:04-04:00"><meta property="article:published_time" content="2016-02-19T14:00:00+00:00"><meta property="article:modified_time" content="2021-07-12T07:07:04-04:00"><meta property="article:section" content><meta property="article:tag" content="build"><meta property="article:tag" content="asp.net mvc"><meta property="article:tag" content="vsts"><meta property="article:tag" content="vso"><meta property="article:tag" content="dnvm"><meta name=twitter:card content="summary"><meta name=twitter:site content><meta name=twitter:title content="Building DNX projects using home installed build agent (TFS, VSTS)"><meta name=twitter:description content="With DNX/DNU soon to be RTM there’ll be more and more developers eagers to build and deploy ASP.NET core 1 (formerly ASP.NET MVC 5) projects.
-If the procedure is well described when you are using..."><meta name=twitter:creator content><meta name=twitter:image:src content="/img/logo.svg"><link rel=stylesheet type=text/css href=/css/capsule.min.css><script>(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-176061333-1','auto'),ga('send','pageview')</script><link rel=apple-touch-icon href=/img/apple-touch-icon.png><link rel=icon href=/img/favicon.ico></head><body style=min-height:100vh;display:flex;flex-direction:column><nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation"><div class=container><div class=navbar-brand><a class=navbar-item href=/en><div class="title is-4">&nbsp;Baywet's blog</div></a><label class="button navbar-burger is-white" for=navbar-burger-state><span></span><span></span><span></span></label></div><input type=checkbox id=navbar-burger-state><div class=navbar-menu><div class=navbar-end><a class=navbar-item href=https://baywet.github.io/fr/build-dnx-avec-agent-build-vne/>Français</a></div></div></div></nav><section class=section style=flex:1><div class=container><h1 class=title>Building DNX projects using home installed build agent (TFS, VSTS)</h1><p class=subtitle>Feb 19, 2016</p><div class=content><p>With DNX/DNU soon to be RTM there’ll be more and more developers eagers to build and deploy ASP.NET core 1 (formerly ASP.NET MVC 5) projects.</p><p>If the procedure is well described when you are using hosted agents (the ones microsoft runs for you on Azure), it’s a little more complex when you want to do it on a local agent.</p><p><a href="https://msdn.microsoft.com/en-us/Library/vs/alm/Build/azure/deploy-aspnet5?f=255&MSPPError=-2147217396">https://msdn.microsoft.com/en-us/Library/vs/alm/Build/azure/deploy-aspnet5?f=255&MSPPError=-2147217396</a></p><p>On your agent’s machine you installed and updated visual studio and all the tools right?</p><p>First if all you’ll still need the prebuild script to get and install the needed runtimes. But once you have that in place you might run into errors like:</p><p>dnx.win32.dll could not be loaded. Last error: 126</p><p>This comes from the fact that by default the agent runs under Local System account (build 2015, not the xaml one) so it tries to install everything related to dnx here</p><p>C:\Windows\system32\config\systemprofile.dnx</p><p>But this folder is under system32 which is protected and this is what causes an issue.</p><p>The only valuable solution is to run the agent with a local service account (non administrator!). To do so ré-execute the configure agent script.</p><p>Have fun with build!</p></div><br><p class=heading>Last edited
-<a href=https://github.com/baywet/blogsource/commit/b5bf1517e86bc24dbb6ffc929d807a6653d189bd>Jul 12, 2021</a> by <a href=https://github.com/baywet>Vincent Biret</a></p><br><div class=heading>Tags:</div><div class="field is-grouped is-grouped-multiline"><div class=control><a href=/tags/build><span class=tag>Build</span></a></div><div class=control><a href=/tags/asp.net-mvc><span class=tag>Asp.Net Mvc</span></a></div><div class=control><a href=/tags/vsts><span class=tag>Vsts</span></a></div><div class=control><a href=/tags/vso><span class=tag>Vso</span></a></div><div class=control><a href=/tags/dnvm><span class=tag>Dnvm</span></a></div><div class=control><a href=/tags/dnx><span class=tag>Dnx</span></a></div></div></div></section><section class=section><div class=container><div class=level><div class=level-left><div class=level-item><p class="control has-addons"><a class=button href=https://baywet.github.io/error-publishing-aspnet-5-core/><span class="icon is-small"><i class="fa fa-chevron-left"></i></span>
-<span class="is-hidden-touch is-hidden-desktop-only">Error publishing asp.net 5 (core) websites to Azure</span>
-<span class="is-hidden-touch is-hidden-widescreen">Error publishing asp.net 5 (core) websites to Azure</span>
-<span class="is-hidden-mobile is-hidden-desktop">Error publishing asp.net 5 (core) websites to...</span>
-<span class=is-hidden-tablet>Error publishing asp.net 5 (core)...</span></a></p></div></div><div class=level-right><div class=level-item><p class="control has-addons"><a class=button href=https://baywet.github.io/speaking-at-sharepoint-saturda-2016-02-10-14-00-00/><span class="is-hidden-touch is-hidden-desktop-only">Speaking at SharePoint Saturday Vancouver 2016</span>
-<span class="is-hidden-touch is-hidden-widescreen">Speaking at SharePoint Saturday Vancouver 2016</span>
-<span class="is-hidden-mobile is-hidden-desktop">Speaking at SharePoint Saturday Vancouver 2016</span>
-<span class=is-hidden-tablet>Speaking at SharePoint Saturday...</span>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span></a></p></div></div></div></div><br><br><div class=container><div id=disqus_thread></div><script>var disqus_config=function(){this.page.url="https://baywet.github.io/building-dnx-projects-using-ho/",this.page.identifier=window.location.pathname};(function(){var a=document,b=a.createElement('script');b.src='https://baywet.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div><br><div class=container><nav class=panel><p class=panel-heading>Related</p><a class=panel-block href=https://baywet.github.io/automatically-increment-sharep/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<!doctype html><html lang=en dir=ltr itemscope itemtype=https://schema.org/Article>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Building DNX projects using home installed build agent (TFS, VSTS)</title>
+<meta name=author content="Vincent Biret">
+<meta name=description content="With DNX/DNU soon to be RTM there’ll be more and more developers eagers to build and deploy ASP.NET core 1 (formerly ASP.NET MVC 5) projects.
+If the procedure is well described when you are using...">
+<meta name=generator content="Hugo 0.88.1">
+<meta itemprop=name content="Building DNX projects using home installed build agent (TFS, VSTS)">
+<meta itemprop=description content="With DNX/DNU soon to be RTM there’ll be more and more developers eagers to build and deploy ASP.NET core 1 (formerly ASP.NET MVC 5) projects.
+If the procedure is well described when you are using...">
+<meta itemprop=image content="/img/logo.svg">
+<meta property="og:title" content="Building DNX projects using home installed build agent (TFS, VSTS)">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://baywet.github.io/building-dnx-projects-using-ho/">
+<meta property="og:image" content="/img/logo.svg">
+<meta property="og:description" content="With DNX/DNU soon to be RTM there’ll be more and more developers eagers to build and deploy ASP.NET core 1 (formerly ASP.NET MVC 5) projects.
+If the procedure is well described when you are using...">
+<meta property="og:site_name" content="Baywet's blog">
+<meta property="og:updated_time" content="2021-09-06T09:54:53-07:00">
+<meta property="article:published_time" content="2016-02-19T14:00:00+00:00">
+<meta property="article:modified_time" content="2021-09-06T09:54:53-07:00">
+<meta property="article:section" content>
+<meta property="article:tag" content="build">
+<meta property="article:tag" content="asp.net mvc">
+<meta property="article:tag" content="vsts">
+<meta property="article:tag" content="vso">
+<meta property="article:tag" content="dnvm">
+<meta name=twitter:card content="summary">
+<meta name=twitter:site content>
+<meta name=twitter:title content="Building DNX projects using home installed build agent (TFS, VSTS)">
+<meta name=twitter:description content="With DNX/DNU soon to be RTM there’ll be more and more developers eagers to build and deploy ASP.NET core 1 (formerly ASP.NET MVC 5) projects.
+If the procedure is well described when you are using...">
+<meta name=twitter:creator content>
+<meta name=twitter:image:src content="/img/logo.svg">
+<link rel=stylesheet type=text/css href=/css/capsule.min.css>
+<script>(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-176061333-1','auto'),ga('send','pageview')</script>
+<link rel=apple-touch-icon href=/img/apple-touch-icon.png>
+<link rel=icon href=/img/favicon.ico>
+</head>
+<body style=min-height:100vh;display:flex;flex-direction:column>
+<nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation">
+<div class=container>
+<div class=navbar-brand>
+<a class=navbar-item href=/en>
+<div class="title is-4">&nbsp;Baywet's blog</div>
+</a>
+<label class="button navbar-burger is-white" for=navbar-burger-state>
+<span></span>
+<span></span>
+<span></span>
+</label>
+</div>
+<input type=checkbox id=navbar-burger-state>
+<div class=navbar-menu>
+<div class=navbar-end>
+<a class=navbar-item href=https://baywet.github.io/fr/build-dnx-avec-agent-build-vne/>Français</a>
+</div>
+</div>
+</div>
+</nav>
+<section class=section style=flex:1>
+<div class=container>
+<h1 class=title>Building DNX projects using home installed build agent (TFS, VSTS)</h1>
+<p class=subtitle>Feb 19, 2016</p>
+<div class=content>
+<p>With DNX/DNU soon to be RTM there’ll be more and more developers eagers to build and deploy ASP.NET core 1 (formerly ASP.NET MVC 5) projects.</p>
+<p>If the procedure is well described when you are using hosted agents (the ones microsoft runs for you on Azure), it’s a little more complex when you want to do it on a local agent.</p>
+<p><a href="https://msdn.microsoft.com/en-us/Library/vs/alm/Build/azure/deploy-aspnet5?f=255&MSPPError=-2147217396">https://msdn.microsoft.com/en-us/Library/vs/alm/Build/azure/deploy-aspnet5?f=255&MSPPError=-2147217396</a></p>
+<p>On your agent’s machine you installed and updated visual studio and all the tools right?</p>
+<p>First if all you’ll still need the prebuild script to get and install the needed runtimes. But once you have that in place you might run into errors like:</p>
+<p>dnx.win32.dll could not be loaded. Last error: 126</p>
+<p>This comes from the fact that by default the agent runs under Local System account (build 2015, not the xaml one) so it tries to install everything related to dnx here</p>
+<p>C:\Windows\system32\config\systemprofile.dnx</p>
+<p>But this folder is under system32 which is protected and this is what causes an issue.</p>
+<p>The only valuable solution is to run the agent with a local service account (non administrator!). To do so ré-execute the configure agent script.</p>
+<p>Have fun with build!</p>
+</div>
+<br>
+<p class=heading>
+Last edited
+<a href=https://github.com/baywet/blogsource/commit/f1c07980424f8c88fce2580454819da383433fb8>
+Sep 6, 2021
+</a> by <a href=https://github.com/baywet>Vincent Biret</a>
+</p>
+<br>
+<div class=heading>Tags:</div>
+<div class="field is-grouped is-grouped-multiline">
+<div class=control>
+<a href=/tags/build>
+<span class=tag>Build</span>
+</a>
+</div>
+<div class=control>
+<a href=/tags/asp.net-mvc>
+<span class=tag>Asp.Net Mvc</span>
+</a>
+</div>
+<div class=control>
+<a href=/tags/vsts>
+<span class=tag>Vsts</span>
+</a>
+</div>
+<div class=control>
+<a href=/tags/vso>
+<span class=tag>Vso</span>
+</a>
+</div>
+<div class=control>
+<a href=/tags/dnvm>
+<span class=tag>Dnvm</span>
+</a>
+</div>
+<div class=control>
+<a href=/tags/dnx>
+<span class=tag>Dnx</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<section class=section>
+<div class=container>
+<div class=level>
+<div class=level-left>
+<div class=level-item>
+<p class="control has-addons">
+<a class=button href=https://baywet.github.io/error-publishing-aspnet-5-core/>
+<span class="icon is-small"><i class="fa fa-chevron-left"></i></span>
+<span class="is-hidden-touch is-hidden-desktop-only">
+Error publishing asp.net 5 (core) websites to Azure
+</span>
+<span class="is-hidden-touch is-hidden-widescreen">
+Error publishing asp.net 5 (core) websites to Azure
+</span>
+<span class="is-hidden-mobile is-hidden-desktop">
+Error publishing asp.net 5 (core) websites to...
+</span>
+<span class=is-hidden-tablet>
+Error publishing asp.net 5 (core)...
+</span>
+</a>
+</p>
+</div>
+</div>
+<div class=level-right>
+<div class=level-item>
+<p class="control has-addons">
+<a class=button href=https://baywet.github.io/speaking-at-sharepoint-saturda-2016-02-10-14-00-00/>
+<span class="is-hidden-touch is-hidden-desktop-only">
+Speaking at SharePoint Saturday Vancouver 2016
+</span>
+<span class="is-hidden-touch is-hidden-widescreen">
+Speaking at SharePoint Saturday Vancouver 2016
+</span>
+<span class="is-hidden-mobile is-hidden-desktop">
+Speaking at SharePoint Saturday Vancouver 2016
+</span>
+<span class=is-hidden-tablet>
+Speaking at SharePoint Saturday...
+</span>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<br>
+<br>
+<div class=container>
+<div id=disqus_thread></div>
+<script>var disqus_config=function(){this.page.url="https://baywet.github.io/building-dnx-projects-using-ho/",this.page.identifier=window.location.pathname};(function(){var a=document,b=a.createElement('script');b.src='https://baywet.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script>
+<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
+</div>
+<br>
+<div class=container>
+<nav class=panel>
+<p class=panel-heading>Related</p>
+<a class=panel-block href=https://baywet.github.io/automatically-increment-sharep/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Automatically increment SharePoint feature version number during build with build 2015&nbsp;<div class=tag>Build</div></span></a><a class=panel-block href=https://baywet.github.io/deploying-cloud-service-via-ne/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Automatically increment SharePoint feature version number during build with build 2015&nbsp;
+<div class=tag>Build</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/deploying-cloud-service-via-ne/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Deploying cloud service via new 2015 build templates&nbsp;<div class=tag>Build</div></span></a><a class=panel-block href=https://baywet.github.io/automated-build-for-sharepoint-2014-12-04-01-12-13/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Deploying cloud service via new 2015 build templates&nbsp;
+<div class=tag>Build</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/automated-build-for-sharepoint-2014-12-04-01-12-13/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Automated build for SharePoint 2013 full trust solutions – Where are my solutions?&nbsp;<div class=tag>Build</div></span></a><a class=panel-block href=https://baywet.github.io/visual-studio-2013-update-4-an/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Automated build for SharePoint 2013 full trust solutions – Where are my solutions?&nbsp;
+<div class=tag>Build</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/visual-studio-2013-update-4-an/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Visual studio 2013 Update 4 and SharePoint full trust solutions automated build&nbsp;<div class=tag>Build</div></span></a><a class=panel-block href=https://baywet.github.io/automated-build-for-sharepoint-2014-10-29-02-22-54/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Visual studio 2013 Update 4 and SharePoint full trust solutions automated build&nbsp;
+<div class=tag>Build</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/automated-build-for-sharepoint-2014-10-29-02-22-54/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Automated build for SharePoint server (fulltrust) solutions with visual studio online&nbsp;<div class=tag>Build</div></span></a><a class=panel-block href=https://baywet.github.io/converting-a-protected-by-pass/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Automated build for SharePoint server (fulltrust) solutions with visual studio online&nbsp;
+<div class=tag>Build</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/converting-a-protected-by-pass/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Converting a protected by password certificate (pfx) to an unprotected one (snk)&nbsp;<div class=tag>Build</div></span></a></nav></div></section><footer class=footer><div class=container><nav class=level></nav><nav class=level><div class="level-left has-text-centered"><div class=level-item><form class="control has-icons has-icons-right" method=get action=https://bing.com><input class=input type=text name=q maxlength=255 placeholder=Search>
+<span>Converting a protected by password certificate (pfx) to an unprotected one (snk)&nbsp;
+<div class=tag>Build</div>
+</span>
+</a>
+</nav>
+</div>
+</section>
+<footer class=footer>
+<div class=container>
+<nav class=level>
+</nav>
+<nav class=level>
+<div class="level-left has-text-centered">
+<div class=level-item>
+<form class="control has-icons has-icons-right" method=get action=https://bing.com>
+<input class=input type=text name=q maxlength=255 placeholder=Search>
 <input class=input type=hidden name=sites value=https://baywet.github.io/>
-<span class="icon is-small is-right"><i class="fa fa-search"></i></span></form></div></div><div class="level-right has-text-centered"><div class=level-item><a class=button href=https://baywet.github.io/en><span class=icon><i class="fa fa-home"></i></span></a> &nbsp;
-<a class=button href><span class=icon><i class="fa fa-rss"></i></span></a></div></div></nav></div></footer><script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script></body></html>
+<span class="icon is-small is-right"><i class="fa fa-search"></i></span>
+</form>
+</div>
+</div>
+<div class="level-right has-text-centered">
+<div class=level-item>
+<a class=button href=https://baywet.github.io/en>
+<span class=icon><i class="fa fa-home"></i></span>
+</a> &nbsp;
+<a class=button href>
+<span class=icon><i class="fa fa-rss"></i></span>
+</a>
+</div>
+</div>
+</nav>
+</div>
+</footer>
+<script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script>
+</body>
+</html>

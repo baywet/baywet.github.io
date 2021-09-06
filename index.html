@@ -1,79 +1,634 @@
-<!doctype html><html lang=en dir=ltr itemscope itemtype=https://schema.org/Article><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>Baywet's blog</title><meta name=author content="Vincent Biret"><meta name=description content><meta name=generator content="Hugo 0.85.0"><meta itemprop=name content="Baywet's blog"><meta itemprop=description content><meta itemprop=image content="/img/logo.svg"><meta property="og:title" content="Baywet's blog"><meta property="og:type" content="website"><meta property="og:url" content="https://baywet.github.io/"><meta property="og:image" content="/img/logo.svg"><meta property="og:description" content><meta property="og:site_name" content="Baywet's blog"><meta property="article:section" content><meta name=twitter:card content="summary"><meta name=twitter:site content><meta name=twitter:title content="Baywet's blog"><meta name=twitter:description content><meta name=twitter:creator content><meta name=twitter:image:src content="/img/logo.svg"><link rel=alternate type=application/rss+xml href=https://baywet.github.io/index.xml title="Baywet's blog"><link rel=stylesheet type=text/css href=/css/capsule.min.css><script>(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-176061333-1','auto'),ga('send','pageview')</script><link rel=apple-touch-icon href=/img/apple-touch-icon.png><link rel=icon href=/img/favicon.ico></head><body style=min-height:100vh;display:flex;flex-direction:column><section class="hero is-dark is-medium"><div class=hero-head><nav class="navbar has-shadow" role=navigation aria-label="main navigation"><div class=container><div class=navbar-brand><a class=navbar-item href=/en><div class="title is-4">&nbsp;Baywet's blog</div></a><label class="button navbar-burger is-dark" for=navbar-burger-state><span></span><span></span><span></span></label></div><input type=checkbox id=navbar-burger-state><div class=navbar-menu><div class=navbar-end><a class=navbar-item href=https://baywet.github.io/fr/>Français</a></div></div></div></nav></div></section><section class=section style=flex:1><div class=container><div class=columns><div class=column><div style=min-height:56vh><article class=media><div class=media-content><p class=title><a href=https://baywet.github.io/github-repo-revival/>Revamping the Microsoft Graph Java SDK: a recipe to revive open-source repositories</a></p><p class="subtitle is-flex" style=justify-content:space-between><span>May 24, 2021</span>
-<span>5 min.</span></p><p>Introduction Back in August 2020 I became the main maintainer of the Microsoft Graph Java SDK.
-The team had to deprioritize this SDK in favor of other languages due to a lack of staff. About 100+ issues were open, as well as 15 pull requests from the community. Dependencies and tooling had not been updated, the Android story was unclear, no innovation had been done in a long time, the repository felt abandoned and caused a lot of frustrations…</p></div></article><article class=media><div class=media-content><p class=title><a href=https://baywet.github.io/speaking-at-sps-ottawa-2020/>Speaking at Microsoft 365 Saturday Ottawa 2020</a></p><p class="subtitle is-flex" style=justify-content:space-between><span>Oct 4, 2020</span>
-<span>1 min.</span></p><p>This year again I have the opportunity to speak at the Microsoft 365 (formerly SPS) Ottawa and I&rsquo;ll be presenting &ldquo;Introduction To The Microsoft Graph: Getting Started Quickly & Getting The Most Out Of It&rdquo;.
+<!doctype html><html lang=en dir=ltr itemscope itemtype=https://schema.org/Article>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Baywet's blog</title>
+<meta name=author content="Vincent Biret">
+<meta name=description content>
+<meta name=generator content="Hugo 0.88.1">
+<meta itemprop=name content="Baywet's blog">
+<meta itemprop=description content>
+<meta itemprop=image content="/img/logo.svg">
+<meta property="og:title" content="Baywet's blog">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://baywet.github.io/">
+<meta property="og:image" content="/img/logo.svg">
+<meta property="og:description" content>
+<meta property="og:site_name" content="Baywet's blog">
+<meta property="article:section" content>
+<meta name=twitter:card content="summary">
+<meta name=twitter:site content>
+<meta name=twitter:title content="Baywet's blog">
+<meta name=twitter:description content>
+<meta name=twitter:creator content>
+<meta name=twitter:image:src content="/img/logo.svg">
+<link rel=alternate type=application/rss+xml href=https://baywet.github.io/index.xml title="Baywet's blog">
+<link rel=stylesheet type=text/css href=/css/capsule.min.css>
+<script>(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-176061333-1','auto'),ga('send','pageview')</script>
+<link rel=apple-touch-icon href=/img/apple-touch-icon.png>
+<link rel=icon href=/img/favicon.ico>
+</head>
+<body style=min-height:100vh;display:flex;flex-direction:column>
+<section class="hero is-dark is-medium">
+<div class=hero-head>
+<nav class="navbar has-shadow" role=navigation aria-label="main navigation">
+<div class=container>
+<div class=navbar-brand>
+<a class=navbar-item href=/en>
+<div class="title is-4">&nbsp;Baywet's blog</div>
+</a>
+<label class="button navbar-burger is-dark" for=navbar-burger-state>
+<span></span>
+<span></span>
+<span></span>
+</label>
+</div>
+<input type=checkbox id=navbar-burger-state>
+<div class=navbar-menu>
+<div class=navbar-end>
+<a class=navbar-item href=https://baywet.github.io/fr/>Français</a>
+</div>
+</div>
+</div>
+</nav>
+</div>
+</section>
+<section class=section style=flex:1>
+<div class=container>
+<div class=columns>
+<div class=column>
+<div style=min-height:56vh>
+<article class=media>
+<div class=media-content>
+<p class=title><a href=https://baywet.github.io/one-year-developer/>One year as a Software Developer at Microsoft</a></p>
+<p class="subtitle is-flex" style=justify-content:space-between>
+<span>Sep 6, 2021</span>
+<span>3 min.</span>
+</p>
+<p>One year as a Software Developer at Microsoft Introduction Back in September 2020, I published a blog post about my experience as a Program Manager at Microsoft that was well received. It made me realize that the community was curious and interested about this role. In this post, I will share my insights as a developer.
+Before we begin, keep in mind this is my personal experience, which may differ a lot from team to team, product to product and depend on other circumstances (being remote, culture, etc…).</p>
+</div>
+</article>
+<article class=media>
+<div class=media-content>
+<p class=title><a href=https://baywet.github.io/github-repo-revival/>Revamping the Microsoft Graph Java SDK: a recipe to revive open-source repositories</a></p>
+<p class="subtitle is-flex" style=justify-content:space-between>
+<span>May 24, 2021</span>
+<span>5 min.</span>
+</p>
+<p>Introduction Back in August 2020 I became the main maintainer of the Microsoft Graph Java SDK.
+The team had to deprioritize this SDK in favor of other languages due to a lack of staff. About 100+ issues were open, as well as 15 pull requests from the community. Dependencies and tooling had not been updated, the Android story was unclear, no innovation had been done in a long time, the repository felt abandoned and caused a lot of frustrations…</p>
+</div>
+</article>
+<article class=media>
+<div class=media-content>
+<p class=title><a href=https://baywet.github.io/speaking-at-sps-ottawa-2020/>Speaking at Microsoft 365 Saturday Ottawa 2020</a></p>
+<p class="subtitle is-flex" style=justify-content:space-between>
+<span>Oct 4, 2020</span>
+<span>1 min.</span>
+</p>
+<p>This year again I have the opportunity to speak at the Microsoft 365 (formerly SPS) Ottawa and I&rsquo;ll be presenting &ldquo;Introduction To The Microsoft Graph: Getting Started Quickly & Getting The Most Out Of It&rdquo;.
 Together we will cover the basics of Microsoft Graph, the Microsoft Identity Platform, the value it provides to developers and how to get started.
-Because of the ongoing pandemic, the event will be digital only and held on Microsoft Teams.</p></div></article><article class=media><div class=media-content><p class=title><a href=https://baywet.github.io/pm-experience-dev-sdk/>My personal experience as a Program Manager and switching back to development</a></p><p class="subtitle is-flex" style=justify-content:space-between><span>Sep 27, 2020</span>
-<span>8 min.</span></p><p>Switching back to the light side of the force: becoming a developer again I recently transitioned from Program Manager on Microsoft Graph to Software Developer in the Microsoft Graph SDKs team. I&rsquo;d like to thank my previous team for welcoming me these last 7 months and allowing me to experiment with the role of Program Manager.
-I thought I&rsquo;d share with you some of my experience and learnings as a Program Manager.</p></div></article><article class=media><div class=media-content><p class=title><a href=https://baywet.github.io/pull-request-conflict-github-workflow/>GitHub Actions: Automatic conflicting pull request tagging and comment</a></p><p class="subtitle is-flex" style=justify-content:space-between><span>Sep 13, 2020</span>
-<span>4 min.</span></p><p>Open-source repositories enable tremendous productivity in software development. Growth in user base usually translates in growth in contributors, which in turns translates in a better solution bringing more users and so on&mldr; Maintaining large open-source repositories can be time-consuming as you spend more and more time reviewing contributions. Don&rsquo;t take me wrong, that time spent reviewing pull requests is mostly well spent as it represents a factor of scale efficiency gain: for minutes spent reviewing any given pull request, the codebase benefits hours of development efforts invested by the contributor.</p></div></article><article class=media><div class=media-content><p class=title><a href=https://baywet.github.io/msbuild-msgraph-whatsnew/>Microsoft Build 2020 Microsoft Graph session recordings available</a></p><p class="subtitle is-flex" style=justify-content:space-between><span>Sep 7, 2020</span>
-<span>1 min.</span></p><p>In case you missed it (and yes I know this post is really late), Microsoft Build 2020 produced hundreds of sessions with great content. The recordings are available on YouTube for free and if you are working with Microsoft Graph, it&rsquo;s a great way to learn about new features.
+Because of the ongoing pandemic, the event will be digital only and held on Microsoft Teams.</p>
+</div>
+</article>
+<article class=media>
+<div class=media-content>
+<p class=title><a href=https://baywet.github.io/pm-experience-dev-sdk/>My personal experience as a Program Manager and switching back to development</a></p>
+<p class="subtitle is-flex" style=justify-content:space-between>
+<span>Sep 27, 2020</span>
+<span>8 min.</span>
+</p>
+<p>Switching back to the light side of the force: becoming a developer again I recently transitioned from Program Manager on Microsoft Graph to Software Developer in the Microsoft Graph SDKs team. I&rsquo;d like to thank my previous team for welcoming me these last 7 months and allowing me to experiment with the role of Program Manager.
+I thought I&rsquo;d share with you some of my experience and learnings as a Program Manager.</p>
+</div>
+</article>
+<article class=media>
+<div class=media-content>
+<p class=title><a href=https://baywet.github.io/pull-request-conflict-github-workflow/>GitHub Actions: Automatic conflicting pull request tagging and comment</a></p>
+<p class="subtitle is-flex" style=justify-content:space-between>
+<span>Sep 13, 2020</span>
+<span>4 min.</span>
+</p>
+<p>Open-source repositories enable tremendous productivity in software development. Growth in user base usually translates in growth in contributors, which in turns translates in a better solution bringing more users and so on&mldr; Maintaining large open-source repositories can be time-consuming as you spend more and more time reviewing contributions. Don&rsquo;t take me wrong, that time spent reviewing pull requests is mostly well spent as it represents a factor of scale efficiency gain: for minutes spent reviewing any given pull request, the codebase benefits hours of development efforts invested by the contributor.</p>
+</div>
+</article>
+<article class=media>
+<div class=media-content>
+<p class=title><a href=https://baywet.github.io/msbuild-msgraph-whatsnew/>Microsoft Build 2020 Microsoft Graph session recordings available</a></p>
+<p class="subtitle is-flex" style=justify-content:space-between>
+<span>Sep 7, 2020</span>
+<span>1 min.</span>
+</p>
+<p>In case you missed it (and yes I know this post is really late), Microsoft Build 2020 produced hundreds of sessions with great content. The recordings are available on YouTube for free and if you are working with Microsoft Graph, it&rsquo;s a great way to learn about new features.
 I had the opportunity to co-present &ldquo;What&rsquo;s new with Microsoft Graph?&rdquo; with Elise Yang.
-Make sure you checkout the Microsoft 365 developer build 2020 playlist.</p></div></article><article class=media><div class=media-content><p class=title><a href=https://baywet.github.io/speaking-at-espc2020/>Counting Down to ESPC20 Online</a></p><p class="subtitle is-flex" style=justify-content:space-between><span>Sep 2, 2020</span>
-<span>2 min.</span></p><p>The countdown is on to ESPC20 Online – only 7 weeks to go! ESPC20 Online is a new virtual conference offering you affordable, world-class Microsoft 365 learning at your fingertips, from wherever you are in the world. Tune in live Oct 14th & 15th or catch up on-demand across 100+ sessions from SharePoint, Office 365 & Azure experts.
-Join me for my ESPC20 Online session: Build Responsive Applications at Scale using Microsoft Graph Change Notifications with Resource Data</p></div></article><article class=media><div class=media-content><p class=title><a href=https://baywet.github.io/new-blog-location/>Moving to a new location and celebrating a decade of blogging</a></p><p class="subtitle is-flex" style=justify-content:space-between><span>Aug 31, 2020</span>
-<span>3 min.</span></p><p>Welcome to my new blog! Welcome to my new blog on github.io, powered by open source. I&rsquo;ll be shutting down the old one so make sure you update your RSS subscriptions.
-10 years of blogging Can you believe it? I&rsquo;ve been blogging for 10 years now! At the time I was almost a Microsoft Student Partner and my first blog post (in French) was about cloud computing (which was a new thing back then).</p></div></article><article class=media><div class=media-content><p class=title><a href=https://baywet.github.io/joining-microsoft-as-a-program/>Joining Microsoft as a Program Manager on the Microsoft Graph</a></p><p class="subtitle is-flex" style=justify-content:space-between><span>Dec 17, 2019</span>
-<span>4 min.</span></p><p>TL; DR I’ll be starting at Microsoft as a Program Manager on the Microsoft Graph in January. This is an exiting change and I’d like to take the time to thank 2toLead for the amazing last few years.
-New role I’m exited to announce I’ll be starting at Microsoft in January as a Program Manager on the Microsoft Graph (and other Microsoft Identity Platform topics). I’ll be part of the MIP organization and in the extended team of brilliant people like Yina Arenas, Jeremy Thake, Darrel Miller and many more.</p></div></article><article class=media><div class=media-content><p class=title><a href=https://baywet.github.io/new-tutorial-build-your-custom/>New tutorial: build your custom provisioning solution for Office 365</a></p><p class="subtitle is-flex" style=justify-content:space-between><span>Dec 16, 2019</span>
-<span>1 min.</span></p><p>I couple of days ago I had the opportunity to animate a workshop with the amazing Franck Cornu at the Modern Workplace Conference Paris.
+Make sure you checkout the Microsoft 365 developer build 2020 playlist.</p>
+</div>
+</article>
+<article class=media>
+<div class=media-content>
+<p class=title><a href=https://baywet.github.io/speaking-at-espc2020/>Counting Down to ESPC20 Online</a></p>
+<p class="subtitle is-flex" style=justify-content:space-between>
+<span>Sep 2, 2020</span>
+<span>2 min.</span>
+</p>
+<p>The countdown is on to ESPC20 Online – only 7 weeks to go! ESPC20 Online is a new virtual conference offering you affordable, world-class Microsoft 365 learning at your fingertips, from wherever you are in the world. Tune in live Oct 14th & 15th or catch up on-demand across 100+ sessions from SharePoint, Office 365 & Azure experts.
+Join me for my ESPC20 Online session: Build Responsive Applications at Scale using Microsoft Graph Change Notifications with Resource Data</p>
+</div>
+</article>
+<article class=media>
+<div class=media-content>
+<p class=title><a href=https://baywet.github.io/new-blog-location/>Moving to a new location and celebrating a decade of blogging</a></p>
+<p class="subtitle is-flex" style=justify-content:space-between>
+<span>Aug 31, 2020</span>
+<span>3 min.</span>
+</p>
+<p>Welcome to my new blog! Welcome to my new blog on github.io, powered by open source. I&rsquo;ll be shutting down the old one so make sure you update your RSS subscriptions.
+10 years of blogging Can you believe it? I&rsquo;ve been blogging for 10 years now! At the time I was almost a Microsoft Student Partner and my first blog post (in French) was about cloud computing (which was a new thing back then).</p>
+</div>
+</article>
+<article class=media>
+<div class=media-content>
+<p class=title><a href=https://baywet.github.io/joining-microsoft-as-a-program/>Joining Microsoft as a Program Manager on the Microsoft Graph</a></p>
+<p class="subtitle is-flex" style=justify-content:space-between>
+<span>Dec 17, 2019</span>
+<span>4 min.</span>
+</p>
+<p>TL; DR I’ll be starting at Microsoft as a Program Manager on the Microsoft Graph in January. This is an exiting change and I’d like to take the time to thank 2toLead for the amazing last few years.
+New role I’m exited to announce I’ll be starting at Microsoft in January as a Program Manager on the Microsoft Graph (and other Microsoft Identity Platform topics). I’ll be part of the MIP organization and in the extended team of brilliant people like Yina Arenas, Jeremy Thake, Darrel Miller and many more.</p>
+</div>
+</article>
+<article class=media>
+<div class=media-content>
+<p class=title><a href=https://baywet.github.io/new-tutorial-build-your-custom/>New tutorial: build your custom provisioning solution for Office 365</a></p>
+<p class="subtitle is-flex" style=justify-content:space-between>
+<span>Dec 16, 2019</span>
+<span>1 min.</span>
+</p>
+<p>I couple of days ago I had the opportunity to animate a workshop with the amazing Franck Cornu at the Modern Workplace Conference Paris.
 We decided to make all the labs available under PnP for you to learn new technologies and patterns.
-If you follow the steps described in the labs, you will learn about technologies like Azure Logic Apps, Azure Functions, the Microsoft Graph, Azure Durable Functions, SharePoint WebHook, PnP Provisioning and much more.</p></div></article><article class=media><div class=media-content><p class=title><a href=https://baywet.github.io/recording-available-pnp-call-d/>Recording available PnP Call December 5th - Office 365 CLI externalize</a></p><p class="subtitle is-flex" style=justify-content:space-between><span>Dec 13, 2019</span>
-<span>1 min.</span></p><p>I was invited to demonstrate the new Office 365 CLI externalize command during on the of recent PnP calls.
-You can watch the full call here
-As a reminder this new command allows you to scan a SPFx project and get the external configuration automatically. Doing this reduces greatly the size of your solutions, improving performances for end users.
-You can watch the command in action below and read the documentation here.</p></div></article></div><br><br><br><nav class=pagination><a class=pagination-previous disabled>Previous</a>
-<a href=/page/2/ class=pagination-next>Next</a><ul class=pagination-list><li><a href=/ class="pagination-link is-current">1</a></li><li><a href=/page/2/ class=pagination-link>2</a></li><li><span class=pagination-ellipsis>&mldr;</span></li><li><a href=/page/15/ class=pagination-link>15</a></li></ul></nav></div><div class="column is-narrow"><aside class=menu><p class=menu-label>Tags</p><ul class=menu-list><li><a href=https://baywet.github.io/tags/sharepoint/><div class="tags has-addons"><span class=tag>sharepoint</span>
-<span class="tag is-link">80</span></div></a></li><li><a href=https://baywet.github.io/tags/speaking/><div class="tags has-addons"><span class=tag>speaking</span>
-<span class="tag is-link">40</span></div></a></li><li><a href=https://baywet.github.io/tags/event/><div class="tags has-addons"><span class=tag>event</span>
-<span class="tag is-link">34</span></div></a></li><li><a href=https://baywet.github.io/tags/devops/><div class="tags has-addons"><span class=tag>devops</span>
-<span class="tag is-link">33</span></div></a></li><li><a href=https://baywet.github.io/tags/sharepoint-saturday/><div class="tags has-addons"><span class=tag>sharepoint saturday</span>
-<span class="tag is-link">25</span></div></a></li><li><a href=https://baywet.github.io/tags/vsts/><div class="tags has-addons"><span class=tag>vsts</span>
-<span class="tag is-link">24</span></div></a></li><li><a href=https://baywet.github.io/tags/office365/><div class="tags has-addons"><span class=tag>office365</span>
-<span class="tag is-link">24</span></div></a></li><li><a href=https://baywet.github.io/tags/azure/><div class="tags has-addons"><span class=tag>azure</span>
-<span class="tag is-link">22</span></div></a></li><li><a href=https://baywet.github.io/tags/microsoft-graph/><div class="tags has-addons"><span class=tag>microsoft graph</span>
-<span class="tag is-link">22</span></div></a></li><li><a href=https://baywet.github.io/tags/dev/><div class="tags has-addons"><span class=tag>dev</span>
-<span class="tag is-link">17</span></div></a></li><li><a href=https://baywet.github.io/tags/sharepoint-framework/><div class="tags has-addons"><span class=tag>sharepoint framework</span>
-<span class="tag is-link">17</span></div></a></li><li><a href=https://baywet.github.io/tags/build/><div class="tags has-addons"><span class=tag>build</span>
-<span class="tag is-link">16</span></div></a></li><li><a href=https://baywet.github.io/tags/sonarqube/><div class="tags has-addons"><span class=tag>sonarqube</span>
-<span class="tag is-link">15</span></div></a></li><li><a href=https://baywet.github.io/tags/alm/><div class="tags has-addons"><span class=tag>alm</span>
-<span class="tag is-link">14</span></div></a></li><li><a href=https://baywet.github.io/tags/visual-studio/><div class="tags has-addons"><span class=tag>visual studio</span>
-<span class="tag is-link">13</span></div></a></li><li><a href=https://baywet.github.io/tags/conference/><div class="tags has-addons"><span class=tag>conference</span>
-<span class="tag is-link">12</span></div></a></li><li><a href=https://baywet.github.io/tags/development/><div class="tags has-addons"><span class=tag>development</span>
-<span class="tag is-link">12</span></div></a></li><li><a href=https://baywet.github.io/tags/spfx/><div class="tags has-addons"><span class=tag>spfx</span>
-<span class="tag is-link">10</span></div></a></li><li><a href=https://baywet.github.io/tags/saturday/><div class="tags has-addons"><span class=tag>saturday</span>
-<span class="tag is-link">9</span></div></a></li><li><a href=https://baywet.github.io/tags/static-analysis/><div class="tags has-addons"><span class=tag>static analysis</span>
-<span class="tag is-link">9</span></div></a></li><li><a href=https://baywet.github.io/tags/ottawa/><div class="tags has-addons"><span class=tag>ottawa</span>
-<span class="tag is-link">9</span></div></a></li><li><a href=https://baywet.github.io/tags/online/><div class="tags has-addons"><span class=tag>online</span>
-<span class="tag is-link">8</span></div></a></li><li><a href=https://baywet.github.io/tags/2013/><div class="tags has-addons"><span class=tag>2013</span>
-<span class="tag is-link">7</span></div></a></li><li><a href=https://baywet.github.io/tags/developer/><div class="tags has-addons"><span class=tag>developer</span>
-<span class="tag is-link">7</span></div></a></li><li><a href=https://baywet.github.io/tags/community/><div class="tags has-addons"><span class=tag>community</span>
-<span class="tag is-link">7</span></div></a></li><li><a href=https://baywet.github.io/tags/azure-functions/><div class="tags has-addons"><span class=tag>azure functions</span>
-<span class="tag is-link">7</span></div></a></li><li><a href=https://baywet.github.io/tags/mvp/><div class="tags has-addons"><span class=tag>mvp</span>
-<span class="tag is-link">6</span></div></a></li><li><a href=https://baywet.github.io/tags/2015/><div class="tags has-addons"><span class=tag>2015</span>
-<span class="tag is-link">6</span></div></a></li><li><a href=https://baywet.github.io/tags/session/><div class="tags has-addons"><span class=tag>session</span>
-<span class="tag is-link">6</span></div></a></li><li><a href=https://baywet.github.io/tags/typescript/><div class="tags has-addons"><span class=tag>typescript</span>
-<span class="tag is-link">6</span></div></a></li><li><a href=https://baywet.github.io/tags/code/><div class="tags has-addons"><span class=tag>code</span>
-<span class="tag is-link">5</span></div></a></li><li><a href=https://baywet.github.io/tags/toronto/><div class="tags has-addons"><span class=tag>toronto</span>
-<span class="tag is-link">5</span></div></a></li><li><a href=https://baywet.github.io/tags/javascript/><div class="tags has-addons"><span class=tag>javascript</span>
-<span class="tag is-link">5</span></div></a></li><li><a href=https://baywet.github.io/tags/release/><div class="tags has-addons"><span class=tag>release</span>
-<span class="tag is-link">4</span></div></a></li><li><a href=https://baywet.github.io/tags/github/><div class="tags has-addons"><span class=tag>github</span>
-<span class="tag is-link">4</span></div></a></li><li><a href=https://baywet.github.io/tags/dnx/><div class="tags has-addons"><span class=tag>dnx</span>
-<span class="tag is-link">4</span></div></a></li><li><a href=https://baywet.github.io/tags/pnp/><div class="tags has-addons"><span class=tag>pnp</span>
-<span class="tag is-link">4</span></div></a></li><li><a href=https://baywet.github.io/tags/tools/><div class="tags has-addons"><span class=tag>tools</span>
-<span class="tag is-link">4</span></div></a></li><li><a href=https://baywet.github.io/tags/montreal/><div class="tags has-addons"><span class=tag>montreal</span>
-<span class="tag is-link">4</span></div></a></li><li><a href=https://baywet.github.io/tags/speaker/><div class="tags has-addons"><span class=tag>speaker</span>
-<span class="tag is-link">3</span></div></a></li><li><a href=https://baywet.github.io/tags/microsoft/><div class="tags has-addons"><span class=tag>microsoft</span>
-<span class="tag is-link">3</span></div></a></li><li><a href=https://baywet.github.io/tags/apps/><div class="tags has-addons"><span class=tag>apps</span>
-<span class="tag is-link">3</span></div></a></li><li><a href=https://baywet.github.io/tags/deployment/><div class="tags has-addons"><span class=tag>deployment</span>
-<span class="tag is-link">3</span></div></a></li><li><a href=https://baywet.github.io/tags/app/><div class="tags has-addons"><span class=tag>app</span>
-<span class="tag is-link">3</span></div></a></li><li><a href=https://baywet.github.io/tags/metadata/><div class="tags has-addons"><span class=tag>metadata</span>
-<span class="tag is-link">3</span></div></a></li><li><a href=https://baywet.github.io/tags/2016/><div class="tags has-addons"><span class=tag>2016</span>
-<span class="tag is-link">3</span></div></a></li><li><a href=https://baywet.github.io/tags/2010/><div class="tags has-addons"><span class=tag>2010</span>
-<span class="tag is-link">3</span></div></a></li><li><a href=https://baywet.github.io/tags/blog/><div class="tags has-addons"><span class=tag>blog</span>
-<span class="tag is-link">3</span></div></a></li><li><a href=https://baywet.github.io/tags/update/><div class="tags has-addons"><span class=tag>update</span>
-<span class="tag is-link">3</span></div></a></li><li><a href=https://baywet.github.io/tags/resources/><div class="tags has-addons"><span class=tag>resources</span>
-<span class="tag is-link">3</span></div></a></li></ul></aside></div></div></div></section><footer class=footer><div class=container><nav class=level></nav><nav class=level><div class="level-left has-text-centered"><div class=level-item><form class="control has-icons has-icons-right" method=get action=https://bing.com><input class=input type=text name=q maxlength=255 placeholder=Search>
+If you follow the steps described in the labs, you will learn about technologies like Azure Logic Apps, Azure Functions, the Microsoft Graph, Azure Durable Functions, SharePoint WebHook, PnP Provisioning and much more.</p>
+</div>
+</article>
+</div>
+<br>
+<br>
+<br>
+<nav class=pagination>
+<a class=pagination-previous disabled>Previous</a>
+<a href=/page/2/ class=pagination-next>Next</a>
+<ul class=pagination-list>
+<li><a href=/ class="pagination-link is-current">
+1
+</a></li>
+<li><a href=/page/2/ class=pagination-link>
+2
+</a></li>
+<li>
+<span class=pagination-ellipsis>&mldr;</span>
+</li>
+<li><a href=/page/15/ class=pagination-link>15
+</a></li>
+</ul>
+</nav>
+</div>
+<div class="column is-narrow">
+<aside class=menu>
+<p class=menu-label>Tags</p>
+<ul class=menu-list>
+<li>
+<a href=https://baywet.github.io/tags/sharepoint/>
+<div class="tags has-addons">
+<span class=tag>sharepoint</span>
+<span class="tag is-link">80</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/speaking/>
+<div class="tags has-addons">
+<span class=tag>speaking</span>
+<span class="tag is-link">40</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/event/>
+<div class="tags has-addons">
+<span class=tag>event</span>
+<span class="tag is-link">34</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/devops/>
+<div class="tags has-addons">
+<span class=tag>devops</span>
+<span class="tag is-link">33</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/sharepoint-saturday/>
+<div class="tags has-addons">
+<span class=tag>sharepoint saturday</span>
+<span class="tag is-link">25</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/vsts/>
+<div class="tags has-addons">
+<span class=tag>vsts</span>
+<span class="tag is-link">24</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/office365/>
+<div class="tags has-addons">
+<span class=tag>office365</span>
+<span class="tag is-link">24</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/microsoft-graph/>
+<div class="tags has-addons">
+<span class=tag>microsoft graph</span>
+<span class="tag is-link">23</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/azure/>
+<div class="tags has-addons">
+<span class=tag>azure</span>
+<span class="tag is-link">22</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/dev/>
+<div class="tags has-addons">
+<span class=tag>dev</span>
+<span class="tag is-link">17</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/sharepoint-framework/>
+<div class="tags has-addons">
+<span class=tag>sharepoint framework</span>
+<span class="tag is-link">17</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/build/>
+<div class="tags has-addons">
+<span class=tag>build</span>
+<span class="tag is-link">16</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/sonarqube/>
+<div class="tags has-addons">
+<span class=tag>sonarqube</span>
+<span class="tag is-link">15</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/alm/>
+<div class="tags has-addons">
+<span class=tag>alm</span>
+<span class="tag is-link">14</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/visual-studio/>
+<div class="tags has-addons">
+<span class=tag>visual studio</span>
+<span class="tag is-link">13</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/development/>
+<div class="tags has-addons">
+<span class=tag>development</span>
+<span class="tag is-link">12</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/conference/>
+<div class="tags has-addons">
+<span class=tag>conference</span>
+<span class="tag is-link">12</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/spfx/>
+<div class="tags has-addons">
+<span class=tag>spfx</span>
+<span class="tag is-link">10</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/saturday/>
+<div class="tags has-addons">
+<span class=tag>saturday</span>
+<span class="tag is-link">9</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/static-analysis/>
+<div class="tags has-addons">
+<span class=tag>static analysis</span>
+<span class="tag is-link">9</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/ottawa/>
+<div class="tags has-addons">
+<span class=tag>ottawa</span>
+<span class="tag is-link">9</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/community/>
+<div class="tags has-addons">
+<span class=tag>community</span>
+<span class="tag is-link">8</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/online/>
+<div class="tags has-addons">
+<span class=tag>online</span>
+<span class="tag is-link">8</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/azure-functions/>
+<div class="tags has-addons">
+<span class=tag>azure functions</span>
+<span class="tag is-link">7</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/2013/>
+<div class="tags has-addons">
+<span class=tag>2013</span>
+<span class="tag is-link">7</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/developer/>
+<div class="tags has-addons">
+<span class=tag>developer</span>
+<span class="tag is-link">7</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/2015/>
+<div class="tags has-addons">
+<span class=tag>2015</span>
+<span class="tag is-link">6</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/typescript/>
+<div class="tags has-addons">
+<span class=tag>typescript</span>
+<span class="tag is-link">6</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/session/>
+<div class="tags has-addons">
+<span class=tag>session</span>
+<span class="tag is-link">6</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/mvp/>
+<div class="tags has-addons">
+<span class=tag>mvp</span>
+<span class="tag is-link">6</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/github/>
+<div class="tags has-addons">
+<span class=tag>github</span>
+<span class="tag is-link">5</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/javascript/>
+<div class="tags has-addons">
+<span class=tag>javascript</span>
+<span class="tag is-link">5</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/code/>
+<div class="tags has-addons">
+<span class=tag>code</span>
+<span class="tag is-link">5</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/toronto/>
+<div class="tags has-addons">
+<span class=tag>toronto</span>
+<span class="tag is-link">5</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/tools/>
+<div class="tags has-addons">
+<span class=tag>tools</span>
+<span class="tag is-link">4</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/microsoft/>
+<div class="tags has-addons">
+<span class=tag>microsoft</span>
+<span class="tag is-link">4</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/release/>
+<div class="tags has-addons">
+<span class=tag>release</span>
+<span class="tag is-link">4</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/montreal/>
+<div class="tags has-addons">
+<span class=tag>montreal</span>
+<span class="tag is-link">4</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/pnp/>
+<div class="tags has-addons">
+<span class=tag>pnp</span>
+<span class="tag is-link">4</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/dnx/>
+<div class="tags has-addons">
+<span class=tag>dnx</span>
+<span class="tag is-link">4</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/resources/>
+<div class="tags has-addons">
+<span class=tag>resources</span>
+<span class="tag is-link">3</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/update/>
+<div class="tags has-addons">
+<span class=tag>update</span>
+<span class="tag is-link">3</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/full-trust/>
+<div class="tags has-addons">
+<span class=tag>full trust</span>
+<span class="tag is-link">3</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/blog/>
+<div class="tags has-addons">
+<span class=tag>blog</span>
+<span class="tag is-link">3</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/metadata/>
+<div class="tags has-addons">
+<span class=tag>metadata</span>
+<span class="tag is-link">3</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/apps/>
+<div class="tags has-addons">
+<span class=tag>apps</span>
+<span class="tag is-link">3</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/new-york/>
+<div class="tags has-addons">
+<span class=tag>new york</span>
+<span class="tag is-link">3</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/2016/>
+<div class="tags has-addons">
+<span class=tag>2016</span>
+<span class="tag is-link">3</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/speaker/>
+<div class="tags has-addons">
+<span class=tag>speaker</span>
+<span class="tag is-link">3</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/tags/entity-framework/>
+<div class="tags has-addons">
+<span class=tag>entity framework</span>
+<span class="tag is-link">3</span>
+</div>
+</a>
+</li>
+</ul>
+</aside>
+</div>
+</div>
+</div>
+</section>
+<footer class=footer>
+<div class=container>
+<nav class=level>
+</nav>
+<nav class=level>
+<div class="level-left has-text-centered">
+<div class=level-item>
+<form class="control has-icons has-icons-right" method=get action=https://bing.com>
+<input class=input type=text name=q maxlength=255 placeholder=Search>
 <input class=input type=hidden name=sites value=https://baywet.github.io/>
-<span class="icon is-small is-right"><i class="fa fa-search"></i></span></form></div></div><div class="level-right has-text-centered"><div class=level-item><a class=button href=https://baywet.github.io/en><span class=icon><i class="fa fa-home"></i></span></a> &nbsp;
-<a class=button href=/index.xml><span class=icon><i class="fa fa-rss"></i></span></a></div></div></nav></div></footer></body></html>
+<span class="icon is-small is-right"><i class="fa fa-search"></i></span>
+</form>
+</div>
+</div>
+<div class="level-right has-text-centered">
+<div class=level-item>
+<a class=button href=https://baywet.github.io/en>
+<span class=icon><i class="fa fa-home"></i></span>
+</a> &nbsp;
+<a class=button href=/index.xml>
+<span class=icon><i class="fa fa-rss"></i></span>
+</a>
+</div>
+</div>
+</nav>
+</div>
+</footer>
+</body>
+</html>

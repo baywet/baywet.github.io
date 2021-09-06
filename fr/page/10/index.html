@@ -1,90 +1,655 @@
-<!doctype html><html lang=fr dir=ltr itemscope itemtype=https://schema.org/Article><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>Le blog de baywet</title><meta name=author content="Vincent Biret"><meta name=description content><meta name=generator content="Hugo 0.85.0"><meta itemprop=name content="Le blog de baywet"><meta itemprop=description content><meta itemprop=image content="/img/logo.svg"><meta property="og:title" content="Le blog de baywet"><meta property="og:type" content="website"><meta property="og:url" content="https://baywet.github.io/fr/"><meta property="og:image" content="/img/logo.svg"><meta property="og:description" content><meta property="og:site_name" content="Le blog de baywet"><meta property="article:section" content><meta name=twitter:card content="summary"><meta name=twitter:site content><meta name=twitter:title content="Le blog de baywet"><meta name=twitter:description content><meta name=twitter:creator content><meta name=twitter:image:src content="/img/logo.svg"><link rel=alternate type=application/rss+xml href=https://baywet.github.io/fr/index.xml title="Le blog de baywet"><link rel=stylesheet type=text/css href=/css/capsule.min.css><script>(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-176061333-1','auto'),ga('send','pageview')</script><link rel=apple-touch-icon href=/img/apple-touch-icon.png><link rel=icon href=/img/favicon.ico></head><body style=min-height:100vh;display:flex;flex-direction:column><section class="hero is-dark is-medium"><div class=hero-head><nav class="navbar has-shadow" role=navigation aria-label="main navigation"><div class=container><div class=navbar-brand><a class=navbar-item href=/fr><div class="title is-4">&nbsp;Le blog de baywet</div></a><label class="button navbar-burger is-dark" for=navbar-burger-state><span></span><span></span><span></span></label></div><input type=checkbox id=navbar-burger-state><div class=navbar-menu><div class=navbar-end><a class=navbar-item href=https://baywet.github.io/>English</a></div></div></div></nav></div></section><section class=section style=flex:1><div class=container><div class=columns><div class=column><div style=min-height:56vh><article class=media><div class=media-content><p class=title><a href=https://baywet.github.io/fr/nombre-delements-fournis-pour/>Nombre d’éléments fournis pour la génération des facettes</a></p><p class="subtitle is-flex" style=justify-content:space-between><span>Mar 8, 2015</span>
-<span>2 min.</span></p><p>Depuis SharePoint 2010 vous avez la possibilité d’améliorer l’expérience de recherche en définissant des facettes de recherches personnalisées. Mieux vous pouvez même en développer de nouvelles si vous le souhaitez. Pour rappel les facettes de recherches se situent sur la gauche de la page de résultats et vous permettent de filtrer ces résultats pour arriver plus vite aux éléments qui vous intéressent. (type de fichier, auteur, date de modification…)
-Voici quelques ressources complémentaires si jamais vous désirez en savoir plus.</p></div></article><article class=media><div class=media-content><p class=title><a href=https://baywet.github.io/fr/sharepoint-saturday-montreal-2/>SharePoint Saturday Montréal 2015</a></p><p class="subtitle is-flex" style=justify-content:space-between><span>Mar 3, 2015</span>
-<span>1 min.</span></p><p>Cette année aussi Montréal aura le droit à sa propre édition du SharePoint Saturday.
+<!doctype html><html lang=fr dir=ltr itemscope itemtype=https://schema.org/Article>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Le blog de baywet</title>
+<meta name=author content="Vincent Biret">
+<meta name=description content>
+<meta name=generator content="Hugo 0.88.1">
+<meta itemprop=name content="Le blog de baywet">
+<meta itemprop=description content>
+<meta itemprop=image content="/img/logo.svg">
+<meta property="og:title" content="Le blog de baywet">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://baywet.github.io/fr/">
+<meta property="og:image" content="/img/logo.svg">
+<meta property="og:description" content>
+<meta property="og:site_name" content="Le blog de baywet">
+<meta property="article:section" content>
+<meta name=twitter:card content="summary">
+<meta name=twitter:site content>
+<meta name=twitter:title content="Le blog de baywet">
+<meta name=twitter:description content>
+<meta name=twitter:creator content>
+<meta name=twitter:image:src content="/img/logo.svg">
+<link rel=alternate type=application/rss+xml href=https://baywet.github.io/fr/index.xml title="Le blog de baywet">
+<link rel=stylesheet type=text/css href=/css/capsule.min.css>
+<script>(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-176061333-1','auto'),ga('send','pageview')</script>
+<link rel=apple-touch-icon href=/img/apple-touch-icon.png>
+<link rel=icon href=/img/favicon.ico>
+</head>
+<body style=min-height:100vh;display:flex;flex-direction:column>
+<section class="hero is-dark is-medium">
+<div class=hero-head>
+<nav class="navbar has-shadow" role=navigation aria-label="main navigation">
+<div class=container>
+<div class=navbar-brand>
+<a class=navbar-item href=/fr>
+<div class="title is-4">&nbsp;Le blog de baywet</div>
+</a>
+<label class="button navbar-burger is-dark" for=navbar-burger-state>
+<span></span>
+<span></span>
+<span></span>
+</label>
+</div>
+<input type=checkbox id=navbar-burger-state>
+<div class=navbar-menu>
+<div class=navbar-end>
+<a class=navbar-item href=https://baywet.github.io/>English</a>
+</div>
+</div>
+</div>
+</nav>
+</div>
+</section>
+<section class=section style=flex:1>
+<div class=container>
+<div class=columns>
+<div class=column>
+<div style=min-height:56vh>
+<article class=media>
+<div class=media-content>
+<p class=title><a href=https://baywet.github.io/fr/veille-technologique-et-places/>Veille technologique et places de cinéma</a></p>
+<p class="subtitle is-flex" style=justify-content:space-between>
+<span>Apr 1, 2015</span>
+<span>3 min.</span>
+</p>
+<p>Un des aspects que je préfère dans mon métier est aussi celui qui est le plus difficile : l’obligation d’apprendre en continu.
+En effet je trouve ça génial d’avoir l’opportunité d’apprendre de nouvelles choses quotidiennement, c’est ce qui garde le métier intéressant même si les années passent. C’est aussi une pression importante : on sait qu’un développeur qui ne se forme pas pendant plusieurs années d’affilée devient très vite « obsolète ».</p>
+</div>
+</article>
+<article class=media>
+<div class=media-content>
+<p class=title><a href=https://baywet.github.io/fr/nombre-delements-fournis-pour/>Nombre d’éléments fournis pour la génération des facettes</a></p>
+<p class="subtitle is-flex" style=justify-content:space-between>
+<span>Mar 8, 2015</span>
+<span>2 min.</span>
+</p>
+<p>Depuis SharePoint 2010 vous avez la possibilité d’améliorer l’expérience de recherche en définissant des facettes de recherches personnalisées. Mieux vous pouvez même en développer de nouvelles si vous le souhaitez. Pour rappel les facettes de recherches se situent sur la gauche de la page de résultats et vous permettent de filtrer ces résultats pour arriver plus vite aux éléments qui vous intéressent. (type de fichier, auteur, date de modification…)
+Voici quelques ressources complémentaires si jamais vous désirez en savoir plus.</p>
+</div>
+</article>
+<article class=media>
+<div class=media-content>
+<p class=title><a href=https://baywet.github.io/fr/sharepoint-saturday-montreal-2/>SharePoint Saturday Montréal 2015</a></p>
+<p class="subtitle is-flex" style=justify-content:space-between>
+<span>Mar 3, 2015</span>
+<span>1 min.</span>
+</p>
+<p>Cette année aussi Montréal aura le droit à sa propre édition du SharePoint Saturday.
 Pour rappel les SharePoint Saturday ce sont :
 Des évènements gratuits Dans le monde entier Dédiés à SharePoint/Office 365 Le Samedi Avec énormément de sessions de qualités et de conférenciers expérimentés Informations pratiques Cette édition se déroulera le 23 Mai 2015 au collège Maisonneuve. Il suffit de s’inscrire à cette adresse https://www.spsevents.org/city/montreal/montreal2015
-L’an dernier le SPS MTL a regroupé 200 personnes.</p></div></article><article class=media><div class=media-content><p class=title><a href=https://baywet.github.io/fr/ignite-annonce-des-conferenci/>Ignite – Annonce des conférenciers et liste complète des sessions</a></p><p class="subtitle is-flex" style=justify-content:space-between><span>Mar 2, 2015</span>
-<span>1 min.</span></p><p>Microsoft vient d’annoncer la liste complète des sessions, des conférenciers ainsi que le planning de l’ignite qui se tiendra à Chicago du 4 au 8 Mai prochains.
+L’an dernier le SPS MTL a regroupé 200 personnes.</p>
+</div>
+</article>
+<article class=media>
+<div class=media-content>
+<p class=title><a href=https://baywet.github.io/fr/ignite-annonce-des-conferenci/>Ignite – Annonce des conférenciers et liste complète des sessions</a></p>
+<p class="subtitle is-flex" style=justify-content:space-between>
+<span>Mar 2, 2015</span>
+<span>1 min.</span>
+</p>
+<p>Microsoft vient d’annoncer la liste complète des sessions, des conférenciers ainsi que le planning de l’ignite qui se tiendra à Chicago du 4 au 8 Mai prochains.
 Pour plus de détails : https://ignite.microsoft.com/Sessions#fbid=mGcNAILg5r6
 https://blogs.technet.com/b/exchange/archive/2015/03/02/be-the-first-to-learn-what-s-next-for-exchange-and-office-365-at-microsoft-ignite-full-session-list-now-available.aspx
-Quelques rappels sur l’Ignite : evenements-annonce-des-sessi</p></div></article><article class=media><div class=media-content><p class=title><a href=https://baywet.github.io/fr/participez-a-la-conception-de/>Participez à la conception de SharePoint 2016!</a></p><p class="subtitle is-flex" style=justify-content:space-between><span>Feb 16, 2015</span>
-<span>1 min.</span></p><p>Depuis bientôt une semaine Microsoft a mis à disposition un user voice pour SharePoint 2016.
+Quelques rappels sur l’Ignite : evenements-annonce-des-sessi</p>
+</div>
+</article>
+<article class=media>
+<div class=media-content>
+<p class=title><a href=https://baywet.github.io/fr/participez-a-la-conception-de/>Participez à la conception de SharePoint 2016!</a></p>
+<p class="subtitle is-flex" style=justify-content:space-between>
+<span>Feb 16, 2015</span>
+<span>1 min.</span>
+</p>
+<p>Depuis bientôt une semaine Microsoft a mis à disposition un user voice pour SharePoint 2016.
 https://sharepoint.uservoice.com/forums/282887-customer-feedback-for-sharepoint-server
 Le principe? Assez simple, chacun propose des idées et si vous jugez une idée intéressante votez pour elle.
 L&rsquo;équipe produit regarde régulièrement les idées des fonctionnalités qui ont le plus de votes et les intègre à la roadmap (ou bien vous explique pourquoi ça n&rsquo;en fera pas partie et ferme l&rsquo;idée).
-Vous avez un maximum de jetons de vote, une fois que une des fonctionnalités pour lesquelles vous avez votées fermée, vos jetons vous sont remis et vous pouvez voter à nouveau.</p></div></article><article class=media><div class=media-content><p class=title><a href=https://baywet.github.io/fr/evenements-annonce-des-sessi/>Evènements - Annonce des sessions de l’Ignite</a></p><p class="subtitle is-flex" style=justify-content:space-between><span>Jan 29, 2015</span>
-<span>1 min.</span></p><p>Si vous ne le saviez pas déjà, Microsoft va organiser une conférence du 4 au 8 Mai à Chicago. Cette conférence va regrouper la SharePoint, Exchange, Lync, Project conférence ainsi que les teched nord Amérique. Nous y retrouverons aussi du contenu en rapport avec azure, windows, visual studio. Cet évènement va être un des évènements majeurs en informatique dans l’année, à ne pas manquer donc.
-Aujourd’hui Microsoft vient de publier un article donnant plus de détails sur la conférence, voici l’url.</p></div></article><article class=media><div class=media-content><p class=title><a href=https://baywet.github.io/fr/build-automatise-de-solutions/>Build automatisé de solutions SharePoint (full trust) 2013 – Où sont mes solutions?</a></p><p class="subtitle is-flex" style=justify-content:space-between><span>Dec 4, 2014</span>
-<span>1 min.</span></p><p>Suite de la série sur le build automatisé de solutions SharePoint 2013 (full trust) avec tfs 2013 et visual studio 2013.
+Vous avez un maximum de jetons de vote, une fois que une des fonctionnalités pour lesquelles vous avez votées fermée, vos jetons vous sont remis et vous pouvez voter à nouveau.</p>
+</div>
+</article>
+<article class=media>
+<div class=media-content>
+<p class=title><a href=https://baywet.github.io/fr/evenements-annonce-des-sessi/>Evènements - Annonce des sessions de l’Ignite</a></p>
+<p class="subtitle is-flex" style=justify-content:space-between>
+<span>Jan 29, 2015</span>
+<span>1 min.</span>
+</p>
+<p>Si vous ne le saviez pas déjà, Microsoft va organiser une conférence du 4 au 8 Mai à Chicago. Cette conférence va regrouper la SharePoint, Exchange, Lync, Project conférence ainsi que les teched nord Amérique. Nous y retrouverons aussi du contenu en rapport avec azure, windows, visual studio. Cet évènement va être un des évènements majeurs en informatique dans l’année, à ne pas manquer donc.
+Aujourd’hui Microsoft vient de publier un article donnant plus de détails sur la conférence, voici l’url.</p>
+</div>
+</article>
+<article class=media>
+<div class=media-content>
+<p class=title><a href=https://baywet.github.io/fr/build-automatise-de-solutions/>Build automatisé de solutions SharePoint (full trust) 2013 – Où sont mes solutions?</a></p>
+<p class="subtitle is-flex" style=justify-content:space-between>
+<span>Dec 4, 2014</span>
+<span>1 min.</span>
+</p>
+<p>Suite de la série sur le build automatisé de solutions SharePoint 2013 (full trust) avec tfs 2013 et visual studio 2013.
 build-automatise-de-solution-s
 Si vous avez suivit ma série vous avez dû vous rendre compte que les dll étaient compilées mais que les wsp étaient absents.
 C’est parce que par défault msbuild ne package pas vos solutions. C’est dommage hein ?
-Voici un peu de documentation supplémentaire qui indique d’ajouter IsPackaging=true à la définition de build en tant que paramètre.</p></div></article><article class=media><div class=media-content><p class=title><a href=https://baywet.github.io/fr/visual-studio-2013-update-4-et/>Visual Studio 2013 Update 4 et build automatisé de solutions SharePoint (full trust)</a></p><p class="subtitle is-flex" style=justify-content:space-between><span>Dec 1, 2014</span>
-<span>1 min.</span></p><p>Pour faire suite à ma série sur le build automatisé de solutions full trust pour SharePoint voici une mise à jour de mon correctif.
+Voici un peu de documentation supplémentaire qui indique d’ajouter IsPackaging=true à la définition de build en tant que paramètre.</p>
+</div>
+</article>
+<article class=media>
+<div class=media-content>
+<p class=title><a href=https://baywet.github.io/fr/visual-studio-2013-update-4-et/>Visual Studio 2013 Update 4 et build automatisé de solutions SharePoint (full trust)</a></p>
+<p class="subtitle is-flex" style=justify-content:space-between>
+<span>Dec 1, 2014</span>
+<span>1 min.</span>
+</p>
+<p>Pour faire suite à ma série sur le build automatisé de solutions full trust pour SharePoint voici une mise à jour de mon correctif.
 En effet si vous regardez la seconde erreur expliquée icivous verrez qu’il faut remplacer des lignes pour faire fonctionner le tout.
 Avec l’update 4 on sent que Microsoft prépare l’arrivée complète du 64 bits puisque les nouvelles lignes de remplacement sont désormais.
-&lt;Import Condition="'$(Language)' == 'C#'" Project="$(MSBuildExtensionsPath32)\Microsoft\Windows Workflow Foundation\v3.</p></div></article><article class=media><div class=media-content><p class=title><a href=https://baywet.github.io/fr/mise-a-jour-de-novembre-des-ou/>Mise à jour de Novembre des outils développeurs Office</a></p><p class="subtitle is-flex" style=justify-content:space-between><span>Nov 28, 2014</span>
-<span>1 min.</span></p><p>Si vous faites du développement SharePoint vous avez sûrement remarqué que les outils ont une nouvelle mise à jour de disponible.
+&lt;Import Condition="'$(Language)' == 'C#'" Project="$(MSBuildExtensionsPath32)\Microsoft\Windows Workflow Foundation\v3.</p>
+</div>
+</article>
+<article class=media>
+<div class=media-content>
+<p class=title><a href=https://baywet.github.io/fr/mise-a-jour-de-novembre-des-ou/>Mise à jour de Novembre des outils développeurs Office</a></p>
+<p class="subtitle is-flex" style=justify-content:space-between>
+<span>Nov 28, 2014</span>
+<span>1 min.</span>
+</p>
+<p>Si vous faites du développement SharePoint vous avez sûrement remarqué que les outils ont une nouvelle mise à jour de disponible.
 Avec les précédentes versions, les dll’s Microsoft.SharePoint.Client.Search et Microsoft.SharePoint.Client.Search.Applications n’étaient pas présentes (probablement un oubli).
 Deux solutions s’offraient alors à vous :
-Vous assurer que tous vos développeurs avaient les binaires de SharePoint installés sur leur machine Embarquer une copie de la dll prise sur une machine SharePoint Dans les deux cas ce n’était pas pratique.</p></div></article><article class=media><div class=media-content><p class=title><a href=https://baywet.github.io/fr/build-automatise-de-solution-s/>Build automatisé de solution SharePoint server (fulltrust) avec visual studio online</a></p><p class="subtitle is-flex" style=justify-content:space-between><span>Oct 29, 2014</span>
-<span>5 min.</span></p><p>Introduction Depuis plusieurs articles j’évoque le fait que nous (Negotium, la compagnie où je travaille) avons migré vers visual studio online (TFS Online). Ce service offre une majorité des fonctionnalités offertes par la version on premises de Team Foundation Server 2013 et même certaines fonctionnalités exclusives.
-Si vous n’avez qu’une vague idée de ce que peut faire TFS2013/VSO et que vous voulez en apprendre plus je vous recommande très fortement Professional Application Lifecycle Management de chez Wrox.</p></div></article><article class=media><div class=media-content><p class=title><a href=https://baywet.github.io/fr/conversion-dun-certificat-prot/>Conversion d’un certificat protégé par mot de passe (pfx) en certificat non protégé (snk)</a></p><p class="subtitle is-flex" style=justify-content:space-between><span>Oct 4, 2014</span>
-<span>3 min.</span></p><p>Au travail je suis en train de mettre en place du build automatisé pour des projets SharePoint (full trust) sur visual studio online. (Attendez-vous à voir plusieurs articles à ce sujet au fur et à mesure que je rencontre et résous des erreurs)
-Qui dit développement SharePoint dit assemblies signés par un certificat. Lorsque l’on initialise le projet on a deux options :
-Certificat est protégé par mot de passe : (extension pfx) c’était au début du tooling SharePoint, ou bien si vous avez monté la structure de solution (visual studio) vous-même avec plusieurs assemblies.</p></div></article></div><br><br><br><nav class=pagination><a href=/fr/page/9/ class=pagination-previous>Previous</a>
-<a href=/fr/page/11/ class=pagination-next>Next</a><ul class=pagination-list><li><a href=/fr/ class=pagination-link>1</a></li><li><span class=pagination-ellipsis>&mldr;</span></li><li><a href=/fr/page/9/ class=pagination-link>9</a></li><li><a href=/fr/page/10/ class="pagination-link is-current">10</a></li><li><a href=/fr/page/11/ class=pagination-link>11</a></li><li><span class=pagination-ellipsis>&mldr;</span></li><li><a href=/fr/page/23/ class=pagination-link>23</a></li></ul></nav></div><div class="column is-narrow"><aside class=menu><p class=menu-label>Tags</p><ul class=menu-list><li><a href=https://baywet.github.io/fr/tags/sharepoint/><div class="tags has-addons"><span class=tag>sharepoint</span>
-<span class="tag is-link">139</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/azure/><div class="tags has-addons"><span class=tag>azure</span>
-<span class="tag is-link">35</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/2013/><div class="tags has-addons"><span class=tag>2013</span>
-<span class="tag is-link">34</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/alm/><div class="tags has-addons"><span class=tag>alm</span>
-<span class="tag is-link">28</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/devops/><div class="tags has-addons"><span class=tag>devops</span>
-<span class="tag is-link">25</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/vsts/><div class="tags has-addons"><span class=tag>vsts</span>
-<span class="tag is-link">23</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/office365/><div class="tags has-addons"><span class=tag>office365</span>
-<span class="tag is-link">22</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/visual-studio/><div class="tags has-addons"><span class=tag>visual studio</span>
-<span class="tag is-link">20</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/dev/><div class="tags has-addons"><span class=tag>dev</span>
-<span class="tag is-link">19</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/microsoft/><div class="tags has-addons"><span class=tag>microsoft</span>
-<span class="tag is-link">19</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/sonarqube/><div class="tags has-addons"><span class=tag>sonarqube</span>
-<span class="tag is-link">18</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/2010/><div class="tags has-addons"><span class=tag>2010</span>
-<span class="tag is-link">18</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/code/><div class="tags has-addons"><span class=tag>code</span>
-<span class="tag is-link">17</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/analyse-statique/><div class="tags has-addons"><span class=tag>analyse statique</span>
-<span class="tag is-link">17</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/evenement/><div class="tags has-addons"><span class=tag>evenement</span>
-<span class="tag is-link">15</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/linux/><div class="tags has-addons"><span class=tag>linux</span>
-<span class="tag is-link">15</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/docker/><div class="tags has-addons"><span class=tag>docker</span>
-<span class="tag is-link">15</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/mise-%C3%A0-jour/><div class="tags has-addons"><span class=tag>mise à jour</span>
-<span class="tag is-link">15</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/build/><div class="tags has-addons"><span class=tag>build</span>
-<span class="tag is-link">14</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/session/><div class="tags has-addons"><span class=tag>session</span>
-<span class="tag is-link">14</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/conf%C3%A9rence/><div class="tags has-addons"><span class=tag>conférence</span>
-<span class="tag is-link">14</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/saturday/><div class="tags has-addons"><span class=tag>saturday</span>
-<span class="tag is-link">12</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/communaut%C3%A9/><div class="tags has-addons"><span class=tag>communauté</span>
-<span class="tag is-link">12</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/conference/><div class="tags has-addons"><span class=tag>conference</span>
-<span class="tag is-link">11</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/sp1/><div class="tags has-addons"><span class=tag>sp1</span>
-<span class="tag is-link">10</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/montreal/><div class="tags has-addons"><span class=tag>montreal</span>
-<span class="tag is-link">10</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/microsoft-graph/><div class="tags has-addons"><span class=tag>microsoft graph</span>
-<span class="tag is-link">10</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/laboratoire/><div class="tags has-addons"><span class=tag>laboratoire</span>
-<span class="tag is-link">9</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/developer/><div class="tags has-addons"><span class=tag>developer</span>
-<span class="tag is-link">9</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/update/><div class="tags has-addons"><span class=tag>update</span>
-<span class="tag is-link">9</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/developpement/><div class="tags has-addons"><span class=tag>developpement</span>
-<span class="tag is-link">8</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/sso/><div class="tags has-addons"><span class=tag>sso</span>
-<span class="tag is-link">8</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/powershell/><div class="tags has-addons"><span class=tag>powershell</span>
-<span class="tag is-link">8</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/mvp/><div class="tags has-addons"><span class=tag>mvp</span>
-<span class="tag is-link">8</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/sharepoint-framework/><div class="tags has-addons"><span class=tag>sharepoint framework</span>
-<span class="tag is-link">7</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/2015/><div class="tags has-addons"><span class=tag>2015</span>
-<span class="tag is-link">7</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/msp/><div class="tags has-addons"><span class=tag>msp</span>
-<span class="tag is-link">7</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/introduction/><div class="tags has-addons"><span class=tag>introduction</span>
-<span class="tag is-link">7</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/event/><div class="tags has-addons"><span class=tag>event</span>
-<span class="tag is-link">7</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/ssl/><div class="tags has-addons"><span class=tag>ssl</span>
-<span class="tag is-link">7</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/online/><div class="tags has-addons"><span class=tag>online</span>
-<span class="tag is-link">6</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/cache/><div class="tags has-addons"><span class=tag>cache</span>
-<span class="tag is-link">6</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/sharepoint-saturday/><div class="tags has-addons"><span class=tag>sharepoint saturday</span>
-<span class="tag is-link">6</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/outils/><div class="tags has-addons"><span class=tag>outils</span>
-<span class="tag is-link">6</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/2012/><div class="tags has-addons"><span class=tag>2012</span>
-<span class="tag is-link">5</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/speaker/><div class="tags has-addons"><span class=tag>speaker</span>
-<span class="tag is-link">5</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/feedback/><div class="tags has-addons"><span class=tag>feedback</span>
-<span class="tag is-link">5</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/claims/><div class="tags has-addons"><span class=tag>claims</span>
-<span class="tag is-link">5</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/d%C3%A9ploiement/><div class="tags has-addons"><span class=tag>déploiement</span>
-<span class="tag is-link">5</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/2016/><div class="tags has-addons"><span class=tag>2016</span>
-<span class="tag is-link">5</span></div></a></li></ul></aside></div></div></div></section><footer class=footer><div class=container><nav class=level></nav><nav class=level><div class="level-left has-text-centered"><div class=level-item><form class="control has-icons has-icons-right" method=get action=https://bing.com><input class=input type=text name=q maxlength=255 placeholder=Search>
+Vous assurer que tous vos développeurs avaient les binaires de SharePoint installés sur leur machine Embarquer une copie de la dll prise sur une machine SharePoint Dans les deux cas ce n’était pas pratique.</p>
+</div>
+</article>
+<article class=media>
+<div class=media-content>
+<p class=title><a href=https://baywet.github.io/fr/build-automatise-de-solution-s/>Build automatisé de solution SharePoint server (fulltrust) avec visual studio online</a></p>
+<p class="subtitle is-flex" style=justify-content:space-between>
+<span>Oct 29, 2014</span>
+<span>5 min.</span>
+</p>
+<p>Introduction Depuis plusieurs articles j’évoque le fait que nous (Negotium, la compagnie où je travaille) avons migré vers visual studio online (TFS Online). Ce service offre une majorité des fonctionnalités offertes par la version on premises de Team Foundation Server 2013 et même certaines fonctionnalités exclusives.
+Si vous n’avez qu’une vague idée de ce que peut faire TFS2013/VSO et que vous voulez en apprendre plus je vous recommande très fortement Professional Application Lifecycle Management de chez Wrox.</p>
+</div>
+</article>
+</div>
+<br>
+<br>
+<br>
+<nav class=pagination>
+<a href=/fr/page/9/ class=pagination-previous>Previous</a>
+<a href=/fr/page/11/ class=pagination-next>Next</a>
+<ul class=pagination-list>
+<li><a href=/fr/ class=pagination-link>
+1
+</a></li>
+<li>
+<span class=pagination-ellipsis>&mldr;</span>
+</li>
+<li><a href=/fr/page/9/ class=pagination-link>
+9
+</a></li>
+<li><a href=/fr/page/10/ class="pagination-link is-current">
+10
+</a></li>
+<li><a href=/fr/page/11/ class=pagination-link>
+11
+</a></li>
+<li>
+<span class=pagination-ellipsis>&mldr;</span>
+</li>
+<li><a href=/fr/page/23/ class=pagination-link>23
+</a></li>
+</ul>
+</nav>
+</div>
+<div class="column is-narrow">
+<aside class=menu>
+<p class=menu-label>Tags</p>
+<ul class=menu-list>
+<li>
+<a href=https://baywet.github.io/fr/tags/sharepoint/>
+<div class="tags has-addons">
+<span class=tag>sharepoint</span>
+<span class="tag is-link">139</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/azure/>
+<div class="tags has-addons">
+<span class=tag>azure</span>
+<span class="tag is-link">35</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/2013/>
+<div class="tags has-addons">
+<span class=tag>2013</span>
+<span class="tag is-link">34</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/alm/>
+<div class="tags has-addons">
+<span class=tag>alm</span>
+<span class="tag is-link">28</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/devops/>
+<div class="tags has-addons">
+<span class=tag>devops</span>
+<span class="tag is-link">25</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/vsts/>
+<div class="tags has-addons">
+<span class=tag>vsts</span>
+<span class="tag is-link">23</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/office365/>
+<div class="tags has-addons">
+<span class=tag>office365</span>
+<span class="tag is-link">22</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/microsoft/>
+<div class="tags has-addons">
+<span class=tag>microsoft</span>
+<span class="tag is-link">20</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/visual-studio/>
+<div class="tags has-addons">
+<span class=tag>visual studio</span>
+<span class="tag is-link">20</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/dev/>
+<div class="tags has-addons">
+<span class=tag>dev</span>
+<span class="tag is-link">19</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/sonarqube/>
+<div class="tags has-addons">
+<span class=tag>sonarqube</span>
+<span class="tag is-link">18</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/2010/>
+<div class="tags has-addons">
+<span class=tag>2010</span>
+<span class="tag is-link">18</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/analyse-statique/>
+<div class="tags has-addons">
+<span class=tag>analyse statique</span>
+<span class="tag is-link">17</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/code/>
+<div class="tags has-addons">
+<span class=tag>code</span>
+<span class="tag is-link">17</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/mise-%C3%A0-jour/>
+<div class="tags has-addons">
+<span class=tag>mise à jour</span>
+<span class="tag is-link">15</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/linux/>
+<div class="tags has-addons">
+<span class=tag>linux</span>
+<span class="tag is-link">15</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/docker/>
+<div class="tags has-addons">
+<span class=tag>docker</span>
+<span class="tag is-link">15</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/evenement/>
+<div class="tags has-addons">
+<span class=tag>evenement</span>
+<span class="tag is-link">15</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/build/>
+<div class="tags has-addons">
+<span class=tag>build</span>
+<span class="tag is-link">14</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/conf%C3%A9rence/>
+<div class="tags has-addons">
+<span class=tag>conférence</span>
+<span class="tag is-link">14</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/session/>
+<div class="tags has-addons">
+<span class=tag>session</span>
+<span class="tag is-link">14</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/communaut%C3%A9/>
+<div class="tags has-addons">
+<span class=tag>communauté</span>
+<span class="tag is-link">12</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/saturday/>
+<div class="tags has-addons">
+<span class=tag>saturday</span>
+<span class="tag is-link">12</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/microsoft-graph/>
+<div class="tags has-addons">
+<span class=tag>microsoft graph</span>
+<span class="tag is-link">11</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/conference/>
+<div class="tags has-addons">
+<span class=tag>conference</span>
+<span class="tag is-link">11</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/montreal/>
+<div class="tags has-addons">
+<span class=tag>montreal</span>
+<span class="tag is-link">10</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/sp1/>
+<div class="tags has-addons">
+<span class=tag>sp1</span>
+<span class="tag is-link">10</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/developer/>
+<div class="tags has-addons">
+<span class=tag>developer</span>
+<span class="tag is-link">9</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/update/>
+<div class="tags has-addons">
+<span class=tag>update</span>
+<span class="tag is-link">9</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/laboratoire/>
+<div class="tags has-addons">
+<span class=tag>laboratoire</span>
+<span class="tag is-link">9</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/powershell/>
+<div class="tags has-addons">
+<span class=tag>powershell</span>
+<span class="tag is-link">8</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/sso/>
+<div class="tags has-addons">
+<span class=tag>sso</span>
+<span class="tag is-link">8</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/developpement/>
+<div class="tags has-addons">
+<span class=tag>developpement</span>
+<span class="tag is-link">8</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/mvp/>
+<div class="tags has-addons">
+<span class=tag>mvp</span>
+<span class="tag is-link">8</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/introduction/>
+<div class="tags has-addons">
+<span class=tag>introduction</span>
+<span class="tag is-link">7</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/sharepoint-framework/>
+<div class="tags has-addons">
+<span class=tag>sharepoint framework</span>
+<span class="tag is-link">7</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/event/>
+<div class="tags has-addons">
+<span class=tag>event</span>
+<span class="tag is-link">7</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/2015/>
+<div class="tags has-addons">
+<span class=tag>2015</span>
+<span class="tag is-link">7</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/msp/>
+<div class="tags has-addons">
+<span class=tag>msp</span>
+<span class="tag is-link">7</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/ssl/>
+<div class="tags has-addons">
+<span class=tag>ssl</span>
+<span class="tag is-link">7</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/outils/>
+<div class="tags has-addons">
+<span class=tag>outils</span>
+<span class="tag is-link">6</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/sharepoint-saturday/>
+<div class="tags has-addons">
+<span class=tag>sharepoint saturday</span>
+<span class="tag is-link">6</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/online/>
+<div class="tags has-addons">
+<span class=tag>online</span>
+<span class="tag is-link">6</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/cache/>
+<div class="tags has-addons">
+<span class=tag>cache</span>
+<span class="tag is-link">6</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/app/>
+<div class="tags has-addons">
+<span class=tag>app</span>
+<span class="tag is-link">5</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/release/>
+<div class="tags has-addons">
+<span class=tag>release</span>
+<span class="tag is-link">5</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/feedback/>
+<div class="tags has-addons">
+<span class=tag>feedback</span>
+<span class="tag is-link">5</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/github/>
+<div class="tags has-addons">
+<span class=tag>github</span>
+<span class="tag is-link">5</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/service/>
+<div class="tags has-addons">
+<span class=tag>service</span>
+<span class="tag is-link">5</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/2016/>
+<div class="tags has-addons">
+<span class=tag>2016</span>
+<span class="tag is-link">5</span>
+</div>
+</a>
+</li>
+</ul>
+</aside>
+</div>
+</div>
+</div>
+</section>
+<footer class=footer>
+<div class=container>
+<nav class=level>
+</nav>
+<nav class=level>
+<div class="level-left has-text-centered">
+<div class=level-item>
+<form class="control has-icons has-icons-right" method=get action=https://bing.com>
+<input class=input type=text name=q maxlength=255 placeholder=Search>
 <input class=input type=hidden name=sites value=https://baywet.github.io/>
-<span class="icon is-small is-right"><i class="fa fa-search"></i></span></form></div></div><div class="level-right has-text-centered"><div class=level-item><a class=button href=https://baywet.github.io/fr><span class=icon><i class="fa fa-home"></i></span></a> &nbsp;
-<a class=button href=/fr/index.xml><span class=icon><i class="fa fa-rss"></i></span></a></div></div></nav></div></footer></body></html>
+<span class="icon is-small is-right"><i class="fa fa-search"></i></span>
+</form>
+</div>
+</div>
+<div class="level-right has-text-centered">
+<div class=level-item>
+<a class=button href=https://baywet.github.io/fr>
+<span class=icon><i class="fa fa-home"></i></span>
+</a> &nbsp;
+<a class=button href=/fr/index.xml>
+<span class=icon><i class="fa fa-rss"></i></span>
+</a>
+</div>
+</div>
+</nav>
+</div>
+</footer>
+</body>
+</html>

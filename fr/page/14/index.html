@@ -1,85 +1,650 @@
-<!doctype html><html lang=fr dir=ltr itemscope itemtype=https://schema.org/Article><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>Le blog de baywet</title><meta name=author content="Vincent Biret"><meta name=description content><meta name=generator content="Hugo 0.85.0"><meta itemprop=name content="Le blog de baywet"><meta itemprop=description content><meta itemprop=image content="/img/logo.svg"><meta property="og:title" content="Le blog de baywet"><meta property="og:type" content="website"><meta property="og:url" content="https://baywet.github.io/fr/"><meta property="og:image" content="/img/logo.svg"><meta property="og:description" content><meta property="og:site_name" content="Le blog de baywet"><meta property="article:section" content><meta name=twitter:card content="summary"><meta name=twitter:site content><meta name=twitter:title content="Le blog de baywet"><meta name=twitter:description content><meta name=twitter:creator content><meta name=twitter:image:src content="/img/logo.svg"><link rel=alternate type=application/rss+xml href=https://baywet.github.io/fr/index.xml title="Le blog de baywet"><link rel=stylesheet type=text/css href=/css/capsule.min.css><script>(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-176061333-1','auto'),ga('send','pageview')</script><link rel=apple-touch-icon href=/img/apple-touch-icon.png><link rel=icon href=/img/favicon.ico></head><body style=min-height:100vh;display:flex;flex-direction:column><section class="hero is-dark is-medium"><div class=hero-head><nav class="navbar has-shadow" role=navigation aria-label="main navigation"><div class=container><div class=navbar-brand><a class=navbar-item href=/fr><div class="title is-4">&nbsp;Le blog de baywet</div></a><label class="button navbar-burger is-dark" for=navbar-burger-state><span></span><span></span><span></span></label></div><input type=checkbox id=navbar-burger-state><div class=navbar-menu><div class=navbar-end><a class=navbar-item href=https://baywet.github.io/>English</a></div></div></div></nav></div></section><section class=section style=flex:1><div class=container><div class=columns><div class=column><div style=min-height:56vh><article class=media><div class=media-content><p class=title><a href=https://baywet.github.io/fr/installing-sharepoint-2013-pre/>Installing SharePoint 2013 prerequisites on offline environments</a></p><p class="subtitle is-flex" style=justify-content:space-between><span>Jan 13, 2014</span>
-<span>2 min.</span></p><p>Context Have you ever had a recurring IIS installation error or similar when installing SharePoint prerequisites with the dedicated tool?
+<!doctype html><html lang=fr dir=ltr itemscope itemtype=https://schema.org/Article>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Le blog de baywet</title>
+<meta name=author content="Vincent Biret">
+<meta name=description content>
+<meta name=generator content="Hugo 0.88.1">
+<meta itemprop=name content="Le blog de baywet">
+<meta itemprop=description content>
+<meta itemprop=image content="/img/logo.svg">
+<meta property="og:title" content="Le blog de baywet">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://baywet.github.io/fr/">
+<meta property="og:image" content="/img/logo.svg">
+<meta property="og:description" content>
+<meta property="og:site_name" content="Le blog de baywet">
+<meta property="article:section" content>
+<meta name=twitter:card content="summary">
+<meta name=twitter:site content>
+<meta name=twitter:title content="Le blog de baywet">
+<meta name=twitter:description content>
+<meta name=twitter:creator content>
+<meta name=twitter:image:src content="/img/logo.svg">
+<link rel=alternate type=application/rss+xml href=https://baywet.github.io/fr/index.xml title="Le blog de baywet">
+<link rel=stylesheet type=text/css href=/css/capsule.min.css>
+<script>(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-176061333-1','auto'),ga('send','pageview')</script>
+<link rel=apple-touch-icon href=/img/apple-touch-icon.png>
+<link rel=icon href=/img/favicon.ico>
+</head>
+<body style=min-height:100vh;display:flex;flex-direction:column>
+<section class="hero is-dark is-medium">
+<div class=hero-head>
+<nav class="navbar has-shadow" role=navigation aria-label="main navigation">
+<div class=container>
+<div class=navbar-brand>
+<a class=navbar-item href=/fr>
+<div class="title is-4">&nbsp;Le blog de baywet</div>
+</a>
+<label class="button navbar-burger is-dark" for=navbar-burger-state>
+<span></span>
+<span></span>
+<span></span>
+</label>
+</div>
+<input type=checkbox id=navbar-burger-state>
+<div class=navbar-menu>
+<div class=navbar-end>
+<a class=navbar-item href=https://baywet.github.io/>English</a>
+</div>
+</div>
+</div>
+</nav>
+</div>
+</section>
+<section class=section style=flex:1>
+<div class=container>
+<div class=columns>
+<div class=column>
+<div style=min-height:56vh>
+<article class=media>
+<div class=media-content>
+<p class=title><a href=https://baywet.github.io/fr/invite-au-webcast-de-pimpmysha/>Invité au webcast de @PimpMySharePoint !</a></p>
+<p class="subtitle is-flex" style=justify-content:space-between>
+<span>Jan 16, 2014</span>
+<span>1 min.</span>
+</p>
+<p>Cette semaine j’ai eu l’honneur d’être invité par Sébastien LEVERT (@sebastienlevert ) et Julien STROHEKER (@Ju_Stroh ) au 3eme webcast de @PimpMySharePoint
+Présentation Qu’est-ce que c’est que PimpMySharePoint ? C’est un blog monté en commun par nos deux compères. Particularité, ils animent un webcast à propos de SharePoint. Ils invitent donc régulièrement des acteurs de la communauté SharePoint (et Microsoft) à venir discuter de sujets tournant autour de la technologie. Allez faire un tour sur leur blog, il est plein de choses intéressantes !</p>
+</div>
+</article>
+<article class=media>
+<div class=media-content>
+<p class=title><a href=https://baywet.github.io/fr/installing-sharepoint-2013-pre/>Installing SharePoint 2013 prerequisites on offline environments</a></p>
+<p class="subtitle is-flex" style=justify-content:space-between>
+<span>Jan 13, 2014</span>
+<span>2 min.</span>
+</p>
+<p>Context Have you ever had a recurring IIS installation error or similar when installing SharePoint prerequisites with the dedicated tool?
 Sometimes SharePoint farms we are setting up do not have access to the internet. This will be less and less the case because SharePoint has a growing services number needing access to the internet to work properly.
-In addition your system admins and/or virtualization admins can exclude installation sources from machines they provide to you.</p></div></article><article class=media><div class=media-content><p class=title><a href=https://baywet.github.io/fr/installation-des-prerequis-sha/>Installation des prérequis SharePoint 2013 sur des serveurs hors ligne</a></p><p class="subtitle is-flex" style=justify-content:space-between><span>Jan 13, 2014</span>
-<span>3 min.</span></p><p>Mise en contexte Avez-vous déjà rencontré un échec persistant de l’installation d’IIS ou autre prérequis de SharePoint avec l’utilitaire dédié ?
+In addition your system admins and/or virtualization admins can exclude installation sources from machines they provide to you.</p>
+</div>
+</article>
+<article class=media>
+<div class=media-content>
+<p class=title><a href=https://baywet.github.io/fr/installation-des-prerequis-sha/>Installation des prérequis SharePoint 2013 sur des serveurs hors ligne</a></p>
+<p class="subtitle is-flex" style=justify-content:space-between>
+<span>Jan 13, 2014</span>
+<span>3 min.</span>
+</p>
+<p>Mise en contexte Avez-vous déjà rencontré un échec persistant de l’installation d’IIS ou autre prérequis de SharePoint avec l’utilitaire dédié ?
 Il arrive assez souvent que les fermes SharePoint que nous installions n’aient pas accès à internet. Ce cas de figure devrait se présenter de moins en moins souvent avec le nombre croissant de services SharePoint qui se reposent sur Internet.
-De plus il peut arriver que vos administrateurs systèmes et/ou vos administrateurs de virtualisation excluent les sources d’installation des machines qu’ils vous fournissent.</p></div></article><article class=media><div class=media-content><p class=title><a href=https://baywet.github.io/fr/boost-your-sharepoint-solution/>Boost your SharePoint solutions with distributed cache!–Part 3–Let’s Code!</a></p><p class="subtitle is-flex" style=justify-content:space-between><span>Dec 17, 2013</span>
-<span>2 min.</span></p><p>Let’s code! All what you need is located in these namspaces Microsoft.SharePoint.DistributedCaching , Microsoft.SharePoint.DistributedCaching.Utilities, Microsoft.ApplicationServer.Caching, it is strictly forbidden to reference anything else coming from the appfabric sdk!
-Another information, depending on your version of SharePoint and of Visual Studio it is possible that you don’t have these dll’s in SharePoint’s ISAPI (folders VS will look at to know which assemblies are available for your projects). In that case you will need to reference dll’s directly from their GAC location.</p></div></article><article class=media><div class=media-content><p class=title><a href=https://baywet.github.io/fr/boostez-vos-solutions-sharepoi-2013-12-14-20-21-00/>Boostez vos solutions SharePoint avec le cache distribué !–Partie 3–Le code</a></p><p class="subtitle is-flex" style=justify-content:space-between><span>Dec 14, 2013</span>
-<span>2 min.</span></p><p>Passons au code ! Tout ce dont vous avez besoin se situe dans ces namespaces Microsoft.SharePoint.DistributedCaching (https://msdn.microsoft.com/en-us/library/office/microsoft.sharepoint.distributedcaching.aspx ), Microsoft.SharePoint.DistributedCaching.Utilities, Microsoft.ApplicationServer.Caching (https://msdn.microsoft.com/en-us/library/microsoft.applicationserver.caching(v=azure.10).aspx ), interdit de référencer quoi que ce soit d’autre venant d’appfabric.
-Autre information, il est possible que selon la version de visual studio installée et celle de sharepoint vous n’ayez pas les dll dans l’ISAPI de SharePoint (les dossiers que va regarder Visual Studio pour savoir quels sont les assemblies à disposition).</p></div></article><article class=media><div class=media-content><p class=title><a href=https://baywet.github.io/fr/boostez-vos-solutions-sharepoi-2013-12-12-09-08-00/>Boostez vos solutions SharePoint avec le cache distribué !–Partie 2–Explications et astuces</a></p><p class="subtitle is-flex" style=justify-content:space-between><span>Dec 12, 2013</span>
-<span>5 min.</span></p><p>Explications, trucs, astuces et avertissements Explications Ce cluster de cache est en fait composé d’hôtes appfabric (caching services) Un des gros avantage est que les hôtes qui ne font pas partie du cluster mais interagissent avec gardent une copie locale des objets. Et cette copie est automatiquement maintenue à jour. En clair pas besoin d’implémenter un pattern lazy loading pour éviter les allers-retours sur le réseau.
-Comment est-ce que ça fonctionne ?</p></div></article><article class=media><div class=media-content><p class=title><a href=https://baywet.github.io/fr/boostez-vos-solutions-sharepoi-2013-12-11-01-15-14/>Boostez vos solutions SharePoint avec le cache distribué !–Partie 1 Introduction</a></p><p class="subtitle is-flex" style=justify-content:space-between><span>Dec 11, 2013</span>
-<span>3 min.</span></p><p>Prélude J’étais parti pour faire uniquement un article, mais j’ai constaté en cours de route qu’il y avait plein de choses à expliquer. De plus je suis bavard, ça ne m’aide pas forcément. J’ai donc opté pour une série d’articles (3). Un article sera publié tous les deux jours à compter d’aujourd’hui. L’exemple de code sera fourni avec le dernier article, ça vous oblige à lire jusqu’à la fin ;-) Bonne lecture, et n’hésitez pas à commenter.</p></div></article><article class=media><div class=media-content><p class=title><a href=https://baywet.github.io/fr/sharepoint-autohosted-app-et-a/>SharePoint autohosted app et ASP.NET MVC</a></p><p class="subtitle is-flex" style=justify-content:space-between><span>Nov 13, 2013</span>
-<span>2 min.</span></p><p>Faites des apps qu’ils disaient, ça sera plus facile qu’ils disaient…
+De plus il peut arriver que vos administrateurs systèmes et/ou vos administrateurs de virtualisation excluent les sources d’installation des machines qu’ils vous fournissent.</p>
+</div>
+</article>
+<article class=media>
+<div class=media-content>
+<p class=title><a href=https://baywet.github.io/fr/boost-your-sharepoint-solution/>Boost your SharePoint solutions with distributed cache!–Part 3–Let’s Code!</a></p>
+<p class="subtitle is-flex" style=justify-content:space-between>
+<span>Dec 17, 2013</span>
+<span>2 min.</span>
+</p>
+<p>Let’s code! All what you need is located in these namspaces Microsoft.SharePoint.DistributedCaching , Microsoft.SharePoint.DistributedCaching.Utilities, Microsoft.ApplicationServer.Caching, it is strictly forbidden to reference anything else coming from the appfabric sdk!
+Another information, depending on your version of SharePoint and of Visual Studio it is possible that you don’t have these dll’s in SharePoint’s ISAPI (folders VS will look at to know which assemblies are available for your projects). In that case you will need to reference dll’s directly from their GAC location.</p>
+</div>
+</article>
+<article class=media>
+<div class=media-content>
+<p class=title><a href=https://baywet.github.io/fr/boostez-vos-solutions-sharepoi-2013-12-14-20-21-00/>Boostez vos solutions SharePoint avec le cache distribué !–Partie 3–Le code</a></p>
+<p class="subtitle is-flex" style=justify-content:space-between>
+<span>Dec 14, 2013</span>
+<span>2 min.</span>
+</p>
+<p>Passons au code ! Tout ce dont vous avez besoin se situe dans ces namespaces Microsoft.SharePoint.DistributedCaching (https://msdn.microsoft.com/en-us/library/office/microsoft.sharepoint.distributedcaching.aspx ), Microsoft.SharePoint.DistributedCaching.Utilities, Microsoft.ApplicationServer.Caching (https://msdn.microsoft.com/en-us/library/microsoft.applicationserver.caching(v=azure.10).aspx ), interdit de référencer quoi que ce soit d’autre venant d’appfabric.
+Autre information, il est possible que selon la version de visual studio installée et celle de sharepoint vous n’ayez pas les dll dans l’ISAPI de SharePoint (les dossiers que va regarder Visual Studio pour savoir quels sont les assemblies à disposition).</p>
+</div>
+</article>
+<article class=media>
+<div class=media-content>
+<p class=title><a href=https://baywet.github.io/fr/boostez-vos-solutions-sharepoi-2013-12-12-09-08-00/>Boostez vos solutions SharePoint avec le cache distribué !–Partie 2–Explications et astuces</a></p>
+<p class="subtitle is-flex" style=justify-content:space-between>
+<span>Dec 12, 2013</span>
+<span>5 min.</span>
+</p>
+<p>Explications, trucs, astuces et avertissements Explications Ce cluster de cache est en fait composé d’hôtes appfabric (caching services) Un des gros avantage est que les hôtes qui ne font pas partie du cluster mais interagissent avec gardent une copie locale des objets. Et cette copie est automatiquement maintenue à jour. En clair pas besoin d’implémenter un pattern lazy loading pour éviter les allers-retours sur le réseau.
+Comment est-ce que ça fonctionne ?</p>
+</div>
+</article>
+<article class=media>
+<div class=media-content>
+<p class=title><a href=https://baywet.github.io/fr/boostez-vos-solutions-sharepoi-2013-12-11-01-15-14/>Boostez vos solutions SharePoint avec le cache distribué !–Partie 1 Introduction</a></p>
+<p class="subtitle is-flex" style=justify-content:space-between>
+<span>Dec 11, 2013</span>
+<span>3 min.</span>
+</p>
+<p>Prélude J’étais parti pour faire uniquement un article, mais j’ai constaté en cours de route qu’il y avait plein de choses à expliquer. De plus je suis bavard, ça ne m’aide pas forcément. J’ai donc opté pour une série d’articles (3). Un article sera publié tous les deux jours à compter d’aujourd’hui. L’exemple de code sera fourni avec le dernier article, ça vous oblige à lire jusqu’à la fin ;-) Bonne lecture, et n’hésitez pas à commenter.</p>
+</div>
+</article>
+<article class=media>
+<div class=media-content>
+<p class=title><a href=https://baywet.github.io/fr/sharepoint-autohosted-app-et-a/>SharePoint autohosted app et ASP.NET MVC</a></p>
+<p class="subtitle is-flex" style=justify-content:space-between>
+<span>Nov 13, 2013</span>
+<span>2 min.</span>
+</p>
+<p>Faites des apps qu’ils disaient, ça sera plus facile qu’ils disaient…
 Visual Studio 2013 apporte un nouveau Modèle de projet : SharePoint Auto hosted App MVC (Cool !)
 J’aime bien SharePoint, J’aime bien le MVC alors pourquoi pas mélanger les deux ?
-Pour rappel les apps SharePoint auto hébergées ne sont disponible que pour Office 365. Techniquement Office 365 va créer un Azure Website à la volée quand l’app est déployée.</p></div></article><article class=media><div class=media-content><p class=title><a href=https://baywet.github.io/fr/entity-framework-et-reference/>Entity Framework et référence au dataContext pour une application web</a></p><p class="subtitle is-flex" style=justify-content:space-between><span>Nov 7, 2013</span>
-<span>3 min.</span></p><p>Lorsque l’on utilise l’entity framework et un datacontext on se pose souvent la question suivante :
+Pour rappel les apps SharePoint auto hébergées ne sont disponible que pour Office 365. Techniquement Office 365 va créer un Azure Website à la volée quand l’app est déployée.</p>
+</div>
+</article>
+<article class=media>
+<div class=media-content>
+<p class=title><a href=https://baywet.github.io/fr/entity-framework-et-reference/>Entity Framework et référence au dataContext pour une application web</a></p>
+<p class="subtitle is-flex" style=justify-content:space-between>
+<span>Nov 7, 2013</span>
+<span>3 min.</span>
+</p>
+<p>Lorsque l’on utilise l’entity framework et un datacontext on se pose souvent la question suivante :
 Faut-il favoriser la performance et la simplicité d’utilisation ou bien la flexibilité (scalability) ?
 (non ? vous ne vous posez pas ce genre de question existentielle ?)
 Je détaille ma question :
 Référence statique
-Dans un premier cas vous faites une référence static au contexte, avec certaines fois du lazy loading et/ou une gestion du dispose dans le global.</p></div></article><article class=media><div class=media-content><p class=title><a href=https://baywet.github.io/fr/sharepoint-2013-vectorized-log/>SharePoint 2013 vectorized logo / logo SharePoint 2013 vectorialisé</a></p><p class="subtitle is-flex" style=justify-content:space-between><span>Oct 15, 2013</span>
-<span>1 min.</span></p><p>English version bellow.
+Dans un premier cas vous faites une référence static au contexte, avec certaines fois du lazy loading et/ou une gestion du dispose dans le global.</p>
+</div>
+</article>
+<article class=media>
+<div class=media-content>
+<p class=title><a href=https://baywet.github.io/fr/sharepoint-2013-vectorized-log/>SharePoint 2013 vectorized logo / logo SharePoint 2013 vectorialisé</a></p>
+<p class="subtitle is-flex" style=justify-content:space-between>
+<span>Oct 15, 2013</span>
+<span>1 min.</span>
+</p>
+<p>English version bellow.
 Je suis assez régulièrement amené à animer des sessions autour de SharePoint. Et qui dit session sur SharePoint dit logo de SharePoint.
 Pour avoir des slides bien faits il faut disposer de graphiques de qualités. Et ce n’est pas simple de trouver des logos SharePoint 2013 de qualité.
-Je suis récemment tombé sur les logos de SharePoint 2013 vectorialisés (ainsi que quelques versions png avec fond transparent) je partage donc avec vous ma découverte</p></div></article><article class=media><div class=media-content><p class=title><a href=https://baywet.github.io/fr/mise-a-jour-cumulative-doctobr/>Mise à jour cumulative d’Octobre 2013 pour SharePoint 2010</a></p><p class="subtitle is-flex" style=justify-content:space-between><span>Oct 10, 2013</span>
-<span>1 min.</span></p><p>La mise à jour cumulative d’Octobre 2013 pour SharePoint 2010 vient de sortir. Elle s’applique au SP1 comme au SP2 (bien que je vous recommande d’installer le SP2 avant).
-Le détail des informations et téléchargements est disponible ici https://blogs.technet.com/b/stefan_gossner/archive/2013/10/09/october-2013-cu-for-sharepoint-2010-has-been-released.aspx
-La mise à jour correspondante pour SharePoint 2013 ne devrait pas tarder à sortir. Stay tuned !</p></div></article></div><br><br><br><nav class=pagination><a href=/fr/page/13/ class=pagination-previous>Previous</a>
-<a href=/fr/page/15/ class=pagination-next>Next</a><ul class=pagination-list><li><a href=/fr/ class=pagination-link>1</a></li><li><span class=pagination-ellipsis>&mldr;</span></li><li><a href=/fr/page/13/ class=pagination-link>13</a></li><li><a href=/fr/page/14/ class="pagination-link is-current">14</a></li><li><a href=/fr/page/15/ class=pagination-link>15</a></li><li><span class=pagination-ellipsis>&mldr;</span></li><li><a href=/fr/page/23/ class=pagination-link>23</a></li></ul></nav></div><div class="column is-narrow"><aside class=menu><p class=menu-label>Tags</p><ul class=menu-list><li><a href=https://baywet.github.io/fr/tags/sharepoint/><div class="tags has-addons"><span class=tag>sharepoint</span>
-<span class="tag is-link">139</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/azure/><div class="tags has-addons"><span class=tag>azure</span>
-<span class="tag is-link">35</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/2013/><div class="tags has-addons"><span class=tag>2013</span>
-<span class="tag is-link">34</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/alm/><div class="tags has-addons"><span class=tag>alm</span>
-<span class="tag is-link">28</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/devops/><div class="tags has-addons"><span class=tag>devops</span>
-<span class="tag is-link">25</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/vsts/><div class="tags has-addons"><span class=tag>vsts</span>
-<span class="tag is-link">23</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/office365/><div class="tags has-addons"><span class=tag>office365</span>
-<span class="tag is-link">22</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/visual-studio/><div class="tags has-addons"><span class=tag>visual studio</span>
-<span class="tag is-link">20</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/microsoft/><div class="tags has-addons"><span class=tag>microsoft</span>
-<span class="tag is-link">19</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/dev/><div class="tags has-addons"><span class=tag>dev</span>
-<span class="tag is-link">19</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/sonarqube/><div class="tags has-addons"><span class=tag>sonarqube</span>
-<span class="tag is-link">18</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/2010/><div class="tags has-addons"><span class=tag>2010</span>
-<span class="tag is-link">18</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/analyse-statique/><div class="tags has-addons"><span class=tag>analyse statique</span>
-<span class="tag is-link">17</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/code/><div class="tags has-addons"><span class=tag>code</span>
-<span class="tag is-link">17</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/linux/><div class="tags has-addons"><span class=tag>linux</span>
-<span class="tag is-link">15</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/evenement/><div class="tags has-addons"><span class=tag>evenement</span>
-<span class="tag is-link">15</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/mise-%C3%A0-jour/><div class="tags has-addons"><span class=tag>mise à jour</span>
-<span class="tag is-link">15</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/docker/><div class="tags has-addons"><span class=tag>docker</span>
-<span class="tag is-link">15</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/session/><div class="tags has-addons"><span class=tag>session</span>
-<span class="tag is-link">14</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/conf%C3%A9rence/><div class="tags has-addons"><span class=tag>conférence</span>
-<span class="tag is-link">14</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/build/><div class="tags has-addons"><span class=tag>build</span>
-<span class="tag is-link">14</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/saturday/><div class="tags has-addons"><span class=tag>saturday</span>
-<span class="tag is-link">12</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/communaut%C3%A9/><div class="tags has-addons"><span class=tag>communauté</span>
-<span class="tag is-link">12</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/conference/><div class="tags has-addons"><span class=tag>conference</span>
-<span class="tag is-link">11</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/microsoft-graph/><div class="tags has-addons"><span class=tag>microsoft graph</span>
-<span class="tag is-link">10</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/montreal/><div class="tags has-addons"><span class=tag>montreal</span>
-<span class="tag is-link">10</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/sp1/><div class="tags has-addons"><span class=tag>sp1</span>
-<span class="tag is-link">10</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/laboratoire/><div class="tags has-addons"><span class=tag>laboratoire</span>
-<span class="tag is-link">9</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/update/><div class="tags has-addons"><span class=tag>update</span>
-<span class="tag is-link">9</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/developer/><div class="tags has-addons"><span class=tag>developer</span>
-<span class="tag is-link">9</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/mvp/><div class="tags has-addons"><span class=tag>mvp</span>
-<span class="tag is-link">8</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/sso/><div class="tags has-addons"><span class=tag>sso</span>
-<span class="tag is-link">8</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/powershell/><div class="tags has-addons"><span class=tag>powershell</span>
-<span class="tag is-link">8</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/developpement/><div class="tags has-addons"><span class=tag>developpement</span>
-<span class="tag is-link">8</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/msp/><div class="tags has-addons"><span class=tag>msp</span>
-<span class="tag is-link">7</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/2015/><div class="tags has-addons"><span class=tag>2015</span>
-<span class="tag is-link">7</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/introduction/><div class="tags has-addons"><span class=tag>introduction</span>
-<span class="tag is-link">7</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/event/><div class="tags has-addons"><span class=tag>event</span>
-<span class="tag is-link">7</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/sharepoint-framework/><div class="tags has-addons"><span class=tag>sharepoint framework</span>
-<span class="tag is-link">7</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/ssl/><div class="tags has-addons"><span class=tag>ssl</span>
-<span class="tag is-link">7</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/online/><div class="tags has-addons"><span class=tag>online</span>
-<span class="tag is-link">6</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/cache/><div class="tags has-addons"><span class=tag>cache</span>
-<span class="tag is-link">6</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/sharepoint-saturday/><div class="tags has-addons"><span class=tag>sharepoint saturday</span>
-<span class="tag is-link">6</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/outils/><div class="tags has-addons"><span class=tag>outils</span>
-<span class="tag is-link">6</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/speaker/><div class="tags has-addons"><span class=tag>speaker</span>
-<span class="tag is-link">5</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/d%C3%A9ploiement/><div class="tags has-addons"><span class=tag>déploiement</span>
-<span class="tag is-link">5</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/2016/><div class="tags has-addons"><span class=tag>2016</span>
-<span class="tag is-link">5</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/claims/><div class="tags has-addons"><span class=tag>claims</span>
-<span class="tag is-link">5</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/release/><div class="tags has-addons"><span class=tag>release</span>
-<span class="tag is-link">5</span></div></a></li><li><a href=https://baywet.github.io/fr/tags/app/><div class="tags has-addons"><span class=tag>app</span>
-<span class="tag is-link">5</span></div></a></li></ul></aside></div></div></div></section><footer class=footer><div class=container><nav class=level></nav><nav class=level><div class="level-left has-text-centered"><div class=level-item><form class="control has-icons has-icons-right" method=get action=https://bing.com><input class=input type=text name=q maxlength=255 placeholder=Search>
+Je suis récemment tombé sur les logos de SharePoint 2013 vectorialisés (ainsi que quelques versions png avec fond transparent) je partage donc avec vous ma découverte</p>
+</div>
+</article>
+</div>
+<br>
+<br>
+<br>
+<nav class=pagination>
+<a href=/fr/page/13/ class=pagination-previous>Previous</a>
+<a href=/fr/page/15/ class=pagination-next>Next</a>
+<ul class=pagination-list>
+<li><a href=/fr/ class=pagination-link>
+1
+</a></li>
+<li>
+<span class=pagination-ellipsis>&mldr;</span>
+</li>
+<li><a href=/fr/page/13/ class=pagination-link>
+13
+</a></li>
+<li><a href=/fr/page/14/ class="pagination-link is-current">
+14
+</a></li>
+<li><a href=/fr/page/15/ class=pagination-link>
+15
+</a></li>
+<li>
+<span class=pagination-ellipsis>&mldr;</span>
+</li>
+<li><a href=/fr/page/23/ class=pagination-link>23
+</a></li>
+</ul>
+</nav>
+</div>
+<div class="column is-narrow">
+<aside class=menu>
+<p class=menu-label>Tags</p>
+<ul class=menu-list>
+<li>
+<a href=https://baywet.github.io/fr/tags/sharepoint/>
+<div class="tags has-addons">
+<span class=tag>sharepoint</span>
+<span class="tag is-link">139</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/azure/>
+<div class="tags has-addons">
+<span class=tag>azure</span>
+<span class="tag is-link">35</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/2013/>
+<div class="tags has-addons">
+<span class=tag>2013</span>
+<span class="tag is-link">34</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/alm/>
+<div class="tags has-addons">
+<span class=tag>alm</span>
+<span class="tag is-link">28</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/devops/>
+<div class="tags has-addons">
+<span class=tag>devops</span>
+<span class="tag is-link">25</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/vsts/>
+<div class="tags has-addons">
+<span class=tag>vsts</span>
+<span class="tag is-link">23</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/office365/>
+<div class="tags has-addons">
+<span class=tag>office365</span>
+<span class="tag is-link">22</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/microsoft/>
+<div class="tags has-addons">
+<span class=tag>microsoft</span>
+<span class="tag is-link">20</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/visual-studio/>
+<div class="tags has-addons">
+<span class=tag>visual studio</span>
+<span class="tag is-link">20</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/dev/>
+<div class="tags has-addons">
+<span class=tag>dev</span>
+<span class="tag is-link">19</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/2010/>
+<div class="tags has-addons">
+<span class=tag>2010</span>
+<span class="tag is-link">18</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/sonarqube/>
+<div class="tags has-addons">
+<span class=tag>sonarqube</span>
+<span class="tag is-link">18</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/analyse-statique/>
+<div class="tags has-addons">
+<span class=tag>analyse statique</span>
+<span class="tag is-link">17</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/code/>
+<div class="tags has-addons">
+<span class=tag>code</span>
+<span class="tag is-link">17</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/evenement/>
+<div class="tags has-addons">
+<span class=tag>evenement</span>
+<span class="tag is-link">15</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/docker/>
+<div class="tags has-addons">
+<span class=tag>docker</span>
+<span class="tag is-link">15</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/linux/>
+<div class="tags has-addons">
+<span class=tag>linux</span>
+<span class="tag is-link">15</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/mise-%C3%A0-jour/>
+<div class="tags has-addons">
+<span class=tag>mise à jour</span>
+<span class="tag is-link">15</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/conf%C3%A9rence/>
+<div class="tags has-addons">
+<span class=tag>conférence</span>
+<span class="tag is-link">14</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/build/>
+<div class="tags has-addons">
+<span class=tag>build</span>
+<span class="tag is-link">14</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/session/>
+<div class="tags has-addons">
+<span class=tag>session</span>
+<span class="tag is-link">14</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/saturday/>
+<div class="tags has-addons">
+<span class=tag>saturday</span>
+<span class="tag is-link">12</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/communaut%C3%A9/>
+<div class="tags has-addons">
+<span class=tag>communauté</span>
+<span class="tag is-link">12</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/microsoft-graph/>
+<div class="tags has-addons">
+<span class=tag>microsoft graph</span>
+<span class="tag is-link">11</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/conference/>
+<div class="tags has-addons">
+<span class=tag>conference</span>
+<span class="tag is-link">11</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/sp1/>
+<div class="tags has-addons">
+<span class=tag>sp1</span>
+<span class="tag is-link">10</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/montreal/>
+<div class="tags has-addons">
+<span class=tag>montreal</span>
+<span class="tag is-link">10</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/update/>
+<div class="tags has-addons">
+<span class=tag>update</span>
+<span class="tag is-link">9</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/laboratoire/>
+<div class="tags has-addons">
+<span class=tag>laboratoire</span>
+<span class="tag is-link">9</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/developer/>
+<div class="tags has-addons">
+<span class=tag>developer</span>
+<span class="tag is-link">9</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/mvp/>
+<div class="tags has-addons">
+<span class=tag>mvp</span>
+<span class="tag is-link">8</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/powershell/>
+<div class="tags has-addons">
+<span class=tag>powershell</span>
+<span class="tag is-link">8</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/sso/>
+<div class="tags has-addons">
+<span class=tag>sso</span>
+<span class="tag is-link">8</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/developpement/>
+<div class="tags has-addons">
+<span class=tag>developpement</span>
+<span class="tag is-link">8</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/msp/>
+<div class="tags has-addons">
+<span class=tag>msp</span>
+<span class="tag is-link">7</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/2015/>
+<div class="tags has-addons">
+<span class=tag>2015</span>
+<span class="tag is-link">7</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/ssl/>
+<div class="tags has-addons">
+<span class=tag>ssl</span>
+<span class="tag is-link">7</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/event/>
+<div class="tags has-addons">
+<span class=tag>event</span>
+<span class="tag is-link">7</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/sharepoint-framework/>
+<div class="tags has-addons">
+<span class=tag>sharepoint framework</span>
+<span class="tag is-link">7</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/introduction/>
+<div class="tags has-addons">
+<span class=tag>introduction</span>
+<span class="tag is-link">7</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/sharepoint-saturday/>
+<div class="tags has-addons">
+<span class=tag>sharepoint saturday</span>
+<span class="tag is-link">6</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/online/>
+<div class="tags has-addons">
+<span class=tag>online</span>
+<span class="tag is-link">6</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/outils/>
+<div class="tags has-addons">
+<span class=tag>outils</span>
+<span class="tag is-link">6</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/cache/>
+<div class="tags has-addons">
+<span class=tag>cache</span>
+<span class="tag is-link">6</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/2012/>
+<div class="tags has-addons">
+<span class=tag>2012</span>
+<span class="tag is-link">5</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/distribu%C3%A9/>
+<div class="tags has-addons">
+<span class=tag>distribué</span>
+<span class="tag is-link">5</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/speaker/>
+<div class="tags has-addons">
+<span class=tag>speaker</span>
+<span class="tag is-link">5</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/app/>
+<div class="tags has-addons">
+<span class=tag>app</span>
+<span class="tag is-link">5</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/service/>
+<div class="tags has-addons">
+<span class=tag>service</span>
+<span class="tag is-link">5</span>
+</div>
+</a>
+</li>
+<li>
+<a href=https://baywet.github.io/fr/tags/github/>
+<div class="tags has-addons">
+<span class=tag>github</span>
+<span class="tag is-link">5</span>
+</div>
+</a>
+</li>
+</ul>
+</aside>
+</div>
+</div>
+</div>
+</section>
+<footer class=footer>
+<div class=container>
+<nav class=level>
+</nav>
+<nav class=level>
+<div class="level-left has-text-centered">
+<div class=level-item>
+<form class="control has-icons has-icons-right" method=get action=https://bing.com>
+<input class=input type=text name=q maxlength=255 placeholder=Search>
 <input class=input type=hidden name=sites value=https://baywet.github.io/>
-<span class="icon is-small is-right"><i class="fa fa-search"></i></span></form></div></div><div class="level-right has-text-centered"><div class=level-item><a class=button href=https://baywet.github.io/fr><span class=icon><i class="fa fa-home"></i></span></a> &nbsp;
-<a class=button href=/fr/index.xml><span class=icon><i class="fa fa-rss"></i></span></a></div></div></nav></div></footer></body></html>
+<span class="icon is-small is-right"><i class="fa fa-search"></i></span>
+</form>
+</div>
+</div>
+<div class="level-right has-text-centered">
+<div class=level-item>
+<a class=button href=https://baywet.github.io/fr>
+<span class=icon><i class="fa fa-home"></i></span>
+</a> &nbsp;
+<a class=button href=/fr/index.xml>
+<span class=icon><i class="fa fa-rss"></i></span>
+</a>
+</div>
+</div>
+</nav>
+</div>
+</footer>
+</body>
+</html>
