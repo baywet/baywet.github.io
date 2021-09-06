@@ -1,333 +1,48 @@
-<!doctype html><html lang=en dir=ltr itemscope itemtype=https://schema.org/Article>
-<head>
-<meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<meta name=viewport content="width=device-width,initial-scale=1">
-<title>One year as a Software Developer at Microsoft</title>
-<meta name=author content="Vincent Biret">
-<meta name=description content="One year as a Software Developer at Microsoft
+<!doctype html><html lang=en dir=ltr itemscope itemtype=https://schema.org/Article><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>One year as a Software Developer at Microsoft</title><meta name=author content="Vincent Biret"><meta name=description content="One year as a Software Developer at Microsoft
 Introduction
-Back in September 2020, I published a blog post about my experience as a Program Manager at Microsoft that was well received. It made me...">
-<meta name=generator content="Hugo 0.88.1">
-<meta itemprop=name content="One year as a Software Developer at Microsoft">
-<meta itemprop=description content="One year as a Software Developer at Microsoft
+Back in September 2020, I published a blog post about my experience as a Program Manager at Microsoft that was well received. It made me..."><meta name=generator content="Hugo 0.85.0"><meta itemprop=name content="One year as a Software Developer at Microsoft"><meta itemprop=description content="One year as a Software Developer at Microsoft
 Introduction
-Back in September 2020, I published a blog post about my experience as a Program Manager at Microsoft that was well received. It made me...">
-<meta itemprop=image content="/img/logo.svg">
-<meta property="og:title" content="One year as a Software Developer at Microsoft">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://baywet.github.io/one-year-developer/">
-<meta property="og:image" content="/img/logo.svg">
-<meta property="og:description" content="One year as a Software Developer at Microsoft
+Back in September 2020, I published a blog post about my experience as a Program Manager at Microsoft that was well received. It made me..."><meta itemprop=image content="/img/logo.svg"><meta property="og:title" content="One year as a Software Developer at Microsoft"><meta property="og:type" content="article"><meta property="og:url" content="https://baywet.github.io/one-year-developer/"><meta property="og:image" content="/img/logo.svg"><meta property="og:description" content="One year as a Software Developer at Microsoft
 Introduction
-Back in September 2020, I published a blog post about my experience as a Program Manager at Microsoft that was well received. It made me...">
-<meta property="og:site_name" content="Baywet's blog">
-<meta property="og:updated_time" content="2021-09-06T09:54:53-07:00">
-<meta property="article:published_time" content="2021-09-06T14:00:00+00:00">
-<meta property="article:modified_time" content="2021-09-06T09:54:53-07:00">
-<meta property="article:section" content>
-<meta property="article:tag" content="github">
-<meta property="article:tag" content="open-source">
-<meta property="article:tag" content="community">
-<meta property="article:tag" content="microsoft graph">
-<meta property="article:tag" content="microsoft">
-<meta name=twitter:card content="summary">
-<meta name=twitter:site content>
-<meta name=twitter:title content="One year as a Software Developer at Microsoft">
-<meta name=twitter:description content="One year as a Software Developer at Microsoft
+Back in September 2020, I published a blog post about my experience as a Program Manager at Microsoft that was well received. It made me..."><meta property="og:site_name" content="Baywet's blog"><meta property="og:updated_time" content="2021-09-06T13:44:53-04:00"><meta property="article:published_time" content="2021-09-06T14:00:00+00:00"><meta property="article:modified_time" content="2021-09-06T13:44:53-04:00"><meta property="article:section" content><meta property="article:tag" content="github"><meta property="article:tag" content="open-source"><meta property="article:tag" content="community"><meta property="article:tag" content="microsoft graph"><meta property="article:tag" content="microsoft"><meta name=twitter:card content="summary"><meta name=twitter:site content><meta name=twitter:title content="One year as a Software Developer at Microsoft"><meta name=twitter:description content="One year as a Software Developer at Microsoft
 Introduction
-Back in September 2020, I published a blog post about my experience as a Program Manager at Microsoft that was well received. It made me...">
-<meta name=twitter:creator content>
-<meta name=twitter:image:src content="/img/logo.svg">
-<link rel=stylesheet type=text/css href=/css/capsule.min.css>
-<script>(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-176061333-1','auto'),ga('send','pageview')</script>
-<link rel=apple-touch-icon href=/img/apple-touch-icon.png>
-<link rel=icon href=/img/favicon.ico>
-</head>
-<body style=min-height:100vh;display:flex;flex-direction:column>
-<nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation">
-<div class=container>
-<div class=navbar-brand>
-<a class=navbar-item href=/en>
-<div class="title is-4">&nbsp;Baywet's blog</div>
-</a>
-<label class="button navbar-burger is-white" for=navbar-burger-state>
-<span></span>
-<span></span>
-<span></span>
-</label>
-</div>
-<input type=checkbox id=navbar-burger-state>
-<div class=navbar-menu>
-<div class=navbar-end>
-<a class=navbar-item href=https://baywet.github.io/fr/un-an-developpeur-microsoft/>Français</a>
-</div>
-</div>
-</div>
-</nav>
-<section class=section style=flex:1>
-<div class=container>
-<h1 class=title>One year as a Software Developer at Microsoft</h1>
-<p class=subtitle>Sep 6, 2021</p>
-<div class=content>
-<h2 id=one-year-as-a-software-developer-at-microsoft>One year as a Software Developer at Microsoft</h2>
-<h3 id=introduction>Introduction</h3>
-<p>Back in September 2020, I published a <a href=/pm-experience-dev-sdk>blog post about my experience as a Program Manager at Microsoft that was well received</a>. It made me realize that the community was curious and interested about this role. In this post, I will share my insights as a developer.</p>
-<p>Before we begin, <strong>keep in mind this is my personal experience</strong>, which may differ a lot from team to team, product to product and depend on other circumstances (being remote, culture, etc…).</p>
-<h3 id=what-is-a-software-developer>What is a software developer?</h3>
-<p><img src=./programmer.png alt=Programmer></p>
-<p>Here is my attempt at defining the job: Someone who is responsible for designing, building, testing, and supporting digital solutions to real life problems.</p>
-<p>Of course, the job can take a variety of different forms, especially in large companies like Microsoft.</p>
-<h3 id=what-are-you-working-on>What are you working on?</h3>
-<h4 id=java-sdk>Java SDK</h4>
-<p>My first assignment was the <a href=https://github.com/microsoftgraph/msgraph-sdk-java/>Microsoft Graph Java SDK</a>. I had not done any Java in 12+ years since computer sciences school, and I was rusty to say the least. You will find the details of my experience in <a href=/github-repo-revival>Revamping the Microsoft Graph Java SDK</a>.</p>
-<h4 id=project-kiota>Project Kiota</h4>
-<p>My focus has now shifted to a <a href=https://github.com/microsoft/kiota>new project</a> started by <a href=https://twitter.com/darrel_miller>Darrel</a>: we’re building a new fluent API SDK generator for OpenAPI. This new generator supports different languages and allows anyone working with an API described with OpenAPI to generate their own fluent SDK. If you want to know more about it, you can watch this demonstration.</p>
-<div style=position:relative;padding-bottom:56.25%;height:0;overflow:hidden>
-<iframe src=https://www.youtube.com/embed/q-MIYdo1K8Q style=position:absolute;top:0;left:0;width:100%;height:100%;border:0 allowfullscreen title="YouTube Video"></iframe>
-</div>
-<h4 id=api-council>API Council</h4>
-<p>The API council is a team of architects and developers defining API guidance for Microsoft Graph. I get to learn a lot about industry standards and gain experience in API design. I try to “give back” by doing some of the more trivial work, like <a href=https://github.com/microsoft/api-guidelines/pull/226>writing some of the guidance</a> from the notes.</p>
-<h4 id=pull-requests-reviews>Pull requests reviews</h4>
-<p>Whether those pull requests are created by apps (dependabot, generation pipeline…), by teammates, or by the community, reviewing these pull requests is paramount to ensure the quality and the consistency.</p>
-<p>You should make reviewing code via pull requests a habit in your development team as it provides a learning opportunity for the reviewers and the author.</p>
-<h3 id=team-growth>Team growth</h3>
-<p>Since I joined the team, 20 more people have followed. This growth is not limited to my team, our organization has grown substantially during the last year. <a href=https://www.linkedin.com/in/jeremythake/>Jeremy</a> is building the Customers and Partners Experience (CPX/CXP) team, we also have a brand-new team of program managers lead by <a href=https://www.linkedin.com/in/kristenwomack/>Kristen</a>.</p>
-<p>This growth is rewarding because it leads to “building the plane as we are flying it” which translates in opportunities to learn for everyone.</p>
-<h3 id=do-you-still-get-emails-how-much-time-do-you-spend-in-meetings>Do you still get emails? How much time do you spend in meetings?</h3>
-<p>I have almost achieved “inbox zero”: I often go through a day without receiving a single email. I usually have less than 5 hours of meetings per week. 😊</p>
-<h3 id=culture>Culture</h3>
-<p>Our organization is globally distributed, with main points of presence in Nairobi and in Redmond. This distribution is a forcing factor for asynchronous work, which works very well for me. <a href=https://remote.com/blog/why-you-should-be-doing-async-work>Asynchronous work, when done well, boosts productivity and allows people to live more flexible lives that suit them better</a>.</p>
-<p>During this last year, I learnt a lot: not only I was able to brush up my Java skills and learn in depth HTTP/OData/OpenAPI/… on the technical side, but I was also able to about diversity and inclusion through internal training and events.</p>
-<h3 id=conclusion>Conclusion</h3>
-<p>I hope this post was enlightening about what being a developer at Microsoft means. I am sure the reality for service developers is quite different and maybe I will explore it later in my career. Until next time!</p>
-</div>
-<br>
-<p class=heading>
-Last edited
-<a href=https://github.com/baywet/blogsource/commit/f1c07980424f8c88fce2580454819da383433fb8>
-Sep 6, 2021
-</a> by <a href=https://github.com/baywet>Vincent Biret</a>
-</p>
-<br>
-<div class=heading>Tags:</div>
-<div class="field is-grouped is-grouped-multiline">
-<div class=control>
-<a href=/tags/github>
-<span class=tag>Github</span>
-</a>
-</div>
-<div class=control>
-<a href=/tags/open-source>
-<span class=tag>Open Source</span>
-</a>
-</div>
-<div class=control>
-<a href=/tags/community>
-<span class=tag>Community</span>
-</a>
-</div>
-<div class=control>
-<a href=/tags/microsoft-graph>
-<span class=tag>Microsoft Graph</span>
-</a>
-</div>
-<div class=control>
-<a href=/tags/microsoft>
-<span class=tag>Microsoft</span>
-</a>
-</div>
-</div>
-</div>
-</section>
-<section class=section>
-<div class=container>
-<div class=level>
-<div class=level-left>
-<div class=level-item>
-<p class="control has-addons">
-<a class=button href=# disabled>
-<span class="icon is-small"><i class="fa fa-chevron-left"></i></span>
-<span>Newest</span>
-</a>
-</p>
-</div>
-</div>
-<div class=level-right>
-<div class=level-item>
-<p class="control has-addons">
-<a class=button href=https://baywet.github.io/github-repo-revival/>
-<span class="is-hidden-touch is-hidden-desktop-only">
-Revamping the Microsoft Graph Java SDK: a recipe to revive open-source repositories
-</span>
-<span class="is-hidden-touch is-hidden-widescreen">
-Revamping the Microsoft Graph Java SDK: a recipe to revive open-source...
-</span>
-<span class="is-hidden-mobile is-hidden-desktop">
-Revamping the Microsoft Graph Java SDK: a recipe...
-</span>
-<span class=is-hidden-tablet>
-Revamping the Microsoft Graph Java SDK:...
-</span>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
-</a>
-</p>
-</div>
-</div>
-</div>
-</div>
-<br>
-<br>
-<div class=container>
-<div id=disqus_thread></div>
-<script>var disqus_config=function(){this.page.url="https://baywet.github.io/one-year-developer/",this.page.identifier=window.location.pathname};(function(){var a=document,b=a.createElement('script');b.src='https://baywet.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script>
-<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
-</div>
-<br>
-<div class=container>
-<nav class=panel>
-<p class=panel-heading>Related</p>
-<a class=panel-block href=https://baywet.github.io/github-repo-revival/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+Back in September 2020, I published a blog post about my experience as a Program Manager at Microsoft that was well received. It made me..."><meta name=twitter:creator content><meta name=twitter:image:src content="/img/logo.svg"><link rel=stylesheet type=text/css href=/css/capsule.min.css><script>(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-176061333-1','auto'),ga('send','pageview')</script><link rel=apple-touch-icon href=/img/apple-touch-icon.png><link rel=icon href=/img/favicon.ico></head><body style=min-height:100vh;display:flex;flex-direction:column><nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation"><div class=container><div class=navbar-brand><a class=navbar-item href=/en><div class="title is-4">&nbsp;Baywet's blog</div></a><label class="button navbar-burger is-white" for=navbar-burger-state><span></span><span></span><span></span></label></div><input type=checkbox id=navbar-burger-state><div class=navbar-menu><div class=navbar-end><a class=navbar-item href=https://baywet.github.io/fr/un-an-developpeur-microsoft/>Français</a></div></div></div></nav><section class=section style=flex:1><div class=container><h1 class=title>One year as a Software Developer at Microsoft</h1><p class=subtitle>Sep 6, 2021</p><div class=content><h2 id=one-year-as-a-software-developer-at-microsoft>One year as a Software Developer at Microsoft</h2><h3 id=introduction>Introduction</h3><p>Back in September 2020, I published a <a href=/pm-experience-dev-sdk>blog post about my experience as a Program Manager at Microsoft that was well received</a>. It made me realize that the community was curious and interested about this role. In this post, I will share my insights as a developer.</p><p>Before we begin, <strong>keep in mind this is my personal experience</strong>, which may differ a lot from team to team, product to product and depend on other circumstances (being remote, culture, etc…).</p><h3 id=what-is-a-software-developer>What is a software developer?</h3><p><img src=./programmer.png alt=Programmer></p><p>Here is my attempt at defining the job: Someone who is responsible for designing, building, testing, and supporting digital solutions to real life problems.</p><p>Of course, the job can take a variety of different forms, especially in large companies like Microsoft.</p><h3 id=what-are-you-working-on>What are you working on?</h3><h4 id=java-sdk>Java SDK</h4><p>My first assignment was the <a href=https://github.com/microsoftgraph/msgraph-sdk-java/>Microsoft Graph Java SDK</a>. I had not done any Java in 12+ years since computer sciences school, and I was rusty to say the least. You will find the details of my experience in <a href=/github-repo-revival>Revamping the Microsoft Graph Java SDK</a>.</p><h4 id=project-kiota>Project Kiota</h4><p>My focus has now shifted to a <a href=https://github.com/microsoft/kiota>new project</a> started by <a href=https://twitter.com/darrel_miller>Darrel</a>: we’re building a new fluent API SDK generator for OpenAPI. This new generator supports different languages and allows anyone working with an API described with OpenAPI to generate their own fluent SDK. If you want to know more about it, you can watch this demonstration.</p><div style=position:relative;padding-bottom:56.25%;height:0;overflow:hidden><iframe src=https://www.youtube.com/embed/q-MIYdo1K8Q style=position:absolute;top:0;left:0;width:100%;height:100%;border:0 allowfullscreen title="YouTube Video"></iframe></div><h4 id=api-council>API Council</h4><p>The API council is a team of architects and developers defining API guidance for Microsoft Graph. I get to learn a lot about industry standards and gain experience in API design. I try to “give back” by doing some of the more trivial work, like <a href=https://github.com/microsoft/api-guidelines/pull/226>writing some of the guidance</a> from the notes.</p><h4 id=pull-requests-reviews>Pull requests reviews</h4><p>Whether those pull requests are created by apps (dependabot, generation pipeline…), by teammates, or by the community, reviewing these pull requests is paramount to ensure the quality and the consistency.</p><p>You should make reviewing code via pull requests a habit in your development team as it provides a learning opportunity for the reviewers and the author.</p><h3 id=team-growth>Team growth</h3><p>Since I joined the team, 20 more people have followed. This growth is not limited to my team, our organization has grown substantially during the last year. <a href=https://www.linkedin.com/in/jeremythake/>Jeremy</a> is building the Customers and Partners Experience (CPX/CXP) team, we also have a brand-new team of program managers lead by <a href=https://www.linkedin.com/in/kristenwomack/>Kristen</a>.</p><p>This growth is rewarding because it leads to “building the plane as we are flying it” which translates in opportunities to learn for everyone.</p><h3 id=do-you-still-get-emails-how-much-time-do-you-spend-in-meetings>Do you still get emails? How much time do you spend in meetings?</h3><p>I have almost achieved “inbox zero”: I often go through a day without receiving a single email. I usually have less than 5 hours of meetings per week. 😊</p><h3 id=culture>Culture</h3><p>Our organization is globally distributed, with main points of presence in Nairobi and in Redmond. This distribution is a forcing factor for asynchronous work, which works very well for me. <a href=https://remote.com/blog/why-you-should-be-doing-async-work>Asynchronous work, when done well, boosts productivity and allows people to live more flexible lives that suit them better</a>.</p><p>During this last year, I learnt a lot: not only I was able to brush up my Java skills and learn in depth HTTP/OData/OpenAPI/… on the technical side, but I was also able to about diversity and inclusion through internal training and events.</p><h3 id=conclusion>Conclusion</h3><p>I hope this post was enlightening about what being a developer at Microsoft means. I am sure the reality for service developers is quite different and maybe I will explore it later in my career. Until next time!</p></div><br><p class=heading>Last edited
+<a href=https://github.com/baywet/blogsource/commit/dd09eef54ac7725556cc18eb97ce7235e29201ba>Sep 6, 2021</a> by <a href=https://github.com/baywet>Vincent Biret</a></p><br><div class=heading>Tags:</div><div class="field is-grouped is-grouped-multiline"><div class=control><a href=/tags/github><span class=tag>Github</span></a></div><div class=control><a href=/tags/open-source><span class=tag>Open Source</span></a></div><div class=control><a href=/tags/community><span class=tag>Community</span></a></div><div class=control><a href=/tags/microsoft-graph><span class=tag>Microsoft Graph</span></a></div><div class=control><a href=/tags/microsoft><span class=tag>Microsoft</span></a></div></div></div></section><section class=section><div class=container><div class=level><div class=level-left><div class=level-item><p class="control has-addons"><a class=button href=# disabled><span class="icon is-small"><i class="fa fa-chevron-left"></i></span>
+<span>Newest</span></a></p></div></div><div class=level-right><div class=level-item><p class="control has-addons"><a class=button href=https://baywet.github.io/github-repo-revival/><span class="is-hidden-touch is-hidden-desktop-only">Revamping the Microsoft Graph Java SDK: a recipe to revive open-source repositories</span>
+<span class="is-hidden-touch is-hidden-widescreen">Revamping the Microsoft Graph Java SDK: a recipe to revive open-source...</span>
+<span class="is-hidden-mobile is-hidden-desktop">Revamping the Microsoft Graph Java SDK: a recipe...</span>
+<span class=is-hidden-tablet>Revamping the Microsoft Graph Java SDK:...</span>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span></a></p></div></div></div></div><br><br><div class=container><div id=disqus_thread></div><script>var disqus_config=function(){this.page.url="https://baywet.github.io/one-year-developer/",this.page.identifier=window.location.pathname};(function(){var a=document,b=a.createElement('script');b.src='https://baywet.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div><br><div class=container><nav class=panel><p class=panel-heading>Related</p><a class=panel-block href=https://baywet.github.io/github-repo-revival/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Revamping the Microsoft Graph Java SDK: a recipe to revive open-source repositories&nbsp;
-<div class=tag>Github</div>
-<div class=tag>Open Source</div>
-<div class=tag>Community</div>
-<div class=tag>Microsoft Graph</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/speaking-at-sps-ottawa-2020/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Revamping the Microsoft Graph Java SDK: a recipe to revive open-source repositories&nbsp;<div class=tag>Github</div><div class=tag>Open Source</div><div class=tag>Community</div><div class=tag>Microsoft Graph</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-sps-ottawa-2020/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at Microsoft 365 Saturday Ottawa 2020&nbsp;
-<div class=tag>Microsoft Graph</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/pull-request-conflict-github-workflow/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at Microsoft 365 Saturday Ottawa 2020&nbsp;<div class=tag>Microsoft Graph</div></span></a><a class=panel-block href=https://baywet.github.io/pull-request-conflict-github-workflow/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>GitHub Actions: Automatic conflicting pull request tagging and comment&nbsp;
-<div class=tag>Github</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/new-blog-location/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>GitHub Actions: Automatic conflicting pull request tagging and comment&nbsp;<div class=tag>Github</div></span></a><a class=panel-block href=https://baywet.github.io/new-blog-location/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Moving to a new location and celebrating a decade of blogging&nbsp;
-<div class=tag>Community</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/joining-microsoft-as-a-program/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Moving to a new location and celebrating a decade of blogging&nbsp;<div class=tag>Community</div></span></a><a class=panel-block href=https://baywet.github.io/joining-microsoft-as-a-program/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Joining Microsoft as a Program Manager on the Microsoft Graph&nbsp;
-<div class=tag>Community</div>
-<div class=tag>Microsoft Graph</div>
-<div class=tag>Microsoft</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/new-tutorial-build-your-custom/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Joining Microsoft as a Program Manager on the Microsoft Graph&nbsp;<div class=tag>Community</div><div class=tag>Microsoft Graph</div><div class=tag>Microsoft</div></span></a><a class=panel-block href=https://baywet.github.io/new-tutorial-build-your-custom/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>New tutorial: build your custom provisioning solution for Office 365&nbsp;
-<div class=tag>Microsoft Graph</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/recording-available-microsoft/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>New tutorial: build your custom provisioning solution for Office 365&nbsp;<div class=tag>Microsoft Graph</div></span></a><a class=panel-block href=https://baywet.github.io/recording-available-microsoft/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Recording available: Microsoft Graph September Community call - Provisioning demo&nbsp;
-<div class=tag>Community</div>
-<div class=tag>Microsoft Graph</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2019-10-01-14-12-00/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Recording available: Microsoft Graph September Community call - Provisioning demo&nbsp;<div class=tag>Community</div><div class=tag>Microsoft Graph</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2019-10-01-14-12-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at SharePoint Saturday Ottawa 2019&nbsp;
-<div class=tag>Microsoft Graph</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-fest-dc-2019-04-18-07-35-00/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at SharePoint Saturday Ottawa 2019&nbsp;<div class=tag>Microsoft Graph</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-fest-dc-2019-04-18-07-35-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at SharePoint Fest DC 2019&nbsp;
-<div class=tag>Microsoft Graph</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2019-04-02-02-00-00/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at SharePoint Fest DC 2019&nbsp;<div class=tag>Microsoft Graph</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2019-04-02-02-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at SharePoint Saturday Houston 2019&nbsp;
-<div class=tag>Microsoft Graph</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/sharepoint-framework-and-devop/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at SharePoint Saturday Houston 2019&nbsp;<div class=tag>Microsoft Graph</div></span></a><a class=panel-block href=https://baywet.github.io/sharepoint-framework-and-devop/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>SharePoint Framework and DevOps Practices: New Documentation, New Samples&nbsp;
-<div class=tag>Community</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/speaking-at-granite-state-shar/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>SharePoint Framework and DevOps Practices: New Documentation, New Samples&nbsp;<div class=tag>Community</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-granite-state-shar/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at Granite State SharePoint Users Group&nbsp;
-<div class=tag>Microsoft Graph</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2018-10-10-08-00-00/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at Granite State SharePoint Users Group&nbsp;<div class=tag>Microsoft Graph</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2018-10-10-08-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at SharePoint Saturday Ottawa 2018&nbsp;
-<div class=tag>Microsoft Graph</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-fest-se/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at SharePoint Saturday Ottawa 2018&nbsp;<div class=tag>Microsoft Graph</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-fest-se/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at SharePoint Fest Seattle 2018&nbsp;
-<div class=tag>Microsoft Graph</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/guest-on-the-microsoft-graph-c/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at SharePoint Fest Seattle 2018&nbsp;<div class=tag>Microsoft Graph</div></span></a><a class=panel-block href=https://baywet.github.io/guest-on-the-microsoft-graph-c/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Guest on the Microsoft Graph Community call (June): The Online Meeting Solution&nbsp;
-<div class=tag>Microsoft Graph</div>
-</span>
-</a>
-</nav>
-</div>
-</section>
-<footer class=footer>
-<div class=container>
-<nav class=level>
-</nav>
-<nav class=level>
-<div class="level-left has-text-centered">
-<div class=level-item>
-<form class="control has-icons has-icons-right" method=get action=https://bing.com>
-<input class=input type=text name=q maxlength=255 placeholder=Search>
+<span>Guest on the Microsoft Graph Community call (June): The Online Meeting Solution&nbsp;<div class=tag>Microsoft Graph</div></span></a></nav></div></section><footer class=footer><div class=container><nav class=level></nav><nav class=level><div class="level-left has-text-centered"><div class=level-item><form class="control has-icons has-icons-right" method=get action=https://bing.com><input class=input type=text name=q maxlength=255 placeholder=Search>
 <input class=input type=hidden name=sites value=https://baywet.github.io/>
-<span class="icon is-small is-right"><i class="fa fa-search"></i></span>
-</form>
-</div>
-</div>
-<div class="level-right has-text-centered">
-<div class=level-item>
-<a class=button href=https://baywet.github.io/en>
-<span class=icon><i class="fa fa-home"></i></span>
-</a> &nbsp;
-<a class=button href>
-<span class=icon><i class="fa fa-rss"></i></span>
-</a>
-</div>
-</div>
-</nav>
-</div>
-</footer>
-<script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script>
-</body>
-</html>
+<span class="icon is-small is-right"><i class="fa fa-search"></i></span></form></div></div><div class="level-right has-text-centered"><div class=level-item><a class=button href=https://baywet.github.io/en><span class=icon><i class="fa fa-home"></i></span></a> &nbsp;
+<a class=button href><span class=icon><i class="fa fa-rss"></i></span></a></div></div></nav></div></footer><script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script></body></html>

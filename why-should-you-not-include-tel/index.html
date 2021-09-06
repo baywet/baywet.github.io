@@ -1,313 +1,43 @@
-<!doctype html><html lang=en dir=ltr itemscope itemtype=https://schema.org/Article>
-<head>
-<meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<meta name=viewport content="width=device-width,initial-scale=1">
-<title>Why should you not include telerik controls in your SharePoint products?</title>
-<meta name=author content="Vincent Biret">
-<meta name=description content="First and foremost this article is a feedback from the field of a very particular case of SharePoint development. Telerik products and components are very good and accelerate your developments...">
-<meta name=generator content="Hugo 0.88.1">
-<meta itemprop=name content="Why should you not include telerik controls in your SharePoint products?">
-<meta itemprop=description content="First and foremost this article is a feedback from the field of a very particular case of SharePoint development. Telerik products and components are very good and accelerate your developments...">
-<meta itemprop=image content="/img/logo.svg">
-<meta property="og:title" content="Why should you not include telerik controls in your SharePoint products?">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://baywet.github.io/why-should-you-not-include-tel/">
-<meta property="og:image" content="/img/logo.svg">
-<meta property="og:description" content="First and foremost this article is a feedback from the field of a very particular case of SharePoint development. Telerik products and components are very good and accelerate your developments...">
-<meta property="og:site_name" content="Baywet's blog">
-<meta property="og:updated_time" content="2021-09-06T09:54:53-07:00">
-<meta property="article:published_time" content="2014-07-21T03:32:04+00:00">
-<meta property="article:modified_time" content="2021-09-06T09:54:53-07:00">
-<meta property="article:section" content>
-<meta property="article:tag" content="products">
-<meta property="article:tag" content="feedback">
-<meta property="article:tag" content="developer">
-<meta property="article:tag" content="best practices">
-<meta property="article:tag" content="sharepoint">
-<meta name=twitter:card content="summary">
-<meta name=twitter:site content>
-<meta name=twitter:title content="Why should you not include telerik controls in your SharePoint products?">
-<meta name=twitter:description content="First and foremost this article is a feedback from the field of a very particular case of SharePoint development. Telerik products and components are very good and accelerate your developments...">
-<meta name=twitter:creator content>
-<meta name=twitter:image:src content="/img/logo.svg">
-<link rel=stylesheet type=text/css href=/css/capsule.min.css>
-<script>(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-176061333-1','auto'),ga('send','pageview')</script>
-<link rel=apple-touch-icon href=/img/apple-touch-icon.png>
-<link rel=icon href=/img/favicon.ico>
-</head>
-<body style=min-height:100vh;display:flex;flex-direction:column>
-<nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation">
-<div class=container>
-<div class=navbar-brand>
-<a class=navbar-item href=/en>
-<div class="title is-4">&nbsp;Baywet's blog</div>
-</a>
-<label class="button navbar-burger is-white" for=navbar-burger-state>
-<span></span>
-<span></span>
-<span></span>
-</label>
-</div>
-<input type=checkbox id=navbar-burger-state>
-<div class=navbar-menu>
-<div class=navbar-end>
-<a class=navbar-item href=https://baywet.github.io/fr/pourquoi-ne-pas-inclure-de-con/>Français</a>
-</div>
-</div>
-</div>
-</nav>
-<section class=section style=flex:1>
-<div class=container>
-<h1 class=title>Why should you not include telerik controls in your SharePoint products?</h1>
-<p class=subtitle>Jul 21, 2014</p>
-<div class=content>
-<p>First and foremost this article is a feedback from the field of a very particular case of SharePoint development. <a href=https://www.telerik.com/products/aspnet-ajax.aspx>Telerik</a> products and components are very good and accelerate your developments (SharePoint or not) providing you advanced and customizable controls.</p>
-<p>Some of you already know it, I work in a team that develops products for SharePoint (<a href=https://www.oceanik.com>www.oceanik.com</a> and the others one do not have yet dedicated sites, we still have work on the marketing).</p>
-<p>Developing products is quite different from the development of specific solutions (to address the need for a particular client in a particular context). Indeed your product will be deployed in a multitude of complex and different environments and be used for the same initial need but in varied ways.</p>
-<p>In this context we used telerik components in our SharePoint products. After several months without problems some of our clients said that since the installation of our products some of our features did not operate correctly or even that other developments were all not working anymore.</p>
-<p>The problem? They already had a version of telerik deployed, either via the telerik for SharePoint components (which embeds the telerik for asp.net components that we use) or because other products/custom developments. We had a conflict with versions of telerik.</p>
-<p>The solution? Redirection of assemblies you would say. Yes but when using this kind of technique we must specify which request version is mapped to which version of the component. If it is something on which we can support the client, it is difficult to industrialize the process, as impossible to know in advance which version will have client. Another detail, the themes available have changed as much as versions, which also crashed our features.</p>
-<p>The real solution? We had to get rid of telerik. In our case we were simply using grids, and we replaced them with javascripts controls (kendo ui, again some telerik stuff).</p>
-<p>More generally, the development of &lsquo;full-trust&rsquo; solutions unfortunately does not isolate the context of execution, this is also what led to the new apps model for SharePoint. My advice for all your SharePoint full trusts development: reduce to the minimum possible (cost constraints) your dependencies to third-party components.</p>
-<p>In the same way always localize the use of javascript libraries (ex: jquery noconflict), you never know if one of your customers will not have an old version of the same library that will cause problems.</p>
-<p>Obviously all these problems do not arise with apps, so here is my last tip: only make full trust solutions if you absolutely need to.</p>
-</div>
-<br>
-<p class=heading>
-Last edited
-<a href=https://github.com/baywet/blogsource/commit/f1c07980424f8c88fce2580454819da383433fb8>
-Sep 6, 2021
-</a> by <a href=https://github.com/baywet>Vincent Biret</a>
-</p>
-<br>
-<div class=heading>Tags:</div>
-<div class="field is-grouped is-grouped-multiline">
-<div class=control>
-<a href=/tags/products>
-<span class=tag>Products</span>
-</a>
-</div>
-<div class=control>
-<a href=/tags/feedback>
-<span class=tag>Feedback</span>
-</a>
-</div>
-<div class=control>
-<a href=/tags/developer>
-<span class=tag>Developer</span>
-</a>
-</div>
-<div class=control>
-<a href=/tags/best-practices>
-<span class=tag>Best Practices</span>
-</a>
-</div>
-<div class=control>
-<a href=/tags/sharepoint>
-<span class=tag>Sharepoint</span>
-</a>
-</div>
-</div>
-</div>
-</section>
-<section class=section>
-<div class=container>
-<div class=level>
-<div class=level-left>
-<div class=level-item>
-<p class="control has-addons">
-<a class=button href=https://baywet.github.io/localizing-javascript-of-a-ful/>
-<span class="icon is-small"><i class="fa fa-chevron-left"></i></span>
-<span class="is-hidden-touch is-hidden-desktop-only">
-Localizing JavaScript of a Full Trust solution
-</span>
-<span class="is-hidden-touch is-hidden-widescreen">
-Localizing JavaScript of a Full Trust solution
-</span>
-<span class="is-hidden-mobile is-hidden-desktop">
-Localizing JavaScript of a Full Trust solution
-</span>
-<span class=is-hidden-tablet>
-Localizing JavaScript of a Full Trust...
-</span>
-</a>
-</p>
-</div>
-</div>
-<div class=level-right>
-<div class=level-item>
-<p class="control has-addons">
-<a class=button href=https://baywet.github.io/have-all-the-tools-of-a-first/>
-<span class="is-hidden-touch is-hidden-desktop-only">
-Have all the tools of a first class startup's in 10 min
-</span>
-<span class="is-hidden-touch is-hidden-widescreen">
-Have all the tools of a first class startup's in 10 min
-</span>
-<span class="is-hidden-mobile is-hidden-desktop">
-Have all the tools of a first class startup's in...
-</span>
-<span class=is-hidden-tablet>
-Have all the tools of a first class...
-</span>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
-</a>
-</p>
-</div>
-</div>
-</div>
-</div>
-<br>
-<br>
-<div class=container>
-<div id=disqus_thread></div>
-<script>var disqus_config=function(){this.page.url="https://baywet.github.io/why-should-you-not-include-tel/",this.page.identifier=window.location.pathname};(function(){var a=document,b=a.createElement('script');b.src='https://baywet.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script>
-<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
-</div>
-<br>
-<div class=container>
-<nav class=panel>
-<p class=panel-heading>Related</p>
-<a class=panel-block href=https://baywet.github.io/the-roadmap-for-office-365-is/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<!doctype html><html lang=en dir=ltr itemscope itemtype=https://schema.org/Article><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>Why should you not include telerik controls in your SharePoint products?</title><meta name=author content="Vincent Biret"><meta name=description content="First and foremost this article is a feedback from the field of a very particular case of SharePoint development. Telerik products and components are very good and accelerate your developments..."><meta name=generator content="Hugo 0.85.0"><meta itemprop=name content="Why should you not include telerik controls in your SharePoint products?"><meta itemprop=description content="First and foremost this article is a feedback from the field of a very particular case of SharePoint development. Telerik products and components are very good and accelerate your developments..."><meta itemprop=image content="/img/logo.svg"><meta property="og:title" content="Why should you not include telerik controls in your SharePoint products?"><meta property="og:type" content="article"><meta property="og:url" content="https://baywet.github.io/why-should-you-not-include-tel/"><meta property="og:image" content="/img/logo.svg"><meta property="og:description" content="First and foremost this article is a feedback from the field of a very particular case of SharePoint development. Telerik products and components are very good and accelerate your developments..."><meta property="og:site_name" content="Baywet's blog"><meta property="og:updated_time" content="2021-09-06T13:44:53-04:00"><meta property="article:published_time" content="2014-07-21T03:32:04+00:00"><meta property="article:modified_time" content="2021-09-06T13:44:53-04:00"><meta property="article:section" content><meta property="article:tag" content="products"><meta property="article:tag" content="feedback"><meta property="article:tag" content="developer"><meta property="article:tag" content="best practices"><meta property="article:tag" content="sharepoint"><meta name=twitter:card content="summary"><meta name=twitter:site content><meta name=twitter:title content="Why should you not include telerik controls in your SharePoint products?"><meta name=twitter:description content="First and foremost this article is a feedback from the field of a very particular case of SharePoint development. Telerik products and components are very good and accelerate your developments..."><meta name=twitter:creator content><meta name=twitter:image:src content="/img/logo.svg"><link rel=stylesheet type=text/css href=/css/capsule.min.css><script>(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-176061333-1','auto'),ga('send','pageview')</script><link rel=apple-touch-icon href=/img/apple-touch-icon.png><link rel=icon href=/img/favicon.ico></head><body style=min-height:100vh;display:flex;flex-direction:column><nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation"><div class=container><div class=navbar-brand><a class=navbar-item href=/en><div class="title is-4">&nbsp;Baywet's blog</div></a><label class="button navbar-burger is-white" for=navbar-burger-state><span></span><span></span><span></span></label></div><input type=checkbox id=navbar-burger-state><div class=navbar-menu><div class=navbar-end><a class=navbar-item href=https://baywet.github.io/fr/pourquoi-ne-pas-inclure-de-con/>Français</a></div></div></div></nav><section class=section style=flex:1><div class=container><h1 class=title>Why should you not include telerik controls in your SharePoint products?</h1><p class=subtitle>Jul 21, 2014</p><div class=content><p>First and foremost this article is a feedback from the field of a very particular case of SharePoint development. <a href=https://www.telerik.com/products/aspnet-ajax.aspx>Telerik</a> products and components are very good and accelerate your developments (SharePoint or not) providing you advanced and customizable controls.</p><p>Some of you already know it, I work in a team that develops products for SharePoint (<a href=https://www.oceanik.com>www.oceanik.com</a> and the others one do not have yet dedicated sites, we still have work on the marketing).</p><p>Developing products is quite different from the development of specific solutions (to address the need for a particular client in a particular context). Indeed your product will be deployed in a multitude of complex and different environments and be used for the same initial need but in varied ways.</p><p>In this context we used telerik components in our SharePoint products. After several months without problems some of our clients said that since the installation of our products some of our features did not operate correctly or even that other developments were all not working anymore.</p><p>The problem? They already had a version of telerik deployed, either via the telerik for SharePoint components (which embeds the telerik for asp.net components that we use) or because other products/custom developments. We had a conflict with versions of telerik.</p><p>The solution? Redirection of assemblies you would say. Yes but when using this kind of technique we must specify which request version is mapped to which version of the component. If it is something on which we can support the client, it is difficult to industrialize the process, as impossible to know in advance which version will have client. Another detail, the themes available have changed as much as versions, which also crashed our features.</p><p>The real solution? We had to get rid of telerik. In our case we were simply using grids, and we replaced them with javascripts controls (kendo ui, again some telerik stuff).</p><p>More generally, the development of &lsquo;full-trust&rsquo; solutions unfortunately does not isolate the context of execution, this is also what led to the new apps model for SharePoint. My advice for all your SharePoint full trusts development: reduce to the minimum possible (cost constraints) your dependencies to third-party components.</p><p>In the same way always localize the use of javascript libraries (ex: jquery noconflict), you never know if one of your customers will not have an old version of the same library that will cause problems.</p><p>Obviously all these problems do not arise with apps, so here is my last tip: only make full trust solutions if you absolutely need to.</p></div><br><p class=heading>Last edited
+<a href=https://github.com/baywet/blogsource/commit/dd09eef54ac7725556cc18eb97ce7235e29201ba>Sep 6, 2021</a> by <a href=https://github.com/baywet>Vincent Biret</a></p><br><div class=heading>Tags:</div><div class="field is-grouped is-grouped-multiline"><div class=control><a href=/tags/products><span class=tag>Products</span></a></div><div class=control><a href=/tags/feedback><span class=tag>Feedback</span></a></div><div class=control><a href=/tags/developer><span class=tag>Developer</span></a></div><div class=control><a href=/tags/best-practices><span class=tag>Best Practices</span></a></div><div class=control><a href=/tags/sharepoint><span class=tag>Sharepoint</span></a></div></div></div></section><section class=section><div class=container><div class=level><div class=level-left><div class=level-item><p class="control has-addons"><a class=button href=https://baywet.github.io/localizing-javascript-of-a-ful/><span class="icon is-small"><i class="fa fa-chevron-left"></i></span>
+<span class="is-hidden-touch is-hidden-desktop-only">Localizing JavaScript of a Full Trust solution</span>
+<span class="is-hidden-touch is-hidden-widescreen">Localizing JavaScript of a Full Trust solution</span>
+<span class="is-hidden-mobile is-hidden-desktop">Localizing JavaScript of a Full Trust solution</span>
+<span class=is-hidden-tablet>Localizing JavaScript of a Full Trust...</span></a></p></div></div><div class=level-right><div class=level-item><p class="control has-addons"><a class=button href=https://baywet.github.io/have-all-the-tools-of-a-first/><span class="is-hidden-touch is-hidden-desktop-only">Have all the tools of a first class startup's in 10 min</span>
+<span class="is-hidden-touch is-hidden-widescreen">Have all the tools of a first class startup's in 10 min</span>
+<span class="is-hidden-mobile is-hidden-desktop">Have all the tools of a first class startup's in...</span>
+<span class=is-hidden-tablet>Have all the tools of a first class...</span>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span></a></p></div></div></div></div><br><br><div class=container><div id=disqus_thread></div><script>var disqus_config=function(){this.page.url="https://baywet.github.io/why-should-you-not-include-tel/",this.page.identifier=window.location.pathname};(function(){var a=document,b=a.createElement('script');b.src='https://baywet.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div><br><div class=container><nav class=panel><p class=panel-heading>Related</p><a class=panel-block href=https://baywet.github.io/the-roadmap-for-office-365-is/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>The roadmap for Office 365 is available&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/selected-for-sharepoint-saturd/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>The roadmap for Office 365 is available&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/selected-for-sharepoint-saturd/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Selected for SharePoint Saturday New York City&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/auto-hosted-applications-are-d/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Selected for SharePoint Saturday New York City&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/auto-hosted-applications-are-d/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Auto-hosted applications are deprecated&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/the-former-msp-becomes-mvp/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Auto-hosted applications are deprecated&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/the-former-msp-becomes-mvp/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>The former MSP becomes MVP&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/write-a-review-on-infopaths-re/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>The former MSP becomes MVP&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/write-a-review-on-infopaths-re/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Write a review on infopath’s replacer!&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/outstanding-announcements-of-t/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Write a review on infopath’s replacer!&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/outstanding-announcements-of-t/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Outstanding announcements of the SharePoint Conference 2014 for Office 365&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/anonymous-access-for-sharepoin/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Outstanding announcements of the SharePoint Conference 2014 for Office 365&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/anonymous-access-for-sharepoin/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Anonymous access for SharePoint autohosted apps&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/operating-system-compatibility/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Anonymous access for SharePoint autohosted apps&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/operating-system-compatibility/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Operating system compatibility of SharePoint 2010/2013 has evolved&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/repackaging-of-sharepoint-2010/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Operating system compatibility of SharePoint 2010/2013 has evolved&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/repackaging-of-sharepoint-2010/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Repackaging of SharePoint 2010 language packs&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/march-update-of-visual-studio/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Repackaging of SharePoint 2010 language packs&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/march-update-of-visual-studio/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>March Update of Visual Studio tools for Office&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/managing-resources-how-to-make/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>March Update of Visual Studio tools for Office&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/managing-resources-how-to-make/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Managing Resources, how to make your SharePoint solutions “globally deployed”&nbsp;
-<div class=tag>Developer</div>
-<div class=tag>Sharepoint</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/help-me-to-speak-at-sp24-the-f/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Managing Resources, how to make your SharePoint solutions “globally deployed”&nbsp;<div class=tag>Developer</div><div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/help-me-to-speak-at-sp24-the-f/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Help me to speak at SP24 the first SharePoint (web) conference all around the world!&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/boost-your-sharepoint-solution-2013-12-15-12-06-00/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Help me to speak at SP24 the first SharePoint (web) conference all around the world!&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/boost-your-sharepoint-solution-2013-12-15-12-06-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Boost your SharePoint solutions with distributed cache!–Part 2–Explanations tips and warnings&nbsp;
-<div class=tag>Developer</div>
-<div class=tag>Sharepoint</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/boost-your-sharepoint-solution-2013-12-13-02-35-30/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Boost your SharePoint solutions with distributed cache!–Part 2–Explanations tips and warnings&nbsp;<div class=tag>Developer</div><div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/boost-your-sharepoint-solution-2013-12-13-02-35-30/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Boost your SharePoint solutions with distributed cache!- Part 1–Introduction&nbsp;
-<div class=tag>Developer</div>
-<div class=tag>Sharepoint</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/sharepoint-auto-hosted-app-and/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Boost your SharePoint solutions with distributed cache!- Part 1–Introduction&nbsp;<div class=tag>Developer</div><div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/sharepoint-auto-hosted-app-and/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>SharePoint Auto hosted app and ASP.NET MVC&nbsp;
-<div class=tag>Developer</div>
-<div class=tag>Sharepoint</div>
-</span>
-</a>
-</nav>
-</div>
-</section>
-<footer class=footer>
-<div class=container>
-<nav class=level>
-</nav>
-<nav class=level>
-<div class="level-left has-text-centered">
-<div class=level-item>
-<form class="control has-icons has-icons-right" method=get action=https://bing.com>
-<input class=input type=text name=q maxlength=255 placeholder=Search>
+<span>SharePoint Auto hosted app and ASP.NET MVC&nbsp;<div class=tag>Developer</div><div class=tag>Sharepoint</div></span></a></nav></div></section><footer class=footer><div class=container><nav class=level></nav><nav class=level><div class="level-left has-text-centered"><div class=level-item><form class="control has-icons has-icons-right" method=get action=https://bing.com><input class=input type=text name=q maxlength=255 placeholder=Search>
 <input class=input type=hidden name=sites value=https://baywet.github.io/>
-<span class="icon is-small is-right"><i class="fa fa-search"></i></span>
-</form>
-</div>
-</div>
-<div class="level-right has-text-centered">
-<div class=level-item>
-<a class=button href=https://baywet.github.io/en>
-<span class=icon><i class="fa fa-home"></i></span>
-</a> &nbsp;
-<a class=button href>
-<span class=icon><i class="fa fa-rss"></i></span>
-</a>
-</div>
-</div>
-</nav>
-</div>
-</footer>
-<script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script>
-</body>
-</html>
+<span class="icon is-small is-right"><i class="fa fa-search"></i></span></form></div></div><div class="level-right has-text-centered"><div class=level-item><a class=button href=https://baywet.github.io/en><span class=icon><i class="fa fa-home"></i></span></a> &nbsp;
+<a class=button href><span class=icon><i class="fa fa-rss"></i></span></a></div></div></nav></div></footer><script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script></body></html>

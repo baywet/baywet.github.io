@@ -1,413 +1,51 @@
-<!doctype html><html lang=fr dir=ltr itemscope itemtype=https://schema.org/Article>
-<head>
-<meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<meta name=viewport content="width=device-width,initial-scale=1">
-<title>Déterminez votre dette technique à l’aide de SonarQube : 10 - Création d’un compte de service et référencement dans VSTS</title>
-<meta name=author content="Vincent Biret">
-<meta name=description content="TL ; DR
+<!doctype html><html lang=fr dir=ltr itemscope itemtype=https://schema.org/Article><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>Déterminez votre dette technique à l’aide de SonarQube : 10 - Création d’un compte de service et référencement dans VSTS</title><meta name=author content="Vincent Biret"><meta name=description content="TL ; DR
 Pour éviter que m’importe qui puisse envoyer des résultats d’analyse sur votre serveur SonarQube, nous allons créer un compte de service et forcer l’authentification.
-Création du compte de...">
-<meta name=generator content="Hugo 0.88.1">
-<meta itemprop=name content="Déterminez votre dette technique à l’aide de SonarQube : 10 - Création d’un compte de service et référencement dans VSTS">
-<meta itemprop=description content="TL ; DR
+Création du compte de..."><meta name=generator content="Hugo 0.85.0"><meta itemprop=name content="Déterminez votre dette technique à l’aide de SonarQube : 10 - Création d’un compte de service et référencement dans VSTS"><meta itemprop=description content="TL ; DR
 Pour éviter que m’importe qui puisse envoyer des résultats d’analyse sur votre serveur SonarQube, nous allons créer un compte de service et forcer l’authentification.
-Création du compte de...">
-<meta itemprop=image content="/img/logo.svg">
-<meta property="og:title" content="Déterminez votre dette technique à l’aide de SonarQube : 10 - Création d’un compte de service et référencement dans VSTS">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://baywet.github.io/fr/determinez-votre-dette-techniq-2016-11-21-14-00-00/">
-<meta property="og:image" content="/img/logo.svg">
-<meta property="og:description" content="TL ; DR
+Création du compte de..."><meta itemprop=image content="/img/logo.svg"><meta property="og:title" content="Déterminez votre dette technique à l’aide de SonarQube : 10 - Création d’un compte de service et référencement dans VSTS"><meta property="og:type" content="article"><meta property="og:url" content="https://baywet.github.io/fr/determinez-votre-dette-techniq-2016-11-21-14-00-00/"><meta property="og:image" content="/img/logo.svg"><meta property="og:description" content="TL ; DR
 Pour éviter que m’importe qui puisse envoyer des résultats d’analyse sur votre serveur SonarQube, nous allons créer un compte de service et forcer l’authentification.
-Création du compte de...">
-<meta property="og:site_name" content="Le blog de baywet">
-<meta property="og:updated_time" content="2021-09-06T09:54:53-07:00">
-<meta property="article:published_time" content="2016-11-21T14:00:00+00:00">
-<meta property="article:modified_time" content="2021-09-06T09:54:53-07:00">
-<meta property="article:section" content>
-<meta property="article:tag" content="sonarqube">
-<meta property="article:tag" content="devops">
-<meta property="article:tag" content="alm">
-<meta property="article:tag" content="docker">
-<meta property="article:tag" content="azure">
-<meta name=twitter:card content="summary">
-<meta name=twitter:site content>
-<meta name=twitter:title content="Déterminez votre dette technique à l’aide de SonarQube : 10 - Création d’un compte de service et référencement dans VSTS">
-<meta name=twitter:description content="TL ; DR
+Création du compte de..."><meta property="og:site_name" content="Le blog de baywet"><meta property="og:updated_time" content="2021-09-06T13:44:53-04:00"><meta property="article:published_time" content="2016-11-21T14:00:00+00:00"><meta property="article:modified_time" content="2021-09-06T13:44:53-04:00"><meta property="article:section" content><meta property="article:tag" content="sonarqube"><meta property="article:tag" content="devops"><meta property="article:tag" content="alm"><meta property="article:tag" content="docker"><meta property="article:tag" content="azure"><meta name=twitter:card content="summary"><meta name=twitter:site content><meta name=twitter:title content="Déterminez votre dette technique à l’aide de SonarQube : 10 - Création d’un compte de service et référencement dans VSTS"><meta name=twitter:description content="TL ; DR
 Pour éviter que m’importe qui puisse envoyer des résultats d’analyse sur votre serveur SonarQube, nous allons créer un compte de service et forcer l’authentification.
-Création du compte de...">
-<meta name=twitter:creator content>
-<meta name=twitter:image:src content="/img/logo.svg">
-<link rel=stylesheet type=text/css href=/css/capsule.min.css>
-<script>(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-176061333-1','auto'),ga('send','pageview')</script>
-<link rel=apple-touch-icon href=/img/apple-touch-icon.png>
-<link rel=icon href=/img/favicon.ico>
-</head>
-<body style=min-height:100vh;display:flex;flex-direction:column>
-<nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation">
-<div class=container>
-<div class=navbar-brand>
-<a class=navbar-item href=/fr>
-<div class="title is-4">&nbsp;Le blog de baywet</div>
-</a>
-<label class="button navbar-burger is-white" for=navbar-burger-state>
-<span></span>
-<span></span>
-<span></span>
-</label>
-</div>
-<input type=checkbox id=navbar-burger-state>
-<div class=navbar-menu>
-<div class=navbar-end>
-<a class=navbar-item href=/en>English</a>
-</div>
-</div>
-</div>
-</nav>
-<section class=section style=flex:1>
-<div class=container>
-<h1 class=title>Déterminez votre dette technique à l’aide de SonarQube : 10 - Création d’un compte de service et référencement dans VSTS</h1>
-<p class=subtitle>Nov 21, 2016</p>
-<div class=content>
-<h3 id=tl-dr>TL ; DR</h3>
-<p>Pour éviter que m’importe qui puisse envoyer des résultats d’analyse sur votre serveur SonarQube, nous allons créer un compte de service et forcer l’authentification.</p>
-<h3 id=création-du-compte-de-service>Création du compte de service</h3>
-<p>Pour cela rendez-vous dans administration, sécurité, utilisateurs et ajoutez un compte.</p>
-<p><img src=./56.png alt=56.png></p>
-<h3 id=provisionnement-du-compte-de-service>Provisionnement du compte de service</h3>
-<p>Pour le référencer dans VSTS, rendez-vous sur votre projet d’équipe, cliquez sur paramètres (la roue crantée), Services, nouveau service générique et entrez url, nom d’usager et mot de passe du compte de service.</p>
-<p><img src=./57.png alt=57.png></p>
-</div>
-<br>
-<p class=heading>
-Edité la dernière fois le
-<a href=https://github.com/baywet/blogsource/commit/f1c07980424f8c88fce2580454819da383433fb8>
-6 Sep 2021
-</a> par <a href=https://github.com/baywet>Vincent Biret</a>
-</p>
-<br>
-<div class=heading>Tags:</div>
-<div class="field is-grouped is-grouped-multiline">
-<div class=control>
-<a href=/fr/tags/sonarqube>
-<span class=tag>Sonarqube</span>
-</a>
-</div>
-<div class=control>
-<a href=/fr/tags/devops>
-<span class=tag>Devops</span>
-</a>
-</div>
-<div class=control>
-<a href=/fr/tags/alm>
-<span class=tag>Alm</span>
-</a>
-</div>
-<div class=control>
-<a href=/fr/tags/docker>
-<span class=tag>Docker</span>
-</a>
-</div>
-<div class=control>
-<a href=/fr/tags/azure>
-<span class=tag>Azure</span>
-</a>
-</div>
-<div class=control>
-<a href=/fr/tags/linux>
-<span class=tag>Linux</span>
-</a>
-</div>
-<div class=control>
-<a href=/fr/tags/analyse-statique>
-<span class=tag>Analyse Statique</span>
-</a>
-</div>
-<div class=control>
-<a href=/fr/tags/code>
-<span class=tag>Code</span>
-</a>
-</div>
-<div class=control>
-<a href=/fr/tags/vsts>
-<span class=tag>Vsts</span>
-</a>
-</div>
-</div>
-</div>
-</section>
-<section class=section>
-<div class=container>
-<div class=level>
-<div class=level-left>
-<div class=level-item>
-<p class="control has-addons">
-<a class=button href=https://baywet.github.io/fr/determinez-votre-dette-techniq-2016-11-23-14-00-00/>
-<span class="icon is-small"><i class="fa fa-chevron-left"></i></span>
-<span class="is-hidden-touch is-hidden-desktop-only">
-Déterminez votre dette technique à l’aide de SonarQube : 11 - Ajout du projet SonarQube
-</span>
-<span class="is-hidden-touch is-hidden-widescreen">
-Déterminez votre dette technique à l’aide de SonarQube : 11 - Ajout du...
-</span>
-<span class="is-hidden-mobile is-hidden-desktop">
-Déterminez votre dette technique à l’aide de...
-</span>
-<span class=is-hidden-tablet>
-Déterminez votre dette technique à...
-</span>
-</a>
-</p>
-</div>
-</div>
-<div class=level-right>
-<div class=level-item>
-<p class="control has-addons">
-<a class=button href=https://baywet.github.io/fr/determinez-votre-dette-techniq-2016-11-18-14-00-00/>
-<span class="is-hidden-touch is-hidden-desktop-only">
-Déterminez votre dette technique à l’aide de SonarQube : 9 - Configuration d’Azure Active directory...
-</span>
-<span class="is-hidden-touch is-hidden-widescreen">
-Déterminez votre dette technique à l’aide de SonarQube : 9 - Configuration...
-</span>
-<span class="is-hidden-mobile is-hidden-desktop">
-Déterminez votre dette technique à l’aide de...
-</span>
-<span class=is-hidden-tablet>
-Déterminez votre dette technique à...
-</span>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
-</a>
-</p>
-</div>
-</div>
-</div>
-</div>
-<br>
-<br>
-<div class=container>
-<div id=disqus_thread></div>
-<script>var disqus_config=function(){this.page.url="https://baywet.github.io/fr/determinez-votre-dette-techniq-2016-11-21-14-00-00/",this.page.identifier=window.location.pathname};(function(){var a=document,b=a.createElement('script');b.src='https://baywet.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script>
-<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
-</div>
-<br>
-<div class=container>
-<nav class=panel>
-<p class=panel-heading>Related</p>
-<a class=panel-block href=https://baywet.github.io/fr/determinez-votre-dette-techniq-2016-11-18-14-00-00/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+Création du compte de..."><meta name=twitter:creator content><meta name=twitter:image:src content="/img/logo.svg"><link rel=stylesheet type=text/css href=/css/capsule.min.css><script>(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-176061333-1','auto'),ga('send','pageview')</script><link rel=apple-touch-icon href=/img/apple-touch-icon.png><link rel=icon href=/img/favicon.ico></head><body style=min-height:100vh;display:flex;flex-direction:column><nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation"><div class=container><div class=navbar-brand><a class=navbar-item href=/fr><div class="title is-4">&nbsp;Le blog de baywet</div></a><label class="button navbar-burger is-white" for=navbar-burger-state><span></span><span></span><span></span></label></div><input type=checkbox id=navbar-burger-state><div class=navbar-menu><div class=navbar-end><a class=navbar-item href=/en>English</a></div></div></div></nav><section class=section style=flex:1><div class=container><h1 class=title>Déterminez votre dette technique à l’aide de SonarQube : 10 - Création d’un compte de service et référencement dans VSTS</h1><p class=subtitle>Nov 21, 2016</p><div class=content><h3 id=tl-dr>TL ; DR</h3><p>Pour éviter que m’importe qui puisse envoyer des résultats d’analyse sur votre serveur SonarQube, nous allons créer un compte de service et forcer l’authentification.</p><h3 id=création-du-compte-de-service>Création du compte de service</h3><p>Pour cela rendez-vous dans administration, sécurité, utilisateurs et ajoutez un compte.</p><p><img src=./56.png alt=56.png></p><h3 id=provisionnement-du-compte-de-service>Provisionnement du compte de service</h3><p>Pour le référencer dans VSTS, rendez-vous sur votre projet d’équipe, cliquez sur paramètres (la roue crantée), Services, nouveau service générique et entrez url, nom d’usager et mot de passe du compte de service.</p><p><img src=./57.png alt=57.png></p></div><br><p class=heading>Edité la dernière fois le
+<a href=https://github.com/baywet/blogsource/commit/dd09eef54ac7725556cc18eb97ce7235e29201ba>6 Sep 2021</a> par <a href=https://github.com/baywet>Vincent Biret</a></p><br><div class=heading>Tags:</div><div class="field is-grouped is-grouped-multiline"><div class=control><a href=/fr/tags/sonarqube><span class=tag>Sonarqube</span></a></div><div class=control><a href=/fr/tags/devops><span class=tag>Devops</span></a></div><div class=control><a href=/fr/tags/alm><span class=tag>Alm</span></a></div><div class=control><a href=/fr/tags/docker><span class=tag>Docker</span></a></div><div class=control><a href=/fr/tags/azure><span class=tag>Azure</span></a></div><div class=control><a href=/fr/tags/linux><span class=tag>Linux</span></a></div><div class=control><a href=/fr/tags/analyse-statique><span class=tag>Analyse Statique</span></a></div><div class=control><a href=/fr/tags/code><span class=tag>Code</span></a></div><div class=control><a href=/fr/tags/vsts><span class=tag>Vsts</span></a></div></div></div></section><section class=section><div class=container><div class=level><div class=level-left><div class=level-item><p class="control has-addons"><a class=button href=https://baywet.github.io/fr/determinez-votre-dette-techniq-2016-11-23-14-00-00/><span class="icon is-small"><i class="fa fa-chevron-left"></i></span>
+<span class="is-hidden-touch is-hidden-desktop-only">Déterminez votre dette technique à l’aide de SonarQube : 11 - Ajout du projet SonarQube</span>
+<span class="is-hidden-touch is-hidden-widescreen">Déterminez votre dette technique à l’aide de SonarQube : 11 - Ajout du...</span>
+<span class="is-hidden-mobile is-hidden-desktop">Déterminez votre dette technique à l’aide de...</span>
+<span class=is-hidden-tablet>Déterminez votre dette technique à...</span></a></p></div></div><div class=level-right><div class=level-item><p class="control has-addons"><a class=button href=https://baywet.github.io/fr/determinez-votre-dette-techniq-2016-11-18-14-00-00/><span class="is-hidden-touch is-hidden-desktop-only">Déterminez votre dette technique à l’aide de SonarQube : 9 - Configuration d’Azure Active directory...</span>
+<span class="is-hidden-touch is-hidden-widescreen">Déterminez votre dette technique à l’aide de SonarQube : 9 - Configuration...</span>
+<span class="is-hidden-mobile is-hidden-desktop">Déterminez votre dette technique à l’aide de...</span>
+<span class=is-hidden-tablet>Déterminez votre dette technique à...</span>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span></a></p></div></div></div></div><br><br><div class=container><div id=disqus_thread></div><script>var disqus_config=function(){this.page.url="https://baywet.github.io/fr/determinez-votre-dette-techniq-2016-11-21-14-00-00/",this.page.identifier=window.location.pathname};(function(){var a=document,b=a.createElement('script');b.src='https://baywet.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div><br><div class=container><nav class=panel><p class=panel-heading>Related</p><a class=panel-block href=https://baywet.github.io/fr/determinez-votre-dette-techniq-2016-11-18-14-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Déterminez votre dette technique à l’aide de SonarQube : 9 - Configuration d’Azure Active directory pour l’authentification&nbsp;
-<div class=tag>Sonarqube</div>
-<div class=tag>Devops</div>
-<div class=tag>Alm</div>
-<div class=tag>Docker</div>
-<div class=tag>Azure</div>
-<div class=tag>Linux</div>
-<div class=tag>Analyse Statique</div>
-<div class=tag>Code</div>
-<div class=tag>Vsts</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/determinez-votre-dette-techniq-2016-11-16-14-00-00/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Déterminez votre dette technique à l’aide de SonarQube : 9 - Configuration d’Azure Active directory pour l’authentification&nbsp;<div class=tag>Sonarqube</div><div class=tag>Devops</div><div class=tag>Alm</div><div class=tag>Docker</div><div class=tag>Azure</div><div class=tag>Linux</div><div class=tag>Analyse Statique</div><div class=tag>Code</div><div class=tag>Vsts</div></span></a><a class=panel-block href=https://baywet.github.io/fr/determinez-votre-dette-techniq-2016-11-16-14-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Déterminez votre dette technique à l’aide de SonarQube : 8 - Ajout de modules&nbsp;
-<div class=tag>Sonarqube</div>
-<div class=tag>Devops</div>
-<div class=tag>Alm</div>
-<div class=tag>Docker</div>
-<div class=tag>Azure</div>
-<div class=tag>Linux</div>
-<div class=tag>Analyse Statique</div>
-<div class=tag>Code</div>
-<div class=tag>Vsts</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/determinez-votre-dette-techniq-2016-11-14-14-00-00/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Déterminez votre dette technique à l’aide de SonarQube : 8 - Ajout de modules&nbsp;<div class=tag>Sonarqube</div><div class=tag>Devops</div><div class=tag>Alm</div><div class=tag>Docker</div><div class=tag>Azure</div><div class=tag>Linux</div><div class=tag>Analyse Statique</div><div class=tag>Code</div><div class=tag>Vsts</div></span></a><a class=panel-block href=https://baywet.github.io/fr/determinez-votre-dette-techniq-2016-11-14-14-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Déterminez votre dette technique à l’aide de SonarQube : 7 - Installation de la machine&nbsp;
-<div class=tag>Sonarqube</div>
-<div class=tag>Devops</div>
-<div class=tag>Alm</div>
-<div class=tag>Docker</div>
-<div class=tag>Azure</div>
-<div class=tag>Linux</div>
-<div class=tag>Analyse Statique</div>
-<div class=tag>Code</div>
-<div class=tag>Vsts</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/determinez-votre-dette-techniq-2016-11-11-14-00-00/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Déterminez votre dette technique à l’aide de SonarQube : 7 - Installation de la machine&nbsp;<div class=tag>Sonarqube</div><div class=tag>Devops</div><div class=tag>Alm</div><div class=tag>Docker</div><div class=tag>Azure</div><div class=tag>Linux</div><div class=tag>Analyse Statique</div><div class=tag>Code</div><div class=tag>Vsts</div></span></a><a class=panel-block href=https://baywet.github.io/fr/determinez-votre-dette-techniq-2016-11-11-14-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Déterminez votre dette technique à l’aide de SonarQube : 6 - Création de la base de données&nbsp;
-<div class=tag>Sonarqube</div>
-<div class=tag>Devops</div>
-<div class=tag>Alm</div>
-<div class=tag>Docker</div>
-<div class=tag>Azure</div>
-<div class=tag>Linux</div>
-<div class=tag>Analyse Statique</div>
-<div class=tag>Code</div>
-<div class=tag>Vsts</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/determinez-votre-dette-techniq-2016-11-09-14-00-00/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Déterminez votre dette technique à l’aide de SonarQube : 6 - Création de la base de données&nbsp;<div class=tag>Sonarqube</div><div class=tag>Devops</div><div class=tag>Alm</div><div class=tag>Docker</div><div class=tag>Azure</div><div class=tag>Linux</div><div class=tag>Analyse Statique</div><div class=tag>Code</div><div class=tag>Vsts</div></span></a><a class=panel-block href=https://baywet.github.io/fr/determinez-votre-dette-techniq-2016-11-09-14-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Déterminez votre dette technique à l’aide de SonarQube : 5 - Ouverture du port de SonarQube&nbsp;
-<div class=tag>Sonarqube</div>
-<div class=tag>Devops</div>
-<div class=tag>Alm</div>
-<div class=tag>Docker</div>
-<div class=tag>Azure</div>
-<div class=tag>Linux</div>
-<div class=tag>Analyse Statique</div>
-<div class=tag>Code</div>
-<div class=tag>Vsts</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/determinez-votre-dette-techniq-2016-11-07-14-00-00/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Déterminez votre dette technique à l’aide de SonarQube : 5 - Ouverture du port de SonarQube&nbsp;<div class=tag>Sonarqube</div><div class=tag>Devops</div><div class=tag>Alm</div><div class=tag>Docker</div><div class=tag>Azure</div><div class=tag>Linux</div><div class=tag>Analyse Statique</div><div class=tag>Code</div><div class=tag>Vsts</div></span></a><a class=panel-block href=https://baywet.github.io/fr/determinez-votre-dette-techniq-2016-11-07-14-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Déterminez votre dette technique à l’aide de SonarQube : 4 - Provisionnement de la VM SonarQube&nbsp;
-<div class=tag>Sonarqube</div>
-<div class=tag>Devops</div>
-<div class=tag>Alm</div>
-<div class=tag>Docker</div>
-<div class=tag>Azure</div>
-<div class=tag>Linux</div>
-<div class=tag>Analyse Statique</div>
-<div class=tag>Code</div>
-<div class=tag>Vsts</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/determinez-votre-dette-techniq-2016-11-04-14-00-00/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Déterminez votre dette technique à l’aide de SonarQube : 4 - Provisionnement de la VM SonarQube&nbsp;<div class=tag>Sonarqube</div><div class=tag>Devops</div><div class=tag>Alm</div><div class=tag>Docker</div><div class=tag>Azure</div><div class=tag>Linux</div><div class=tag>Analyse Statique</div><div class=tag>Code</div><div class=tag>Vsts</div></span></a><a class=panel-block href=https://baywet.github.io/fr/determinez-votre-dette-techniq-2016-11-04-14-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Déterminez votre dette technique à l’aide de SonarQube : 3 - La topologie&nbsp;
-<div class=tag>Sonarqube</div>
-<div class=tag>Devops</div>
-<div class=tag>Alm</div>
-<div class=tag>Docker</div>
-<div class=tag>Azure</div>
-<div class=tag>Linux</div>
-<div class=tag>Analyse Statique</div>
-<div class=tag>Code</div>
-<div class=tag>Vsts</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/determinez-votre-dette-techniq-2016-11-02-14-00-00/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Déterminez votre dette technique à l’aide de SonarQube : 3 - La topologie&nbsp;<div class=tag>Sonarqube</div><div class=tag>Devops</div><div class=tag>Alm</div><div class=tag>Docker</div><div class=tag>Azure</div><div class=tag>Linux</div><div class=tag>Analyse Statique</div><div class=tag>Code</div><div class=tag>Vsts</div></span></a><a class=panel-block href=https://baywet.github.io/fr/determinez-votre-dette-techniq-2016-11-02-14-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Déterminez votre dette technique à l’aide de SonarQube : 2 - Analyse Statique&nbsp;
-<div class=tag>Sonarqube</div>
-<div class=tag>Devops</div>
-<div class=tag>Alm</div>
-<div class=tag>Docker</div>
-<div class=tag>Azure</div>
-<div class=tag>Linux</div>
-<div class=tag>Analyse Statique</div>
-<div class=tag>Code</div>
-<div class=tag>Vsts</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/determinez-votre-dette-techniq-2016-10-31-14-00-00/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Déterminez votre dette technique à l’aide de SonarQube : 2 - Analyse Statique&nbsp;<div class=tag>Sonarqube</div><div class=tag>Devops</div><div class=tag>Alm</div><div class=tag>Docker</div><div class=tag>Azure</div><div class=tag>Linux</div><div class=tag>Analyse Statique</div><div class=tag>Code</div><div class=tag>Vsts</div></span></a><a class=panel-block href=https://baywet.github.io/fr/determinez-votre-dette-techniq-2016-10-31-14-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Déterminez votre dette technique à l’aide de SonarQube : 1 - Introduction&nbsp;
-<div class=tag>Sonarqube</div>
-<div class=tag>Devops</div>
-<div class=tag>Alm</div>
-<div class=tag>Docker</div>
-<div class=tag>Azure</div>
-<div class=tag>Linux</div>
-<div class=tag>Analyse Statique</div>
-<div class=tag>Code</div>
-<div class=tag>Vsts</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/mise-a-jour-dot-net-core-et-i/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Déterminez votre dette technique à l’aide de SonarQube : 1 - Introduction&nbsp;<div class=tag>Sonarqube</div><div class=tag>Devops</div><div class=tag>Alm</div><div class=tag>Docker</div><div class=tag>Azure</div><div class=tag>Linux</div><div class=tag>Analyse Statique</div><div class=tag>Code</div><div class=tag>Vsts</div></span></a><a class=panel-block href=https://baywet.github.io/fr/mise-a-jour-dot-net-core-et-i/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Mise à jour : dot net core et intégration continue&nbsp;
-<div class=tag>Devops</div>
-<div class=tag>Azure</div>
-<div class=tag>Vsts</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/sharepoint-saturday-quebec/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Mise à jour : dot net core et intégration continue&nbsp;<div class=tag>Devops</div><div class=tag>Azure</div><div class=tag>Vsts</div></span></a><a class=panel-block href=https://baywet.github.io/fr/sharepoint-saturday-quebec/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>SharePoint Saturday Québec&nbsp;
-<div class=tag>Azure</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/conferencier-au-sharepoint-sat-2016-09-12-14-00-00/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>SharePoint Saturday Québec&nbsp;<div class=tag>Azure</div></span></a><a class=panel-block href=https://baywet.github.io/fr/conferencier-au-sharepoint-sat-2016-09-12-14-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Conférencier au SharePoint Saturday Lyon 2016&nbsp;
-<div class=tag>Devops</div>
-<div class=tag>Alm</div>
-<div class=tag>Azure</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/nouvelles-taches-de-buildrelea/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Conférencier au SharePoint Saturday Lyon 2016&nbsp;<div class=tag>Devops</div><div class=tag>Alm</div><div class=tag>Azure</div></span></a><a class=panel-block href=https://baywet.github.io/fr/nouvelles-taches-de-buildrelea/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Nouvelles tâches de build/release disponibles pour les projets dotnetcore et vsts&nbsp;
-<div class=tag>Devops</div>
-<div class=tag>Alm</div>
-<div class=tag>Vsts</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/conferencier-au-sharepoint-sat-2016-04-01-14-00-00/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Nouvelles tâches de build/release disponibles pour les projets dotnetcore et vsts&nbsp;<div class=tag>Devops</div><div class=tag>Alm</div><div class=tag>Vsts</div></span></a><a class=panel-block href=https://baywet.github.io/fr/conferencier-au-sharepoint-sat-2016-04-01-14-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Conférencier au SharePoint Saturday Houston 2016&nbsp;
-<div class=tag>Alm</div>
-</span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/conferencier-au-sharepoint-sat-2016-03-30-15-29-00/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Conférencier au SharePoint Saturday Houston 2016&nbsp;<div class=tag>Alm</div></span></a><a class=panel-block href=https://baywet.github.io/fr/conferencier-au-sharepoint-sat-2016-03-30-15-29-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Conférencier au SharePoint Saturday Montréal 2016&nbsp;
-<div class=tag>Alm</div>
-</span>
-</a>
-</nav>
-</div>
-</section>
-<footer class=footer>
-<div class=container>
-<nav class=level>
-</nav>
-<nav class=level>
-<div class="level-left has-text-centered">
-<div class=level-item>
-<form class="control has-icons has-icons-right" method=get action=https://bing.com>
-<input class=input type=text name=q maxlength=255 placeholder=Search>
+<span>Conférencier au SharePoint Saturday Montréal 2016&nbsp;<div class=tag>Alm</div></span></a></nav></div></section><footer class=footer><div class=container><nav class=level></nav><nav class=level><div class="level-left has-text-centered"><div class=level-item><form class="control has-icons has-icons-right" method=get action=https://bing.com><input class=input type=text name=q maxlength=255 placeholder=Search>
 <input class=input type=hidden name=sites value=https://baywet.github.io/>
-<span class="icon is-small is-right"><i class="fa fa-search"></i></span>
-</form>
-</div>
-</div>
-<div class="level-right has-text-centered">
-<div class=level-item>
-<a class=button href=https://baywet.github.io/fr>
-<span class=icon><i class="fa fa-home"></i></span>
-</a> &nbsp;
-<a class=button href>
-<span class=icon><i class="fa fa-rss"></i></span>
-</a>
-</div>
-</div>
-</nav>
-</div>
-</footer>
-<script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script>
-</body>
-</html>
+<span class="icon is-small is-right"><i class="fa fa-search"></i></span></form></div></div><div class="level-right has-text-centered"><div class=level-item><a class=button href=https://baywet.github.io/fr><span class=icon><i class="fa fa-home"></i></span></a> &nbsp;
+<a class=button href><span class=icon><i class="fa fa-rss"></i></span></a></div></div></nav></div></footer><script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script></body></html>
