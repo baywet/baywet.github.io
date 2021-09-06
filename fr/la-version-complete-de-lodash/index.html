@@ -1,47 +1,327 @@
-<!doctype html><html lang=fr dir=ltr itemscope itemtype=https://schema.org/Article><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>La version complète de lodash est disponible avec le SharePoint Framework</title><meta name=author content="Vincent Biret"><meta name=description content="TL ; DR ;
-Microsoft a remplacé @types/es6-collections par la librairie native es2015.collection dans la version 1.4.0. Cette librairie contenait une version conflictuelle de weakmap qui posait..."><meta name=generator content="Hugo 0.85.0"><meta itemprop=name content="La version complète de lodash est disponible avec le SharePoint Framework"><meta itemprop=description content="TL ; DR ;
-Microsoft a remplacé @types/es6-collections par la librairie native es2015.collection dans la version 1.4.0. Cette librairie contenait une version conflictuelle de weakmap qui posait..."><meta itemprop=image content="/img/logo.svg"><meta property="og:title" content="La version complète de lodash est disponible avec le SharePoint Framework"><meta property="og:type" content="article"><meta property="og:url" content="https://baywet.github.io/fr/la-version-complete-de-lodash/"><meta property="og:image" content="/img/logo.svg"><meta property="og:description" content="TL ; DR ;
-Microsoft a remplacé @types/es6-collections par la librairie native es2015.collection dans la version 1.4.0. Cette librairie contenait une version conflictuelle de weakmap qui posait..."><meta property="og:site_name" content="Le blog de baywet"><meta property="og:updated_time" content="2021-09-06T13:44:53-04:00"><meta property="article:published_time" content="2018-01-03T09:00:00+00:00"><meta property="article:modified_time" content="2021-09-06T13:44:53-04:00"><meta property="article:section" content><meta property="article:tag" content="sharepoint framework"><meta property="article:tag" content="lodash"><meta property="article:tag" content="spfx"><meta property="article:tag" content="developpement"><meta property="article:tag" content="sharepoint"><meta name=twitter:card content="summary"><meta name=twitter:site content><meta name=twitter:title content="La version complète de lodash est disponible avec le SharePoint Framework"><meta name=twitter:description content="TL ; DR ;
-Microsoft a remplacé @types/es6-collections par la librairie native es2015.collection dans la version 1.4.0. Cette librairie contenait une version conflictuelle de weakmap qui posait..."><meta name=twitter:creator content><meta name=twitter:image:src content="/img/logo.svg"><link rel=stylesheet type=text/css href=/css/capsule.min.css><script>(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-176061333-1','auto'),ga('send','pageview')</script><link rel=apple-touch-icon href=/img/apple-touch-icon.png><link rel=icon href=/img/favicon.ico></head><body style=min-height:100vh;display:flex;flex-direction:column><nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation"><div class=container><div class=navbar-brand><a class=navbar-item href=/fr><div class="title is-4">&nbsp;Le blog de baywet</div></a><label class="button navbar-burger is-white" for=navbar-burger-state><span></span><span></span><span></span></label></div><input type=checkbox id=navbar-burger-state><div class=navbar-menu><div class=navbar-end><a class=navbar-item href=/en>English</a></div></div></div></nav><section class=section style=flex:1><div class=container><h1 class=title>La version complète de lodash est disponible avec le SharePoint Framework</h1><p class=subtitle>Jan 3, 2018</p><div class=content><h2 id=tl-dr>TL ; DR ;</h2><p>Microsoft a remplacé @types/es6-collections par la librairie native es2015.collection dans la version <a href=https://github.com/SharePoint/sp-dev-docs/wiki/Release-Notes-for-SPFx-Package-Version-1.4>1.4.0</a>. Cette librairie contenait une version conflictuelle de weakmap qui posait problème avec des packages comme <a href=https://lodash.com/>lodash</a>.</p><h2 id=version-longue>Version longue</h2><p>Microsoft a récemment livré la version 1.4.0 du SharePoint Framework et de ses dépendances. Cette version contient beaucoup d’améliorations dont une en particulier qui a est passée inaperçue pour pas mal d’entre nous.</p><p>@types/es6-collections a été remplacé par la librairie es2015.collection (native, fournie par le compilateur et les moteurs JS). Ce package avait une définition « spéciale » de WeakMap (entre autres) qui causait des problèmes pour de nombreux packages, incluant un de mes favoris : lodash.</p><p>Pour contourner ce problème Microsoft avait dû fournir dans des versions précédentes @microsoft/sp-lodash-subset qui, comme son nom l’indique, fournit un sous-ensemble de lodash sans certaines méthodes très utiles telles que map.</p><h2 id=quelle-version-utiliser>Quelle version utiliser ?</h2><p>C’est une question complexe pour le moment Microsoft n’ayant pas fourni de directives, je vais vous fournir les pour et contre de l’utilisation du sous-ensemble au lieu de répondre directement à la question.</p><p>Pour :</p><ul><li>Le subset est plus léger, ce qui signifie des temps de chargement plus rapide pour vos usagers.</li><li>Le subset est maintenu par Microsoft, ce qui signifie qu’il est moins probable qu’il brise le SPFX avec une mise à jour.</li></ul><p>Contre :</p><ul><li>Le subset ne contient pas l’ensemble des fonctionnalités de lodash, ce qui signifie que vous allez probablement faire plus de choses à la main.</li><li>Le subset est maintenu par Microsoft, ce qui signifie que de futures améliorations de lodash mettront pus de temps à en être disponibles.</li><li>Le subset n’est pas disponible sur un CDN, ce qui peut impacter négativement vos temps de chargement dépendamment d’autres considérations (support HTTP2, qualité de votre CDN…)</li><li>Le subset sera peut-être amené à disparaître, considérant que cela représente du travail additionnel de peu de valeur pour Microsoft, ils décideront peut-être de se concentrer sur d’autres choses.</li></ul><p>Tout cela étant dit, rien ne vous empêche de travailler avec les deux dès lors que votre solution basée sur SPFX >= 1.4.0 et la mise à jour (du subset vers la version complète) est assez facile : quelques remplacements à effectuer.</p></div><br><p class=heading>Edité la dernière fois le
-<a href=https://github.com/baywet/blogsource/commit/dd09eef54ac7725556cc18eb97ce7235e29201ba>6 Sep 2021</a> par <a href=https://github.com/baywet>Vincent Biret</a></p><br><div class=heading>Tags:</div><div class="field is-grouped is-grouped-multiline"><div class=control><a href=/fr/tags/sharepoint-framework><span class=tag>Sharepoint Framework</span></a></div><div class=control><a href=/fr/tags/lodash><span class=tag>Lodash</span></a></div><div class=control><a href=/fr/tags/spfx><span class=tag>Spfx</span></a></div><div class=control><a href=/fr/tags/developpement><span class=tag>Developpement</span></a></div><div class=control><a href=/fr/tags/sharepoint><span class=tag>Sharepoint</span></a></div></div></div></section><section class=section><div class=container><div class=level><div class=level-left><div class=level-item><p class="control has-addons"><a class=button href=https://baywet.github.io/fr/nouveaux-exemples-sharepoint-f/><span class="icon is-small"><i class="fa fa-chevron-left"></i></span>
-<span class="is-hidden-touch is-hidden-desktop-only">Nouveaux exemples SharePoint Framework PnP disponibles : utiliser le SDK Web Skype UCWA pour...</span>
-<span class="is-hidden-touch is-hidden-widescreen">Nouveaux exemples SharePoint Framework PnP disponibles : utiliser le SDK...</span>
-<span class="is-hidden-mobile is-hidden-desktop">Nouveaux exemples SharePoint Framework PnP...</span>
-<span class=is-hidden-tablet>Nouveaux exemples SharePoint Framework...</span></a></p></div></div><div class=level-right><div class=level-item><p class="control has-addons"><a class=button href=https://baywet.github.io/fr/entrevue-avec-le-visual-studio/><span class="is-hidden-touch is-hidden-desktop-only">Entrevue avec le Visual Studio Talk Show - SonarQube</span>
-<span class="is-hidden-touch is-hidden-widescreen">Entrevue avec le Visual Studio Talk Show - SonarQube</span>
-<span class="is-hidden-mobile is-hidden-desktop">Entrevue avec le Visual Studio Talk Show -...</span>
-<span class=is-hidden-tablet>Entrevue avec le Visual Studio Talk Show...</span>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span></a></p></div></div></div></div><br><br><div class=container><div id=disqus_thread></div><script>var disqus_config=function(){this.page.url="https://baywet.github.io/fr/la-version-complete-de-lodash/",this.page.identifier=window.location.pathname};(function(){var a=document,b=a.createElement('script');b.src='https://baywet.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div><br><div class=container><nav class=panel><p class=panel-heading>Related</p><a class=panel-block href=https://baywet.github.io/fr/utiliser-pnp-powershell-avec-v/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<!doctype html><html lang=fr dir=ltr itemscope itemtype=https://schema.org/Article>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>La version complète de lodash est disponible avec le SharePoint Framework</title>
+<meta name=author content="Vincent Biret">
+<meta name=description content="TL ; DR ;
+Microsoft a remplacé @types/es6-collections par la librairie native es2015.collection dans la version 1.4.0. Cette librairie contenait une version conflictuelle de weakmap qui posait...">
+<meta name=generator content="Hugo 0.88.1">
+<meta itemprop=name content="La version complète de lodash est disponible avec le SharePoint Framework">
+<meta itemprop=description content="TL ; DR ;
+Microsoft a remplacé @types/es6-collections par la librairie native es2015.collection dans la version 1.4.0. Cette librairie contenait une version conflictuelle de weakmap qui posait...">
+<meta itemprop=image content="/img/logo.svg">
+<meta property="og:title" content="La version complète de lodash est disponible avec le SharePoint Framework">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://baywet.github.io/fr/la-version-complete-de-lodash/">
+<meta property="og:image" content="/img/logo.svg">
+<meta property="og:description" content="TL ; DR ;
+Microsoft a remplacé @types/es6-collections par la librairie native es2015.collection dans la version 1.4.0. Cette librairie contenait une version conflictuelle de weakmap qui posait...">
+<meta property="og:site_name" content="Le blog de baywet">
+<meta property="og:updated_time" content="2021-09-06T16:55:24+00:00">
+<meta property="article:published_time" content="2018-01-03T09:00:00+00:00">
+<meta property="article:modified_time" content="2021-09-06T16:55:24+00:00">
+<meta property="article:section" content>
+<meta property="article:tag" content="sharepoint framework">
+<meta property="article:tag" content="lodash">
+<meta property="article:tag" content="spfx">
+<meta property="article:tag" content="developpement">
+<meta property="article:tag" content="sharepoint">
+<meta name=twitter:card content="summary">
+<meta name=twitter:site content>
+<meta name=twitter:title content="La version complète de lodash est disponible avec le SharePoint Framework">
+<meta name=twitter:description content="TL ; DR ;
+Microsoft a remplacé @types/es6-collections par la librairie native es2015.collection dans la version 1.4.0. Cette librairie contenait une version conflictuelle de weakmap qui posait...">
+<meta name=twitter:creator content>
+<meta name=twitter:image:src content="/img/logo.svg">
+<link rel=stylesheet type=text/css href=/css/capsule.min.css>
+<script>(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-176061333-1','auto'),ga('send','pageview')</script>
+<link rel=apple-touch-icon href=/img/apple-touch-icon.png>
+<link rel=icon href=/img/favicon.ico>
+</head>
+<body style=min-height:100vh;display:flex;flex-direction:column>
+<nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation">
+<div class=container>
+<div class=navbar-brand>
+<a class=navbar-item href=/fr>
+<div class="title is-4">&nbsp;Le blog de baywet</div>
+</a>
+<label class="button navbar-burger is-white" for=navbar-burger-state>
+<span></span>
+<span></span>
+<span></span>
+</label>
+</div>
+<input type=checkbox id=navbar-burger-state>
+<div class=navbar-menu>
+<div class=navbar-end>
+<a class=navbar-item href=/en>English</a>
+</div>
+</div>
+</div>
+</nav>
+<section class=section style=flex:1>
+<div class=container>
+<h1 class=title>La version complète de lodash est disponible avec le SharePoint Framework</h1>
+<p class=subtitle>Jan 3, 2018</p>
+<div class=content>
+<h2 id=tl-dr>TL ; DR ;</h2>
+<p>Microsoft a remplacé @types/es6-collections par la librairie native es2015.collection dans la version <a href=https://github.com/SharePoint/sp-dev-docs/wiki/Release-Notes-for-SPFx-Package-Version-1.4>1.4.0</a>. Cette librairie contenait une version conflictuelle de weakmap qui posait problème avec des packages comme <a href=https://lodash.com/>lodash</a>.</p>
+<h2 id=version-longue>Version longue</h2>
+<p>Microsoft a récemment livré la version 1.4.0 du SharePoint Framework et de ses dépendances. Cette version contient beaucoup d’améliorations dont une en particulier qui a est passée inaperçue pour pas mal d’entre nous.</p>
+<p>@types/es6-collections a été remplacé par la librairie es2015.collection (native, fournie par le compilateur et les moteurs JS). Ce package avait une définition « spéciale » de WeakMap (entre autres) qui causait des problèmes pour de nombreux packages, incluant un de mes favoris : lodash.</p>
+<p>Pour contourner ce problème Microsoft avait dû fournir dans des versions précédentes @microsoft/sp-lodash-subset qui, comme son nom l’indique, fournit un sous-ensemble de lodash sans certaines méthodes très utiles telles que map.</p>
+<h2 id=quelle-version-utiliser>Quelle version utiliser ?</h2>
+<p>C’est une question complexe pour le moment Microsoft n’ayant pas fourni de directives, je vais vous fournir les pour et contre de l’utilisation du sous-ensemble au lieu de répondre directement à la question.</p>
+<p>Pour :</p>
+<ul>
+<li>Le subset est plus léger, ce qui signifie des temps de chargement plus rapide pour vos usagers.</li>
+<li>Le subset est maintenu par Microsoft, ce qui signifie qu’il est moins probable qu’il brise le SPFX avec une mise à jour.</li>
+</ul>
+<p>Contre :</p>
+<ul>
+<li>Le subset ne contient pas l’ensemble des fonctionnalités de lodash, ce qui signifie que vous allez probablement faire plus de choses à la main.</li>
+<li>Le subset est maintenu par Microsoft, ce qui signifie que de futures améliorations de lodash mettront pus de temps à en être disponibles.</li>
+<li>Le subset n’est pas disponible sur un CDN, ce qui peut impacter négativement vos temps de chargement dépendamment d’autres considérations (support HTTP2, qualité de votre CDN…)</li>
+<li>Le subset sera peut-être amené à disparaître, considérant que cela représente du travail additionnel de peu de valeur pour Microsoft, ils décideront peut-être de se concentrer sur d’autres choses.</li>
+</ul>
+<p>Tout cela étant dit, rien ne vous empêche de travailler avec les deux dès lors que votre solution basée sur SPFX >= 1.4.0 et la mise à jour (du subset vers la version complète) est assez facile : quelques remplacements à effectuer.</p>
+</div>
+<br>
+<p class=heading>
+Edité la dernière fois le
+<a href=https://github.com/baywet/blogsource/commit/a468fa010963485f8321f689ab366ef4a7ffcb8b>
+6 Sep 2021
+</a> par <a href=https://github.com/baywet>Vincent</a>
+</p>
+<br>
+<div class=heading>Tags:</div>
+<div class="field is-grouped is-grouped-multiline">
+<div class=control>
+<a href=/fr/tags/sharepoint-framework>
+<span class=tag>Sharepoint Framework</span>
+</a>
+</div>
+<div class=control>
+<a href=/fr/tags/lodash>
+<span class=tag>Lodash</span>
+</a>
+</div>
+<div class=control>
+<a href=/fr/tags/spfx>
+<span class=tag>Spfx</span>
+</a>
+</div>
+<div class=control>
+<a href=/fr/tags/developpement>
+<span class=tag>Developpement</span>
+</a>
+</div>
+<div class=control>
+<a href=/fr/tags/sharepoint>
+<span class=tag>Sharepoint</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<section class=section>
+<div class=container>
+<div class=level>
+<div class=level-left>
+<div class=level-item>
+<p class="control has-addons">
+<a class=button href=https://baywet.github.io/fr/nouveaux-exemples-sharepoint-f/>
+<span class="icon is-small"><i class="fa fa-chevron-left"></i></span>
+<span class="is-hidden-touch is-hidden-desktop-only">
+Nouveaux exemples SharePoint Framework PnP disponibles : utiliser le SDK Web Skype UCWA pour...
+</span>
+<span class="is-hidden-touch is-hidden-widescreen">
+Nouveaux exemples SharePoint Framework PnP disponibles : utiliser le SDK...
+</span>
+<span class="is-hidden-mobile is-hidden-desktop">
+Nouveaux exemples SharePoint Framework PnP...
+</span>
+<span class=is-hidden-tablet>
+Nouveaux exemples SharePoint Framework...
+</span>
+</a>
+</p>
+</div>
+</div>
+<div class=level-right>
+<div class=level-item>
+<p class="control has-addons">
+<a class=button href=https://baywet.github.io/fr/entrevue-avec-le-visual-studio/>
+<span class="is-hidden-touch is-hidden-desktop-only">
+Entrevue avec le Visual Studio Talk Show - SonarQube
+</span>
+<span class="is-hidden-touch is-hidden-widescreen">
+Entrevue avec le Visual Studio Talk Show - SonarQube
+</span>
+<span class="is-hidden-mobile is-hidden-desktop">
+Entrevue avec le Visual Studio Talk Show -...
+</span>
+<span class=is-hidden-tablet>
+Entrevue avec le Visual Studio Talk Show...
+</span>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<br>
+<br>
+<div class=container>
+<div id=disqus_thread></div>
+<script>var disqus_config=function(){this.page.url="https://baywet.github.io/fr/la-version-complete-de-lodash/",this.page.identifier=window.location.pathname};(function(){var a=document,b=a.createElement('script');b.src='https://baywet.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script>
+<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
+</div>
+<br>
+<div class=container>
+<nav class=panel>
+<p class=panel-heading>Related</p>
+<a class=panel-block href=https://baywet.github.io/fr/utiliser-pnp-powershell-avec-v/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Utiliser PnP PowerShell avec Visual Studio Team Services (VSTS) et l'agent hébergé&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/renouvele-mvp-pour-lannee-2017/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Utiliser PnP PowerShell avec Visual Studio Team Services (VSTS) et l'agent hébergé&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/renouvele-mvp-pour-lannee-2017/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Renouvelé MVP pour l’année 2017-2018&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/conferencier-au-sharepoint-sat-2017-07-07-08-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Renouvelé MVP pour l’année 2017-2018&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/conferencier-au-sharepoint-sat-2017-07-07-08-00-00/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Conférencier au SharePoint Saturday Paris 2017&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/sharepoint-framework-dans-mes/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Conférencier au SharePoint Saturday Paris 2017&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/sharepoint-framework-dans-mes/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>SharePoint framework dans mes propres mots&nbsp;<div class=tag>Sharepoint Framework</div><div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/mise-a-jour-des-definitions-de/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>SharePoint framework dans mes propres mots&nbsp;
+<div class=tag>Sharepoint Framework</div>
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/mise-a-jour-des-definitions-de/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Mise à jour des définitions de types pour _spPageContextInfo - nouvelles propriétés disponibles&nbsp;<div class=tag>Sharepoint Framework</div><div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/personnalisation-de-page-layou/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Mise à jour des définitions de types pour _spPageContextInfo - nouvelles propriétés disponibles&nbsp;
+<div class=tag>Sharepoint Framework</div>
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/personnalisation-de-page-layou/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Personnalisation de page layouts, master pages et image renditions dans SharePoint Online&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/conferencier-au-sharepoint-sat-2017-04-25-14-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Personnalisation de page layouts, master pages et image renditions dans SharePoint Online&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/conferencier-au-sharepoint-sat-2017-04-25-14-00-00/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Conférencier au SharePoint Saturday Monaco 2017&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/publier-des-image-renditions-p/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Conférencier au SharePoint Saturday Monaco 2017&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/publier-des-image-renditions-p/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Publier des Image renditions pour SharePoint à l’aide de PnP Provisioning&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/conferencier-au-aos-tours-mont/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Publier des Image renditions pour SharePoint à l’aide de PnP Provisioning&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/conferencier-au-aos-tours-mont/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Conférencier au Aos Tours Montréal et Québec&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/diagnotiquer-les-problemes-de/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Conférencier au Aos Tours Montréal et Québec&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/diagnotiquer-les-problemes-de/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Diagnotiquer les problèmes de load balancing sous SharePoint&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/sharepoint-saturday-quebec/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Diagnotiquer les problèmes de load balancing sous SharePoint&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/sharepoint-saturday-quebec/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>SharePoint Saturday Québec&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/systemupdate-enfin-disponible/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>SharePoint Saturday Québec&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/systemupdate-enfin-disponible/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>SystemUpdate enfin disponible en CSOM&nbsp;<div class=tag>Developpement</div><div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/conferencier-au-sharepoint-sat-2016-09-12-14-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>SystemUpdate enfin disponible en CSOM&nbsp;
+<div class=tag>Developpement</div>
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/conferencier-au-sharepoint-sat-2016-09-12-14-00-00/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Conférencier au SharePoint Saturday Lyon 2016&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/determiner-si-la-librairie-sha/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Conférencier au SharePoint Saturday Lyon 2016&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/determiner-si-la-librairie-sha/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Déterminer si la librairie SharePoint est utilisée avec la nouvelle expérience&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/build-de-projets-wspftc-sharep/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Déterminer si la librairie SharePoint est utilisée avec la nouvelle expérience&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/build-de-projets-wspftc-sharep/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Build de projets WSP/FTC SharePoint 2016&nbsp;<div class=tag>Sharepoint</div></span></a></nav></div></section><footer class=footer><div class=container><nav class=level></nav><nav class=level><div class="level-left has-text-centered"><div class=level-item><form class="control has-icons has-icons-right" method=get action=https://bing.com><input class=input type=text name=q maxlength=255 placeholder=Search>
+<span>Build de projets WSP/FTC SharePoint 2016&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+</nav>
+</div>
+</section>
+<footer class=footer>
+<div class=container>
+<nav class=level>
+</nav>
+<nav class=level>
+<div class="level-left has-text-centered">
+<div class=level-item>
+<form class="control has-icons has-icons-right" method=get action=https://bing.com>
+<input class=input type=text name=q maxlength=255 placeholder=Search>
 <input class=input type=hidden name=sites value=https://baywet.github.io/>
-<span class="icon is-small is-right"><i class="fa fa-search"></i></span></form></div></div><div class="level-right has-text-centered"><div class=level-item><a class=button href=https://baywet.github.io/fr><span class=icon><i class="fa fa-home"></i></span></a> &nbsp;
-<a class=button href><span class=icon><i class="fa fa-rss"></i></span></a></div></div></nav></div></footer><script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script></body></html>
+<span class="icon is-small is-right"><i class="fa fa-search"></i></span>
+</form>
+</div>
+</div>
+<div class="level-right has-text-centered">
+<div class=level-item>
+<a class=button href=https://baywet.github.io/fr>
+<span class=icon><i class="fa fa-home"></i></span>
+</a> &nbsp;
+<a class=button href>
+<span class=icon><i class="fa fa-rss"></i></span>
+</a>
+</div>
+</div>
+</nav>
+</div>
+</footer>
+<script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script>
+</body>
+</html>

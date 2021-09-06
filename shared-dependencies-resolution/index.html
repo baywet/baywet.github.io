@@ -1,51 +1,328 @@
-<!doctype html><html lang=en dir=ltr itemscope itemtype=https://schema.org/Article><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>Shared dependencies resolution and SharePoint full trust development</title><meta name=author content="Vincent Biret"><meta name=description content="Hi everybody,
+<!doctype html><html lang=en dir=ltr itemscope itemtype=https://schema.org/Article>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Shared dependencies resolution and SharePoint full trust development</title>
+<meta name=author content="Vincent Biret">
+<meta name=description content="Hi everybody,
 At Negotium we’re building multiple SharePoint products (www.oceanik.com www.theattributesolution.com …)
-We’ve recently had a complex issue. Let’s say these two products have a common..."><meta name=generator content="Hugo 0.85.0"><meta itemprop=name content="Shared dependencies resolution and SharePoint full trust development"><meta itemprop=description content="Hi everybody,
+We’ve recently had a complex issue. Let’s say these two products have a common...">
+<meta name=generator content="Hugo 0.88.1">
+<meta itemprop=name content="Shared dependencies resolution and SharePoint full trust development">
+<meta itemprop=description content="Hi everybody,
 At Negotium we’re building multiple SharePoint products (www.oceanik.com www.theattributesolution.com …)
-We’ve recently had a complex issue. Let’s say these two products have a common..."><meta itemprop=image content="/img/logo.svg"><meta property="og:title" content="Shared dependencies resolution and SharePoint full trust development"><meta property="og:type" content="article"><meta property="og:url" content="https://baywet.github.io/shared-dependencies-resolution/"><meta property="og:image" content="/img/logo.svg"><meta property="og:description" content="Hi everybody,
+We’ve recently had a complex issue. Let’s say these two products have a common...">
+<meta itemprop=image content="/img/logo.svg">
+<meta property="og:title" content="Shared dependencies resolution and SharePoint full trust development">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://baywet.github.io/shared-dependencies-resolution/">
+<meta property="og:image" content="/img/logo.svg">
+<meta property="og:description" content="Hi everybody,
 At Negotium we’re building multiple SharePoint products (www.oceanik.com www.theattributesolution.com …)
-We’ve recently had a complex issue. Let’s say these two products have a common..."><meta property="og:site_name" content="Baywet's blog"><meta property="og:updated_time" content="2021-09-06T13:44:53-04:00"><meta property="article:published_time" content="2015-07-18T20:03:42+00:00"><meta property="article:modified_time" content="2021-09-06T13:44:53-04:00"><meta property="article:section" content><meta property="article:tag" content="dependencies"><meta property="article:tag" content="resilience"><meta property="article:tag" content="solutions"><meta property="article:tag" content="full trust"><meta property="article:tag" content="sharepoint"><meta name=twitter:card content="summary"><meta name=twitter:site content><meta name=twitter:title content="Shared dependencies resolution and SharePoint full trust development"><meta name=twitter:description content="Hi everybody,
+We’ve recently had a complex issue. Let’s say these two products have a common...">
+<meta property="og:site_name" content="Baywet's blog">
+<meta property="og:updated_time" content="2021-09-06T16:55:24+00:00">
+<meta property="article:published_time" content="2015-07-18T20:03:42+00:00">
+<meta property="article:modified_time" content="2021-09-06T16:55:24+00:00">
+<meta property="article:section" content>
+<meta property="article:tag" content="dependencies">
+<meta property="article:tag" content="resilience">
+<meta property="article:tag" content="solutions">
+<meta property="article:tag" content="full trust">
+<meta property="article:tag" content="sharepoint">
+<meta name=twitter:card content="summary">
+<meta name=twitter:site content>
+<meta name=twitter:title content="Shared dependencies resolution and SharePoint full trust development">
+<meta name=twitter:description content="Hi everybody,
 At Negotium we’re building multiple SharePoint products (www.oceanik.com www.theattributesolution.com …)
-We’ve recently had a complex issue. Let’s say these two products have a common..."><meta name=twitter:creator content><meta name=twitter:image:src content="/img/logo.svg"><link rel=stylesheet type=text/css href=/css/capsule.min.css><script>(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-176061333-1','auto'),ga('send','pageview')</script><link rel=apple-touch-icon href=/img/apple-touch-icon.png><link rel=icon href=/img/favicon.ico></head><body style=min-height:100vh;display:flex;flex-direction:column><nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation"><div class=container><div class=navbar-brand><a class=navbar-item href=/en><div class="title is-4">&nbsp;Baywet's blog</div></a><label class="button navbar-burger is-white" for=navbar-burger-state><span></span><span></span><span></span></label></div><input type=checkbox id=navbar-burger-state><div class=navbar-menu><div class=navbar-end><a class=navbar-item href=https://baywet.github.io/fr/resolution-de-dependance-commu/>Français</a></div></div></div></nav><section class=section style=flex:1><div class=container><h1 class=title>Shared dependencies resolution and SharePoint full trust development</h1><p class=subtitle>Jul 18, 2015</p><div class=content><p>Hi everybody,</p><p>At Negotium we’re building multiple SharePoint products (<a href=https://www.oceanik.com/>www.oceanik.com</a> <a href=https://www.theattributesolution.com/>www.theattributesolution.com</a> …)</p><p>We’ve recently had a complex issue. Let’s say these two products have a common dependency (newtonsoft.json in our case). Now let’s say both products are installed on a single farm and that for some reason you have to uninstall one of them.</p><p>When SharePoint will retract the wsp, it will retract all dll’s that were included within it. Including the common dependency the other product still needs. That is going to break the other product.</p><p>A good SharePoint administrator will understand that promptly and issue a install-spsolution &lt;nameofthesolution> -gacdeployment –Local –Force on each impacted server.</p><p>However not all customers are lucky enough to have properly trained SharePoint administrators. So here is the question we had: <strong>how to build my solution resilient enough to repair itself when things like this happen?</strong></p><p>After a lot of thinking it appears that SharePoint doesn’t have a full <a href=https://en.wikipedia.org/wiki/Coupling_%28computer_programming%29>coupling module</a> (in fact the problem comes from .Net and how Windows is built in general).</p><p>Some experienced SharePoint developers will say that we have <a href=https://msdn.microsoft.com/en-us/library/ff512761.aspx>ActivationDependency</a> for solutions. Indeed, but that is only useful when deploying, nothing prevents an administrator from retracting a solution that other solutions depend on.</p><p>Others will say that we can kind of patch that adding features dependency on because these one check for any dependent feature when deactivating. But features are not meant for that, they are meant for provisioning elements, moreover nothing prevents an administrator from retracting a solution containing features still activated (but don’t do that, it’s really bad).</p><p>The only technical solution to solve this issue (and I took time to chat with the SharePoint product team on that matter) is to build a timerjob with no dependency that will check if our dependencies are here and if missing redeploy the solutions.</p><p><a href=https://github.com/baywet/blogsamples/tree/master/CommonDepedency>You’ll find an example here.</a></p><p>Once again, if you can build apps instead of full trust solutions it is far better and you won’t have that kind of issues ;-)</p><p>PS: I’d like to thank my team for the time they spent thinking about that matter, namely Benoit, Pascal, Yann, Sébastien, Jeff and Jordan</p></div><br><p class=heading>Last edited
-<a href=https://github.com/baywet/blogsource/commit/dd09eef54ac7725556cc18eb97ce7235e29201ba>Sep 6, 2021</a> by <a href=https://github.com/baywet>Vincent Biret</a></p><br><div class=heading>Tags:</div><div class="field is-grouped is-grouped-multiline"><div class=control><a href=/tags/dependencies><span class=tag>Dependencies</span></a></div><div class=control><a href=/tags/resilience><span class=tag>Resilience</span></a></div><div class=control><a href=/tags/solutions><span class=tag>Solutions</span></a></div><div class=control><a href=/tags/full-trust><span class=tag>Full Trust</span></a></div><div class=control><a href=/tags/sharepoint><span class=tag>Sharepoint</span></a></div><div class=control><a href=/tags/development><span class=tag>Development</span></a></div></div></div></section><section class=section><div class=container><div class=level><div class=level-left><div class=level-item><p class="control has-addons"><a class=button href=https://baywet.github.io/provisioning-custom-services-f/><span class="icon is-small"><i class="fa fa-chevron-left"></i></span>
-<span class="is-hidden-touch is-hidden-desktop-only">Provisioning custom services for SharePoint</span>
-<span class="is-hidden-touch is-hidden-widescreen">Provisioning custom services for SharePoint</span>
-<span class="is-hidden-mobile is-hidden-desktop">Provisioning custom services for SharePoint</span>
-<span class=is-hidden-tablet>Provisioning custom services for...</span></a></p></div></div><div class=level-right><div class=level-item><p class="control has-addons"><a class=button href=https://baywet.github.io/sharepoint-apps-add-ins-javasc/><span class="is-hidden-touch is-hidden-desktop-only">SharePoint apps (add-ins) JavaScript disappeared</span>
-<span class="is-hidden-touch is-hidden-widescreen">SharePoint apps (add-ins) JavaScript disappeared</span>
-<span class="is-hidden-mobile is-hidden-desktop">SharePoint apps (add-ins) JavaScript disappeared</span>
-<span class=is-hidden-tablet>SharePoint apps (add-ins) JavaScript...</span>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span></a></p></div></div></div></div><br><br><div class=container><div id=disqus_thread></div><script>var disqus_config=function(){this.page.url="https://baywet.github.io/shared-dependencies-resolution/",this.page.identifier=window.location.pathname};(function(){var a=document,b=a.createElement('script');b.src='https://baywet.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div><br><div class=container><nav class=panel><p class=panel-heading>Related</p><a class=panel-block href=https://baywet.github.io/sharepoint-apps-add-ins-javasc/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+We’ve recently had a complex issue. Let’s say these two products have a common...">
+<meta name=twitter:creator content>
+<meta name=twitter:image:src content="/img/logo.svg">
+<link rel=stylesheet type=text/css href=/css/capsule.min.css>
+<script>(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-176061333-1','auto'),ga('send','pageview')</script>
+<link rel=apple-touch-icon href=/img/apple-touch-icon.png>
+<link rel=icon href=/img/favicon.ico>
+</head>
+<body style=min-height:100vh;display:flex;flex-direction:column>
+<nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation">
+<div class=container>
+<div class=navbar-brand>
+<a class=navbar-item href=/en>
+<div class="title is-4">&nbsp;Baywet's blog</div>
+</a>
+<label class="button navbar-burger is-white" for=navbar-burger-state>
+<span></span>
+<span></span>
+<span></span>
+</label>
+</div>
+<input type=checkbox id=navbar-burger-state>
+<div class=navbar-menu>
+<div class=navbar-end>
+<a class=navbar-item href=https://baywet.github.io/fr/resolution-de-dependance-commu/>Français</a>
+</div>
+</div>
+</div>
+</nav>
+<section class=section style=flex:1>
+<div class=container>
+<h1 class=title>Shared dependencies resolution and SharePoint full trust development</h1>
+<p class=subtitle>Jul 18, 2015</p>
+<div class=content>
+<p>Hi everybody,</p>
+<p>At Negotium we’re building multiple SharePoint products (<a href=https://www.oceanik.com/>www.oceanik.com</a> <a href=https://www.theattributesolution.com/>www.theattributesolution.com</a> …)</p>
+<p>We’ve recently had a complex issue. Let’s say these two products have a common dependency (newtonsoft.json in our case). Now let’s say both products are installed on a single farm and that for some reason you have to uninstall one of them.</p>
+<p>When SharePoint will retract the wsp, it will retract all dll’s that were included within it. Including the common dependency the other product still needs. That is going to break the other product.</p>
+<p>A good SharePoint administrator will understand that promptly and issue a install-spsolution &lt;nameofthesolution> -gacdeployment –Local –Force on each impacted server.</p>
+<p>However not all customers are lucky enough to have properly trained SharePoint administrators. So here is the question we had: <strong>how to build my solution resilient enough to repair itself when things like this happen?</strong></p>
+<p>After a lot of thinking it appears that SharePoint doesn’t have a full <a href=https://en.wikipedia.org/wiki/Coupling_%28computer_programming%29>coupling module</a> (in fact the problem comes from .Net and how Windows is built in general).</p>
+<p>Some experienced SharePoint developers will say that we have <a href=https://msdn.microsoft.com/en-us/library/ff512761.aspx>ActivationDependency</a> for solutions. Indeed, but that is only useful when deploying, nothing prevents an administrator from retracting a solution that other solutions depend on.</p>
+<p>Others will say that we can kind of patch that adding features dependency on because these one check for any dependent feature when deactivating. But features are not meant for that, they are meant for provisioning elements, moreover nothing prevents an administrator from retracting a solution containing features still activated (but don’t do that, it’s really bad).</p>
+<p>The only technical solution to solve this issue (and I took time to chat with the SharePoint product team on that matter) is to build a timerjob with no dependency that will check if our dependencies are here and if missing redeploy the solutions.</p>
+<p><a href=https://github.com/baywet/blogsamples/tree/master/CommonDepedency>You’ll find an example here.</a></p>
+<p>Once again, if you can build apps instead of full trust solutions it is far better and you won’t have that kind of issues ;-)</p>
+<p>PS: I’d like to thank my team for the time they spent thinking about that matter, namely Benoit, Pascal, Yann, Sébastien, Jeff and Jordan</p>
+</div>
+<br>
+<p class=heading>
+Last edited
+<a href=https://github.com/baywet/blogsource/commit/a468fa010963485f8321f689ab366ef4a7ffcb8b>
+Sep 6, 2021
+</a> by <a href=https://github.com/baywet>Vincent</a>
+</p>
+<br>
+<div class=heading>Tags:</div>
+<div class="field is-grouped is-grouped-multiline">
+<div class=control>
+<a href=/tags/dependencies>
+<span class=tag>Dependencies</span>
+</a>
+</div>
+<div class=control>
+<a href=/tags/resilience>
+<span class=tag>Resilience</span>
+</a>
+</div>
+<div class=control>
+<a href=/tags/solutions>
+<span class=tag>Solutions</span>
+</a>
+</div>
+<div class=control>
+<a href=/tags/full-trust>
+<span class=tag>Full Trust</span>
+</a>
+</div>
+<div class=control>
+<a href=/tags/sharepoint>
+<span class=tag>Sharepoint</span>
+</a>
+</div>
+<div class=control>
+<a href=/tags/development>
+<span class=tag>Development</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<section class=section>
+<div class=container>
+<div class=level>
+<div class=level-left>
+<div class=level-item>
+<p class="control has-addons">
+<a class=button href=https://baywet.github.io/provisioning-custom-services-f/>
+<span class="icon is-small"><i class="fa fa-chevron-left"></i></span>
+<span class="is-hidden-touch is-hidden-desktop-only">
+Provisioning custom services for SharePoint
+</span>
+<span class="is-hidden-touch is-hidden-widescreen">
+Provisioning custom services for SharePoint
+</span>
+<span class="is-hidden-mobile is-hidden-desktop">
+Provisioning custom services for SharePoint
+</span>
+<span class=is-hidden-tablet>
+Provisioning custom services for...
+</span>
+</a>
+</p>
+</div>
+</div>
+<div class=level-right>
+<div class=level-item>
+<p class="control has-addons">
+<a class=button href=https://baywet.github.io/sharepoint-apps-add-ins-javasc/>
+<span class="is-hidden-touch is-hidden-desktop-only">
+SharePoint apps (add-ins) JavaScript disappeared
+</span>
+<span class="is-hidden-touch is-hidden-widescreen">
+SharePoint apps (add-ins) JavaScript disappeared
+</span>
+<span class="is-hidden-mobile is-hidden-desktop">
+SharePoint apps (add-ins) JavaScript disappeared
+</span>
+<span class=is-hidden-tablet>
+SharePoint apps (add-ins) JavaScript...
+</span>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<br>
+<br>
+<div class=container>
+<div id=disqus_thread></div>
+<script>var disqus_config=function(){this.page.url="https://baywet.github.io/shared-dependencies-resolution/",this.page.identifier=window.location.pathname};(function(){var a=document,b=a.createElement('script');b.src='https://baywet.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script>
+<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
+</div>
+<br>
+<div class=container>
+<nav class=panel>
+<p class=panel-heading>Related</p>
+<a class=panel-block href=https://baywet.github.io/sharepoint-apps-add-ins-javasc/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>SharePoint apps (add-ins) JavaScript disappeared&nbsp;<div class=tag>Sharepoint</div><div class=tag>Development</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2015-05-25-01-11-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>SharePoint apps (add-ins) JavaScript disappeared&nbsp;
+<div class=tag>Sharepoint</div>
+<div class=tag>Development</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2015-05-25-01-11-00/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at SharePoint Saturday New York City 2015&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2015-05-21-00-50-33/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at SharePoint Saturday New York City 2015&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2015-05-21-00-50-33/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at SharePoint Saturday Montréal 2015&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-spbizconf/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at SharePoint Saturday Montréal 2015&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/speaking-at-spbizconf/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at SPBizConf&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/maximum-provided-results-to-ge/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at SPBizConf&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/maximum-provided-results-to-ge/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Maximum provided results to generate refiners&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/montreal-sharepoint-saturday-2/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Maximum provided results to generate refiners&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/montreal-sharepoint-saturday-2/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Montreal SharePoint Saturday 2015&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/automated-build-for-sharepoint-2014-12-04-01-12-13/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Montreal SharePoint Saturday 2015&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/automated-build-for-sharepoint-2014-12-04-01-12-13/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Automated build for SharePoint 2013 full trust solutions – Where are my solutions?&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/visual-studio-2013-update-4-an/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Automated build for SharePoint 2013 full trust solutions – Where are my solutions?&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/visual-studio-2013-update-4-an/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Visual studio 2013 Update 4 and SharePoint full trust solutions automated build&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/office-developers-tools-novemb/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Visual studio 2013 Update 4 and SharePoint full trust solutions automated build&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/office-developers-tools-novemb/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Office developers tools november 2014 update&nbsp;<div class=tag>Sharepoint</div><div class=tag>Development</div></span></a><a class=panel-block href=https://baywet.github.io/automated-build-for-sharepoint-2014-10-29-02-22-54/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Office developers tools november 2014 update&nbsp;
+<div class=tag>Sharepoint</div>
+<div class=tag>Development</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/automated-build-for-sharepoint-2014-10-29-02-22-54/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Automated build for SharePoint server (fulltrust) solutions with visual studio online&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/qampa-with-the-sharepoint-mvp/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Automated build for SharePoint server (fulltrust) solutions with visual studio online&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/qampa-with-the-sharepoint-mvp/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Q&A with the SharePoint MVP Experts Chat On Oct 29th @1pm EST or 10am PDT&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-the-sharepoint-sat-2014-10-08-23-40-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Q&A with the SharePoint MVP Experts Chat On Oct 29th @1pm EST or 10am PDT&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/speaking-at-the-sharepoint-sat-2014-10-08-23-40-00/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at the SharePoint Saturday Ottawa 2014 !&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/converting-a-protected-by-pass/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at the SharePoint Saturday Ottawa 2014 !&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/converting-a-protected-by-pass/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Converting a protected by password certificate (pfx) to an unprotected one (snk)&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-the-sharepoint-sat-2014-10-01-23-34-03/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Converting a protected by password certificate (pfx) to an unprotected one (snk)&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/speaking-at-the-sharepoint-sat-2014-10-01-23-34-03/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at the SharePoint Saturday New Hampshire 2014 !&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/localizing-javascript-of-a-ful/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at the SharePoint Saturday New Hampshire 2014 !&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/localizing-javascript-of-a-ful/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Localizing JavaScript of a Full Trust solution&nbsp;<div class=tag>Full Trust</div><div class=tag>Sharepoint</div></span></a></nav></div></section><footer class=footer><div class=container><nav class=level></nav><nav class=level><div class="level-left has-text-centered"><div class=level-item><form class="control has-icons has-icons-right" method=get action=https://bing.com><input class=input type=text name=q maxlength=255 placeholder=Search>
+<span>Localizing JavaScript of a Full Trust solution&nbsp;
+<div class=tag>Full Trust</div>
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+</nav>
+</div>
+</section>
+<footer class=footer>
+<div class=container>
+<nav class=level>
+</nav>
+<nav class=level>
+<div class="level-left has-text-centered">
+<div class=level-item>
+<form class="control has-icons has-icons-right" method=get action=https://bing.com>
+<input class=input type=text name=q maxlength=255 placeholder=Search>
 <input class=input type=hidden name=sites value=https://baywet.github.io/>
-<span class="icon is-small is-right"><i class="fa fa-search"></i></span></form></div></div><div class="level-right has-text-centered"><div class=level-item><a class=button href=https://baywet.github.io/en><span class=icon><i class="fa fa-home"></i></span></a> &nbsp;
-<a class=button href><span class=icon><i class="fa fa-rss"></i></span></a></div></div></nav></div></footer><script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script></body></html>
+<span class="icon is-small is-right"><i class="fa fa-search"></i></span>
+</form>
+</div>
+</div>
+<div class="level-right has-text-centered">
+<div class=level-item>
+<a class=button href=https://baywet.github.io/en>
+<span class=icon><i class="fa fa-home"></i></span>
+</a> &nbsp;
+<a class=button href>
+<span class=icon><i class="fa fa-rss"></i></span>
+</a>
+</div>
+</div>
+</nav>
+</div>
+</footer>
+<script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script>
+</body>
+</html>

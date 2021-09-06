@@ -1,47 +1,315 @@
-<!doctype html><html lang=en dir=ltr itemscope itemtype=https://schema.org/Article><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>Internet Explorer compatibility mode is changing on SharePoint Online</title><meta name=author content="Vincent Biret"><meta name=description content="The history being this situation….
-Internet Explorer has been a corporate browser for two decades now. And many of us remember the dark ages of web development when we needed to have “IE compatible..."><meta name=generator content="Hugo 0.85.0"><meta itemprop=name content="Internet Explorer compatibility mode is changing on SharePoint Online"><meta itemprop=description content="The history being this situation….
-Internet Explorer has been a corporate browser for two decades now. And many of us remember the dark ages of web development when we needed to have “IE compatible..."><meta itemprop=image content="/img/logo.svg"><meta property="og:title" content="Internet Explorer compatibility mode is changing on SharePoint Online"><meta property="og:type" content="article"><meta property="og:url" content="https://baywet.github.io/internet-explorer-compatibilit/"><meta property="og:image" content="/img/logo.svg"><meta property="og:description" content="The history being this situation….
-Internet Explorer has been a corporate browser for two decades now. And many of us remember the dark ages of web development when we needed to have “IE compatible..."><meta property="og:site_name" content="Baywet's blog"><meta property="og:updated_time" content="2021-09-06T13:44:53-04:00"><meta property="article:published_time" content="2018-04-16T08:00:00+00:00"><meta property="article:modified_time" content="2021-09-06T13:44:53-04:00"><meta property="article:section" content><meta property="article:tag" content="dev"><meta property="article:tag" content="javascript"><meta property="article:tag" content="internet explorer"><meta property="article:tag" content="sharepoint"><meta name=twitter:card content="summary"><meta name=twitter:site content><meta name=twitter:title content="Internet Explorer compatibility mode is changing on SharePoint Online"><meta name=twitter:description content="The history being this situation….
-Internet Explorer has been a corporate browser for two decades now. And many of us remember the dark ages of web development when we needed to have “IE compatible..."><meta name=twitter:creator content><meta name=twitter:image:src content="/img/logo.svg"><link rel=stylesheet type=text/css href=/css/capsule.min.css><script>(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-176061333-1','auto'),ga('send','pageview')</script><link rel=apple-touch-icon href=/img/apple-touch-icon.png><link rel=icon href=/img/favicon.ico></head><body style=min-height:100vh;display:flex;flex-direction:column><nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation"><div class=container><div class=navbar-brand><a class=navbar-item href=/en><div class="title is-4">&nbsp;Baywet's blog</div></a><label class="button navbar-burger is-white" for=navbar-burger-state><span></span><span></span><span></span></label></div><input type=checkbox id=navbar-burger-state><div class=navbar-menu><div class=navbar-end><a class=navbar-item href=https://baywet.github.io/fr/le-mode-de-compatibilite-inter/>Français</a></div></div></div></nav><section class=section style=flex:1><div class=container><h1 class=title>Internet Explorer compatibility mode is changing on SharePoint Online</h1><p class=subtitle>Apr 16, 2018</p><div class=content><h2 id=the-history-being-this-situation>The history being this situation….</h2><p>Internet Explorer has been a corporate browser for two decades now. And many of us remember the dark ages of web development when we needed to have “IE compatible code” and “web compatible code”.</p><p>As many companies invested deeply in the browser building portals that worked with specific versions, Microsoft provided a decade ago a compatibility mode, allowing the browser to “behave” like a former version of itself and stay compatible with websites that had not been updated.</p><p>You can set, from your website, this compatibility mode to instruct Internet Explorer which version it should run under and since SharePoint 2013, it was set to version 10.</p><p>This made a lot of sense originally as SharePoint had a lot of legacy code that needed to be migrated by the product team before it could run properly under IE 11.</p><p>However, as years passed, it was more and more painful, degrading performances, compatibility with modern frameworks and bringing strange rendering behaviors.</p><h2 id=and-what-changed-recently>…And what changed recently</h2><p><strong>At 2toLead we started noticing a couple of tenants changing from the version 10 compatibility mode to “edge” (IE11, it was called this way at the time in the transition period) with tenant version 16.0.0.7604.</strong></p><p>You can check the version of your tenant by using your browser’s development tools, look at any request to SharePoint and look at the MicrosoftSharePointTeamServices response header.</p><p>To check which compatibility mode SharePoint is currently sending to your users you can look in the source of the page and check the X-UA-Compatible metadata.</p><p><strong>You can mostly expect performances improvements and better compatibility with modern web standards and frameworks. There might be cases where, because you had to workaround issues with older version of IE, some things might start behaving/looking differently.</strong></p><p>Lookout for this change coming to your tenants if you have any customization in place!</p><p>Alternatively, your admins should be able to put the SharePoint site in a list and force the compatibility from an admin perspective, that might come at the price of some native SharePoint functionalities not working anymore and should only be used temporary to give you the time to fix the situation. <a href=https://docs.microsoft.com/en-us/internet-explorer/ie11-deploy-guide/turn-on-enterprise-mode-and-use-a-site-list>https://docs.microsoft.com/en-us/internet-explorer/ie11-deploy-guide/turn-on-enterprise-mode-and-use-a-site-list</a></p><p>Reminder, Internet Explorer 11 is the only supported browser for client OS now. <a href=https://support.microsoft.com/en-us/help/17454/lifecycle-faq-internet-explorer>https://support.microsoft.com/en-us/help/17454/lifecycle-faq-internet-explorer</a></p><p>Related resources</p><p><a href=https://techcommunity.microsoft.com/t5/SharePoint/IE9-IE10-users-in-SPO-Time-to-move-to-modern-browsers/td-p/36692>https://techcommunity.microsoft.com/t5/SharePoint/IE9-IE10-users-in-SPO-Time-to-move-to-modern-browsers/td-p/36692</a></p><p><a href=https://docs.microsoft.com/en-us/internet-explorer/ie11-deploy-guide/fix-compat-issues-with-doc-modes-and-enterprise-mode-site-list>https://docs.microsoft.com/en-us/internet-explorer/ie11-deploy-guide/fix-compat-issues-with-doc-modes-and-enterprise-mode-site-list</a></p></div><br><p class=heading>Last edited
-<a href=https://github.com/baywet/blogsource/commit/dd09eef54ac7725556cc18eb97ce7235e29201ba>Sep 6, 2021</a> by <a href=https://github.com/baywet>Vincent Biret</a></p><br><div class=heading>Tags:</div><div class="field is-grouped is-grouped-multiline"><div class=control><a href=/tags/dev><span class=tag>Dev</span></a></div><div class=control><a href=/tags/javascript><span class=tag>Javascript</span></a></div><div class=control><a href=/tags/internet-explorer><span class=tag>Internet Explorer</span></a></div><div class=control><a href=/tags/sharepoint><span class=tag>Sharepoint</span></a></div></div></div></section><section class=section><div class=container><div class=level><div class=level-left><div class=level-item><p class="control has-addons"><a class=button href=https://baywet.github.io/speaking-at-the-techorama-belg/><span class="icon is-small"><i class="fa fa-chevron-left"></i></span>
-<span class="is-hidden-touch is-hidden-desktop-only">Speaking at the #Techorama Belgium 2018 about the #MicrosoftGraph</span>
-<span class="is-hidden-touch is-hidden-widescreen">Speaking at the #Techorama Belgium 2018 about the #MicrosoftGraph</span>
-<span class="is-hidden-mobile is-hidden-desktop">Speaking at the #Techorama Belgium 2018 about the...</span>
-<span class=is-hidden-tablet>Speaking at the #Techorama Belgium 2018...</span></a></p></div></div><div class=level-right><div class=level-item><p class="control has-addons"><a class=button href=https://baywet.github.io/git-forkimportmanual-copy-keep/><span class="is-hidden-touch is-hidden-desktop-only">Git: fork/import/manual copy, keep it clean</span>
-<span class="is-hidden-touch is-hidden-widescreen">Git: fork/import/manual copy, keep it clean</span>
-<span class="is-hidden-mobile is-hidden-desktop">Git: fork/import/manual copy, keep it clean</span>
-<span class=is-hidden-tablet>Git: fork/import/manual copy, keep it...</span>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span></a></p></div></div></div></div><br><br><div class=container><div id=disqus_thread></div><script>var disqus_config=function(){this.page.url="https://baywet.github.io/internet-explorer-compatibilit/",this.page.identifier=window.location.pathname};(function(){var a=document,b=a.createElement('script');b.src='https://baywet.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div><br><div class=container><nav class=panel><p class=panel-heading>Related</p><a class=panel-block href=https://baywet.github.io/new-sharepoint-framework-pnp-s/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<!doctype html><html lang=en dir=ltr itemscope itemtype=https://schema.org/Article>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Internet Explorer compatibility mode is changing on SharePoint Online</title>
+<meta name=author content="Vincent Biret">
+<meta name=description content="The history being this situation….
+Internet Explorer has been a corporate browser for two decades now. And many of us remember the dark ages of web development when we needed to have “IE compatible...">
+<meta name=generator content="Hugo 0.88.1">
+<meta itemprop=name content="Internet Explorer compatibility mode is changing on SharePoint Online">
+<meta itemprop=description content="The history being this situation….
+Internet Explorer has been a corporate browser for two decades now. And many of us remember the dark ages of web development when we needed to have “IE compatible...">
+<meta itemprop=image content="/img/logo.svg">
+<meta property="og:title" content="Internet Explorer compatibility mode is changing on SharePoint Online">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://baywet.github.io/internet-explorer-compatibilit/">
+<meta property="og:image" content="/img/logo.svg">
+<meta property="og:description" content="The history being this situation….
+Internet Explorer has been a corporate browser for two decades now. And many of us remember the dark ages of web development when we needed to have “IE compatible...">
+<meta property="og:site_name" content="Baywet's blog">
+<meta property="og:updated_time" content="2021-09-06T16:55:24+00:00">
+<meta property="article:published_time" content="2018-04-16T08:00:00+00:00">
+<meta property="article:modified_time" content="2021-09-06T16:55:24+00:00">
+<meta property="article:section" content>
+<meta property="article:tag" content="dev">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="internet explorer">
+<meta property="article:tag" content="sharepoint">
+<meta name=twitter:card content="summary">
+<meta name=twitter:site content>
+<meta name=twitter:title content="Internet Explorer compatibility mode is changing on SharePoint Online">
+<meta name=twitter:description content="The history being this situation….
+Internet Explorer has been a corporate browser for two decades now. And many of us remember the dark ages of web development when we needed to have “IE compatible...">
+<meta name=twitter:creator content>
+<meta name=twitter:image:src content="/img/logo.svg">
+<link rel=stylesheet type=text/css href=/css/capsule.min.css>
+<script>(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-176061333-1','auto'),ga('send','pageview')</script>
+<link rel=apple-touch-icon href=/img/apple-touch-icon.png>
+<link rel=icon href=/img/favicon.ico>
+</head>
+<body style=min-height:100vh;display:flex;flex-direction:column>
+<nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation">
+<div class=container>
+<div class=navbar-brand>
+<a class=navbar-item href=/en>
+<div class="title is-4">&nbsp;Baywet's blog</div>
+</a>
+<label class="button navbar-burger is-white" for=navbar-burger-state>
+<span></span>
+<span></span>
+<span></span>
+</label>
+</div>
+<input type=checkbox id=navbar-burger-state>
+<div class=navbar-menu>
+<div class=navbar-end>
+<a class=navbar-item href=https://baywet.github.io/fr/le-mode-de-compatibilite-inter/>Français</a>
+</div>
+</div>
+</div>
+</nav>
+<section class=section style=flex:1>
+<div class=container>
+<h1 class=title>Internet Explorer compatibility mode is changing on SharePoint Online</h1>
+<p class=subtitle>Apr 16, 2018</p>
+<div class=content>
+<h2 id=the-history-being-this-situation>The history being this situation….</h2>
+<p>Internet Explorer has been a corporate browser for two decades now. And many of us remember the dark ages of web development when we needed to have “IE compatible code” and “web compatible code”.</p>
+<p>As many companies invested deeply in the browser building portals that worked with specific versions, Microsoft provided a decade ago a compatibility mode, allowing the browser to “behave” like a former version of itself and stay compatible with websites that had not been updated.</p>
+<p>You can set, from your website, this compatibility mode to instruct Internet Explorer which version it should run under and since SharePoint 2013, it was set to version 10.</p>
+<p>This made a lot of sense originally as SharePoint had a lot of legacy code that needed to be migrated by the product team before it could run properly under IE 11.</p>
+<p>However, as years passed, it was more and more painful, degrading performances, compatibility with modern frameworks and bringing strange rendering behaviors.</p>
+<h2 id=and-what-changed-recently>…And what changed recently</h2>
+<p><strong>At 2toLead we started noticing a couple of tenants changing from the version 10 compatibility mode to “edge” (IE11, it was called this way at the time in the transition period) with tenant version 16.0.0.7604.</strong></p>
+<p>You can check the version of your tenant by using your browser’s development tools, look at any request to SharePoint and look at the MicrosoftSharePointTeamServices response header.</p>
+<p>To check which compatibility mode SharePoint is currently sending to your users you can look in the source of the page and check the X-UA-Compatible metadata.</p>
+<p><strong>You can mostly expect performances improvements and better compatibility with modern web standards and frameworks. There might be cases where, because you had to workaround issues with older version of IE, some things might start behaving/looking differently.</strong></p>
+<p>Lookout for this change coming to your tenants if you have any customization in place!</p>
+<p>Alternatively, your admins should be able to put the SharePoint site in a list and force the compatibility from an admin perspective, that might come at the price of some native SharePoint functionalities not working anymore and should only be used temporary to give you the time to fix the situation. <a href=https://docs.microsoft.com/en-us/internet-explorer/ie11-deploy-guide/turn-on-enterprise-mode-and-use-a-site-list>https://docs.microsoft.com/en-us/internet-explorer/ie11-deploy-guide/turn-on-enterprise-mode-and-use-a-site-list</a></p>
+<p>Reminder, Internet Explorer 11 is the only supported browser for client OS now. <a href=https://support.microsoft.com/en-us/help/17454/lifecycle-faq-internet-explorer>https://support.microsoft.com/en-us/help/17454/lifecycle-faq-internet-explorer</a></p>
+<p>Related resources</p>
+<p><a href=https://techcommunity.microsoft.com/t5/SharePoint/IE9-IE10-users-in-SPO-Time-to-move-to-modern-browsers/td-p/36692>https://techcommunity.microsoft.com/t5/SharePoint/IE9-IE10-users-in-SPO-Time-to-move-to-modern-browsers/td-p/36692</a></p>
+<p><a href=https://docs.microsoft.com/en-us/internet-explorer/ie11-deploy-guide/fix-compat-issues-with-doc-modes-and-enterprise-mode-site-list>https://docs.microsoft.com/en-us/internet-explorer/ie11-deploy-guide/fix-compat-issues-with-doc-modes-and-enterprise-mode-site-list</a></p>
+</div>
+<br>
+<p class=heading>
+Last edited
+<a href=https://github.com/baywet/blogsource/commit/a468fa010963485f8321f689ab366ef4a7ffcb8b>
+Sep 6, 2021
+</a> by <a href=https://github.com/baywet>Vincent</a>
+</p>
+<br>
+<div class=heading>Tags:</div>
+<div class="field is-grouped is-grouped-multiline">
+<div class=control>
+<a href=/tags/dev>
+<span class=tag>Dev</span>
+</a>
+</div>
+<div class=control>
+<a href=/tags/javascript>
+<span class=tag>Javascript</span>
+</a>
+</div>
+<div class=control>
+<a href=/tags/internet-explorer>
+<span class=tag>Internet Explorer</span>
+</a>
+</div>
+<div class=control>
+<a href=/tags/sharepoint>
+<span class=tag>Sharepoint</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<section class=section>
+<div class=container>
+<div class=level>
+<div class=level-left>
+<div class=level-item>
+<p class="control has-addons">
+<a class=button href=https://baywet.github.io/speaking-at-the-techorama-belg/>
+<span class="icon is-small"><i class="fa fa-chevron-left"></i></span>
+<span class="is-hidden-touch is-hidden-desktop-only">
+Speaking at the #Techorama Belgium 2018 about the #MicrosoftGraph
+</span>
+<span class="is-hidden-touch is-hidden-widescreen">
+Speaking at the #Techorama Belgium 2018 about the #MicrosoftGraph
+</span>
+<span class="is-hidden-mobile is-hidden-desktop">
+Speaking at the #Techorama Belgium 2018 about the...
+</span>
+<span class=is-hidden-tablet>
+Speaking at the #Techorama Belgium 2018...
+</span>
+</a>
+</p>
+</div>
+</div>
+<div class=level-right>
+<div class=level-item>
+<p class="control has-addons">
+<a class=button href=https://baywet.github.io/git-forkimportmanual-copy-keep/>
+<span class="is-hidden-touch is-hidden-desktop-only">
+Git: fork/import/manual copy, keep it clean
+</span>
+<span class="is-hidden-touch is-hidden-widescreen">
+Git: fork/import/manual copy, keep it clean
+</span>
+<span class="is-hidden-mobile is-hidden-desktop">
+Git: fork/import/manual copy, keep it clean
+</span>
+<span class=is-hidden-tablet>
+Git: fork/import/manual copy, keep it...
+</span>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<br>
+<br>
+<div class=container>
+<div id=disqus_thread></div>
+<script>var disqus_config=function(){this.page.url="https://baywet.github.io/internet-explorer-compatibilit/",this.page.identifier=window.location.pathname};(function(){var a=document,b=a.createElement('script');b.src='https://baywet.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script>
+<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
+</div>
+<br>
+<div class=container>
+<nav class=panel>
+<p class=panel-heading>Related</p>
+<a class=panel-block href=https://baywet.github.io/new-sharepoint-framework-pnp-s/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>New SharePoint Framework PnP Samples available: using the Skype UCWA Web SDK to subscribe to people’s status&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2017-11-16-17-26-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>New SharePoint Framework PnP Samples available: using the Skype UCWA Web SDK to subscribe to people’s status&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2017-11-16-17-26-00/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at SharePoint Saturday Detroit 2017&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/using-pnp-powershell-on-visual/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at SharePoint Saturday Detroit 2017&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/using-pnp-powershell-on-visual/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Using PnP PowerShell on Visual Studio Team Services (VSTS) Hosted Agent&nbsp;<div class=tag>Dev</div><div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2017-07-13-08-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Using PnP PowerShell on Visual Studio Team Services (VSTS) Hosted Agent&nbsp;
+<div class=tag>Dev</div>
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2017-07-13-08-00-00/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at SharePoint Saturday Brussels 2017&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/re-awarded-microsoft-mvp-for-y/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at SharePoint Saturday Brussels 2017&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/re-awarded-microsoft-mvp-for-y/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Re-awarded Microsoft MVP for year 2017 2018&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2017-07-06-08-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Re-awarded Microsoft MVP for year 2017 2018&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2017-07-06-08-00-00/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at SharePoint Saturday New York City 2017&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/sharepoint-framework-in-my-own/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at SharePoint Saturday New York City 2017&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/sharepoint-framework-in-my-own/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>SharePoint Framework in my own words&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/update-to-sppagecontextinfo-ty/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>SharePoint Framework in my own words&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/update-to-sppagecontextinfo-ty/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Update to _spPageContextInfo type definitions - new properties available&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/customizing-page-layouts-maste/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Update to _spPageContextInfo type definitions - new properties available&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/customizing-page-layouts-maste/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Customizing page layouts, master pages and image renditions in SharePoint Online&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-techorama-belgium/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Customizing page layouts, master pages and image renditions in SharePoint Online&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/speaking-at-techorama-belgium/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at Techorama Belgium 2017&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/publishing-sharepoint-image-re/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at Techorama Belgium 2017&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/publishing-sharepoint-image-re/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Publishing SharePoint Image renditions with PnP Provisioning&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2017-03-09-14-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Publishing SharePoint Image renditions with PnP Provisioning&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2017-03-09-14-00-00/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at SharePoint Saturday Vancouver 2017&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2017-03-07-16-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at SharePoint Saturday Vancouver 2017&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2017-03-07-16-00-00/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at SharePoint Saturday Calgary 2017&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-aos-tours-ottawa-a/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at SharePoint Saturday Calgary 2017&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/speaking-at-aos-tours-ottawa-a/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at Aos Tours Ottawa and Toronto&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/troubleshooting-load-balancing/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at Aos Tours Ottawa and Toronto&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/troubleshooting-load-balancing/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Troubleshooting load balancing issues with SharePoint&nbsp;<div class=tag>Sharepoint</div></span></a></nav></div></section><footer class=footer><div class=container><nav class=level></nav><nav class=level><div class="level-left has-text-centered"><div class=level-item><form class="control has-icons has-icons-right" method=get action=https://bing.com><input class=input type=text name=q maxlength=255 placeholder=Search>
+<span>Troubleshooting load balancing issues with SharePoint&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+</nav>
+</div>
+</section>
+<footer class=footer>
+<div class=container>
+<nav class=level>
+</nav>
+<nav class=level>
+<div class="level-left has-text-centered">
+<div class=level-item>
+<form class="control has-icons has-icons-right" method=get action=https://bing.com>
+<input class=input type=text name=q maxlength=255 placeholder=Search>
 <input class=input type=hidden name=sites value=https://baywet.github.io/>
-<span class="icon is-small is-right"><i class="fa fa-search"></i></span></form></div></div><div class="level-right has-text-centered"><div class=level-item><a class=button href=https://baywet.github.io/en><span class=icon><i class="fa fa-home"></i></span></a> &nbsp;
-<a class=button href><span class=icon><i class="fa fa-rss"></i></span></a></div></div></nav></div></footer><script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script></body></html>
+<span class="icon is-small is-right"><i class="fa fa-search"></i></span>
+</form>
+</div>
+</div>
+<div class="level-right has-text-centered">
+<div class=level-item>
+<a class=button href=https://baywet.github.io/en>
+<span class=icon><i class="fa fa-home"></i></span>
+</a> &nbsp;
+<a class=button href>
+<span class=icon><i class="fa fa-rss"></i></span>
+</a>
+</div>
+</div>
+</nav>
+</div>
+</footer>
+<script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script>
+</body>
+</html>

@@ -1,47 +1,345 @@
-<!doctype html><html lang=fr dir=ltr itemscope itemtype=https://schema.org/Article><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>Boost your SharePoint solutions with distributed cache!–Part 3–Let’s Code!</title><meta name=author content="Vincent Biret"><meta name=description content="Let’s code!
-All what you need is located in these namspaces Microsoft.SharePoint.DistributedCaching , Microsoft.SharePoint.DistributedCaching.Utilities, Microsoft.ApplicationServer.Caching, it is..."><meta name=generator content="Hugo 0.85.0"><meta itemprop=name content="Boost your SharePoint solutions with distributed cache!–Part 3–Let’s Code!"><meta itemprop=description content="Let’s code!
-All what you need is located in these namspaces Microsoft.SharePoint.DistributedCaching , Microsoft.SharePoint.DistributedCaching.Utilities, Microsoft.ApplicationServer.Caching, it is..."><meta itemprop=image content="/img/logo.svg"><meta property="og:title" content="Boost your SharePoint solutions with distributed cache!–Part 3–Let’s Code!"><meta property="og:type" content="article"><meta property="og:url" content="https://baywet.github.io/fr/boost-your-sharepoint-solution/"><meta property="og:image" content="/img/logo.svg"><meta property="og:description" content="Let’s code!
-All what you need is located in these namspaces Microsoft.SharePoint.DistributedCaching , Microsoft.SharePoint.DistributedCaching.Utilities, Microsoft.ApplicationServer.Caching, it is..."><meta property="og:site_name" content="Le blog de baywet"><meta property="og:updated_time" content="2021-09-06T13:44:53-04:00"><meta property="article:published_time" content="2013-12-17T12:06:00+00:00"><meta property="article:modified_time" content="2021-09-06T13:44:53-04:00"><meta property="article:section" content><meta property="article:tag" content="performance"><meta property="article:tag" content="cache"><meta property="article:tag" content="2013"><meta property="article:tag" content="developer"><meta property="article:tag" content="distributed"><meta name=twitter:card content="summary"><meta name=twitter:site content><meta name=twitter:title content="Boost your SharePoint solutions with distributed cache!–Part 3–Let’s Code!"><meta name=twitter:description content="Let’s code!
-All what you need is located in these namspaces Microsoft.SharePoint.DistributedCaching , Microsoft.SharePoint.DistributedCaching.Utilities, Microsoft.ApplicationServer.Caching, it is..."><meta name=twitter:creator content><meta name=twitter:image:src content="/img/logo.svg"><link rel=stylesheet type=text/css href=/css/capsule.min.css><script>(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-176061333-1','auto'),ga('send','pageview')</script><link rel=apple-touch-icon href=/img/apple-touch-icon.png><link rel=icon href=/img/favicon.ico></head><body style=min-height:100vh;display:flex;flex-direction:column><nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation"><div class=container><div class=navbar-brand><a class=navbar-item href=/fr><div class="title is-4">&nbsp;Le blog de baywet</div></a><label class="button navbar-burger is-white" for=navbar-burger-state><span></span><span></span><span></span></label></div><input type=checkbox id=navbar-burger-state><div class=navbar-menu><div class=navbar-end><a class=navbar-item href=/en>English</a></div></div></div></nav><section class=section style=flex:1><div class=container><h1 class=title>Boost your SharePoint solutions with distributed cache!–Part 3–Let’s Code!</h1><p class=subtitle>Dec 17, 2013</p><div class=content><h3 id=lets-code>Let’s code!</h3><p>All what you need is located in these namspaces <a href=https://msdn.microsoft.com/en-us/library/office/microsoft.sharepoint.distributedcaching.aspx>Microsoft.SharePoint.DistributedCaching</a> , Microsoft.SharePoint.DistributedCaching.Utilities, <a href="https://msdn.microsoft.com/en-us/library/microsoft.applicationserver.caching%28v=azure.10%29.aspx">Microsoft.ApplicationServer.Caching</a>, it is strictly forbidden to reference anything else coming from the appfabric sdk!</p><p>Another information, depending on your version of SharePoint and of Visual Studio it is possible that you don’t have these dll’s in SharePoint’s ISAPI (folders VS will look at to know which assemblies are available for your projects). In that case you will need to reference dll’s directly from their GAC location. You can use ILSPY or something equivalent to know the exact location. (or ask me in comments if you need it).</p><p>Because I’m a very kind developer, you will find attached a cs file which will help you to interact with the cache. This is not very complicated, cache cluster relies on a factory pattern. Talking about that, in order to do things properly, you will have to dispose factories properly at the end of the request (global.asax for example) and/or at the end of your process (in the case of a timerjob).</p><p>Once the factory is instanciated, we obtain the cache corresponding to the targeted partition (same thing, DataCache is not disposable, but if you dispose factories, think about un-referencing these objects too). That done, you only have to use the cache via the Microsoft provided methods.</p><p>Note that I’ve done for myself a method called PutAndCheckRegion. Indeed, regions disappear when they do not contain any more object, you have to ensure a region is here before storing something into it.</p><h3 id=conclusion>Conclusion</h3><p>I hope you learnt plenty of things about this SharePoint provided caching solution. Again, this is one of all available solutions, it can be useful or not depending on your needs. I tried to give a maximum of information so you have everything you need to make clever decisions.</p><p>No more excuses to have slow SharePoint solutions now! If you have any question/remark/complain, feel free to comment.</p></div><br><p class=heading>Edité la dernière fois le
-<a href=https://github.com/baywet/blogsource/commit/dd09eef54ac7725556cc18eb97ce7235e29201ba>6 Sep 2021</a> par <a href=https://github.com/baywet>Vincent Biret</a></p><br><div class=heading>Tags:</div><div class="field is-grouped is-grouped-multiline"><div class=control><a href=/fr/tags/performance><span class=tag>Performance</span></a></div><div class=control><a href=/fr/tags/cache><span class=tag>Cache</span></a></div><div class=control><a href=/fr/tags/2013><span class=tag>2013th</span></a></div><div class=control><a href=/fr/tags/developer><span class=tag>Developer</span></a></div><div class=control><a href=/fr/tags/distributed><span class=tag>Distributed</span></a></div><div class=control><a href=/fr/tags/dev><span class=tag>Dev</span></a></div><div class=control><a href=/fr/tags/sharepoint><span class=tag>Sharepoint</span></a></div></div></div></section><section class=section><div class=container><div class=level><div class=level-left><div class=level-item><p class="control has-addons"><a class=button href=https://baywet.github.io/fr/installation-des-prerequis-sha/><span class="icon is-small"><i class="fa fa-chevron-left"></i></span>
-<span class="is-hidden-touch is-hidden-desktop-only">Installation des prérequis SharePoint 2013 sur des serveurs hors ligne</span>
-<span class="is-hidden-touch is-hidden-widescreen">Installation des prérequis SharePoint 2013 sur des serveurs hors ligne</span>
-<span class="is-hidden-mobile is-hidden-desktop">Installation des prérequis SharePoint 2013 sur des...</span>
-<span class=is-hidden-tablet>Installation des prérequis SharePoint...</span></a></p></div></div><div class=level-right><div class=level-item><p class="control has-addons"><a class=button href=https://baywet.github.io/fr/boostez-vos-solutions-sharepoi-2013-12-14-20-21-00/><span class="is-hidden-touch is-hidden-desktop-only">Boostez vos solutions SharePoint avec le cache distribué !–Partie 3–Le code</span>
-<span class="is-hidden-touch is-hidden-widescreen">Boostez vos solutions SharePoint avec le cache distribué !–Partie 3–Le code</span>
-<span class="is-hidden-mobile is-hidden-desktop">Boostez vos solutions SharePoint avec le cache...</span>
-<span class=is-hidden-tablet>Boostez vos solutions SharePoint avec le...</span>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span></a></p></div></div></div></div><br><br><div class=container><div id=disqus_thread></div><script>var disqus_config=function(){this.page.url="https://baywet.github.io/fr/boost-your-sharepoint-solution/",this.page.identifier=window.location.pathname};(function(){var a=document,b=a.createElement('script');b.src='https://baywet.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div><br><div class=container><nav class=panel><p class=panel-heading>Related</p><a class=panel-block href=https://baywet.github.io/fr/boostez-vos-solutions-sharepoi-2013-12-14-20-21-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<!doctype html><html lang=fr dir=ltr itemscope itemtype=https://schema.org/Article>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Boost your SharePoint solutions with distributed cache!–Part 3–Let’s Code!</title>
+<meta name=author content="Vincent Biret">
+<meta name=description content="Let’s code!
+All what you need is located in these namspaces Microsoft.SharePoint.DistributedCaching , Microsoft.SharePoint.DistributedCaching.Utilities, Microsoft.ApplicationServer.Caching, it is...">
+<meta name=generator content="Hugo 0.88.1">
+<meta itemprop=name content="Boost your SharePoint solutions with distributed cache!–Part 3–Let’s Code!">
+<meta itemprop=description content="Let’s code!
+All what you need is located in these namspaces Microsoft.SharePoint.DistributedCaching , Microsoft.SharePoint.DistributedCaching.Utilities, Microsoft.ApplicationServer.Caching, it is...">
+<meta itemprop=image content="/img/logo.svg">
+<meta property="og:title" content="Boost your SharePoint solutions with distributed cache!–Part 3–Let’s Code!">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://baywet.github.io/fr/boost-your-sharepoint-solution/">
+<meta property="og:image" content="/img/logo.svg">
+<meta property="og:description" content="Let’s code!
+All what you need is located in these namspaces Microsoft.SharePoint.DistributedCaching , Microsoft.SharePoint.DistributedCaching.Utilities, Microsoft.ApplicationServer.Caching, it is...">
+<meta property="og:site_name" content="Le blog de baywet">
+<meta property="og:updated_time" content="2021-09-06T16:55:24+00:00">
+<meta property="article:published_time" content="2013-12-17T12:06:00+00:00">
+<meta property="article:modified_time" content="2021-09-06T16:55:24+00:00">
+<meta property="article:section" content>
+<meta property="article:tag" content="performance">
+<meta property="article:tag" content="cache">
+<meta property="article:tag" content="2013">
+<meta property="article:tag" content="developer">
+<meta property="article:tag" content="distributed">
+<meta name=twitter:card content="summary">
+<meta name=twitter:site content>
+<meta name=twitter:title content="Boost your SharePoint solutions with distributed cache!–Part 3–Let’s Code!">
+<meta name=twitter:description content="Let’s code!
+All what you need is located in these namspaces Microsoft.SharePoint.DistributedCaching , Microsoft.SharePoint.DistributedCaching.Utilities, Microsoft.ApplicationServer.Caching, it is...">
+<meta name=twitter:creator content>
+<meta name=twitter:image:src content="/img/logo.svg">
+<link rel=stylesheet type=text/css href=/css/capsule.min.css>
+<script>(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-176061333-1','auto'),ga('send','pageview')</script>
+<link rel=apple-touch-icon href=/img/apple-touch-icon.png>
+<link rel=icon href=/img/favicon.ico>
+</head>
+<body style=min-height:100vh;display:flex;flex-direction:column>
+<nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation">
+<div class=container>
+<div class=navbar-brand>
+<a class=navbar-item href=/fr>
+<div class="title is-4">&nbsp;Le blog de baywet</div>
+</a>
+<label class="button navbar-burger is-white" for=navbar-burger-state>
+<span></span>
+<span></span>
+<span></span>
+</label>
+</div>
+<input type=checkbox id=navbar-burger-state>
+<div class=navbar-menu>
+<div class=navbar-end>
+<a class=navbar-item href=/en>English</a>
+</div>
+</div>
+</div>
+</nav>
+<section class=section style=flex:1>
+<div class=container>
+<h1 class=title>Boost your SharePoint solutions with distributed cache!–Part 3–Let’s Code!</h1>
+<p class=subtitle>Dec 17, 2013</p>
+<div class=content>
+<h3 id=lets-code>Let’s code!</h3>
+<p>All what you need is located in these namspaces <a href=https://msdn.microsoft.com/en-us/library/office/microsoft.sharepoint.distributedcaching.aspx>Microsoft.SharePoint.DistributedCaching</a> , Microsoft.SharePoint.DistributedCaching.Utilities, <a href="https://msdn.microsoft.com/en-us/library/microsoft.applicationserver.caching%28v=azure.10%29.aspx">Microsoft.ApplicationServer.Caching</a>, it is strictly forbidden to reference anything else coming from the appfabric sdk!</p>
+<p>Another information, depending on your version of SharePoint and of Visual Studio it is possible that you don’t have these dll’s in SharePoint’s ISAPI (folders VS will look at to know which assemblies are available for your projects). In that case you will need to reference dll’s directly from their GAC location. You can use ILSPY or something equivalent to know the exact location. (or ask me in comments if you need it).</p>
+<p>Because I’m a very kind developer, you will find attached a cs file which will help you to interact with the cache. This is not very complicated, cache cluster relies on a factory pattern. Talking about that, in order to do things properly, you will have to dispose factories properly at the end of the request (global.asax for example) and/or at the end of your process (in the case of a timerjob).</p>
+<p>Once the factory is instanciated, we obtain the cache corresponding to the targeted partition (same thing, DataCache is not disposable, but if you dispose factories, think about un-referencing these objects too). That done, you only have to use the cache via the Microsoft provided methods.</p>
+<p>Note that I’ve done for myself a method called PutAndCheckRegion. Indeed, regions disappear when they do not contain any more object, you have to ensure a region is here before storing something into it.</p>
+<h3 id=conclusion>Conclusion</h3>
+<p>I hope you learnt plenty of things about this SharePoint provided caching solution. Again, this is one of all available solutions, it can be useful or not depending on your needs. I tried to give a maximum of information so you have everything you need to make clever decisions.</p>
+<p>No more excuses to have slow SharePoint solutions now! If you have any question/remark/complain, feel free to comment.</p>
+</div>
+<br>
+<p class=heading>
+Edité la dernière fois le
+<a href=https://github.com/baywet/blogsource/commit/a468fa010963485f8321f689ab366ef4a7ffcb8b>
+6 Sep 2021
+</a> par <a href=https://github.com/baywet>Vincent</a>
+</p>
+<br>
+<div class=heading>Tags:</div>
+<div class="field is-grouped is-grouped-multiline">
+<div class=control>
+<a href=/fr/tags/performance>
+<span class=tag>Performance</span>
+</a>
+</div>
+<div class=control>
+<a href=/fr/tags/cache>
+<span class=tag>Cache</span>
+</a>
+</div>
+<div class=control>
+<a href=/fr/tags/2013>
+<span class=tag>2013th</span>
+</a>
+</div>
+<div class=control>
+<a href=/fr/tags/developer>
+<span class=tag>Developer</span>
+</a>
+</div>
+<div class=control>
+<a href=/fr/tags/distributed>
+<span class=tag>Distributed</span>
+</a>
+</div>
+<div class=control>
+<a href=/fr/tags/dev>
+<span class=tag>Dev</span>
+</a>
+</div>
+<div class=control>
+<a href=/fr/tags/sharepoint>
+<span class=tag>Sharepoint</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<section class=section>
+<div class=container>
+<div class=level>
+<div class=level-left>
+<div class=level-item>
+<p class="control has-addons">
+<a class=button href=https://baywet.github.io/fr/installation-des-prerequis-sha/>
+<span class="icon is-small"><i class="fa fa-chevron-left"></i></span>
+<span class="is-hidden-touch is-hidden-desktop-only">
+Installation des prérequis SharePoint 2013 sur des serveurs hors ligne
+</span>
+<span class="is-hidden-touch is-hidden-widescreen">
+Installation des prérequis SharePoint 2013 sur des serveurs hors ligne
+</span>
+<span class="is-hidden-mobile is-hidden-desktop">
+Installation des prérequis SharePoint 2013 sur des...
+</span>
+<span class=is-hidden-tablet>
+Installation des prérequis SharePoint...
+</span>
+</a>
+</p>
+</div>
+</div>
+<div class=level-right>
+<div class=level-item>
+<p class="control has-addons">
+<a class=button href=https://baywet.github.io/fr/boostez-vos-solutions-sharepoi-2013-12-14-20-21-00/>
+<span class="is-hidden-touch is-hidden-desktop-only">
+Boostez vos solutions SharePoint avec le cache distribué !–Partie 3–Le code
+</span>
+<span class="is-hidden-touch is-hidden-widescreen">
+Boostez vos solutions SharePoint avec le cache distribué !–Partie 3–Le code
+</span>
+<span class="is-hidden-mobile is-hidden-desktop">
+Boostez vos solutions SharePoint avec le cache...
+</span>
+<span class=is-hidden-tablet>
+Boostez vos solutions SharePoint avec le...
+</span>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<br>
+<br>
+<div class=container>
+<div id=disqus_thread></div>
+<script>var disqus_config=function(){this.page.url="https://baywet.github.io/fr/boost-your-sharepoint-solution/",this.page.identifier=window.location.pathname};(function(){var a=document,b=a.createElement('script');b.src='https://baywet.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script>
+<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
+</div>
+<br>
+<div class=container>
+<nav class=panel>
+<p class=panel-heading>Related</p>
+<a class=panel-block href=https://baywet.github.io/fr/boostez-vos-solutions-sharepoi-2013-12-14-20-21-00/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Boostez vos solutions SharePoint avec le cache distribué !–Partie 3–Le code&nbsp;<div class=tag>Performance</div><div class=tag>Cache</div><div class=tag>2013th</div><div class=tag>Dev</div><div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/boostez-vos-solutions-sharepoi-2013-12-12-09-08-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Boostez vos solutions SharePoint avec le cache distribué !–Partie 3–Le code&nbsp;
+<div class=tag>Performance</div>
+<div class=tag>Cache</div>
+<div class=tag>2013th</div>
+<div class=tag>Dev</div>
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/boostez-vos-solutions-sharepoi-2013-12-12-09-08-00/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Boostez vos solutions SharePoint avec le cache distribué !–Partie 2–Explications et astuces&nbsp;<div class=tag>Performance</div><div class=tag>Cache</div><div class=tag>2013th</div><div class=tag>Dev</div><div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/boostez-vos-solutions-sharepoi-2013-12-11-01-15-14/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Boostez vos solutions SharePoint avec le cache distribué !–Partie 2–Explications et astuces&nbsp;
+<div class=tag>Performance</div>
+<div class=tag>Cache</div>
+<div class=tag>2013th</div>
+<div class=tag>Dev</div>
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/boostez-vos-solutions-sharepoi-2013-12-11-01-15-14/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Boostez vos solutions SharePoint avec le cache distribué !–Partie 1 Introduction&nbsp;<div class=tag>Performance</div><div class=tag>Cache</div><div class=tag>2013th</div><div class=tag>Developer</div><div class=tag>Dev</div><div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/sharepoint-autohosted-app-et-a/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Boostez vos solutions SharePoint avec le cache distribué !–Partie 1 Introduction&nbsp;
+<div class=tag>Performance</div>
+<div class=tag>Cache</div>
+<div class=tag>2013th</div>
+<div class=tag>Developer</div>
+<div class=tag>Dev</div>
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/sharepoint-autohosted-app-et-a/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>SharePoint autohosted app et ASP.NET MVC&nbsp;<div class=tag>2013th</div><div class=tag>Developer</div><div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/entity-framework-et-reference/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>SharePoint autohosted app et ASP.NET MVC&nbsp;
+<div class=tag>2013th</div>
+<div class=tag>Developer</div>
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/entity-framework-et-reference/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Entity Framework et référence au dataContext pour une application web&nbsp;<div class=tag>Developer</div><div class=tag>Dev</div></span></a><a class=panel-block href=https://baywet.github.io/fr/sharepoint-2013-vectorized-log/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Entity Framework et référence au dataContext pour une application web&nbsp;
+<div class=tag>Developer</div>
+<div class=tag>Dev</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/sharepoint-2013-vectorized-log/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>SharePoint 2013 vectorized logo / logo SharePoint 2013 vectorialisé&nbsp;<div class=tag>2013th</div><div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/mise-a-jour-cumulative-doctobr/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>SharePoint 2013 vectorized logo / logo SharePoint 2013 vectorialisé&nbsp;
+<div class=tag>2013th</div>
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/mise-a-jour-cumulative-doctobr/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Mise à jour cumulative d’Octobre 2013 pour SharePoint 2010&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/visual-studio-2013-rc-comptag/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Mise à jour cumulative d’Octobre 2013 pour SharePoint 2010&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/visual-studio-2013-rc-comptag/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Visual Studio 2013 RC : Comptage des références à votre code&nbsp;<div class=tag>2013th</div></span></a><a class=panel-block href=https://baywet.github.io/fr/mise-a-jour-des-outils-cks/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Visual Studio 2013 RC : Comptage des références à votre code&nbsp;
+<div class=tag>2013th</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/mise-a-jour-des-outils-cks/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Mise à jour des Outils CKS&nbsp;<div class=tag>2013th</div><div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/le-developer-dashboard-reste-v/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Mise à jour des Outils CKS&nbsp;
+<div class=tag>2013th</div>
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/le-developer-dashboard-reste-v/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Le developer dashboard reste vide sur SharePoint 2013&nbsp;<div class=tag>2013th</div><div class=tag>Developer</div><div class=tag>Dev</div><div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/sortie-du-service-pack-2-pour/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Le developer dashboard reste vide sur SharePoint 2013&nbsp;
+<div class=tag>2013th</div>
+<div class=tag>Developer</div>
+<div class=tag>Dev</div>
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/sortie-du-service-pack-2-pour/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Sortie du Service Pack 2 pour SharePoint 2010&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/sortie-de-la-mise-a-jour-cumul/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Sortie du Service Pack 2 pour SharePoint 2010&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/sortie-de-la-mise-a-jour-cumul/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Sortie de la mise à jour cumulative de Juin 2013 pour SharePoint&nbsp;<div class=tag>2013th</div><div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/selectionne-pour-les-10-plus-g/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Sortie de la mise à jour cumulative de Juin 2013 pour SharePoint&nbsp;
+<div class=tag>2013th</div>
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/selectionne-pour-les-10-plus-g/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Sélectionné pour les 10 plus grands influenceurs SharePoint Francophones!&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/ecrire-du-code-securise-pour-s/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Sélectionné pour les 10 plus grands influenceurs SharePoint Francophones!&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/ecrire-du-code-securise-pour-s/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Ecrire du code sécurisé pour SharePoint&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/retour-sur-le-sharepoint-summi/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Ecrire du code sécurisé pour SharePoint&nbsp;
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/fr/retour-sur-le-sharepoint-summi/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Retour sur le SharePoint Summit de Québec 2013&nbsp;<div class=tag>2013th</div><div class=tag>Sharepoint</div></span></a></nav></div></section><footer class=footer><div class=container><nav class=level></nav><nav class=level><div class="level-left has-text-centered"><div class=level-item><form class="control has-icons has-icons-right" method=get action=https://bing.com><input class=input type=text name=q maxlength=255 placeholder=Search>
+<span>Retour sur le SharePoint Summit de Québec 2013&nbsp;
+<div class=tag>2013th</div>
+<div class=tag>Sharepoint</div>
+</span>
+</a>
+</nav>
+</div>
+</section>
+<footer class=footer>
+<div class=container>
+<nav class=level>
+</nav>
+<nav class=level>
+<div class="level-left has-text-centered">
+<div class=level-item>
+<form class="control has-icons has-icons-right" method=get action=https://bing.com>
+<input class=input type=text name=q maxlength=255 placeholder=Search>
 <input class=input type=hidden name=sites value=https://baywet.github.io/>
-<span class="icon is-small is-right"><i class="fa fa-search"></i></span></form></div></div><div class="level-right has-text-centered"><div class=level-item><a class=button href=https://baywet.github.io/fr><span class=icon><i class="fa fa-home"></i></span></a> &nbsp;
-<a class=button href><span class=icon><i class="fa fa-rss"></i></span></a></div></div></nav></div></footer><script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script></body></html>
+<span class="icon is-small is-right"><i class="fa fa-search"></i></span>
+</form>
+</div>
+</div>
+<div class="level-right has-text-centered">
+<div class=level-item>
+<a class=button href=https://baywet.github.io/fr>
+<span class=icon><i class="fa fa-home"></i></span>
+</a> &nbsp;
+<a class=button href>
+<span class=icon><i class="fa fa-rss"></i></span>
+</a>
+</div>
+</div>
+</nav>
+</div>
+</footer>
+<script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script>
+</body>
+</html>

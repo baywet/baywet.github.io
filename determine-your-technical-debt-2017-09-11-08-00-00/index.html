@@ -1,55 +1,352 @@
-<!doctype html><html lang=en dir=ltr itemscope itemtype=https://schema.org/Article><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>Determine your technical debt using SonarQube - What parts to use?</title><meta name=author content="Vincent Biret"><meta name=description content="TL; DR
+<!doctype html><html lang=en dir=ltr itemscope itemtype=https://schema.org/Article>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Determine your technical debt using SonarQube - What parts to use?</title>
+<meta name=author content="Vincent Biret">
+<meta name=description content="TL; DR
 Planning, Sources, Build, deployment, testing: VSTS. Analysis: Azure VM (SonarQube), Azure SQL.
 Parts of our software factory
-Because we use a maximum of services cloud at 2toLead I realized..."><meta name=generator content="Hugo 0.85.0"><meta itemprop=name content="Determine your technical debt using SonarQube - What parts to use?"><meta itemprop=description content="TL; DR
+Because we use a maximum of services cloud at 2toLead I realized...">
+<meta name=generator content="Hugo 0.88.1">
+<meta itemprop=name content="Determine your technical debt using SonarQube - What parts to use?">
+<meta itemprop=description content="TL; DR
 Planning, Sources, Build, deployment, testing: VSTS. Analysis: Azure VM (SonarQube), Azure SQL.
 Parts of our software factory
-Because we use a maximum of services cloud at 2toLead I realized..."><meta itemprop=image content="/img/logo.svg"><meta property="og:title" content="Determine your technical debt using SonarQube - What parts to use?"><meta property="og:type" content="article"><meta property="og:url" content="https://baywet.github.io/determine-your-technical-debt-2017-09-11-08-00-00/"><meta property="og:image" content="/img/logo.svg"><meta property="og:description" content="TL; DR
+Because we use a maximum of services cloud at 2toLead I realized...">
+<meta itemprop=image content="/img/logo.svg">
+<meta property="og:title" content="Determine your technical debt using SonarQube - What parts to use?">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://baywet.github.io/determine-your-technical-debt-2017-09-11-08-00-00/">
+<meta property="og:image" content="/img/logo.svg">
+<meta property="og:description" content="TL; DR
 Planning, Sources, Build, deployment, testing: VSTS. Analysis: Azure VM (SonarQube), Azure SQL.
 Parts of our software factory
-Because we use a maximum of services cloud at 2toLead I realized..."><meta property="og:site_name" content="Baywet's blog"><meta property="og:updated_time" content="2021-09-06T13:44:53-04:00"><meta property="article:published_time" content="2017-09-11T08:00:00+00:00"><meta property="article:modified_time" content="2021-09-06T13:44:53-04:00"><meta property="article:section" content><meta property="article:tag" content="sonarqube"><meta property="article:tag" content="devops"><meta property="article:tag" content="typescript"><meta property="article:tag" content="azure"><meta property="article:tag" content="vsts"><meta name=twitter:card content="summary"><meta name=twitter:site content><meta name=twitter:title content="Determine your technical debt using SonarQube - What parts to use?"><meta name=twitter:description content="TL; DR
+Because we use a maximum of services cloud at 2toLead I realized...">
+<meta property="og:site_name" content="Baywet's blog">
+<meta property="og:updated_time" content="2021-09-06T16:55:24+00:00">
+<meta property="article:published_time" content="2017-09-11T08:00:00+00:00">
+<meta property="article:modified_time" content="2021-09-06T16:55:24+00:00">
+<meta property="article:section" content>
+<meta property="article:tag" content="sonarqube">
+<meta property="article:tag" content="devops">
+<meta property="article:tag" content="typescript">
+<meta property="article:tag" content="azure">
+<meta property="article:tag" content="vsts">
+<meta name=twitter:card content="summary">
+<meta name=twitter:site content>
+<meta name=twitter:title content="Determine your technical debt using SonarQube - What parts to use?">
+<meta name=twitter:description content="TL; DR
 Planning, Sources, Build, deployment, testing: VSTS. Analysis: Azure VM (SonarQube), Azure SQL.
 Parts of our software factory
-Because we use a maximum of services cloud at 2toLead I realized..."><meta name=twitter:creator content><meta name=twitter:image:src content="/img/logo.svg"><link rel=stylesheet type=text/css href=/css/capsule.min.css><script>(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-176061333-1','auto'),ga('send','pageview')</script><link rel=apple-touch-icon href=/img/apple-touch-icon.png><link rel=icon href=/img/favicon.ico></head><body style=min-height:100vh;display:flex;flex-direction:column><nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation"><div class=container><div class=navbar-brand><a class=navbar-item href=/en><div class="title is-4">&nbsp;Baywet's blog</div></a><label class="button navbar-burger is-white" for=navbar-burger-state><span></span><span></span><span></span></label></div><input type=checkbox id=navbar-burger-state><div class=navbar-menu><div class=navbar-end><a class=navbar-item href=/fr>Français</a></div></div></div></nav><section class=section style=flex:1><div class=container><h1 class=title>Determine your technical debt using SonarQube - What parts to use?</h1><p class=subtitle>Sep 11, 2017</p><div class=content><h2 id=tl-dr>TL; DR</h2><p>Planning, Sources, Build, deployment, testing: VSTS. Analysis: Azure VM (SonarQube), Azure SQL.</p><h2 id=parts-of-our-software-factory>Parts of our software factory</h2><p>Because we use a maximum of services cloud at 2toLead I realized the following installation:</p><ul><li>Source control: VSTS (git or tfsvc, doesn&rsquo;t matter)</li><li>Build system: build 2015 VSTS</li><li>Build machine: provided by VSTS as a service</li><li>SonarQube machine: Ubuntu Server hosted in Azure</li><li>Data SonarQube: Azure SQL Database, 10 DTU</li></ul><p>Note that to facilitate the management of the SonarQube &ldquo;box" we are going to install Docker on the ubuntu machine. Once docker installed, we&rsquo;ll hydrate two containers, nginx and SonarQube.</p><p>Why docker? the philosophy of this article is that processing components are disposable (SonarQube as such). We can replace them quickly if they have stopped working or if a new version of SonarQube is available. Our data will reside in SQL Azure.</p><h2 id=estimated-costs>Estimated costs</h2><ul><li>VSTS: free because all our developers have MSDN accounts</li><li>Build machine: charged by the minute (4 hours available for free per month)</li><li>SonarQube machine: 60CAD per month</li><li>Database: 5 CAD per month</li></ul><p>For 65CAD per month (with public prices), you can have a complete suite of software delivery with work management, source control, continuous integration, automated tests, automated deployments, and automated static analysis.</p><p>It took me about 1 hour to install and configure everything from start to finish, and I didn&rsquo;t have this series of articles to guide me, it&rsquo;s quite fast to set up.</p></div><br><p class=heading>Last edited
-<a href=https://github.com/baywet/blogsource/commit/dd09eef54ac7725556cc18eb97ce7235e29201ba>Sep 6, 2021</a> by <a href=https://github.com/baywet>Vincent Biret</a></p><br><div class=heading>Tags:</div><div class="field is-grouped is-grouped-multiline"><div class=control><a href=/tags/sonarqube><span class=tag>Sonarqube</span></a></div><div class=control><a href=/tags/devops><span class=tag>Devops</span></a></div><div class=control><a href=/tags/typescript><span class=tag>Typescript</span></a></div><div class=control><a href=/tags/azure><span class=tag>Azure</span></a></div><div class=control><a href=/tags/vsts><span class=tag>Vsts</span></a></div><div class=control><a href=/tags/static-analysis><span class=tag>Static Analysis</span></a></div></div></div></section><section class=section><div class=container><div class=level><div class=level-left><div class=level-item><p class="control has-addons"><a class=button href=https://baywet.github.io/determine-your-technical-debt-2017-09-13-08-00-00/><span class="icon is-small"><i class="fa fa-chevron-left"></i></span>
-<span class="is-hidden-touch is-hidden-desktop-only">Determine your technical debt using SonarQube - Provisioning the SonarQube VM</span>
-<span class="is-hidden-touch is-hidden-widescreen">Determine your technical debt using SonarQube - Provisioning the SonarQube...</span>
-<span class="is-hidden-mobile is-hidden-desktop">Determine your technical debt using SonarQube -...</span>
-<span class=is-hidden-tablet>Determine your technical debt using...</span></a></p></div></div><div class=level-right><div class=level-item><p class="control has-addons"><a class=button href=https://baywet.github.io/determine-your-technical-debt-2017-09-08-08-00-00/><span class="is-hidden-touch is-hidden-desktop-only">Determine your technical debt using SonarQube - Static analysis</span>
-<span class="is-hidden-touch is-hidden-widescreen">Determine your technical debt using SonarQube - Static analysis</span>
-<span class="is-hidden-mobile is-hidden-desktop">Determine your technical debt using SonarQube -...</span>
-<span class=is-hidden-tablet>Determine your technical debt using...</span>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span></a></p></div></div></div></div><br><br><div class=container><div id=disqus_thread></div><script>var disqus_config=function(){this.page.url="https://baywet.github.io/determine-your-technical-debt-2017-09-11-08-00-00/",this.page.identifier=window.location.pathname};(function(){var a=document,b=a.createElement('script');b.src='https://baywet.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div><br><div class=container><nav class=panel><p class=panel-heading>Related</p><a class=panel-block href=https://baywet.github.io/determine-your-technical-debt-2017-09-08-08-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+Because we use a maximum of services cloud at 2toLead I realized...">
+<meta name=twitter:creator content>
+<meta name=twitter:image:src content="/img/logo.svg">
+<link rel=stylesheet type=text/css href=/css/capsule.min.css>
+<script>(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-176061333-1','auto'),ga('send','pageview')</script>
+<link rel=apple-touch-icon href=/img/apple-touch-icon.png>
+<link rel=icon href=/img/favicon.ico>
+</head>
+<body style=min-height:100vh;display:flex;flex-direction:column>
+<nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation">
+<div class=container>
+<div class=navbar-brand>
+<a class=navbar-item href=/en>
+<div class="title is-4">&nbsp;Baywet's blog</div>
+</a>
+<label class="button navbar-burger is-white" for=navbar-burger-state>
+<span></span>
+<span></span>
+<span></span>
+</label>
+</div>
+<input type=checkbox id=navbar-burger-state>
+<div class=navbar-menu>
+<div class=navbar-end>
+<a class=navbar-item href=/fr>Français</a>
+</div>
+</div>
+</div>
+</nav>
+<section class=section style=flex:1>
+<div class=container>
+<h1 class=title>Determine your technical debt using SonarQube - What parts to use?</h1>
+<p class=subtitle>Sep 11, 2017</p>
+<div class=content>
+<h2 id=tl-dr>TL; DR</h2>
+<p>Planning, Sources, Build, deployment, testing: VSTS. Analysis: Azure VM (SonarQube), Azure SQL.</p>
+<h2 id=parts-of-our-software-factory>Parts of our software factory</h2>
+<p>Because we use a maximum of services cloud at 2toLead I realized the following installation:</p>
+<ul>
+<li>Source control: VSTS (git or tfsvc, doesn&rsquo;t matter)</li>
+<li>Build system: build 2015 VSTS</li>
+<li>Build machine: provided by VSTS as a service</li>
+<li>SonarQube machine: Ubuntu Server hosted in Azure</li>
+<li>Data SonarQube: Azure SQL Database, 10 DTU</li>
+</ul>
+<p>Note that to facilitate the management of the SonarQube &ldquo;box" we are going to install Docker on the ubuntu machine. Once docker installed, we&rsquo;ll hydrate two containers, nginx and SonarQube.</p>
+<p>Why docker? the philosophy of this article is that processing components are disposable (SonarQube as such). We can replace them quickly if they have stopped working or if a new version of SonarQube is available. Our data will reside in SQL Azure.</p>
+<h2 id=estimated-costs>Estimated costs</h2>
+<ul>
+<li>VSTS: free because all our developers have MSDN accounts</li>
+<li>Build machine: charged by the minute (4 hours available for free per month)</li>
+<li>SonarQube machine: 60CAD per month</li>
+<li>Database: 5 CAD per month</li>
+</ul>
+<p>For 65CAD per month (with public prices), you can have a complete suite of software delivery with work management, source control, continuous integration, automated tests, automated deployments, and automated static analysis.</p>
+<p>It took me about 1 hour to install and configure everything from start to finish, and I didn&rsquo;t have this series of articles to guide me, it&rsquo;s quite fast to set up.</p>
+</div>
+<br>
+<p class=heading>
+Last edited
+<a href=https://github.com/baywet/blogsource/commit/a468fa010963485f8321f689ab366ef4a7ffcb8b>
+Sep 6, 2021
+</a> by <a href=https://github.com/baywet>Vincent</a>
+</p>
+<br>
+<div class=heading>Tags:</div>
+<div class="field is-grouped is-grouped-multiline">
+<div class=control>
+<a href=/tags/sonarqube>
+<span class=tag>Sonarqube</span>
+</a>
+</div>
+<div class=control>
+<a href=/tags/devops>
+<span class=tag>Devops</span>
+</a>
+</div>
+<div class=control>
+<a href=/tags/typescript>
+<span class=tag>Typescript</span>
+</a>
+</div>
+<div class=control>
+<a href=/tags/azure>
+<span class=tag>Azure</span>
+</a>
+</div>
+<div class=control>
+<a href=/tags/vsts>
+<span class=tag>Vsts</span>
+</a>
+</div>
+<div class=control>
+<a href=/tags/static-analysis>
+<span class=tag>Static Analysis</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<section class=section>
+<div class=container>
+<div class=level>
+<div class=level-left>
+<div class=level-item>
+<p class="control has-addons">
+<a class=button href=https://baywet.github.io/determine-your-technical-debt-2017-09-13-08-00-00/>
+<span class="icon is-small"><i class="fa fa-chevron-left"></i></span>
+<span class="is-hidden-touch is-hidden-desktop-only">
+Determine your technical debt using SonarQube - Provisioning the SonarQube VM
+</span>
+<span class="is-hidden-touch is-hidden-widescreen">
+Determine your technical debt using SonarQube - Provisioning the SonarQube...
+</span>
+<span class="is-hidden-mobile is-hidden-desktop">
+Determine your technical debt using SonarQube -...
+</span>
+<span class=is-hidden-tablet>
+Determine your technical debt using...
+</span>
+</a>
+</p>
+</div>
+</div>
+<div class=level-right>
+<div class=level-item>
+<p class="control has-addons">
+<a class=button href=https://baywet.github.io/determine-your-technical-debt-2017-09-08-08-00-00/>
+<span class="is-hidden-touch is-hidden-desktop-only">
+Determine your technical debt using SonarQube - Static analysis
+</span>
+<span class="is-hidden-touch is-hidden-widescreen">
+Determine your technical debt using SonarQube - Static analysis
+</span>
+<span class="is-hidden-mobile is-hidden-desktop">
+Determine your technical debt using SonarQube -...
+</span>
+<span class=is-hidden-tablet>
+Determine your technical debt using...
+</span>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<br>
+<br>
+<div class=container>
+<div id=disqus_thread></div>
+<script>var disqus_config=function(){this.page.url="https://baywet.github.io/determine-your-technical-debt-2017-09-11-08-00-00/",this.page.identifier=window.location.pathname};(function(){var a=document,b=a.createElement('script');b.src='https://baywet.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script>
+<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
+</div>
+<br>
+<div class=container>
+<nav class=panel>
+<p class=panel-heading>Related</p>
+<a class=panel-block href=https://baywet.github.io/determine-your-technical-debt-2017-09-08-08-00-00/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Determine your technical debt using SonarQube - Static analysis&nbsp;<div class=tag>Sonarqube</div><div class=tag>Devops</div><div class=tag>Typescript</div><div class=tag>Azure</div><div class=tag>Vsts</div><div class=tag>Static Analysis</div></span></a><a class=panel-block href=https://baywet.github.io/determine-your-technical-debt-2017-09-06-08-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Determine your technical debt using SonarQube - Static analysis&nbsp;
+<div class=tag>Sonarqube</div>
+<div class=tag>Devops</div>
+<div class=tag>Typescript</div>
+<div class=tag>Azure</div>
+<div class=tag>Vsts</div>
+<div class=tag>Static Analysis</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/determine-your-technical-debt-2017-09-06-08-00-00/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Determine your technical debt using SonarQube - Introduction&nbsp;<div class=tag>Sonarqube</div><div class=tag>Devops</div><div class=tag>Typescript</div><div class=tag>Azure</div><div class=tag>Vsts</div><div class=tag>Static Analysis</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2017-07-06-08-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Determine your technical debt using SonarQube - Introduction&nbsp;
+<div class=tag>Sonarqube</div>
+<div class=tag>Devops</div>
+<div class=tag>Typescript</div>
+<div class=tag>Azure</div>
+<div class=tag>Vsts</div>
+<div class=tag>Static Analysis</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2017-07-06-08-00-00/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at SharePoint Saturday New York City 2017&nbsp;<div class=tag>Devops</div></span></a><a class=panel-block href=https://baywet.github.io/update-to-sppagecontextinfo-ty/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at SharePoint Saturday New York City 2017&nbsp;
+<div class=tag>Devops</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/update-to-sppagecontextinfo-ty/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Update to _spPageContextInfo type definitions - new properties available&nbsp;<div class=tag>Typescript</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-techorama-belgium/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Update to _spPageContextInfo type definitions - new properties available&nbsp;
+<div class=tag>Typescript</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/speaking-at-techorama-belgium/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at Techorama Belgium 2017&nbsp;<div class=tag>Devops</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2017-03-09-14-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at Techorama Belgium 2017&nbsp;
+<div class=tag>Devops</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2017-03-09-14-00-00/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at SharePoint Saturday Vancouver 2017&nbsp;<div class=tag>Devops</div><div class=tag>Vsts</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2017-03-07-16-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at SharePoint Saturday Vancouver 2017&nbsp;
+<div class=tag>Devops</div>
+<div class=tag>Vsts</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2017-03-07-16-00-00/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at SharePoint Saturday Calgary 2017&nbsp;<div class=tag>Azure</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-aos-tours-ottawa-a/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at SharePoint Saturday Calgary 2017&nbsp;
+<div class=tag>Azure</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/speaking-at-aos-tours-ottawa-a/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at Aos Tours Ottawa and Toronto&nbsp;<div class=tag>Azure</div></span></a><a class=panel-block href=https://baywet.github.io/update-continuous-integration/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at Aos Tours Ottawa and Toronto&nbsp;
+<div class=tag>Azure</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/update-continuous-integration/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Update: continuous integration for dot net core&nbsp;<div class=tag>Devops</div><div class=tag>Vsts</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2016-09-22-14-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Update: continuous integration for dot net core&nbsp;
+<div class=tag>Devops</div>
+<div class=tag>Vsts</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2016-09-22-14-00-00/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at SharePoint Saturday Brussels 2016&nbsp;<div class=tag>Devops</div><div class=tag>Azure</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2016-09-15-14-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at SharePoint Saturday Brussels 2016&nbsp;
+<div class=tag>Devops</div>
+<div class=tag>Azure</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2016-09-15-14-00-00/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at SharePoint Saturday Oslo 2016&nbsp;<div class=tag>Devops</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2016-09-09-14-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at SharePoint Saturday Oslo 2016&nbsp;
+<div class=tag>Devops</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2016-09-09-14-00-00/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at SharePoint Saturday Detroit 2016&nbsp;<div class=tag>Devops</div></span></a><a class=panel-block href=https://baywet.github.io/new-tasks-to-buildrelease-dotn/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at SharePoint Saturday Detroit 2016&nbsp;
+<div class=tag>Devops</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/new-tasks-to-buildrelease-dotn/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>New tasks to build/release dotnetcore project with vsts&nbsp;<div class=tag>Devops</div><div class=tag>Vsts</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2016-07-30-09-28-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>New tasks to build/release dotnetcore project with vsts&nbsp;
+<div class=tag>Devops</div>
+<div class=tag>Vsts</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2016-07-30-09-28-00/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at SharePoint Saturday New York City 2016&nbsp;<div class=tag>Devops</div></span></a><a class=panel-block href=https://baywet.github.io/controlled-update-of-sql-datab/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at SharePoint Saturday New York City 2016&nbsp;
+<div class=tag>Devops</div>
+</span>
+</a>
+<a class=panel-block href=https://baywet.github.io/controlled-update-of-sql-datab/>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Controlled update of SQL databases Schema with Entity Framework Code First in a continous delivery process&nbsp;<div class=tag>Vsts</div></span></a></nav></div></section><footer class=footer><div class=container><nav class=level></nav><nav class=level><div class="level-left has-text-centered"><div class=level-item><form class="control has-icons has-icons-right" method=get action=https://bing.com><input class=input type=text name=q maxlength=255 placeholder=Search>
+<span>Controlled update of SQL databases Schema with Entity Framework Code First in a continous delivery process&nbsp;
+<div class=tag>Vsts</div>
+</span>
+</a>
+</nav>
+</div>
+</section>
+<footer class=footer>
+<div class=container>
+<nav class=level>
+</nav>
+<nav class=level>
+<div class="level-left has-text-centered">
+<div class=level-item>
+<form class="control has-icons has-icons-right" method=get action=https://bing.com>
+<input class=input type=text name=q maxlength=255 placeholder=Search>
 <input class=input type=hidden name=sites value=https://baywet.github.io/>
-<span class="icon is-small is-right"><i class="fa fa-search"></i></span></form></div></div><div class="level-right has-text-centered"><div class=level-item><a class=button href=https://baywet.github.io/en><span class=icon><i class="fa fa-home"></i></span></a> &nbsp;
-<a class=button href><span class=icon><i class="fa fa-rss"></i></span></a></div></div></nav></div></footer><script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script></body></html>
+<span class="icon is-small is-right"><i class="fa fa-search"></i></span>
+</form>
+</div>
+</div>
+<div class="level-right has-text-centered">
+<div class=level-item>
+<a class=button href=https://baywet.github.io/en>
+<span class=icon><i class="fa fa-home"></i></span>
+</a> &nbsp;
+<a class=button href>
+<span class=icon><i class="fa fa-rss"></i></span>
+</a>
+</div>
+</div>
+</nav>
+</div>
+</footer>
+<script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script>
+</body>
+</html>
