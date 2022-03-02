@@ -3,10 +3,9 @@
 <meta charset=utf-8>
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1">
-<title>Erreur lors de la publication de sites web asp.net 5 (core) vers Azure</title>
-<meta name=author content="Vincent Biret">
+<title>Erreur lors de la publication de sites web asp.net 5 (core) vers Azure</title><meta name=author content="Vincent Biret">
 <meta name=description content="Si vous faites du développement asp.net core et que vous essayez de publier votre site web vers un azure website il se peut que vous ayez rencontré l’erreur suivante en suivant cette documentation...">
-<meta name=generator content="Hugo 0.89.0">
+<meta name=generator content="Hugo 0.93.0">
 <meta itemprop=name content="Erreur lors de la publication de sites web asp.net 5 (core) vers Azure">
 <meta itemprop=description content="Si vous faites du développement asp.net core et que vous essayez de publier votre site web vers un azure website il se peut que vous ayez rencontré l’erreur suivante en suivant cette documentation...">
 <meta itemprop=image content="/img/logo.svg">
@@ -16,9 +15,9 @@
 <meta property="og:image" content="/img/logo.svg">
 <meta property="og:description" content="Si vous faites du développement asp.net core et que vous essayez de publier votre site web vers un azure website il se peut que vous ayez rencontré l’erreur suivante en suivant cette documentation...">
 <meta property="og:site_name" content="Le blog de baywet">
-<meta property="og:updated_time" content="2021-11-05T07:02:06-04:00">
+<meta property="og:updated_time" content="2022-03-01T17:40:17-08:00">
 <meta property="article:published_time" content="2016-02-03T14:00:00+00:00">
-<meta property="article:modified_time" content="2021-11-05T07:02:06-04:00">
+<meta property="article:modified_time" content="2022-03-01T17:40:17-08:00">
 <meta property="article:section" content>
 <meta property="article:tag" content="mvc">
 <meta property="article:tag" content="azure">
@@ -32,96 +31,64 @@
 <meta name=twitter:creator content>
 <meta name=twitter:image:src content="/img/logo.svg">
 <link rel=stylesheet type=text/css href=/css/capsule.min.css>
-<script>(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-176061333-1','auto'),ga('send','pageview')</script>
+<script>(function(e,o,i,a,t,n,s){e.GoogleAnalyticsObject=t,e[t]=e[t]||function(){(e[t].q=e[t].q||[]).push(arguments)},e[t].l=1*new Date,n=o.createElement(i),s=o.getElementsByTagName(i)[0],n.async=1,n.src=a,s.parentNode.insertBefore(n,s)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-176061333-1","auto"),ga("send","pageview")</script>
 <link rel=apple-touch-icon href=/img/apple-touch-icon.png>
 <link rel=icon href=/img/favicon.ico>
-</head>
-<body style=min-height:100vh;display:flex;flex-direction:column>
+</head><body style=min-height:100vh;display:flex;flex-direction:column>
 <nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation">
 <div class=container>
 <div class=navbar-brand>
 <a class=navbar-item href=/fr>
-<div class="title is-4">&nbsp;Le blog de baywet</div>
-</a>
+<div class="title is-4">&nbsp;Le blog de baywet</div></a>
 <label class="button navbar-burger is-white" for=navbar-burger-state>
 <span></span>
 <span></span>
 <span></span>
 </label>
-</div>
-<input type=checkbox id=navbar-burger-state>
+</div><input type=checkbox id=navbar-burger-state>
 <div class=navbar-menu>
 <div class=navbar-end>
 <a class=navbar-item href=https://baywet.github.io/error-publishing-aspnet-5-core/>English</a>
-</div>
-</div>
-</div>
-</nav>
-<section class=section style=flex:1>
+</div></div></div></nav><section class=section style=flex:1>
 <div class=container>
-<h1 class=title>Erreur lors de la publication de sites web asp.net 5 (core) vers Azure</h1>
-<p class=subtitle>Feb 3, 2016</p>
-<div class=content>
-<p>Si vous faites du développement asp.net core et que vous essayez de publier votre site web vers un azure website il se peut que vous ayez rencontré l’erreur suivante en suivant cette documentation</p>
-<p><a href="https://msdn.microsoft.com/en-us/Library/vs/alm/Build/azure/deploy-aspnet5?f=255&MSPPError=-2147217396">https://msdn.microsoft.com/en-us/Library/vs/alm/Build/azure/deploy-aspnet5?f=255&MSPPError=-2147217396</a></p>
-<p>[error]Error: The specified credentials cannot be used with the authentication scheme &lsquo;Basic&rsquo;.</p>
-<p>[error]Error: Default credentials cannot be supplied for the Basic authentication scheme.</p>
-<p>[error]Parameter name: authType</p>
-<p>Cela vient du fait que le script fournit dans la documentation ne supporte pas les sites qui ont des slots de déploiement.</p>
-<p>En cherchant la solution je suis tombé sur le thread suivant qui n’était pas résolu <a href=https://stackoverflow.com/questions/34417649/vso-vsts-azure-powershell-the-specified-credentials-cannot-be-used-with-the-a/35494779#35494779>https://stackoverflow.com/questions/34417649/vso-vsts-azure-powershell-the-specified-credentials-cannot-be-used-with-the-a/35494779#35494779</a></p>
-<p>J’ai donc continué d’investigué et modifié le script pour qu’il prenne en charge les slots de déploiement azure</p>
-<p><a href=https://gist.github.com/baywet/f7ed425c48ccde4399c7>https://gist.github.com/baywet/f7ed425c48ccde4399c7</a></p>
-<p>Bons déploiements !</p>
-</div>
-<br>
+<h1 class=title>Erreur lors de la publication de sites web asp.net 5 (core) vers Azure</h1><p class=subtitle>Feb 3, 2016</p><div class=content>
+<p>Si vous faites du développement asp.net core et que vous essayez de publier votre site web vers un azure website il se peut que vous ayez rencontré l’erreur suivante en suivant cette documentation</p><p><a href="https://msdn.microsoft.com/en-us/Library/vs/alm/Build/azure/deploy-aspnet5?f=255&MSPPError=-2147217396">https://msdn.microsoft.com/en-us/Library/vs/alm/Build/azure/deploy-aspnet5?f=255&MSPPError=-2147217396</a></p><p>[error]Error: The specified credentials cannot be used with the authentication scheme &lsquo;Basic&rsquo;.</p><p>[error]Error: Default credentials cannot be supplied for the Basic authentication scheme.</p><p>[error]Parameter name: authType</p><p>Cela vient du fait que le script fournit dans la documentation ne supporte pas les sites qui ont des slots de déploiement.</p><p>En cherchant la solution je suis tombé sur le thread suivant qui n’était pas résolu <a href=https://stackoverflow.com/questions/34417649/vso-vsts-azure-powershell-the-specified-credentials-cannot-be-used-with-the-a/35494779#35494779>https://stackoverflow.com/questions/34417649/vso-vsts-azure-powershell-the-specified-credentials-cannot-be-used-with-the-a/35494779#35494779</a></p><p>J’ai donc continué d’investigué et modifié le script pour qu’il prenne en charge les slots de déploiement azure</p><p><a href=https://gist.github.com/baywet/f7ed425c48ccde4399c7>https://gist.github.com/baywet/f7ed425c48ccde4399c7</a></p><p>Bons déploiements !</p></div><br>
 <p class=heading>
 Edité la dernière fois le
-<a href=https://github.com/baywet/blogsource/commit/cc789d3724badafffc78a1f8824bb61439d4db9f>
-5 Nov 2021
+<a href=https://github.com/baywet/blogsource/commit/ed81153ce32a3288ff24e78527ac47cfa73c14e3>
+1 Mar 2022
 </a> par <a href=https://github.com/baywet>Vincent Biret</a>
-</p>
-<br>
-<div class=heading>Tags:</div>
-<div class="field is-grouped is-grouped-multiline">
+</p><br>
+<div class=heading>Tags:</div><div class="field is-grouped is-grouped-multiline">
 <div class=control>
 <a href=/fr/tags/mvc>
 <span class=tag>Mvc</span>
 </a>
-</div>
-<div class=control>
+</div><div class=control>
 <a href=/fr/tags/azure>
 <span class=tag>Azure</span>
 </a>
-</div>
-<div class=control>
+</div><div class=control>
 <a href=/fr/tags/websites>
 <span class=tag>Websites</span>
 </a>
-</div>
-<div class=control>
+</div><div class=control>
 <a href=/fr/tags/asp.net>
 <span class=tag>Asp.Net</span>
 </a>
-</div>
-<div class=control>
+</div><div class=control>
 <a href=/fr/tags/core>
 <span class=tag>Core</span>
 </a>
-</div>
-<div class=control>
+</div><div class=control>
 <a href=/fr/tags/webapp>
 <span class=tag>Webapp</span>
 </a>
-</div>
-<div class=control>
+</div><div class=control>
 <a href=/fr/tags/dnx>
 <span class=tag>Dnx</span>
 </a>
-</div>
-</div>
-</div>
-</section>
-<section class=section>
+</div></div></div></section><section class=section>
 <div class=container>
 <div class=level>
 <div class=level-left>
@@ -142,10 +109,7 @@ Conférencier au SharePoint Saturday Vancouver 2016
 Conférencier au SharePoint Saturday...
 </span>
 </a>
-</p>
-</div>
-</div>
-<div class=level-right>
+</p></div></div><div class=level-right>
 <div class=level-item>
 <p class="control has-addons">
 <a class=button href=https://baywet.github.io/fr/migration-git-nettoyage-des-r/>
@@ -163,146 +127,114 @@ Migration Git – nettoyage des références...
 </span>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 </a>
-</p>
-</div>
-</div>
-</div>
-</div>
-<br>
+</p></div></div></div></div><br>
 <br>
 <div class=container>
-<div id=disqus_thread></div>
-<script>var disqus_config=function(){this.page.url="https://baywet.github.io/fr/erreur-lors-de-la-publication/",this.page.identifier=window.location.pathname};(function(){var a=document,b=a.createElement('script');b.src='https://baywet.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script>
-<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
-</div>
-<br>
+<div id=disqus_thread></div><script>var disqus_config=function(){this.page.url="https://baywet.github.io/fr/erreur-lors-de-la-publication/",this.page.identifier=window.location.pathname};(function(){var e=document,t=e.createElement("script");t.src="https://baywet.disqus.com/embed.js",t.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(t)})()</script>
+<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div><br>
 <div class=container>
 <nav class=panel>
-<p class=panel-heading>Related</p>
-<a class=panel-block href=https://baywet.github.io/fr/conferencier-au-sharepoint-sat-2015-11-10-14-00-00/>
+<p class=panel-heading>Related</p><a class=panel-block href=https://baywet.github.io/fr/conferencier-au-sharepoint-sat-2015-11-10-14-00-00/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Conférencier au SharePoint Saturday Ottawa 2015&nbsp;
-<div class=tag>Azure</div>
-</span>
+<div class=tag>Azure</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/conferencier-au-sharepoint-sat-2015-09-11-14-00-00/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Conférencier au SharePoint Saturday de Toronto 2015&nbsp;
-<div class=tag>Azure</div>
-</span>
+<div class=tag>Azure</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/nouvelle-conference-microsoft/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Nouvelle conférence Microsoft la AzureCon&nbsp;
-<div class=tag>Azure</div>
-</span>
+<div class=tag>Azure</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/conferencier-au-collab365/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Conférencier au collab365&nbsp;
-<div class=tag>Azure</div>
-</span>
+<div class=tag>Azure</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/deploiement-de-cloud-services/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Déploiement de Cloud services Azure via les builds 2015&nbsp;
-<div class=tag>Azure</div>
-</span>
+<div class=tag>Azure</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/azure-bug-avec-la-definition/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Azure – Bug avec la définition de paramètres depuis Azure WebSites&nbsp;
-<div class=tag>Azure</div>
-<div class=tag>Websites</div>
-</span>
+<div class=tag>Azure</div><div class=tag>Websites</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/ayez-tous-les-outils-dune-star/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Ayez tous les outils d’une startup de première classe en 10 min&nbsp;
-<div class=tag>Azure</div>
-</span>
+<div class=tag>Azure</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/migration-team-foundation-serv/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Migration Team Foundation Server 2010 vers Visual Studio Online : différence de modèle de processus&nbsp;
-<div class=tag>Azure</div>
-</span>
+<div class=tag>Azure</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/the-vhd-must-be-stored-as-a-pa-2014-03-05-01-45-11/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>The VHD must be stored as a page blob. Upload a vhd to azure&nbsp;
-<div class=tag>Azure</div>
-</span>
+<div class=tag>Azure</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/the-vhd-must-be-stored-as-a-pa-2014-03-05-01-40-57/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>The VHD must be stored as a page blob. Uploader un vhd vers azure&nbsp;
-<div class=tag>Azure</div>
-</span>
+<div class=tag>Azure</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/entity-framework-et-reference/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Entity Framework et référence au dataContext pour une application web&nbsp;
-<div class=tag>Asp.Net</div>
-</span>
+<div class=tag>Asp.Net</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/quotfailed-to-open-microsoftwi/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>&amp;quot;failed to open Microsoft.WindowsUpdate page home&amp;quot; windows server 2012 core&nbsp;
-<div class=tag>Core</div>
-</span>
+<div class=tag>Core</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/wcf-entity-framework-code-fir/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>WCF + Entity FrameWork Code First + Azure&nbsp;
-<div class=tag>Azure</div>
-</span>
+<div class=tag>Azure</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/deployer-son-ou-ses-blogs-blog/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Déployer son (ou ses) blog(s) BlogEngine sur Azure&nbsp;
-<div class=tag>Azure</div>
-</span>
+<div class=tag>Azure</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/ajouter-une-web-app-sharepoint/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Ajouter une Web App SharePoint à un SSO AD FS existant&nbsp;
-<div class=tag>Webapp</div>
-</span>
+<div class=tag>Webapp</div></span>
 </a>
-</nav>
-</div>
-</section>
-<footer class=footer>
+</nav></div></section><footer class=footer>
 <div class=container>
 <nav class=level>
-</nav>
-<nav class=level>
+</nav><nav class=level>
 <div class="level-left has-text-centered">
 <div class=level-item>
 <form class="control has-icons has-icons-right" method=get action=https://bing.com>
 <input class=input type=text name=q maxlength=255 placeholder=Search>
 <input class=input type=hidden name=sites value=https://baywet.github.io/>
 <span class="icon is-small is-right"><i class="fa fa-search"></i></span>
-</form>
-</div>
-</div>
-<div class="level-right has-text-centered">
+</form></div></div><div class="level-right has-text-centered">
 <div class=level-item>
 <a class=button href=https://baywet.github.io/fr>
 <span class=icon><i class="fa fa-home"></i></span>
@@ -310,11 +242,5 @@ Migration Git – nettoyage des références...
 <a class=button href>
 <span class=icon><i class="fa fa-rss"></i></span>
 </a>
-</div>
-</div>
-</nav>
-</div>
-</footer>
-<script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script>
-</body>
-</html>
+</div></div></nav></div></footer><script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script>
+</body></html>

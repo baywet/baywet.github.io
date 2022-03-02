@@ -3,12 +3,11 @@
 <meta charset=utf-8>
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1">
-<title>Localizing JavaScript of a Full Trust solution</title>
-<meta name=author content="Vincent Biret">
+<title>Localizing JavaScript of a Full Trust solution</title><meta name=author content="Vincent Biret">
 <meta name=description content="Introduction
 We, SharePoint developers of ancient times when &ldquo;full trust&rdquo; solutions ruled, have understood one thing: using JavaScript improves by far our solutions.
 Indeed this allows to...">
-<meta name=generator content="Hugo 0.89.0">
+<meta name=generator content="Hugo 0.93.0">
 <meta itemprop=name content="Localizing JavaScript of a Full Trust solution">
 <meta itemprop=description content="Introduction
 We, SharePoint developers of ancient times when &ldquo;full trust&rdquo; solutions ruled, have understood one thing: using JavaScript improves by far our solutions.
@@ -22,9 +21,9 @@ Indeed this allows to...">
 We, SharePoint developers of ancient times when &ldquo;full trust&rdquo; solutions ruled, have understood one thing: using JavaScript improves by far our solutions.
 Indeed this allows to...">
 <meta property="og:site_name" content="Baywet's blog">
-<meta property="og:updated_time" content="2021-11-05T07:02:06-04:00">
+<meta property="og:updated_time" content="2022-03-01T17:40:17-08:00">
 <meta property="article:published_time" content="2014-08-13T03:58:16+00:00">
-<meta property="article:modified_time" content="2021-11-05T07:02:06-04:00">
+<meta property="article:modified_time" content="2022-03-01T17:40:17-08:00">
 <meta property="article:section" content>
 <meta property="article:tag" content="javascript">
 <meta property="article:tag" content="resources">
@@ -40,129 +39,75 @@ Indeed this allows to...">
 <meta name=twitter:creator content>
 <meta name=twitter:image:src content="/img/logo.svg">
 <link rel=stylesheet type=text/css href=/css/capsule.min.css>
-<script>(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-176061333-1','auto'),ga('send','pageview')</script>
+<script>(function(e,o,i,a,t,n,s){e.GoogleAnalyticsObject=t,e[t]=e[t]||function(){(e[t].q=e[t].q||[]).push(arguments)},e[t].l=1*new Date,n=o.createElement(i),s=o.getElementsByTagName(i)[0],n.async=1,n.src=a,s.parentNode.insertBefore(n,s)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-176061333-1","auto"),ga("send","pageview")</script>
 <link rel=apple-touch-icon href=/img/apple-touch-icon.png>
 <link rel=icon href=/img/favicon.ico>
-</head>
-<body style=min-height:100vh;display:flex;flex-direction:column>
+</head><body style=min-height:100vh;display:flex;flex-direction:column>
 <nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation">
 <div class=container>
 <div class=navbar-brand>
 <a class=navbar-item href=/en>
-<div class="title is-4">&nbsp;Baywet's blog</div>
-</a>
+<div class="title is-4">&nbsp;Baywet's blog</div></a>
 <label class="button navbar-burger is-white" for=navbar-burger-state>
 <span></span>
 <span></span>
 <span></span>
 </label>
-</div>
-<input type=checkbox id=navbar-burger-state>
+</div><input type=checkbox id=navbar-burger-state>
 <div class=navbar-menu>
 <div class=navbar-end>
 <a class=navbar-item href=https://baywet.github.io/fr/localisation-du-javascript-dun/>Français</a>
-</div>
-</div>
-</div>
-</nav>
-<section class=section style=flex:1>
+</div></div></div></nav><section class=section style=flex:1>
 <div class=container>
-<h1 class=title>Localizing JavaScript of a Full Trust solution</h1>
-<p class=subtitle>Aug 13, 2014</p>
-<div class=content>
-<h4 id=introduction>Introduction</h4>
-<p>We, SharePoint developers of ancient times when &ldquo;full trust&rdquo; solutions ruled, have understood one thing: using JavaScript improves by far our solutions.</p>
-<p>Indeed this allows to reduce the load of the servers and makes the user experience more &ldquo;responsive&rdquo;.</p>
-<p>But what if you want to display messages in different languages depending on the user? In .NET (understand server-side) it is quite simple, just use of resources. (<a href=../the-name-initializecon>see one of my posts on the subject</a>)</p>
-<h4 id=standard-solutions-for-aspnet>Standard solutions for ASP.NET</h4>
-<p>The asp.net framework already allows a localization of the JavaScripts files, however these methodologies is not necessarily very practical given SharePoint deployment cycle.</p>
-<p><a href=https://msdn.Microsoft.com/en-us/library/bb398935.aspx>https://msdn.Microsoft.com/en-us/library/bb398935.aspx</a></p>
-<p><a href=https://msdn.Microsoft.com/en-us/magazine/cc135974.aspx>https://msdn.Microsoft.com/en-us/magazine/cc135974.aspx</a></p>
-<p>An alternative methodology best suited to SharePoint is to duplicate the JavaScript files and deploy them into subfolders by LCID (1033, 1036&mldr;). This forces us to duplicate code, at best to have file for resources. (in addition to the resx). (this is how SharePoint works internally)</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#a6e22e>ScriptLink</span>.<span style=color:#a6e22e>RegisterScriptAfterUI</span>(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>Page</span>, <span style=color:#e6db74>&#34;JSample/Scripts/myscript.min.js&#34;</span>, <span style=color:#66d9ef>true</span>, <span style=color:#66d9ef>true</span>);
-</code></pre></div><p>It is the second parameter set to true, which allows to do this when calling the script.</p>
-<h4 id=solution-proposed-by-microsoft>Solution proposed by Microsoft</h4>
-<p>Continuing my researches I found this post from the SharePoint product team<a href=https://blogs.msdn.com/b/sharepointdev/archive/2012/04/05/How-to-localize-custom-script-resources-in-SharePoint-2010-Abhishek-Verma.aspx>https://blogs.msdn.com/b/sharepointdev/archive/2012/04/05/How-to-localize-custom-script-resources-in-SharePoint-2010-Abhishek-Verma.aspx</a></p>
-<p>They explain that SharePoint contains a handler which is used to expose the resources located in the hive in JSON (awesome!).</p>
-<p>However I&rsquo;m not fond of the manner in which they load these resources because:</p>
-<ul>
+<h1 class=title>Localizing JavaScript of a Full Trust solution</h1><p class=subtitle>Aug 13, 2014</p><div class=content>
+<h4 id=introduction>Introduction</h4><p>We, SharePoint developers of ancient times when &ldquo;full trust&rdquo; solutions ruled, have understood one thing: using JavaScript improves by far our solutions.</p><p>Indeed this allows to reduce the load of the servers and makes the user experience more &ldquo;responsive&rdquo;.</p><p>But what if you want to display messages in different languages depending on the user? In .NET (understand server-side) it is quite simple, just use of resources. (<a href=../the-name-initializecon>see one of my posts on the subject</a>)</p><h4 id=standard-solutions-for-aspnet>Standard solutions for ASP.NET</h4><p>The asp.net framework already allows a localization of the JavaScripts files, however these methodologies is not necessarily very practical given SharePoint deployment cycle.</p><p><a href=https://msdn.Microsoft.com/en-us/library/bb398935.aspx>https://msdn.Microsoft.com/en-us/library/bb398935.aspx</a></p><p><a href=https://msdn.Microsoft.com/en-us/magazine/cc135974.aspx>https://msdn.Microsoft.com/en-us/magazine/cc135974.aspx</a></p><p>An alternative methodology best suited to SharePoint is to duplicate the JavaScript files and deploy them into subfolders by LCID (1033, 1036&mldr;). This forces us to duplicate code, at best to have file for resources. (in addition to the resx). (this is how SharePoint works internally)</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#a6e22e>ScriptLink</span>.<span style=color:#a6e22e>RegisterScriptAfterUI</span>(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>Page</span>, <span style=color:#e6db74>&#34;JSample/Scripts/myscript.min.js&#34;</span>, <span style=color:#66d9ef>true</span>, <span style=color:#66d9ef>true</span>);
+</span></span></code></pre></div><p>It is the second parameter set to true, which allows to do this when calling the script.</p><h4 id=solution-proposed-by-microsoft>Solution proposed by Microsoft</h4><p>Continuing my researches I found this post from the SharePoint product team<a href=https://blogs.msdn.com/b/sharepointdev/archive/2012/04/05/How-to-localize-custom-script-resources-in-SharePoint-2010-Abhishek-Verma.aspx>https://blogs.msdn.com/b/sharepointdev/archive/2012/04/05/How-to-localize-custom-script-resources-in-SharePoint-2010-Abhishek-Verma.aspx</a></p><p>They explain that SharePoint contains a handler which is used to expose the resources located in the hive in JSON (awesome!).</p><p>However I&rsquo;m not fond of the manner in which they load these resources because:</p><ul>
 <li>
-<p>The way it is presented would suggest you have to do inline script (this is bad)</p>
-</li>
-<li>
-<p>The call they make might crash if it is in a site collection of a web app that has no root site collection</p>
-</li>
-<li>
-<p>Once loaded, resources are not contained in a namespace which may lead to conflicts with other components</p>
-</li>
-<li>
-<p>We do not control the loading sequence with this kind of call, another risk of having conflicts</p>
-</li>
-<li>
-<p>Loading is done simultaneously with the page and not asynchronously which provides a poor user experience</p>
-</li>
-</ul>
-<h4 id=my-solution>My solution</h4>
-<p>Here is the solution I propose, we will make an asynchronous load of script through jquery and SharePoint’s JSOM and load resources in a dedicated namespace. This will allow us to go beyond all the above limitations. The only negative point, it will be necessary to add jquery if it is not already present. This is not a real problem since for several years already SharePoint developers use JQuery within their projects.</p>
-<p>You can find the code at this address example<a href=https://github.com/baywet/jsfulltrustlocalize>https://github.com/baywet/jsfulltrustlocalize</a></p>
-<h4 id=github>Github</h4>
-<p>Since there always must be a first time, I would like to announce that I created an account on github and that I&rsquo;ll post my code examples over there from now. It is a very interesting platform.</p>
-<p>The big positive point? If there ever are things to improve in my examples, you can participate (or other developers worldwide).</p>
-</div>
-<br>
+<p>The way it is presented would suggest you have to do inline script (this is bad)</p></li><li>
+<p>The call they make might crash if it is in a site collection of a web app that has no root site collection</p></li><li>
+<p>Once loaded, resources are not contained in a namespace which may lead to conflicts with other components</p></li><li>
+<p>We do not control the loading sequence with this kind of call, another risk of having conflicts</p></li><li>
+<p>Loading is done simultaneously with the page and not asynchronously which provides a poor user experience</p></li></ul><h4 id=my-solution>My solution</h4><p>Here is the solution I propose, we will make an asynchronous load of script through jquery and SharePoint’s JSOM and load resources in a dedicated namespace. This will allow us to go beyond all the above limitations. The only negative point, it will be necessary to add jquery if it is not already present. This is not a real problem since for several years already SharePoint developers use JQuery within their projects.</p><p>You can find the code at this address example<a href=https://github.com/baywet/jsfulltrustlocalize>https://github.com/baywet/jsfulltrustlocalize</a></p><h4 id=github>Github</h4><p>Since there always must be a first time, I would like to announce that I created an account on github and that I&rsquo;ll post my code examples over there from now. It is a very interesting platform.</p><p>The big positive point? If there ever are things to improve in my examples, you can participate (or other developers worldwide).</p></div><br>
 <p class=heading>
 Last edited
-<a href=https://github.com/baywet/blogsource/commit/cc789d3724badafffc78a1f8824bb61439d4db9f>
-Nov 5, 2021
+<a href=https://github.com/baywet/blogsource/commit/ed81153ce32a3288ff24e78527ac47cfa73c14e3>
+Mar 1, 2022
 </a> by <a href=https://github.com/baywet>Vincent Biret</a>
-</p>
-<br>
-<div class=heading>Tags:</div>
-<div class="field is-grouped is-grouped-multiline">
+</p><br>
+<div class=heading>Tags:</div><div class="field is-grouped is-grouped-multiline">
 <div class=control>
 <a href=/tags/javascript>
 <span class=tag>Javascript</span>
 </a>
-</div>
-<div class=control>
+</div><div class=control>
 <a href=/tags/resources>
 <span class=tag>Resources</span>
 </a>
-</div>
-<div class=control>
+</div><div class=control>
 <a href=/tags/example>
 <span class=tag>Example</span>
 </a>
-</div>
-<div class=control>
+</div><div class=control>
 <a href=/tags/multilingualism>
 <span class=tag>Multilingualism</span>
 </a>
-</div>
-<div class=control>
+</div><div class=control>
 <a href=/tags/code>
 <span class=tag>Code</span>
 </a>
-</div>
-<div class=control>
+</div><div class=control>
 <a href=/tags/best-practices>
 <span class=tag>Best Practices</span>
 </a>
-</div>
-<div class=control>
+</div><div class=control>
 <a href=/tags/full-trust>
 <span class=tag>Full Trust</span>
 </a>
-</div>
-<div class=control>
+</div><div class=control>
 <a href=/tags/sharepoint>
 <span class=tag>Sharepoint</span>
 </a>
-</div>
-</div>
-</div>
-</section>
-<section class=section>
+</div></div></div></section><section class=section>
 <div class=container>
 <div class=level>
 <div class=level-left>
@@ -183,10 +128,7 @@ Speaking at the SharePoint Saturday New Hampshire...
 Speaking at the SharePoint Saturday New...
 </span>
 </a>
-</p>
-</div>
-</div>
-<div class=level-right>
+</p></div></div><div class=level-right>
 <div class=level-item>
 <p class="control has-addons">
 <a class=button href=https://baywet.github.io/why-should-you-not-include-tel/>
@@ -204,147 +146,114 @@ Why should you not include telerik...
 </span>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 </a>
-</p>
-</div>
-</div>
-</div>
-</div>
-<br>
+</p></div></div></div></div><br>
 <br>
 <div class=container>
-<div id=disqus_thread></div>
-<script>var disqus_config=function(){this.page.url="https://baywet.github.io/localizing-javascript-of-a-ful/",this.page.identifier=window.location.pathname};(function(){var a=document,b=a.createElement('script');b.src='https://baywet.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script>
-<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
-</div>
-<br>
+<div id=disqus_thread></div><script>var disqus_config=function(){this.page.url="https://baywet.github.io/localizing-javascript-of-a-ful/",this.page.identifier=window.location.pathname};(function(){var e=document,t=e.createElement("script");t.src="https://baywet.disqus.com/embed.js",t.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(t)})()</script>
+<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div><br>
 <div class=container>
 <nav class=panel>
-<p class=panel-heading>Related</p>
-<a class=panel-block href=https://baywet.github.io/why-should-you-not-include-tel/>
+<p class=panel-heading>Related</p><a class=panel-block href=https://baywet.github.io/why-should-you-not-include-tel/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Why should you not include telerik controls in your SharePoint products?&nbsp;
-<div class=tag>Best Practices</div>
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Best Practices</div><div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/the-roadmap-for-office-365-is/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>The roadmap for Office 365 is available&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/selected-for-sharepoint-saturd/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Selected for SharePoint Saturday New York City&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/auto-hosted-applications-are-d/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Auto-hosted applications are deprecated&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/the-former-msp-becomes-mvp/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>The former MSP becomes MVP&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/write-a-review-on-infopaths-re/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Write a review on infopath’s replacer!&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/outstanding-announcements-of-t/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Outstanding announcements of the SharePoint Conference 2014 for Office 365&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/anonymous-access-for-sharepoin/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Anonymous access for SharePoint autohosted apps&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/operating-system-compatibility/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Operating system compatibility of SharePoint 2010/2013 has evolved&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/repackaging-of-sharepoint-2010/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Repackaging of SharePoint 2010 language packs&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/march-update-of-visual-studio/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>March Update of Visual Studio tools for Office&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/managing-resources-how-to-make/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Managing Resources, how to make your SharePoint solutions “globally deployed”&nbsp;
-<div class=tag>Resources</div>
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Resources</div><div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/help-me-to-speak-at-sp24-the-f/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Help me to speak at SP24 the first SharePoint (web) conference all around the world!&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/boost-your-sharepoint-solution-2013-12-15-12-06-00/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Boost your SharePoint solutions with distributed cache!–Part 2–Explanations tips and warnings&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/boost-your-sharepoint-solution-2013-12-13-02-35-30/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Boost your SharePoint solutions with distributed cache!- Part 1–Introduction&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Sharepoint</div></span>
 </a>
-</nav>
-</div>
-</section>
-<footer class=footer>
+</nav></div></section><footer class=footer>
 <div class=container>
 <nav class=level>
-</nav>
-<nav class=level>
+</nav><nav class=level>
 <div class="level-left has-text-centered">
 <div class=level-item>
 <form class="control has-icons has-icons-right" method=get action=https://bing.com>
 <input class=input type=text name=q maxlength=255 placeholder=Search>
 <input class=input type=hidden name=sites value=https://baywet.github.io/>
 <span class="icon is-small is-right"><i class="fa fa-search"></i></span>
-</form>
-</div>
-</div>
-<div class="level-right has-text-centered">
+</form></div></div><div class="level-right has-text-centered">
 <div class=level-item>
 <a class=button href=https://baywet.github.io/en>
 <span class=icon><i class="fa fa-home"></i></span>
@@ -352,11 +261,5 @@ Why should you not include telerik...
 <a class=button href>
 <span class=icon><i class="fa fa-rss"></i></span>
 </a>
-</div>
-</div>
-</nav>
-</div>
-</footer>
-<script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script>
-</body>
-</html>
+</div></div></nav></div></footer><script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script>
+</body></html>

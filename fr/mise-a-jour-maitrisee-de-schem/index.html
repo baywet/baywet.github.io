@@ -3,12 +3,11 @@
 <meta charset=utf-8>
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1">
-<title>Mise à jour maitrisée de schema SQL avec Entity Framework Code First dans un processus de livraison continue</title>
-<meta name=author content="Vincent Biret">
+<title>Mise à jour maitrisée de schema SQL avec Entity Framework Code First dans un processus de livraison continue</title><meta name=author content="Vincent Biret">
 <meta name=description content="Introduction
 Entity Framework est une technologie établie dans le domaine des ORM et dans le monde du .NET.
 Note : Object Relational Mapping, qui fait le lien entre la persistance des données et le...">
-<meta name=generator content="Hugo 0.89.0">
+<meta name=generator content="Hugo 0.93.0">
 <meta itemprop=name content="Mise à jour maitrisée de schema SQL avec Entity Framework Code First dans un processus de livraison continue">
 <meta itemprop=description content="Introduction
 Entity Framework est une technologie établie dans le domaine des ORM et dans le monde du .NET.
@@ -22,9 +21,9 @@ Note : Object Relational Mapping, qui fait le lien entre la persistance des donn
 Entity Framework est une technologie établie dans le domaine des ORM et dans le monde du .NET.
 Note : Object Relational Mapping, qui fait le lien entre la persistance des données et le...">
 <meta property="og:site_name" content="Le blog de baywet">
-<meta property="og:updated_time" content="2021-11-05T07:02:06-04:00">
+<meta property="og:updated_time" content="2022-03-01T17:40:17-08:00">
 <meta property="article:published_time" content="2016-03-03T14:00:00+00:00">
-<meta property="article:modified_time" content="2021-11-05T07:02:06-04:00">
+<meta property="article:modified_time" content="2022-03-01T17:40:17-08:00">
 <meta property="article:section" content>
 <meta property="article:tag" content="entity framework">
 <meta property="article:tag" content="build">
@@ -40,148 +39,72 @@ Note : Object Relational Mapping, qui fait le lien entre la persistance des donn
 <meta name=twitter:creator content>
 <meta name=twitter:image:src content="/img/logo.svg">
 <link rel=stylesheet type=text/css href=/css/capsule.min.css>
-<script>(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-176061333-1','auto'),ga('send','pageview')</script>
+<script>(function(e,o,i,a,t,n,s){e.GoogleAnalyticsObject=t,e[t]=e[t]||function(){(e[t].q=e[t].q||[]).push(arguments)},e[t].l=1*new Date,n=o.createElement(i),s=o.getElementsByTagName(i)[0],n.async=1,n.src=a,s.parentNode.insertBefore(n,s)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-176061333-1","auto"),ga("send","pageview")</script>
 <link rel=apple-touch-icon href=/img/apple-touch-icon.png>
 <link rel=icon href=/img/favicon.ico>
-</head>
-<body style=min-height:100vh;display:flex;flex-direction:column>
+</head><body style=min-height:100vh;display:flex;flex-direction:column>
 <nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation">
 <div class=container>
 <div class=navbar-brand>
 <a class=navbar-item href=/fr>
-<div class="title is-4">&nbsp;Le blog de baywet</div>
-</a>
+<div class="title is-4">&nbsp;Le blog de baywet</div></a>
 <label class="button navbar-burger is-white" for=navbar-burger-state>
 <span></span>
 <span></span>
 <span></span>
 </label>
-</div>
-<input type=checkbox id=navbar-burger-state>
+</div><input type=checkbox id=navbar-burger-state>
 <div class=navbar-menu>
 <div class=navbar-end>
 <a class=navbar-item href=https://baywet.github.io/controlled-update-of-sql-datab/>English</a>
-</div>
-</div>
-</div>
-</nav>
-<section class=section style=flex:1>
+</div></div></div></nav><section class=section style=flex:1>
 <div class=container>
-<h1 class=title>Mise à jour maitrisée de schema SQL avec Entity Framework Code First dans un processus de livraison continue</h1>
-<p class=subtitle>Mar 3, 2016</p>
-<div class=content>
-<h2 id=introduction>Introduction</h2>
-<p>Entity Framework est une technologie établie dans le domaine des ORM et dans le monde du .NET.</p>
-<p>Note : Object Relational Mapping, qui fait le lien entre la persistance des données et le code plus « métier »</p>
-<p>Il y a plusieurs méthodes pour établir le modèle de données l’une d’entre une étant le « code first » c’est-à-dire que c’est notre code qui va piloter l’évolution du schéma SQL. (ce qui simplifie énormément de choses et qui vous permet de vous concentrer sur le code métier et non les implémentation techniques)</p>
-<p>Lorsque l’on choisit cette approche il existe deux possibilités pour mettre à jour le schéma et lancer les migrations SQL :</p>
-<ul>
+<h1 class=title>Mise à jour maitrisée de schema SQL avec Entity Framework Code First dans un processus de livraison continue</h1><p class=subtitle>Mar 3, 2016</p><div class=content>
+<h2 id=introduction>Introduction</h2><p>Entity Framework est une technologie établie dans le domaine des ORM et dans le monde du .NET.</p><p>Note : Object Relational Mapping, qui fait le lien entre la persistance des données et le code plus « métier »</p><p>Il y a plusieurs méthodes pour établir le modèle de données l’une d’entre une étant le « code first » c’est-à-dire que c’est notre code qui va piloter l’évolution du schéma SQL. (ce qui simplifie énormément de choses et qui vous permet de vous concentrer sur le code métier et non les implémentation techniques)</p><p>Lorsque l’on choisit cette approche il existe deux possibilités pour mettre à jour le schéma et lancer les migrations SQL :</p><ul>
 <li>
-<p>La console nuget ou DNX, c’est-à-dire qu’un développeur devra s’en charger lors du déploiement sur un environnement</p>
-</li>
+<p>La console nuget ou DNX, c’est-à-dire qu’un développeur devra s’en charger lors du déploiement sur un environnement</p></li><li>
+<p>L’auto migration : c’est-à-dire que c’est Entity Framework qui va s’en charger automatiquement lorsqu’il détecte qu’il y a une mise à jour au démarrage de l’application. Si cette approche est séduisante pour les petits projets, elle apporte un certain nombre d’inconvénients : dégradation des performances au démarrage de l’application, moins de maitrise de « quand » va se faire la mise à jour</p></li></ul><p>Par que nous sommes des fainéants , parce que nous voulons éviter les erreurs, les oublis, faire gagner du temps à tout le monde, nous allons automatiser ce processus de façon maitrisée.</p><p>Les exemples que vous verrez sont faits sur une base de projet DNX, mais pour des projets .NET « classiques » c’est très similaire, simplement les commandes qui changent un peu.</p><p>Note : cet article prend pour acquis que vous avez suivi quelque chose de similaire à ça pour votre projet contenant le dbcontext</p><p><a href=https://docs.efproject.net/en/latest/platforms/aspnetcore/new-db.html>https://docs.efproject.net/en/latest/platforms/aspnetcore/new-db.html</a></p><h2 id=processus-de-build-ou-de-release->Processus de build ou de release ?</h2><p>Dans notre cas nous utilisons l’industrie logicielle de Visual Studio Team Services pour nos développements logiciels. Une partie des services fournis sont ceux de build et de release management.</p><p>Dans notre cas nous avons une séparation évidente entre le processus de build et de release.</p><p><strong>Le processus de build a la responsabilité de :</strong></p><ul>
 <li>
-<p>L’auto migration : c’est-à-dire que c’est Entity Framework qui va s’en charger automatiquement lorsqu’il détecte qu’il y a une mise à jour au démarrage de l’application. Si cette approche est séduisante pour les petits projets, elle apporte un certain nombre d’inconvénients : dégradation des performances au démarrage de l’application, moins de maitrise de « quand » va se faire la mise à jour</p>
-</li>
-</ul>
-<p>Par que nous sommes des fainéants , parce que nous voulons éviter les erreurs, les oublis, faire gagner du temps à tout le monde, nous allons automatiser ce processus de façon maitrisée.</p>
-<p>Les exemples que vous verrez sont faits sur une base de projet DNX, mais pour des projets .NET « classiques » c’est très similaire, simplement les commandes qui changent un peu.</p>
-<p>Note : cet article prend pour acquis que vous avez suivi quelque chose de similaire à ça pour votre projet contenant le dbcontext</p>
-<p><a href=https://docs.efproject.net/en/latest/platforms/aspnetcore/new-db.html>https://docs.efproject.net/en/latest/platforms/aspnetcore/new-db.html</a></p>
-<h2 id=processus-de-build-ou-de-release->Processus de build ou de release ?</h2>
-<p>Dans notre cas nous utilisons l’industrie logicielle de Visual Studio Team Services pour nos développements logiciels. Une partie des services fournis sont ceux de build et de release management.</p>
-<p>Dans notre cas nous avons une séparation évidente entre le processus de build et de release.</p>
-<p><strong>Le processus de build a la responsabilité de :</strong></p>
-<ul>
+<p>Transformer le code source en livrable (compilation, transpilatation,…)</p></li><li>
+<p>Transmettre les artifacts additionnels de release (scripts)</p></li><li>
+<p>Exécuter les tests unitaires</p></li></ul><p><strong>Le processus de release a la responsabilité de :</strong></p><ul>
 <li>
-<p>Transformer le code source en livrable (compilation, transpilatation,…)</p>
-</li>
-<li>
-<p>Transmettre les artifacts additionnels de release (scripts)</p>
-</li>
-<li>
-<p>Exécuter les tests unitaires</p>
-</li>
-</ul>
-<p><strong>Le processus de release a la responsabilité de :</strong></p>
-<ul>
-<li>
-<p>Déployer les livrables sur les environnements cibles</p>
-</li>
-<li>
-<p>Migrer les données</p>
-</li>
-<li>
-<p>Configurer les environnements</p>
-</li>
-<li>
-<p>…</p>
-</li>
-</ul>
-<p>Du coup il est logique pour nous d’effectuer la mise à jour du schéma dans le processus de release. Selon la manière dont est « monté » votre cycle de livraison continue ce sera peut-être un peu différent et il faudra adapter les exemples</p>
-<h2 id=configuration-des-définitions-dans-vtsts>Configuration des définitions dans VTSTS</h2>
-<h3 id=script-dexécution-de-la-mise-à-jour>Script d’exécution de la mise à jour</h3>
-<p>La première chose qu’on va vouloir ajouter à notre « code » est un script qui va demander à dnx d’exécuter la mise à jour de la base de données ainsi qu’un élément de configuration qui va permettre de configurer le contexte de base de données.</p>
-<p>Heureusement pour vous c’est du travail que j’ai déjà fait voici donc les deux gist.</p>
-<p><a href=https://gist.github.com/baywet/9931ba2f45043dba9bdb>https://gist.github.com/baywet/9931ba2f45043dba9bdb</a></p>
-<p><a href=https://gist.github.com/baywet/ad41ccb8ad0bb12184ae>https://gist.github.com/baywet/ad41ccb8ad0bb12184ae</a></p>
-<h3 id=récupération-des-sources-et-des-scripts>Récupération des sources et des scripts</h3>
-<p>Ce qu’il faut bien comprendre c’est que DNX se base sur le code source qu’il va compiler à la volée pour effectuer la migration. Il n’y a pas pour le moment et à ma connaissance de possibilité d’effectuer cela sur une librairie DNX (un nuget en clair) déjà compilée.</p>
-<p>Ce que ça veut dire c’est que nous allons avoir besoin des sources afin de pour exécuter la migration entity framework. Sources que vous avez déjà sous la main si vous effectuez ça depuis le processus de build. Dans notre cas on effectue cela dans le processus de déploiement cependant.</p>
-<p>Ce que ça signifie c’est que si, comme nous, vous effectuez votre mise à jour de base de données depuis le processus de release, il va falloir ramener les sources, sinon vous pouvez passer cette étape.</p>
-<p>Rendez vous donc dans votre processus de build, et dans l’étape « copy files » rajouter une ligne src\** (toutes nos sources se trouvent dans src, c’est la pratique avec DNX) et une ligne *.ps1 pour ramener le script récemment ajouté.</p>
-<p><img src=./61.png alt=61.png></p>
-<h3 id=mise-à-jour-du-schéma-pendant-le-déploiement>Mise à jour du schéma pendant le déploiement</h3>
-<p>Enfin la dernière étape est de demander à votre processus de release d’effectuer la mise à jour de la base de données. Pour cela simplement rajouter une étape powershell avec en paramètre le chemin du script et en argument la connection string de la base de données à mettre à jour.</p>
-<p><img src=./62.png alt=62.png></p>
-<h2 id=conclusion>Conclusion</h2>
-<p><img src=./63.png alt=63.png></p>
-<p>Comme vous pouvez le voir il est assez simple d’automatiser et de maitriser la mise à jour des schémas de base de données avec Entity Framework code first dans un release pipeline. Et ce avec DNX ou non.</p>
-<p>J’espère que cet article vous fera gagner du temps à tous et vous évitera des problèmes de déploiement.</p>
-</div>
-<br>
+<p>Déployer les livrables sur les environnements cibles</p></li><li>
+<p>Migrer les données</p></li><li>
+<p>Configurer les environnements</p></li><li>
+<p>…</p></li></ul><p>Du coup il est logique pour nous d’effectuer la mise à jour du schéma dans le processus de release. Selon la manière dont est « monté » votre cycle de livraison continue ce sera peut-être un peu différent et il faudra adapter les exemples</p><h2 id=configuration-des-définitions-dans-vtsts>Configuration des définitions dans VTSTS</h2><h3 id=script-dexécution-de-la-mise-à-jour>Script d’exécution de la mise à jour</h3><p>La première chose qu’on va vouloir ajouter à notre « code » est un script qui va demander à dnx d’exécuter la mise à jour de la base de données ainsi qu’un élément de configuration qui va permettre de configurer le contexte de base de données.</p><p>Heureusement pour vous c’est du travail que j’ai déjà fait voici donc les deux gist.</p><p><a href=https://gist.github.com/baywet/9931ba2f45043dba9bdb>https://gist.github.com/baywet/9931ba2f45043dba9bdb</a></p><p><a href=https://gist.github.com/baywet/ad41ccb8ad0bb12184ae>https://gist.github.com/baywet/ad41ccb8ad0bb12184ae</a></p><h3 id=récupération-des-sources-et-des-scripts>Récupération des sources et des scripts</h3><p>Ce qu’il faut bien comprendre c’est que DNX se base sur le code source qu’il va compiler à la volée pour effectuer la migration. Il n’y a pas pour le moment et à ma connaissance de possibilité d’effectuer cela sur une librairie DNX (un nuget en clair) déjà compilée.</p><p>Ce que ça veut dire c’est que nous allons avoir besoin des sources afin de pour exécuter la migration entity framework. Sources que vous avez déjà sous la main si vous effectuez ça depuis le processus de build. Dans notre cas on effectue cela dans le processus de déploiement cependant.</p><p>Ce que ça signifie c’est que si, comme nous, vous effectuez votre mise à jour de base de données depuis le processus de release, il va falloir ramener les sources, sinon vous pouvez passer cette étape.</p><p>Rendez vous donc dans votre processus de build, et dans l’étape « copy files » rajouter une ligne src\** (toutes nos sources se trouvent dans src, c’est la pratique avec DNX) et une ligne *.ps1 pour ramener le script récemment ajouté.</p><p><img src=./61.png alt=61.png></p><h3 id=mise-à-jour-du-schéma-pendant-le-déploiement>Mise à jour du schéma pendant le déploiement</h3><p>Enfin la dernière étape est de demander à votre processus de release d’effectuer la mise à jour de la base de données. Pour cela simplement rajouter une étape powershell avec en paramètre le chemin du script et en argument la connection string de la base de données à mettre à jour.</p><p><img src=./62.png alt=62.png></p><h2 id=conclusion>Conclusion</h2><p><img src=./63.png alt=63.png></p><p>Comme vous pouvez le voir il est assez simple d’automatiser et de maitriser la mise à jour des schémas de base de données avec Entity Framework code first dans un release pipeline. Et ce avec DNX ou non.</p><p>J’espère que cet article vous fera gagner du temps à tous et vous évitera des problèmes de déploiement.</p></div><br>
 <p class=heading>
 Edité la dernière fois le
-<a href=https://github.com/baywet/blogsource/commit/cc789d3724badafffc78a1f8824bb61439d4db9f>
-5 Nov 2021
+<a href=https://github.com/baywet/blogsource/commit/ed81153ce32a3288ff24e78527ac47cfa73c14e3>
+1 Mar 2022
 </a> par <a href=https://github.com/baywet>Vincent Biret</a>
-</p>
-<br>
-<div class=heading>Tags:</div>
-<div class="field is-grouped is-grouped-multiline">
+</p><br>
+<div class=heading>Tags:</div><div class="field is-grouped is-grouped-multiline">
 <div class=control>
 <a href=/fr/tags/entity-framework>
 <span class=tag>Entity Framework</span>
 </a>
-</div>
-<div class=control>
+</div><div class=control>
 <a href=/fr/tags/build>
 <span class=tag>Build</span>
 </a>
-</div>
-<div class=control>
+</div><div class=control>
 <a href=/fr/tags/release>
 <span class=tag>Release</span>
 </a>
-</div>
-<div class=control>
+</div><div class=control>
 <a href=/fr/tags/base-de-donne%c3%a9s>
 <span class=tag>Base De Donneés</span>
 </a>
-</div>
-<div class=control>
+</div><div class=control>
 <a href=/fr/tags/mise-%c3%a0-jour>
 <span class=tag>Mise À Jour</span>
 </a>
-</div>
-<div class=control>
+</div><div class=control>
 <a href=/fr/tags/vsts>
 <span class=tag>Vsts</span>
 </a>
-</div>
-</div>
-</div>
-</section>
-<section class=section>
+</div></div></div></section><section class=section>
 <div class=container>
 <div class=level>
 <div class=level-left>
@@ -202,10 +125,7 @@ Conférencier au SharePoint Saturday Montréal 2016
 Conférencier au SharePoint Saturday...
 </span>
 </a>
-</p>
-</div>
-</div>
-<div class=level-right>
+</p></div></div><div class=level-right>
 <div class=level-item>
 <p class="control has-addons">
 <a class=button href=https://baywet.github.io/fr/tests-unitaires-xunit-avec-vis/>
@@ -223,147 +143,114 @@ Tests unitaires xUnit avec Visual Studio...
 </span>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 </a>
-</p>
-</div>
-</div>
-</div>
-</div>
-<br>
+</p></div></div></div></div><br>
 <br>
 <div class=container>
-<div id=disqus_thread></div>
-<script>var disqus_config=function(){this.page.url="https://baywet.github.io/fr/mise-a-jour-maitrisee-de-schem/",this.page.identifier=window.location.pathname};(function(){var a=document,b=a.createElement('script');b.src='https://baywet.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script>
-<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
-</div>
-<br>
+<div id=disqus_thread></div><script>var disqus_config=function(){this.page.url="https://baywet.github.io/fr/mise-a-jour-maitrisee-de-schem/",this.page.identifier=window.location.pathname};(function(){var e=document,t=e.createElement("script");t.src="https://baywet.disqus.com/embed.js",t.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(t)})()</script>
+<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div><br>
 <div class=container>
 <nav class=panel>
-<p class=panel-heading>Related</p>
-<a class=panel-block href=https://baywet.github.io/fr/tests-unitaires-xunit-avec-vis/>
+<p class=panel-heading>Related</p><a class=panel-block href=https://baywet.github.io/fr/tests-unitaires-xunit-avec-vis/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Tests unitaires xUnit avec Visual Studio Team Services de projets DNX&nbsp;
-<div class=tag>Build</div>
-<div class=tag>Vsts</div>
-</span>
+<div class=tag>Build</div><div class=tag>Vsts</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/build-dnx-avec-agent-build-vne/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Build DNX avec agent build vnext installé (TFS , VSTS)&nbsp;
-<div class=tag>Build</div>
-<div class=tag>Vsts</div>
-</span>
+<div class=tag>Build</div><div class=tag>Vsts</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/incrementer-automatiquement-le/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Incrémenter automatiquement le numéro de version de fonctionnalité SharePoint avec le build 2015&nbsp;
-<div class=tag>Build</div>
-</span>
+<div class=tag>Build</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/deploiement-de-cloud-services/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Déploiement de Cloud services Azure via les builds 2015&nbsp;
-<div class=tag>Build</div>
-</span>
+<div class=tag>Build</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/build-automatise-de-solutions/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Build automatisé de solutions SharePoint (full trust) 2013 – Où sont mes solutions?&nbsp;
-<div class=tag>Build</div>
-</span>
+<div class=tag>Build</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/visual-studio-2013-update-4-et/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Visual Studio 2013 Update 4 et build automatisé de solutions SharePoint (full trust)&nbsp;
-<div class=tag>Build</div>
-</span>
+<div class=tag>Build</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/mise-a-jour-de-novembre-des-ou/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Mise à jour de Novembre des outils développeurs Office&nbsp;
-<div class=tag>Mise À Jour</div>
-</span>
+<div class=tag>Mise À Jour</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/build-automatise-de-solution-s/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Build automatisé de solution SharePoint server (fulltrust) avec visual studio online&nbsp;
-<div class=tag>Build</div>
-</span>
+<div class=tag>Build</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/conversion-dun-certificat-prot/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Conversion d’un certificat protégé par mot de passe (pfx) en certificat non protégé (snk)&nbsp;
-<div class=tag>Build</div>
-</span>
+<div class=tag>Build</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/changement-dans-le-cycle-de-li/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Changement dans le cycle de livraison des CU pour SharePoint&nbsp;
-<div class=tag>Mise À Jour</div>
-</span>
+<div class=tag>Mise À Jour</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/remise-a-disposition-du-sp1-po/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Remise à disposition du SP1 pour SharePoint 2013&nbsp;
-<div class=tag>Mise À Jour</div>
-</span>
+<div class=tag>Mise À Jour</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/evolution-de-la-compatibilite/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Evolution de la compatibilité système SharePoint 2010 et 2013&nbsp;
-<div class=tag>Mise À Jour</div>
-</span>
+<div class=tag>Mise À Jour</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/mise-a-jour-de-mars-des-outils/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Mise à jour de Mars des outils de développement Office pour Visual Studio&nbsp;
-<div class=tag>Mise À Jour</div>
-</span>
+<div class=tag>Mise À Jour</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/entity-framework-et-reference/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Entity Framework et référence au dataContext pour une application web&nbsp;
-<div class=tag>Entity Framework</div>
-</span>
+<div class=tag>Entity Framework</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/mise-a-jour-cumulative-doctobr/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Mise à jour cumulative d’Octobre 2013 pour SharePoint 2010&nbsp;
-<div class=tag>Mise À Jour</div>
-</span>
+<div class=tag>Mise À Jour</div></span>
 </a>
-</nav>
-</div>
-</section>
-<footer class=footer>
+</nav></div></section><footer class=footer>
 <div class=container>
 <nav class=level>
-</nav>
-<nav class=level>
+</nav><nav class=level>
 <div class="level-left has-text-centered">
 <div class=level-item>
 <form class="control has-icons has-icons-right" method=get action=https://bing.com>
 <input class=input type=text name=q maxlength=255 placeholder=Search>
 <input class=input type=hidden name=sites value=https://baywet.github.io/>
 <span class="icon is-small is-right"><i class="fa fa-search"></i></span>
-</form>
-</div>
-</div>
-<div class="level-right has-text-centered">
+</form></div></div><div class="level-right has-text-centered">
 <div class=level-item>
 <a class=button href=https://baywet.github.io/fr>
 <span class=icon><i class="fa fa-home"></i></span>
@@ -371,11 +258,5 @@ Tests unitaires xUnit avec Visual Studio...
 <a class=button href>
 <span class=icon><i class="fa fa-rss"></i></span>
 </a>
-</div>
-</div>
-</nav>
-</div>
-</footer>
-<script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script>
-</body>
-</html>
+</div></div></nav></div></footer><script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script>
+</body></html>

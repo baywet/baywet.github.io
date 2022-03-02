@@ -3,13 +3,12 @@
 <meta charset=utf-8>
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1">
-<title>Evolution de la compatibilité système SharePoint 2010 et 2013</title>
-<meta name=author content="Vincent Biret">
+<title>Evolution de la compatibilité système SharePoint 2010 et 2013</title><meta name=author content="Vincent Biret">
 <meta name=description content="
 Le service pack 2 pour SharePoint 2010 et le service pack 1 pour SharePoint 2013 sont récemment sortis.
 Enfin un support de 2012R2 !
 Ils apportent tous les deux le support de windows server 2012R2....">
-<meta name=generator content="Hugo 0.89.0">
+<meta name=generator content="Hugo 0.93.0">
 <meta itemprop=name content="Evolution de la compatibilité système SharePoint 2010 et 2013">
 <meta itemprop=description content="
 Le service pack 2 pour SharePoint 2010 et le service pack 1 pour SharePoint 2013 sont récemment sortis.
@@ -25,9 +24,9 @@ Le service pack 2 pour SharePoint 2010 et le service pack 1 pour SharePoint 2013
 Enfin un support de 2012R2 !
 Ils apportent tous les deux le support de windows server 2012R2....">
 <meta property="og:site_name" content="Le blog de baywet">
-<meta property="og:updated_time" content="2021-11-05T07:02:06-04:00">
+<meta property="og:updated_time" content="2022-03-01T17:40:17-08:00">
 <meta property="article:published_time" content="2014-03-11T02:39:54+00:00">
-<meta property="article:modified_time" content="2021-11-05T07:02:06-04:00">
+<meta property="article:modified_time" content="2022-03-01T17:40:17-08:00">
 <meta property="article:section" content>
 <meta property="article:tag" content="update">
 <meta property="article:tag" content="windows server">
@@ -44,133 +43,79 @@ Ils apportent tous les deux le support de windows server 2012R2....">
 <meta name=twitter:creator content>
 <meta name=twitter:image:src content="/img/logo.svg">
 <link rel=stylesheet type=text/css href=/css/capsule.min.css>
-<script>(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-176061333-1','auto'),ga('send','pageview')</script>
+<script>(function(e,o,i,a,t,n,s){e.GoogleAnalyticsObject=t,e[t]=e[t]||function(){(e[t].q=e[t].q||[]).push(arguments)},e[t].l=1*new Date,n=o.createElement(i),s=o.getElementsByTagName(i)[0],n.async=1,n.src=a,s.parentNode.insertBefore(n,s)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-176061333-1","auto"),ga("send","pageview")</script>
 <link rel=apple-touch-icon href=/img/apple-touch-icon.png>
 <link rel=icon href=/img/favicon.ico>
-</head>
-<body style=min-height:100vh;display:flex;flex-direction:column>
+</head><body style=min-height:100vh;display:flex;flex-direction:column>
 <nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation">
 <div class=container>
 <div class=navbar-brand>
 <a class=navbar-item href=/fr>
-<div class="title is-4">&nbsp;Le blog de baywet</div>
-</a>
+<div class="title is-4">&nbsp;Le blog de baywet</div></a>
 <label class="button navbar-burger is-white" for=navbar-burger-state>
 <span></span>
 <span></span>
 <span></span>
 </label>
-</div>
-<input type=checkbox id=navbar-burger-state>
+</div><input type=checkbox id=navbar-burger-state>
 <div class=navbar-menu>
 <div class=navbar-end>
 <a class=navbar-item href=https://baywet.github.io/operating-system-compatibility/>English</a>
-</div>
-</div>
-</div>
-</nav>
-<section class=section style=flex:1>
+</div></div></div></nav><section class=section style=flex:1>
 <div class=container>
-<h1 class=title>Evolution de la compatibilité système SharePoint 2010 et 2013</h1>
-<p class=subtitle>Mar 11, 2014</p>
-<div class=content>
-<p><img src=./clip_5F00_image002_5F00_thumb_5F00_6EC0F346.jpg alt=clip_5F00_image002_5F00_thumb_5F00_6EC0F346.jpg></p>
-<p>Le service pack 2 pour SharePoint 2010 et le service pack 1 pour SharePoint 2013 sont récemment sortis.</p>
-<h3 id=enfin-un-support-de-2012r2->Enfin un support de 2012R2 !</h3>
-<p>Ils apportent <strong>tous les deux le support de windows server 2012R2</strong>. En effet cette problématique est récurrente au sein des services informatiques. Comment diminuer le nombre de versions de systèmes d’exploitation en production pour faciliter et industrialiser la maintenance ?</p>
-<p>Attention cependant la <strong>mise à jour « in place » de windows server 2012 vers 2012R2 pour SharePoint 2013 n’est pas supportée</strong> par Microsoft. Il faut réinstaller la ferme et migrer le contenu. Voir la section vue d’ensemble des améliorations de l’article <a href=https://support.microsoft.com/kb/2817429>https://support.microsoft.com/kb/2817429</a></p>
-<p>De plus, et ce même si ce n’est pas encore indiqué, ça ne m’étonnerait pas que ce soit pareil avec SharePoint 2010. (voir article <a href=https://support.microsoft.com/kb/2724471/fr>https://support.microsoft.com/kb/2724471/fr</a> )</p>
-<p>Je décline donc toute responsabilité vis-à-vis des dégâts occasionnés sur votre infrastructure si jamais vous suivez les informations que je m’apprête à fournir ci-dessous</p>
-<h3 id=migration-de-mes-vm-de-dev>Migration de mes vm de dev</h3>
-<p>Cependant j’ai tenté tout de même la migration vers WS2012R2 de mes machines virtuelles de dev. Encore une fois ce n’est pas grave si je les casse (et puis j’avais des snapshots).</p>
-<p>Situation de départ :</p>
-<ul>
+<h1 class=title>Evolution de la compatibilité système SharePoint 2010 et 2013</h1><p class=subtitle>Mar 11, 2014</p><div class=content>
+<p><img src=./clip_5F00_image002_5F00_thumb_5F00_6EC0F346.jpg alt=clip_5F00_image002_5F00_thumb_5F00_6EC0F346.jpg></p><p>Le service pack 2 pour SharePoint 2010 et le service pack 1 pour SharePoint 2013 sont récemment sortis.</p><h3 id=enfin-un-support-de-2012r2->Enfin un support de 2012R2 !</h3><p>Ils apportent <strong>tous les deux le support de windows server 2012R2</strong>. En effet cette problématique est récurrente au sein des services informatiques. Comment diminuer le nombre de versions de systèmes d’exploitation en production pour faciliter et industrialiser la maintenance ?</p><p>Attention cependant la <strong>mise à jour « in place » de windows server 2012 vers 2012R2 pour SharePoint 2013 n’est pas supportée</strong> par Microsoft. Il faut réinstaller la ferme et migrer le contenu. Voir la section vue d’ensemble des améliorations de l’article <a href=https://support.microsoft.com/kb/2817429>https://support.microsoft.com/kb/2817429</a></p><p>De plus, et ce même si ce n’est pas encore indiqué, ça ne m’étonnerait pas que ce soit pareil avec SharePoint 2010. (voir article <a href=https://support.microsoft.com/kb/2724471/fr>https://support.microsoft.com/kb/2724471/fr</a> )</p><p>Je décline donc toute responsabilité vis-à-vis des dégâts occasionnés sur votre infrastructure si jamais vous suivez les informations que je m’apprête à fournir ci-dessous</p><h3 id=migration-de-mes-vm-de-dev>Migration de mes vm de dev</h3><p>Cependant j’ai tenté tout de même la migration vers WS2012R2 de mes machines virtuelles de dev. Encore une fois ce n’est pas grave si je les casse (et puis j’avais des snapshots).</p><p>Situation de départ :</p><ul>
 <li>
-<p>SP2010 : windows server 2008R2</p>
-</li>
-<li>
-<p>SP2013 : windows server 2012</p>
-</li>
-</ul>
-<p>J’ai commencé par installer le sp2 de 2010 sur la machine 2010 et le sp1 de 2013 sur la machine 2013.</p>
-<p>Une fois cela effectué j’ai mis à jour le système vers ws2012r2. A ma grande surprise, après l’installation, SharePoint sur les deux machines ne fonctionnait pas trop mal. Les machines avaient quelques erreurs dans les logs c’est tout.</p>
-<h3 id=problèmes-rencontrés-et-résolus-suite-aux-migrations>Problèmes rencontrés (et résolus) suite aux migrations</h3>
-<h4 id=secure-token-service>Secure Token Service</h4>
-<p>Sur les deux machines après la migration j’avais une erreur récurrente de ce type</p>
-<p>Sender Information: System.ServiceModel.ServiceHostingEnvironment+HostingManager/62476613</p>
-<p>Exception: System.ServiceModel.ServiceActivationException: The service &lsquo;/SecurityTokenServiceApplication/securitytoken.svc&rsquo; cannot be activated due to an exception during compilation. The exception message is: Exception has been thrown by the target of an invocation.. &mdash;> System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. &mdash;> System.ArgumentNullException: Value cannot be null.</p>
-<p>Dans le doute j’ai relancé le psconfig pour ré effectuer l’enregistrement des services. Mais ça n’a pas corrigé la situation. La solution est venue de ce sujet sur le forum msdn, l’auteur indique qu’il suffit de re-provisionner les services pour résoudre le problème et indique comment le faire via powershell</p>
-<p><a href="https://social.msdn.microsoft.com/Forums/sharepoint/en-US/82433e07-4a19-4a89-b026-b9fe2a43847e/event-id-3806-and-id-3-problems-after-upgrade-to-server-2012-r2?forum=sharepointgeneral">https://social.msdn.microsoft.com/Forums/sharepoint/en-US/82433e07-4a19-4a89-b026-b9fe2a43847e/event-id-3806-and-id-3-problems-after-upgrade-to-server-2012-r2?forum=sharepointgeneral</a></p>
-<h4 id=sharepoint-management-shell-non-fonctionnel>SharePoint management Shell non fonctionnel</h4>
-<p>Le second problème que j’ai eu suite à la mise à jour est lié à powershell 3 qui s’exécute en .Net 4. (problème uniquement sur la machine 2010 donc). La solution est assez simple, il suffit de modifier le raccourci enregistré comme indiqué sur cet article.</p>
-<p><a href=https://blogs.msdn.com/b/calvarro/archive/2013/01/04/powershell-3-0-net-4-0-amp-sharepoint-2010.aspx>https://blogs.msdn.com/b/calvarro/archive/2013/01/04/powershell-3-0-net-4-0-amp-sharepoint-2010.aspx</a></p>
-<h3 id=conclusion>Conclusion</h3>
-<p>La migration de mes machines de développement s’est bien passée. Et depuis une semaine que j’ai fait ça je n’ai pas rencontré d’autres problèmes que ceux cités plus haut. Mais encore une fois ce sont des machines de dev, attention de ne pas faire n’importe quoi sur vos environnements où l’impact pourrait être plus large.</p>
-</div>
-<br>
+<p>SP2010 : windows server 2008R2</p></li><li>
+<p>SP2013 : windows server 2012</p></li></ul><p>J’ai commencé par installer le sp2 de 2010 sur la machine 2010 et le sp1 de 2013 sur la machine 2013.</p><p>Une fois cela effectué j’ai mis à jour le système vers ws2012r2. A ma grande surprise, après l’installation, SharePoint sur les deux machines ne fonctionnait pas trop mal. Les machines avaient quelques erreurs dans les logs c’est tout.</p><h3 id=problèmes-rencontrés-et-résolus-suite-aux-migrations>Problèmes rencontrés (et résolus) suite aux migrations</h3><h4 id=secure-token-service>Secure Token Service</h4><p>Sur les deux machines après la migration j’avais une erreur récurrente de ce type</p><p>Sender Information: System.ServiceModel.ServiceHostingEnvironment+HostingManager/62476613</p><p>Exception: System.ServiceModel.ServiceActivationException: The service &lsquo;/SecurityTokenServiceApplication/securitytoken.svc&rsquo; cannot be activated due to an exception during compilation. The exception message is: Exception has been thrown by the target of an invocation.. &mdash;> System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. &mdash;> System.ArgumentNullException: Value cannot be null.</p><p>Dans le doute j’ai relancé le psconfig pour ré effectuer l’enregistrement des services. Mais ça n’a pas corrigé la situation. La solution est venue de ce sujet sur le forum msdn, l’auteur indique qu’il suffit de re-provisionner les services pour résoudre le problème et indique comment le faire via powershell</p><p><a href="https://social.msdn.microsoft.com/Forums/sharepoint/en-US/82433e07-4a19-4a89-b026-b9fe2a43847e/event-id-3806-and-id-3-problems-after-upgrade-to-server-2012-r2?forum=sharepointgeneral">https://social.msdn.microsoft.com/Forums/sharepoint/en-US/82433e07-4a19-4a89-b026-b9fe2a43847e/event-id-3806-and-id-3-problems-after-upgrade-to-server-2012-r2?forum=sharepointgeneral</a></p><h4 id=sharepoint-management-shell-non-fonctionnel>SharePoint management Shell non fonctionnel</h4><p>Le second problème que j’ai eu suite à la mise à jour est lié à powershell 3 qui s’exécute en .Net 4. (problème uniquement sur la machine 2010 donc). La solution est assez simple, il suffit de modifier le raccourci enregistré comme indiqué sur cet article.</p><p><a href=https://blogs.msdn.com/b/calvarro/archive/2013/01/04/powershell-3-0-net-4-0-amp-sharepoint-2010.aspx>https://blogs.msdn.com/b/calvarro/archive/2013/01/04/powershell-3-0-net-4-0-amp-sharepoint-2010.aspx</a></p><h3 id=conclusion>Conclusion</h3><p>La migration de mes machines de développement s’est bien passée. Et depuis une semaine que j’ai fait ça je n’ai pas rencontré d’autres problèmes que ceux cités plus haut. Mais encore une fois ce sont des machines de dev, attention de ne pas faire n’importe quoi sur vos environnements où l’impact pourrait être plus large.</p></div><br>
 <p class=heading>
 Edité la dernière fois le
-<a href=https://github.com/baywet/blogsource/commit/cc789d3724badafffc78a1f8824bb61439d4db9f>
-5 Nov 2021
+<a href=https://github.com/baywet/blogsource/commit/ed81153ce32a3288ff24e78527ac47cfa73c14e3>
+1 Mar 2022
 </a> par <a href=https://github.com/baywet>Vincent Biret</a>
-</p>
-<br>
-<div class=heading>Tags:</div>
-<div class="field is-grouped is-grouped-multiline">
+</p><br>
+<div class=heading>Tags:</div><div class="field is-grouped is-grouped-multiline">
 <div class=control>
 <a href=/fr/tags/update>
 <span class=tag>Update</span>
 </a>
-</div>
-<div class=control>
+</div><div class=control>
 <a href=/fr/tags/windows-server>
 <span class=tag>Windows Server</span>
 </a>
-</div>
-<div class=control>
+</div><div class=control>
 <a href=/fr/tags/2013>
 <span class=tag>2013th</span>
 </a>
-</div>
-<div class=control>
+</div><div class=control>
 <a href=/fr/tags/2012>
 <span class=tag>2012th</span>
 </a>
-</div>
-<div class=control>
+</div><div class=control>
 <a href=/fr/tags/service>
 <span class=tag>Service</span>
 </a>
-</div>
-<div class=control>
+</div><div class=control>
 <a href=/fr/tags/mise-%c3%a0-jour>
 <span class=tag>Mise À Jour</span>
 </a>
-</div>
-<div class=control>
+</div><div class=control>
 <a href=/fr/tags/2008r2>
 <span class=tag>2008r2</span>
 </a>
-</div>
-<div class=control>
+</div><div class=control>
 <a href=/fr/tags/pack>
 <span class=tag>Pack</span>
 </a>
-</div>
-<div class=control>
+</div><div class=control>
 <a href=/fr/tags/2010>
 <span class=tag>2010th</span>
 </a>
-</div>
-<div class=control>
+</div><div class=control>
 <a href=/fr/tags/sharepoint>
 <span class=tag>Sharepoint</span>
 </a>
-</div>
-</div>
-</div>
-</section>
-<section class=section>
+</div></div></div></section><section class=section>
 <div class=container>
 <div class=level>
 <div class=level-left>
@@ -191,10 +136,7 @@ Accès anonyme à une application auto-hébergée pour...
 Accès anonyme à une application...
 </span>
 </a>
-</p>
-</div>
-</div>
-<div class=level-right>
+</p></div></div><div class=level-right>
 <div class=level-item>
 <p class="control has-addons">
 <a class=button href=https://baywet.github.io/fr/refonte-des-packs-de-langue-po/>
@@ -212,158 +154,114 @@ Refonte des packs de langue pour...
 </span>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 </a>
-</p>
-</div>
-</div>
-</div>
-</div>
-<br>
+</p></div></div></div></div><br>
 <br>
 <div class=container>
-<div id=disqus_thread></div>
-<script>var disqus_config=function(){this.page.url="https://baywet.github.io/fr/evolution-de-la-compatibilite/",this.page.identifier=window.location.pathname};(function(){var a=document,b=a.createElement('script');b.src='https://baywet.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script>
-<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
-</div>
-<br>
+<div id=disqus_thread></div><script>var disqus_config=function(){this.page.url="https://baywet.github.io/fr/evolution-de-la-compatibilite/",this.page.identifier=window.location.pathname};(function(){var e=document,t=e.createElement("script");t.src="https://baywet.disqus.com/embed.js",t.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(t)})()</script>
+<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div><br>
 <div class=container>
 <nav class=panel>
-<p class=panel-heading>Related</p>
-<a class=panel-block href=https://baywet.github.io/fr/refonte-des-packs-de-langue-po/>
+<p class=panel-heading>Related</p><a class=panel-block href=https://baywet.github.io/fr/refonte-des-packs-de-langue-po/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Refonte des packs de langue pour SharePoint 2010&nbsp;
-<div class=tag>Pack</div>
-<div class=tag>2010th</div>
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Pack</div><div class=tag>2010th</div><div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/mise-a-jour-de-mars-des-outils/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Mise à jour de Mars des outils de développement Office pour Visual Studio&nbsp;
-<div class=tag>2013th</div>
-<div class=tag>Mise À Jour</div>
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>2013th</div><div class=tag>Mise À Jour</div><div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/service-pack-1-for-office-suit/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Service Pack 1 for Office suite 2013 (client and server) is out!&nbsp;
-<div class=tag>Update</div>
-<div class=tag>2013th</div>
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Update</div><div class=tag>2013th</div><div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/le-service-pack-1-de-la-gamme/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Le service Pack 1 de la gamme Office 2013 (client et serveur) est sorti !&nbsp;
-<div class=tag>Update</div>
-<div class=tag>2013th</div>
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Update</div><div class=tag>2013th</div><div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/slideshare-account-now-sharing/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>SlideShare Account now sharing my presentations! Compte SlideShare retrouvez mes présentations !&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/trois-nouveaux-sur-la-platefor/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Trois nouveaux sur la plateforme Microsoft Touch !&nbsp;
-<div class=tag>Windows Server</div>
-</span>
+<div class=tag>Windows Server</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/gestion-des-ressources-rendre/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Gestion des ressources, rendre vos solutions SharePoint « globally deployed »&nbsp;
-<div class=tag>2013th</div>
-<div class=tag>2010th</div>
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>2013th</div><div class=tag>2010th</div><div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/aidez-moi-a-tre-conferencier-a/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Aidez-moi à être conférencier à la SP24 la première web conférence tout autour du monde !&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/conferences-a-venir-en-2014/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Conférences à venir en 2014&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/invite-au-webcast-de-pimpmysha/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Invité au webcast de @PimpMySharePoint !&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/installing-sharepoint-2013-pre/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Installing SharePoint 2013 prerequisites on offline environments&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/installation-des-prerequis-sha/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Installation des prérequis SharePoint 2013 sur des serveurs hors ligne&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/boost-your-sharepoint-solution/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Boost your SharePoint solutions with distributed cache!–Part 3–Let’s Code!&nbsp;
-<div class=tag>2013th</div>
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>2013th</div><div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/boostez-vos-solutions-sharepoi-2013-12-14-20-21-00/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Boostez vos solutions SharePoint avec le cache distribué !–Partie 3–Le code&nbsp;
-<div class=tag>2013th</div>
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>2013th</div><div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/boostez-vos-solutions-sharepoi-2013-12-12-09-08-00/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Boostez vos solutions SharePoint avec le cache distribué !–Partie 2–Explications et astuces&nbsp;
-<div class=tag>2013th</div>
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>2013th</div><div class=tag>Sharepoint</div></span>
 </a>
-</nav>
-</div>
-</section>
-<footer class=footer>
+</nav></div></section><footer class=footer>
 <div class=container>
 <nav class=level>
-</nav>
-<nav class=level>
+</nav><nav class=level>
 <div class="level-left has-text-centered">
 <div class=level-item>
 <form class="control has-icons has-icons-right" method=get action=https://bing.com>
 <input class=input type=text name=q maxlength=255 placeholder=Search>
 <input class=input type=hidden name=sites value=https://baywet.github.io/>
 <span class="icon is-small is-right"><i class="fa fa-search"></i></span>
-</form>
-</div>
-</div>
-<div class="level-right has-text-centered">
+</form></div></div><div class="level-right has-text-centered">
 <div class=level-item>
 <a class=button href=https://baywet.github.io/fr>
 <span class=icon><i class="fa fa-home"></i></span>
@@ -371,11 +269,5 @@ Refonte des packs de langue pour...
 <a class=button href>
 <span class=icon><i class="fa fa-rss"></i></span>
 </a>
-</div>
-</div>
-</nav>
-</div>
-</footer>
-<script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script>
-</body>
-</html>
+</div></div></nav></div></footer><script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script>
+</body></html>

@@ -3,10 +3,9 @@
 <meta charset=utf-8>
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1">
-<title>Publier des Image renditions pour SharePoint à l’aide de PnP Provisioning</title>
-<meta name=author content="Vincent Biret">
+<title>Publier des Image renditions pour SharePoint à l’aide de PnP Provisioning</title><meta name=author content="Vincent Biret">
 <meta name=description content="Il y a quelques jours, j’ai dû travailler à nouveau avec les « images renditions » de SharePoint. Nous sommes en train de développer un intranet pour l’un de nos clients qui dépend partiellement des...">
-<meta name=generator content="Hugo 0.89.0">
+<meta name=generator content="Hugo 0.93.0">
 <meta itemprop=name content="Publier des Image renditions pour SharePoint à l’aide de PnP Provisioning">
 <meta itemprop=description content="Il y a quelques jours, j’ai dû travailler à nouveau avec les « images renditions » de SharePoint. Nous sommes en train de développer un intranet pour l’un de nos clients qui dépend partiellement des...">
 <meta itemprop=image content="/img/logo.svg">
@@ -16,9 +15,9 @@
 <meta property="og:image" content="/img/logo.svg">
 <meta property="og:description" content="Il y a quelques jours, j’ai dû travailler à nouveau avec les « images renditions » de SharePoint. Nous sommes en train de développer un intranet pour l’un de nos clients qui dépend partiellement des...">
 <meta property="og:site_name" content="Le blog de baywet">
-<meta property="og:updated_time" content="2021-11-05T07:02:06-04:00">
+<meta property="og:updated_time" content="2022-03-01T17:40:17-08:00">
 <meta property="article:published_time" content="2017-04-20T14:00:00+00:00">
-<meta property="article:modified_time" content="2021-11-05T07:02:06-04:00">
+<meta property="article:modified_time" content="2022-03-01T17:40:17-08:00">
 <meta property="article:section" content>
 <meta property="article:tag" content="images">
 <meta property="article:tag" content="pnp">
@@ -32,102 +31,72 @@
 <meta name=twitter:creator content>
 <meta name=twitter:image:src content="/img/logo.svg">
 <link rel=stylesheet type=text/css href=/css/capsule.min.css>
-<script>(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-176061333-1','auto'),ga('send','pageview')</script>
+<script>(function(e,o,i,a,t,n,s){e.GoogleAnalyticsObject=t,e[t]=e[t]||function(){(e[t].q=e[t].q||[]).push(arguments)},e[t].l=1*new Date,n=o.createElement(i),s=o.getElementsByTagName(i)[0],n.async=1,n.src=a,s.parentNode.insertBefore(n,s)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-176061333-1","auto"),ga("send","pageview")</script>
 <link rel=apple-touch-icon href=/img/apple-touch-icon.png>
 <link rel=icon href=/img/favicon.ico>
-</head>
-<body style=min-height:100vh;display:flex;flex-direction:column>
+</head><body style=min-height:100vh;display:flex;flex-direction:column>
 <nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation">
 <div class=container>
 <div class=navbar-brand>
 <a class=navbar-item href=/fr>
-<div class="title is-4">&nbsp;Le blog de baywet</div>
-</a>
+<div class="title is-4">&nbsp;Le blog de baywet</div></a>
 <label class="button navbar-burger is-white" for=navbar-burger-state>
 <span></span>
 <span></span>
 <span></span>
 </label>
-</div>
-<input type=checkbox id=navbar-burger-state>
+</div><input type=checkbox id=navbar-burger-state>
 <div class=navbar-menu>
 <div class=navbar-end>
 <a class=navbar-item href=https://baywet.github.io/publishing-sharepoint-image-re/>English</a>
-</div>
-</div>
-</div>
-</nav>
-<section class=section style=flex:1>
+</div></div></div></nav><section class=section style=flex:1>
 <div class=container>
-<h1 class=title>Publier des Image renditions pour SharePoint à l’aide de PnP Provisioning</h1>
-<p class=subtitle>Apr 20, 2017</p>
-<div class=content>
-<p>Il y a quelques jours, j’ai dû travailler à nouveau avec les « images renditions » de SharePoint. Nous sommes en train de développer un intranet pour l’un de nos clients qui dépend partiellement des fonctionnalités de publication.</p>
-<p>Court rappel : les « image renditions » ont été introduites en 2013 pour vous aider à utiliser une version optimisée d’une image sans que les créateurs de contenu aient besoin de se soucier de la taille des images ou autres ou bien que vous ailliez à redimensionner les images vous-même en implémentant du code.</p>
-<p>Si vous n’avez pas déjà lu les excellents blogs pots introductifs sur le sujet, je vous invite à y jeter un œil.</p>
-<p><a href=https://www.eliostruyf.com/provision-image-renditions-to-your-sharepoint-2013-site/>https://www.eliostruyf.com/provision-image-renditions-to-your-sharepoint-2013-site/</a></p>
-<p><a href=https://www.eliostruyf.com/image-renditions-december-cumulative-update-sharepoint-2013/>https://www.eliostruyf.com/image-renditions-december-cumulative-update-sharepoint-2013/</a></p>
-<p>Dans notre cas nous utilisons PnP provisioning de manière intensive afin de simplifier les opérations de déploiement telles que créer des colonnes de sites, types de contenu, fichiers, etc… D’où la question : est-il possible de configurer les « image renditions » en utilisant PnP provisioning ?</p>
-<p>C’est en effet possible, vous pouvez configurer vos renditions sur votre tenant de développement depuis les paramètres du puis récupérez le fichier situé à cette adresse ~/SiteCollection/_catalogs/masterpage/PublishingImageRenditions.xml</p>
-<p>La dernière action à effectuer consiste à mettre à jour votre template pnp pour qu’il déploie ce fichier pour vous à l’aide de cet exemple :</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml><span style=color:#f92672>&lt;pnp:Files&gt;</span>
-    <span style=color:#f92672>&lt;pnp:File</span> <span style=color:#a6e22e>Src=</span><span style=color:#e6db74>&#34;PublishingImageRenditions.xml&#34;</span> <span style=color:#a6e22e>Folder=</span><span style=color:#e6db74>&#34;{SiteCollection}/\_catalogs/masterpage&#34;</span> <span style=color:#a6e22e>Overwrite=</span><span style=color:#e6db74>&#34;true&#34;</span> <span style=color:#a6e22e>Level=</span><span style=color:#e6db74>&#34;Published&#34;</span><span style=color:#f92672>&gt;</span>
-        <span style=color:#f92672>&lt;pnp:Properties&gt;</span>
-            <span style=color:#f92672>&lt;pnp:Property</span> <span style=color:#a6e22e>Key=</span><span style=color:#e6db74>&#34;ContentTypeId&#34;</span> <span style=color:#a6e22e>Value=</span><span style=color:#e6db74>&#34;0x01010012BCF119622FF14793A8A38D5831F25C&#34;</span> <span style=color:#f92672>/&gt;</span>
-            <span style=color:#f92672>&lt;pnp:Property</span> <span style=color:#a6e22e>Key=</span><span style=color:#e6db74>&#34;ContentType&#34;</span> <span style=color:#a6e22e>Value=</span><span style=color:#e6db74>&#34;Document&#34;</span> <span style=color:#f92672>/&gt;</span>
-        <span style=color:#f92672>&lt;/pnp:Properties&gt;</span>
-    <span style=color:#f92672>&lt;/pnp:File&gt;</span>
-<span style=color:#f92672>&lt;/pnp:Files&gt;</span>
-</code></pre></div><p>Bonus : les « image renditions » se reposent sur les fonctionnalités de publication, il est préférable de s’assurer que ces fonctionnalités sont activées avant de les utiliser et voici un exemple pour pnp.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml><span style=color:#f92672>&lt;pnp:Features&gt;</span>
-    <span style=color:#f92672>&lt;pnp:SiteFeatures&gt;</span>
-        <span style=color:#f92672>&lt;pnp:Feature</span> <span style=color:#a6e22e>ID=</span><span style=color:#e6db74>&#34;f6924d36-2fa8-4f0b-b16d-06b7250180fa&#34;</span> <span style=color:#a6e22e>Description=</span><span style=color:#e6db74>&#34;SharePoint Server Publishing Infrastructure&#34;</span> <span style=color:#f92672>/&gt;</span>
-    <span style=color:#f92672>&lt;/pnp:SiteFeatures&gt;</span>
-    <span style=color:#f92672>&lt;pnp:WebFeatures&gt;</span>
-        <span style=color:#f92672>&lt;pnp:Feature</span> <span style=color:#a6e22e>ID=</span><span style=color:#e6db74>&#34;94c94ca6-b32f-4da9-a9e3-1f3d343d7ecb&#34;</span> <span style=color:#a6e22e>Description=</span><span style=color:#e6db74>&#34;SharePoint Server Publishing&#34;</span> <span style=color:#f92672>/&gt;</span>
-    <span style=color:#f92672>&lt;/pnp:WebFeatures&gt;</span>
-<span style=color:#f92672>&lt;/pnp:Features&gt;</span>
-</code></pre></div>
-</div>
-<br>
+<h1 class=title>Publier des Image renditions pour SharePoint à l’aide de PnP Provisioning</h1><p class=subtitle>Apr 20, 2017</p><div class=content>
+<p>Il y a quelques jours, j’ai dû travailler à nouveau avec les « images renditions » de SharePoint. Nous sommes en train de développer un intranet pour l’un de nos clients qui dépend partiellement des fonctionnalités de publication.</p><p>Court rappel : les « image renditions » ont été introduites en 2013 pour vous aider à utiliser une version optimisée d’une image sans que les créateurs de contenu aient besoin de se soucier de la taille des images ou autres ou bien que vous ailliez à redimensionner les images vous-même en implémentant du code.</p><p>Si vous n’avez pas déjà lu les excellents blogs pots introductifs sur le sujet, je vous invite à y jeter un œil.</p><p><a href=https://www.eliostruyf.com/provision-image-renditions-to-your-sharepoint-2013-site/>https://www.eliostruyf.com/provision-image-renditions-to-your-sharepoint-2013-site/</a></p><p><a href=https://www.eliostruyf.com/image-renditions-december-cumulative-update-sharepoint-2013/>https://www.eliostruyf.com/image-renditions-december-cumulative-update-sharepoint-2013/</a></p><p>Dans notre cas nous utilisons PnP provisioning de manière intensive afin de simplifier les opérations de déploiement telles que créer des colonnes de sites, types de contenu, fichiers, etc… D’où la question : est-il possible de configurer les « image renditions » en utilisant PnP provisioning ?</p><p>C’est en effet possible, vous pouvez configurer vos renditions sur votre tenant de développement depuis les paramètres du puis récupérez le fichier situé à cette adresse ~/SiteCollection/_catalogs/masterpage/PublishingImageRenditions.xml</p><p>La dernière action à effectuer consiste à mettre à jour votre template pnp pour qu’il déploie ce fichier pour vous à l’aide de cet exemple :</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml><span style=display:flex><span><span style=color:#f92672>&lt;pnp:Files&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&lt;pnp:File</span> <span style=color:#a6e22e>Src=</span><span style=color:#e6db74>&#34;PublishingImageRenditions.xml&#34;</span> <span style=color:#a6e22e>Folder=</span><span style=color:#e6db74>&#34;{SiteCollection}/\_catalogs/masterpage&#34;</span> <span style=color:#a6e22e>Overwrite=</span><span style=color:#e6db74>&#34;true&#34;</span> <span style=color:#a6e22e>Level=</span><span style=color:#e6db74>&#34;Published&#34;</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;pnp:Properties&gt;</span>
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&lt;pnp:Property</span> <span style=color:#a6e22e>Key=</span><span style=color:#e6db74>&#34;ContentTypeId&#34;</span> <span style=color:#a6e22e>Value=</span><span style=color:#e6db74>&#34;0x01010012BCF119622FF14793A8A38D5831F25C&#34;</span> <span style=color:#f92672>/&gt;</span>
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&lt;pnp:Property</span> <span style=color:#a6e22e>Key=</span><span style=color:#e6db74>&#34;ContentType&#34;</span> <span style=color:#a6e22e>Value=</span><span style=color:#e6db74>&#34;Document&#34;</span> <span style=color:#f92672>/&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;/pnp:Properties&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&lt;/pnp:File&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;/pnp:Files&gt;</span>
+</span></span></code></pre></div><p>Bonus : les « image renditions » se reposent sur les fonctionnalités de publication, il est préférable de s’assurer que ces fonctionnalités sont activées avant de les utiliser et voici un exemple pour pnp.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml><span style=display:flex><span><span style=color:#f92672>&lt;pnp:Features&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&lt;pnp:SiteFeatures&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;pnp:Feature</span> <span style=color:#a6e22e>ID=</span><span style=color:#e6db74>&#34;f6924d36-2fa8-4f0b-b16d-06b7250180fa&#34;</span> <span style=color:#a6e22e>Description=</span><span style=color:#e6db74>&#34;SharePoint Server Publishing Infrastructure&#34;</span> <span style=color:#f92672>/&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&lt;/pnp:SiteFeatures&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&lt;pnp:WebFeatures&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;pnp:Feature</span> <span style=color:#a6e22e>ID=</span><span style=color:#e6db74>&#34;94c94ca6-b32f-4da9-a9e3-1f3d343d7ecb&#34;</span> <span style=color:#a6e22e>Description=</span><span style=color:#e6db74>&#34;SharePoint Server Publishing&#34;</span> <span style=color:#f92672>/&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&lt;/pnp:WebFeatures&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;/pnp:Features&gt;</span>
+</span></span></code></pre></div></div><br>
 <p class=heading>
 Edité la dernière fois le
-<a href=https://github.com/baywet/blogsource/commit/cc789d3724badafffc78a1f8824bb61439d4db9f>
-5 Nov 2021
+<a href=https://github.com/baywet/blogsource/commit/ed81153ce32a3288ff24e78527ac47cfa73c14e3>
+1 Mar 2022
 </a> par <a href=https://github.com/baywet>Vincent Biret</a>
-</p>
-<br>
-<div class=heading>Tags:</div>
-<div class="field is-grouped is-grouped-multiline">
+</p><br>
+<div class=heading>Tags:</div><div class="field is-grouped is-grouped-multiline">
 <div class=control>
 <a href=/fr/tags/images>
 <span class=tag>Images</span>
 </a>
-</div>
-<div class=control>
+</div><div class=control>
 <a href=/fr/tags/pnp>
 <span class=tag>Pnp</span>
 </a>
-</div>
-<div class=control>
+</div><div class=control>
 <a href=/fr/tags/publication>
 <span class=tag>Publication</span>
 </a>
-</div>
-<div class=control>
+</div><div class=control>
 <a href=/fr/tags/privisionnement>
 <span class=tag>Privisionnement</span>
 </a>
-</div>
-<div class=control>
+</div><div class=control>
 <a href=/fr/tags/sharepoint>
 <span class=tag>Sharepoint</span>
 </a>
-</div>
-</div>
-</div>
-</section>
-<section class=section>
+</div></div></div></section><section class=section>
 <div class=container>
 <div class=level>
 <div class=level-left>
@@ -148,10 +117,7 @@ Global Azure Bootcamp 2017 – Edition de Montréal
 Global Azure Bootcamp 2017 – Edition de...
 </span>
 </a>
-</p>
-</div>
-</div>
-<div class=level-right>
+</p></div></div><div class=level-right>
 <div class=level-item>
 <p class="control has-addons">
 <a class=button href=https://baywet.github.io/fr/conferencier-au-aos-tours-mont/>
@@ -169,146 +135,114 @@ Conférencier au Aos Tours Montréal et...
 </span>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 </a>
-</p>
-</div>
-</div>
-</div>
-</div>
-<br>
+</p></div></div></div></div><br>
 <br>
 <div class=container>
-<div id=disqus_thread></div>
-<script>var disqus_config=function(){this.page.url="https://baywet.github.io/fr/publier-des-image-renditions-p/",this.page.identifier=window.location.pathname};(function(){var a=document,b=a.createElement('script');b.src='https://baywet.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script>
-<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
-</div>
-<br>
+<div id=disqus_thread></div><script>var disqus_config=function(){this.page.url="https://baywet.github.io/fr/publier-des-image-renditions-p/",this.page.identifier=window.location.pathname};(function(){var e=document,t=e.createElement("script");t.src="https://baywet.disqus.com/embed.js",t.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(t)})()</script>
+<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div><br>
 <div class=container>
 <nav class=panel>
-<p class=panel-heading>Related</p>
-<a class=panel-block href=https://baywet.github.io/fr/conferencier-au-aos-tours-mont/>
+<p class=panel-heading>Related</p><a class=panel-block href=https://baywet.github.io/fr/conferencier-au-aos-tours-mont/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Conférencier au Aos Tours Montréal et Québec&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/diagnotiquer-les-problemes-de/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Diagnotiquer les problèmes de load balancing sous SharePoint&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/sharepoint-saturday-quebec/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>SharePoint Saturday Québec&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/systemupdate-enfin-disponible/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>SystemUpdate enfin disponible en CSOM&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/conferencier-au-sharepoint-sat-2016-09-12-14-00-00/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Conférencier au SharePoint Saturday Lyon 2016&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/determiner-si-la-librairie-sha/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Déterminer si la librairie SharePoint est utilisée avec la nouvelle expérience&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/build-de-projets-wspftc-sharep/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Build de projets WSP/FTC SharePoint 2016&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/conferencier-au-sharepoint-sat-2016-04-04-14-00-00/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Conférencier au SharePoint Saturday Calgary 2016&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/conferencier-au-sharepoint-sat-2016-04-01-14-00-00/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Conférencier au SharePoint Saturday Houston 2016&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/conferencier-au-sharepoint-sat-2016-03-30-15-29-00/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Conférencier au SharePoint Saturday Montréal 2016&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/conferencier-au-sharepoint-sat-2016-02-10-14-00-00/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Conférencier au SharePoint Saturday Vancouver 2016&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/incrementer-automatiquement-le/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Incrémenter automatiquement le numéro de version de fonctionnalité SharePoint avec le build 2015&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/conferencier-au-sharepoint-sat-2015-11-10-14-00-00/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Conférencier au SharePoint Saturday Ottawa 2015&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/desactiver-les-fonctionnalites/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Désactiver les fonctionnalités de SEO de SharePoint&nbsp;
-<div class=tag>Publication</div>
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Publication</div><div class=tag>Sharepoint</div></span>
 </a>
 <a class=panel-block href=https://baywet.github.io/fr/conferencier-au-sharepoint-sat-2015-10-23-14-00-00/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Conférencier au SharePoint Saturday New Hampshire 2015&nbsp;
-<div class=tag>Sharepoint</div>
-</span>
+<div class=tag>Sharepoint</div></span>
 </a>
-</nav>
-</div>
-</section>
-<footer class=footer>
+</nav></div></section><footer class=footer>
 <div class=container>
 <nav class=level>
-</nav>
-<nav class=level>
+</nav><nav class=level>
 <div class="level-left has-text-centered">
 <div class=level-item>
 <form class="control has-icons has-icons-right" method=get action=https://bing.com>
 <input class=input type=text name=q maxlength=255 placeholder=Search>
 <input class=input type=hidden name=sites value=https://baywet.github.io/>
 <span class="icon is-small is-right"><i class="fa fa-search"></i></span>
-</form>
-</div>
-</div>
-<div class="level-right has-text-centered">
+</form></div></div><div class="level-right has-text-centered">
 <div class=level-item>
 <a class=button href=https://baywet.github.io/fr>
 <span class=icon><i class="fa fa-home"></i></span>
@@ -316,11 +250,5 @@ Conférencier au Aos Tours Montréal et...
 <a class=button href>
 <span class=icon><i class="fa fa-rss"></i></span>
 </a>
-</div>
-</div>
-</nav>
-</div>
-</footer>
-<script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script>
-</body>
-</html>
+</div></div></nav></div></footer><script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script>
+</body></html>

@@ -3,12 +3,11 @@
 <meta charset=utf-8>
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1">
-<title>Déployer son (ou ses) blog(s) BlogEngine sur Azure</title>
-<meta name=author content="Vincent Biret">
+<title>Déployer son (ou ses) blog(s) BlogEngine sur Azure</title><meta name=author content="Vincent Biret">
 <meta name=description content="Introduction
 Une fois n’est pas coutume, je m’écarte un peu de mon sujet favoris (SharePoint) pour vous parler de Windows Azure.
 Pour ceux qui ne le savent pas Azure est le cloud IaaS et Paas de...">
-<meta name=generator content="Hugo 0.89.0">
+<meta name=generator content="Hugo 0.93.0">
 <meta itemprop=name content="Déployer son (ou ses) blog(s) BlogEngine sur Azure">
 <meta itemprop=description content="Introduction
 Une fois n’est pas coutume, je m’écarte un peu de mon sujet favoris (SharePoint) pour vous parler de Windows Azure.
@@ -22,9 +21,9 @@ Pour ceux qui ne le savent pas Azure est le cloud IaaS et Paas de...">
 Une fois n’est pas coutume, je m’écarte un peu de mon sujet favoris (SharePoint) pour vous parler de Windows Azure.
 Pour ceux qui ne le savent pas Azure est le cloud IaaS et Paas de...">
 <meta property="og:site_name" content="Le blog de baywet">
-<meta property="og:updated_time" content="2021-11-05T07:02:06-04:00">
+<meta property="og:updated_time" content="2022-03-01T17:40:17-08:00">
 <meta property="article:published_time" content="2012-06-17T22:43:00+00:00">
-<meta property="article:modified_time" content="2021-11-05T07:02:06-04:00">
+<meta property="article:modified_time" content="2022-03-01T17:40:17-08:00">
 <meta property="article:section" content>
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="blogengine">
@@ -37,36 +36,27 @@ Pour ceux qui ne le savent pas Azure est le cloud IaaS et Paas de...">
 <meta name=twitter:creator content>
 <meta name=twitter:image:src content="/img/logo.svg">
 <link rel=stylesheet type=text/css href=/css/capsule.min.css>
-<script>(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-176061333-1','auto'),ga('send','pageview')</script>
+<script>(function(e,o,i,a,t,n,s){e.GoogleAnalyticsObject=t,e[t]=e[t]||function(){(e[t].q=e[t].q||[]).push(arguments)},e[t].l=1*new Date,n=o.createElement(i),s=o.getElementsByTagName(i)[0],n.async=1,n.src=a,s.parentNode.insertBefore(n,s)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-176061333-1","auto"),ga("send","pageview")</script>
 <link rel=apple-touch-icon href=/img/apple-touch-icon.png>
 <link rel=icon href=/img/favicon.ico>
-</head>
-<body style=min-height:100vh;display:flex;flex-direction:column>
+</head><body style=min-height:100vh;display:flex;flex-direction:column>
 <nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation">
 <div class=container>
 <div class=navbar-brand>
 <a class=navbar-item href=/fr>
-<div class="title is-4">&nbsp;Le blog de baywet</div>
-</a>
+<div class="title is-4">&nbsp;Le blog de baywet</div></a>
 <label class="button navbar-burger is-white" for=navbar-burger-state>
 <span></span>
 <span></span>
 <span></span>
 </label>
-</div>
-<input type=checkbox id=navbar-burger-state>
+</div><input type=checkbox id=navbar-burger-state>
 <div class=navbar-menu>
 <div class=navbar-end>
 <a class=navbar-item href=/en>English</a>
-</div>
-</div>
-</div>
-</nav>
-<section class=section style=flex:1>
+</div></div></div></nav><section class=section style=flex:1>
 <div class=container>
-<h1 class=title>Déployer son (ou ses) blog(s) BlogEngine sur Azure</h1>
-<p class=subtitle>Jun 17, 2012</p>
-<div class=content>
+<h1 class=title>Déployer son (ou ses) blog(s) BlogEngine sur Azure</h1><p class=subtitle>Jun 17, 2012</p><div class=content>
 <p><strong>Introduction</strong>
 Une fois n’est pas coutume, je m’écarte un peu de mon sujet favoris (SharePoint) pour vous parler de Windows Azure.
 Pour ceux qui ne le savent pas Azure est le cloud IaaS et Paas de Microsoft offrant des services tels que des bases de données en ligne ou l’hébergement de machines virtuelles, sites web etc…
@@ -76,38 +66,30 @@ Actuellement il est distribué de manière à être déployé directement sur un
 Dans le cadre de mes études on m’a demandé (poke <a href=/controlpanel/blogs/posteditor.aspx/Julien%20Dollon title=https://julien.dollon.net/>Julien Dollon</a>) de déployer un blog (toute techno confondue) sur Azure. Nous avions un barème qui faisait évoluer la note en fonction de la difficulté de la solution choisie.
 Bien évidemment, j’ai choisi la plus difficile (sinon ce n’est pas drôle hein ;-) )
 Au-delà du simple projet d’étude, le déploiement de BlogEngine dans Azure pourra convenir à toute personne désirant profiter des bénéfices du cloud pour son blog (payer ce qu’on consomme et pas plus, avoir une haute disponibilité pour pas cher, montée en charge simple et rapide pour les blogs qui couvrent des évènements par exemple…)
-Cet article s’adresse à des personnes ayant Visual Studio 2010 et le SDK azure d’installé et ayant quelques connaissances (même légères) de Visual Studio ainsi que du développement ASP.NET.</p>
-<p>Pour héberger notre blogengine sur azure nous avons deux solutions :
+Cet article s’adresse à des personnes ayant Visual Studio 2010 et le SDK azure d’installé et ayant quelques connaissances (même légères) de Visual Studio ainsi que du développement ASP.NET.</p><p>Pour héberger notre blogengine sur azure nous avons deux solutions :
 - VMRole : déployer BlogEngine au sein d’une vm qu’on publiera ensuite sur Azure, c’est la solution la plus facile mais ça comporte des inconvénients en terme de disponibilité, de mise à jour du système et d’agilité de la solution
-- WebRole : déployer BlogEngine au sein d’un projet web sur Azure, c’est plus compliqué mais plus fiable et robuste.</p>
-<p>Commençons par télécharger BlogEngine dans sa dernière version (et en version source) à cette adresse <a href=https://blogengine.codeplex.com/>https://blogengine.codeplex.com</a> . Décompressez l’archive et ouvrez la solution.
+- WebRole : déployer BlogEngine au sein d’un projet web sur Azure, c’est plus compliqué mais plus fiable et robuste.</p><p>Commençons par télécharger BlogEngine dans sa dernière version (et en version source) à cette adresse <a href=https://blogengine.codeplex.com/>https://blogengine.codeplex.com</a> . Décompressez l’archive et ouvrez la solution.
 Nous avons au départ 2 projets : une librairie qui regroupe les composants fondamentaux de BlogEngine et un projet de type Web Server Pages qui regroupe les pages applicatives de votre futur blog.
-Premier constat, le Azure SDK ne sait déployer que des projets de type Web Application, il va donc falloir que l’on convertisse notre projet Web Server Pages en Web Application.</p>
-<p><strong>Conversion du projet Web Server Pages</strong>
+Premier constat, le Azure SDK ne sait déployer que des projets de type Web Application, il va donc falloir que l’on convertisse notre projet Web Server Pages en Web Application.</p><p><strong>Conversion du projet Web Server Pages</strong>
 J’ai trouvé un article qui explique pas à pas comment faire à cette adresse <a href=https://www.richonsoftware.com/post/2012/02/26/Converting-BlogEngineNET-25-to-a-Web-Application.aspx>https://www.richonsoftware.com/post/2012/02/26/Converting-BlogEngineNET-25-to-a-Web-Application.aspx</a>
 Pour résumer il créer un nouveau projet de type Web Application au sein de la solution, ajoute les référence en copie locale à System.Web.* et à Microsoft.Infrastructure.
 Il déplace du code depuis App_Code (spécifique aux Web Server Pages) vers un autre dossier de code et change les options de compilations pour que Visual Studio le prenne correctement en compte.
 Il se débarrasse du dossier App_Data spécifier aux Web Server Pages (c’est là que BlogEngine stocke ses données quand on n’a pas de server SQL derrière) modifie du code et de la configuration pour ne plus y faire appel.
 Enfin il convertit le contenu du projet pour en faire un vrai projet de Web Application(ajout des fichiers .designer.cs principalement)
-Maintenant que le contenu est déployable sur Azure, il va falloir créer la « coquille » qui permet de le déployer</p>
-<p><strong>Création du projet de déploiement Azure</strong>
+Maintenant que le contenu est déployable sur Azure, il va falloir créer la « coquille » qui permet de le déployer</p><p><strong>Création du projet de déploiement Azure</strong>
 Effectuez un clic droit sur votre solution et ajoutez un projet de type Azure dans aucun Role.
 Dans le projet nouvellement créé vous avez désormais une section « Roles » effectuez un clic droit add, web role in current solution, et sélectionnez le projet que nous avons précédemment converti.
-Vous devriez avoir quelque chose qui ressemble à ça :</p>
-<p><img src=./0216.beaz01.JPG alt=0216.beaz01.JPG>
+Vous devriez avoir quelque chose qui ressemble à ça :</p><p><img src=./0216.beaz01.JPG alt=0216.beaz01.JPG>
  
-Maintenant que nous avons créé de quoi déployer le « code » (enfin sa version compilée) dans Azure nous allons nous occuper de la partie base de données.</p>
-<p><strong>La Base de données</strong>
+Maintenant que nous avons créé de quoi déployer le « code » (enfin sa version compilée) dans Azure nous allons nous occuper de la partie base de données.</p><p><strong>La Base de données</strong>
 Debriefing
 En effet comme je le disais plus haut, BlogEngine a deux modes de fonctionnement, stockage des données dans des fichiers xml sur disque (par défaut) ou bien dans une base de données SQL.
 Nous ne pouvons plus utiliser les fichiers xml car Azure ne « gère » que ce qui est embarqué dans votre package de déploiement.
-Imaginons que vous déployez votre BlogEngine en mode xml, Azure va copier tous les fichiers embarqués dans le Web Role sur une VM. Maintenant imaginons que pour faire de la haute disponibilité vous ayez 2 VM. Si la vm A écrit quelque chose sur le disque, la vm B ne l’aura pas. Vous comprendrez donc l’importance de passer par une base de données ne serait-ce que pour centraliser les données.</p>
-<p>Script
+Imaginons que vous déployez votre BlogEngine en mode xml, Azure va copier tous les fichiers embarqués dans le Web Role sur une VM. Maintenant imaginons que pour faire de la haute disponibilité vous ayez 2 VM. Si la vm A écrit quelque chose sur le disque, la vm B ne l’aura pas. Vous comprendrez donc l’importance de passer par une base de données ne serait-ce que pour centraliser les données.</p><p>Script
 BlogEngine fournit des scripts de préparation de la base de données localisés dans le dossier « Setup » puis « SQL Server ». C’est le script de la version courante qui nous intéresse bien évidemment (pour moi la 2.5.0). Cependant ce script contient des options qui ne sont pas supportées par SQL Azure.
 SQL Azure est un moteur de base de données porté par le cloud, il offre quasiment toutes les fonctionnalités de SQL Server 2008 R2 si ce n’est que comme il est construit différemment, il ne supporte pas certaine options d’index, de cluster etc.
 Il va donc nous falloir nettoyer le script en supprimant toutes les options suivantes (ctrl +H est votre ami :) ) :
-padindex, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON, sort_in_tempdb, ROWGUIDCOL, ON [PRIMARY]</p>
-<p>Création de la base et configuration
+padindex, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON, sort_in_tempdb, ROWGUIDCOL, ON [PRIMARY]</p><p>Création de la base et configuration
 Maintenant que nous avons un script « propre » pour créer la structure interne de notre base de données, il faut créer cette base de données et la configurer dans blogengine.
 Connectez-vous sur l’interface de gestion Azure, cliquez sur la base « base de données » puis « créer un nouveau serveur » (dans les règles de parefeu, cochez la case qui permet à Azure d’y accéder et ajouter aussi l’ip de la connexion qui vous sert à effectuer les déploiements)
 Une fois le serveur créé créez-y une base de données. Une fois cette base de données créée, sélectionnez là dans l’arborescence à gauche. Puis cliquez sur le bouton en dessous de chaine de connexion à droite. Copiez la chaine de connexion ADO.NET et gardez là dans un coin.
@@ -116,83 +98,70 @@ Vous avez une section ConnectionStrings avec une connectionString nommée « Blo
 Remontez maintenant à la section blogProvider de votre web.config et changez la valeur de l’attribut defaultProvider par DbBlogProvider. (pour indiquer à Blog Engine d’utiliser SQL et non les fichiers XML)
 Création de la structure de la base de données
 La base est créée, configurée sur notre futur déploiement de BlogEngine, nous avons un script permettant la création de sa structure, il ne reste plus qu’à l’exécuter pour avoir les structures de données nécessaires au bon fonctionnement de BlogEngine.
-Pour cela ouvrez le fichier SQL nettoyé dans Visual Studio, la barre d’outils SQL apparait</p>
-<p><img src=./4403.beaz02.JPG alt=4403.beaz02.JPG>
+Pour cela ouvrez le fichier SQL nettoyé dans Visual Studio, la barre d’outils SQL apparait</p><p><img src=./4403.beaz02.JPG alt=4403.beaz02.JPG>
  
 Cliquez sur le petit ordinateur que j’ai entouré, une fenêtre apparait, entrez l’adresse du serveur, mode sql, le nom d’utilisateur et le mot de passe (tout cela est disponible dans la connectionString).
 Une fois connecté sélectionnez votre base de données dans la liste déroulante (la croix) et cliquez sur exécuter.
-Le résultat s’affiche en bas, si vous obtenez des erreurs, vous avez mal nettoyé votre base de données, corrigez, supprimez la base, recréez là, reconnectez-vous et réessayez.</p>
-<p><strong>Et l’authentification ?</strong>
+Le résultat s’affiche en bas, si vous obtenez des erreurs, vous avez mal nettoyé votre base de données, corrigez, supprimez la base, recréez là, reconnectez-vous et réessayez.</p><p><strong>Et l’authentification ?</strong>
 Description de la situation
 Pour le moment nous n’avons déporté des fichiers xml vers SQL que la partie données (article, page d’édition & co) mais pas la partie authentification et rôles.
 Le sujet est vaste sur l’authentification il y a deux écoles (enfin plus, mais si on commence à rentrer dans les détails…) :
 - La première, la plus récente et poussée par l’ère du cloud, la fédération d’identité, l’idée principale étant d’avoir un service d’identité (ex live, facebook et autres) et de se servir de ça pour s’authentifier auprès des services. Idéalement c’est ce qu’il faudrait faire, mais ça implique des modifications importantes et lourdes au sein de BlogEngine.
-- La seconde est une méthode d’identification classique au sein des applications ASP.NET, l’idée étant de déléguer cette partie à un fournisseur de membership et à un fournisseur de roles. Ici le SQLmembership provider qui va stocker ces informations dans une base de données standard (celle qu’on crée avec reg_sql.exe pour les curieux)</p>
-<p>Ne voulant pas trop compliquer la chose j’ai décidé d’utiliser la seconde solution, même si ce n’est pas celle recommandée pour le développement d’applications pour Azure par Microsoft pour des raisons d’architecture et de sécurité.
+- La seconde est une méthode d’identification classique au sein des applications ASP.NET, l’idée étant de déléguer cette partie à un fournisseur de membership et à un fournisseur de roles. Ici le SQLmembership provider qui va stocker ces informations dans une base de données standard (celle qu’on crée avec reg_sql.exe pour les curieux)</p><p>Ne voulant pas trop compliquer la chose j’ai décidé d’utiliser la seconde solution, même si ce n’est pas celle recommandée pour le développement d’applications pour Azure par Microsoft pour des raisons d’architecture et de sécurité.
 J’ai aussi décidé de créer une base de données dédiée à l’identification comme vous le verrez par la suite. L’avantage c’est que c’est plus propre et que cette base de données pourra éventuellement resservir pour d’autres de vos applications (mutualisation). L’inconvénient c’est que ça vous fait consommer une base de données supplémentaire (augmentation des coûts). A vous de choisir donc, si vous savez et que vous êtes sûr de n’avoir besoin de l’identification ASP.NET SQL Membership pour une seule application sur Azure, choisissez de tout déployer sur la même base de données. Sinon faites-en comme moi une seconde.
 Il va donc falloir que nous fassions plusieurs choses :
 - Créer la base de données
 - Exécuter une version nettoyée du script de structuration de la base (je suis gentil, je vous le mets à disposition plus bas)
 - Créer notre admin et nos rôles pour avoir accès à notre futur déploiement de BlogEngine.
-- Configurer BlogEngine pour passer sur ce mode d’authentification des utilisateurs</p>
-<p>Création de la base de données et script
+- Configurer BlogEngine pour passer sur ce mode d’authentification des utilisateurs</p><p>Création de la base de données et script
 Retournez donc dans un premier temps sur l’interface de gestion de base de données SQL Azure, sur votre serveur et créez une base de données nommée « aspnetforazure ».
-Une fois cela effectué exécutez le script que je vous fournis sur cette nouvelle base de données depuis Visual Studio.</p>
-<p>Création du premier utilisateur et des roles
+Une fois cela effectué exécutez le script que je vous fournis sur cette nouvelle base de données depuis Visual Studio.</p><p>Création du premier utilisateur et des roles
 Pour créer nos rôles et notre utilisateur nous allons utiliser MembershipSeeder qui fait partie des outils CKS <a href=https://cks.codeplex.com/releases/view/7450>https://cks.codeplex.com/releases/view/7450</a> Téléchargez le, décompressez le et éditez le app.config pour mettre la connectionstring de votre base de donnée aspnetforazure (que vous pouvez récupérer depuis les propriétés de la base de données je le rappelle).
 Lancez ensuite l’exécutable, et créez votre compte admin avec son mot de passe (minimum une majuscule, une minuscule, un chiffre et un caractère spécial).
 Créez ensuite les 3 roles Administrators, Editors, Anonymous et ajoutez votre utilisateur au groupe Administrators.
- <img src=./6471.beaz03.jpg alt=6471.beaz03.jpg></p>
-<p>Pour faire tout cela procédez comme il suit :
+ <img src=./6471.beaz03.jpg alt=6471.beaz03.jpg></p><p>Pour faire tout cela procédez comme il suit :
 - Entrez votre nom d’utilisateur dans « User Prefix » et le mot de passe dans Password
 - Cochez la case en dessous et cliquez sur create
 - Entrez votre nom de groupe dans la partie de droite, cliquez sur create (répétez cette étape pour les 3 groupes)
 - Entrez à nouveau le nom de groupe Administrators et le nom de votre utilisateur dans la partie de droite, cochez la case en dessous et cliquez sur add to role.
-Note : si vous avez des problèmes de connexion pensez à vérifier que le port 1433 est ouvert sur votre pare-feu (en local & sur votre routeur) et que l’instance SQL Azure accepte bien les connexions depuis votre adresse ip publique.</p>
-<p>Configuration de BlogEngine
+Note : si vous avez des problèmes de connexion pensez à vérifier que le port 1433 est ouvert sur votre pare-feu (en local & sur votre routeur) et que l’instance SQL Azure accepte bien les connexions depuis votre adresse ip publique.</p><p>Configuration de BlogEngine
 La dernière étape de cette partie va consister à configurer BlogEngine pour utiliser la db que nous venons de créer et de remplir en tant que base de données asp.net SQL membership.
 Rendez-vous donc à nouveau dans le web.config, ajoutez une nouvelle connectionstring vers la base de données que nous venons de créer, nommez là.
-Rendez-vous à la section membership et modifiez la pour qu’elle soit similiraire à cela: (changement du default provider, indiquer le nom de votre connectionString et passer le password format à hashed)</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml><span style=color:#f92672>&lt;membership</span> <span style=color:#a6e22e>defaultProvider=</span><span style=color:#e6db74>&#34;SqlMembershipProvider&#34;</span><span style=color:#f92672>&gt;</span>
-      <span style=color:#f92672>&lt;providers&gt;</span>
-        <span style=color:#f92672>&lt;clear/&gt;</span>
-        <span style=color:#f92672>&lt;add</span> <span style=color:#a6e22e>name=</span><span style=color:#e6db74>&#34;XmlMembershipProvider&#34;</span> <span style=color:#a6e22e>type=</span><span style=color:#e6db74>&#34;BlogEngine.Core.Providers.XmlMembershipProvider, BlogEngine.Core&#34;</span> <span style=color:#a6e22e>description=</span><span style=color:#e6db74>&#34;XML membership provider&#34;</span> <span style=color:#a6e22e>passwordFormat=</span><span style=color:#e6db74>&#34;Hashed&#34;</span><span style=color:#f92672>/&gt;</span>
-        <span style=color:#f92672>&lt;add</span> <span style=color:#a6e22e>name=</span><span style=color:#e6db74>&#34;SqlMembershipProvider&#34;</span> <span style=color:#a6e22e>type=</span><span style=color:#e6db74>&#34;System.Web.Security.SqlMembershipProvider&#34;</span> <span style=color:#a6e22e>connectionStringName=</span><span style=color:#e6db74>&#34;NomDeMaConnectionString&#34;</span> <span style=color:#a6e22e>applicationName=</span><span style=color:#e6db74>&#34;BlogEngine&#34;</span> <span style=color:#a6e22e>passwordFormat=</span><span style=color:#e6db74>&#34;Hashed&#34;</span> <span style=color:#f92672>/&gt;</span>
-        <span style=color:#f92672>&lt;add</span> <span style=color:#a6e22e>name=</span><span style=color:#e6db74>&#34;DbMembershipProvider&#34;</span> <span style=color:#a6e22e>type=</span><span style=color:#e6db74>&#34;BlogEngine.Core.Providers.DbMembershipProvider, BlogEngine.Core&#34;</span> <span style=color:#a6e22e>passwordFormat=</span><span style=color:#e6db74>&#34;Hashed&#34;</span> <span style=color:#a6e22e>connectionStringName=</span><span style=color:#e6db74>&#34;BlogEngine&#34;</span><span style=color:#f92672>/&gt;</span>
-      <span style=color:#f92672>&lt;/providers&gt;</span>
-    <span style=color:#f92672>&lt;/membership&gt;</span>
-</code></pre></div><p>Rendez-vous maintenant à la section roleprovider et modifiez là pour qu’elle ressemble à ça : (modification du provider par défaut, changement du nom de la connectionstring)</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml><span style=color:#f92672>&lt;roleManager</span> <span style=color:#a6e22e>defaultProvider=</span><span style=color:#e6db74>&#34;SqlRoleProvider&#34;</span> <span style=color:#a6e22e>enabled=</span><span style=color:#e6db74>&#34;true&#34;</span> <span style=color:#a6e22e>cacheRolesInCookie=</span><span style=color:#e6db74>&#34;false&#34;</span><span style=color:#f92672>&gt;</span>
-      <span style=color:#f92672>&lt;providers&gt;</span>
-        <span style=color:#f92672>&lt;clear/&gt;</span>
-        <span style=color:#f92672>&lt;add</span> <span style=color:#a6e22e>name=</span><span style=color:#e6db74>&#34;XmlRoleProvider&#34;</span> <span style=color:#a6e22e>type=</span><span style=color:#e6db74>&#34;BlogEngine.Core.Providers.XmlRoleProvider, BlogEngine.Core&#34;</span> <span style=color:#a6e22e>description=</span><span style=color:#e6db74>&#34;XML role provider&#34;</span><span style=color:#f92672>/&gt;</span>
-        <span style=color:#f92672>&lt;add</span> <span style=color:#a6e22e>name=</span><span style=color:#e6db74>&#34;SqlRoleProvider&#34;</span> <span style=color:#a6e22e>type=</span><span style=color:#e6db74>&#34;System.Web.Security.SqlRoleProvider&#34;</span> <span style=color:#a6e22e>connectionStringName=</span><span style=color:#e6db74>&#34;BERoles&#34;</span> <span style=color:#a6e22e>applicationName=</span><span style=color:#e6db74>&#34;BlogEngine&#34;</span><span style=color:#f92672>/&gt;</span>
-        <span style=color:#f92672>&lt;add</span> <span style=color:#a6e22e>name=</span><span style=color:#e6db74>&#34;DbRoleProvider&#34;</span> <span style=color:#a6e22e>type=</span><span style=color:#e6db74>&#34;BlogEngine.Core.Providers.DbRoleProvider, BlogEngine.Core&#34;</span> <span style=color:#a6e22e>connectionStringName=</span><span style=color:#e6db74>&#34;NomDeMaConnectionString &#34;</span><span style=color:#f92672>/&gt;</span>
-      <span style=color:#f92672>&lt;/providers&gt;</span>
-    <span style=color:#f92672>&lt;/roleManager&gt;</span>
-</code></pre></div><p><strong>Stockage des fichiers</strong>
+Rendez-vous à la section membership et modifiez la pour qu’elle soit similiraire à cela: (changement du default provider, indiquer le nom de votre connectionString et passer le password format à hashed)</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml><span style=display:flex><span><span style=color:#f92672>&lt;membership</span> <span style=color:#a6e22e>defaultProvider=</span><span style=color:#e6db74>&#34;SqlMembershipProvider&#34;</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&lt;providers&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;clear/&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;add</span> <span style=color:#a6e22e>name=</span><span style=color:#e6db74>&#34;XmlMembershipProvider&#34;</span> <span style=color:#a6e22e>type=</span><span style=color:#e6db74>&#34;BlogEngine.Core.Providers.XmlMembershipProvider, BlogEngine.Core&#34;</span> <span style=color:#a6e22e>description=</span><span style=color:#e6db74>&#34;XML membership provider&#34;</span> <span style=color:#a6e22e>passwordFormat=</span><span style=color:#e6db74>&#34;Hashed&#34;</span><span style=color:#f92672>/&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;add</span> <span style=color:#a6e22e>name=</span><span style=color:#e6db74>&#34;SqlMembershipProvider&#34;</span> <span style=color:#a6e22e>type=</span><span style=color:#e6db74>&#34;System.Web.Security.SqlMembershipProvider&#34;</span> <span style=color:#a6e22e>connectionStringName=</span><span style=color:#e6db74>&#34;NomDeMaConnectionString&#34;</span> <span style=color:#a6e22e>applicationName=</span><span style=color:#e6db74>&#34;BlogEngine&#34;</span> <span style=color:#a6e22e>passwordFormat=</span><span style=color:#e6db74>&#34;Hashed&#34;</span> <span style=color:#f92672>/&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;add</span> <span style=color:#a6e22e>name=</span><span style=color:#e6db74>&#34;DbMembershipProvider&#34;</span> <span style=color:#a6e22e>type=</span><span style=color:#e6db74>&#34;BlogEngine.Core.Providers.DbMembershipProvider, BlogEngine.Core&#34;</span> <span style=color:#a6e22e>passwordFormat=</span><span style=color:#e6db74>&#34;Hashed&#34;</span> <span style=color:#a6e22e>connectionStringName=</span><span style=color:#e6db74>&#34;BlogEngine&#34;</span><span style=color:#f92672>/&gt;</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&lt;/providers&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&lt;/membership&gt;</span>
+</span></span></code></pre></div><p>Rendez-vous maintenant à la section roleprovider et modifiez là pour qu’elle ressemble à ça : (modification du provider par défaut, changement du nom de la connectionstring)</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml><span style=display:flex><span><span style=color:#f92672>&lt;roleManager</span> <span style=color:#a6e22e>defaultProvider=</span><span style=color:#e6db74>&#34;SqlRoleProvider&#34;</span> <span style=color:#a6e22e>enabled=</span><span style=color:#e6db74>&#34;true&#34;</span> <span style=color:#a6e22e>cacheRolesInCookie=</span><span style=color:#e6db74>&#34;false&#34;</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&lt;providers&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;clear/&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;add</span> <span style=color:#a6e22e>name=</span><span style=color:#e6db74>&#34;XmlRoleProvider&#34;</span> <span style=color:#a6e22e>type=</span><span style=color:#e6db74>&#34;BlogEngine.Core.Providers.XmlRoleProvider, BlogEngine.Core&#34;</span> <span style=color:#a6e22e>description=</span><span style=color:#e6db74>&#34;XML role provider&#34;</span><span style=color:#f92672>/&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;add</span> <span style=color:#a6e22e>name=</span><span style=color:#e6db74>&#34;SqlRoleProvider&#34;</span> <span style=color:#a6e22e>type=</span><span style=color:#e6db74>&#34;System.Web.Security.SqlRoleProvider&#34;</span> <span style=color:#a6e22e>connectionStringName=</span><span style=color:#e6db74>&#34;BERoles&#34;</span> <span style=color:#a6e22e>applicationName=</span><span style=color:#e6db74>&#34;BlogEngine&#34;</span><span style=color:#f92672>/&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;add</span> <span style=color:#a6e22e>name=</span><span style=color:#e6db74>&#34;DbRoleProvider&#34;</span> <span style=color:#a6e22e>type=</span><span style=color:#e6db74>&#34;BlogEngine.Core.Providers.DbRoleProvider, BlogEngine.Core&#34;</span> <span style=color:#a6e22e>connectionStringName=</span><span style=color:#e6db74>&#34;NomDeMaConnectionString &#34;</span><span style=color:#f92672>/&gt;</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&lt;/providers&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&lt;/roleManager&gt;</span>
+</span></span></code></pre></div><p><strong>Stockage des fichiers</strong>
 La dernière étape consiste à gérer le stockage des fichiers uploadés.
 Par défaut BlogEngine stocke les fichiers uploadés (les images, vidéos et pièces jointes d’une page ou d’un article) sur le disque. Pour les mêmes raisons que j’ai évoquées plus haut, nous ne pouvons plus permettre cela. Nous ne pouvons pas non plus stocker ces fichiers dans SQL Azure, ceci serait très consommateur en stockage et dégraderai les performances de notre base de données (même si c’est techniquement faisable)
 Il vaut bien mieux utiliser le Blob Storage (un des formats de stockage disponible depuis les comptes de stockages Azure) qui est bien moins cher et bien plus adapté à ce genre d’usage. Il faut voir le BlogStorage comme un « partage de fichiers » dans Azure, toutes vos applications (ou du moins celles que vous configurez) y ont accès en lecture/écriture et les clients ont accès au contenu en http (là encore c’est configurable en terme de sécurité)
 De plus si jamais nous avons un blog à fort trafic et que nous voulons en améliorer les performances nous pourrons renforcer cette fonctionnalité de CDN (Content Delivery Network), fonctionnalité qui réalisé plusieurs copies de contenu de manière à augmenter la bande passante disponible et la rapidité d’accès à ce contenu. Ces copies peuvent être géolocalisées, cela permet des scénarios tels que « le client basé en Asie accède à la copie située en Asie et non celle aux Etats-Unis ce qui améliore le temps de réponse » etc.
 L’objet de cette partie n’est pas de vous détailler la mise en œuvre de toutes ces possibilités mais simplement de vous fournir un contournement au problème de stockage des fichiers pour blog engine et de vous dire que les possibilités sont vastes ensuite.
-Cette partie est celle qui vous demandera le plus de code (nous n’en avons pas fait énormément jusqu’à présent). En fait il va falloir recoder la gestion des uploads de fichiers dans BlogEngine et apparemment il n’a pas été prévu dans la 2.5.0 que ce comportement soit modifié. Donc on est directement obligés de coder dans les pages fournies par BlogEngine, ce qui n’est pas super propre, l’idéal aurait été qu’ils fournissent un pattern Factory ou quelque chose du genre qu’on ait la possibilité d’avoir un comportement dérivé de manière propre.</p>
-<p>Je vous fournis donc ici les fichiers que j’ai ajoutés/modifiés à savoir:
+Cette partie est celle qui vous demandera le plus de code (nous n’en avons pas fait énormément jusqu’à présent). En fait il va falloir recoder la gestion des uploads de fichiers dans BlogEngine et apparemment il n’a pas été prévu dans la 2.5.0 que ce comportement soit modifié. Donc on est directement obligés de coder dans les pages fournies par BlogEngine, ce qui n’est pas super propre, l’idéal aurait été qu’ils fournissent un pattern Factory ou quelque chose du genre qu’on ait la possibilité d’avoir un comportement dérivé de manière propre.</p><p>Je vous fournis donc ici les fichiers que j’ai ajoutés/modifiés à savoir:
 - /Global.asax -> modifié, gestion de l’initialisation du stockage
 - /Constants.cs -> ajouté, constantes pour le stockage
 - /Azur/ -> ajouté, les méthodes qui me permettent de communiquer avec l’Azure Storage
 - /admin/posts/add_entry.cs -> modifié, comportement des controles d’upload adapté
-- /admin/Pages/Edit_page.cs -> idem</p>
-<p>Je vous conseille d’ajouter les fichiers que j’ai ajoutés et de fusionner les fichiers que j’ai modifiés pour ne pas revenir en arrière sur d’éventuelles évolutions de ces pages par BlogEngine.
+- /admin/Pages/Edit_page.cs -> idem</p><p>Je vous conseille d’ajouter les fichiers que j’ai ajoutés et de fusionner les fichiers que j’ai modifiés pour ne pas revenir en arrière sur d’éventuelles évolutions de ces pages par BlogEngine.
 Il faut aussi ajouter les références suivantes au projet :
 - Microsoft.WindowsAzure.ServiceRuntime Copie locale false
-- Microsoft.WindowsAzure.StorageClient Copie locale True</p>
-<p>Enfin dernière étape il suffit de configurer notre compte Azure et notre paquet à déployer.
+- Microsoft.WindowsAzure.StorageClient Copie locale True</p><p>Enfin dernière étape il suffit de configurer notre compte Azure et notre paquet à déployer.
 Pour cela rendez-vous sur la console de gestion Azure, section comptes de stockage, créez en un, cliquez ensuite dessus et récupérez la clef primaire (à droite)
 Retournez ensuite sur Visual Studio effectuez un clic droit sur le projet WebRole, propriétés, rendez-vous sur l’onglet Paramètres, ajoutez une clef nommée « storagekey » de type connectionstring avec la valeur suivante :
 DefaultEndpointsProtocol=http;AccountName=monnomdecomptedestockage;AccountKey=maclefdestockageprimaire
-Voilà c’est terminé, il ne vous reste plus qu’à déployer votre blog.</p>
-<p><strong>Gestion des modules</strong>
+Voilà c’est terminé, il ne vous reste plus qu’à déployer votre blog.</p><p><strong>Gestion des modules</strong>
 Sur BlogEngine, les modules s’installent en copiant leurs fichiers au sein de ceux de BlogEngine, en modifiant la base de données et éventuellement les fichiers de configuration.
 Pour les raisons que j’ai exposées plus haut, vous comprendrez qu’il n’est pas possible de fonctionner comme ça.
 En effet imaginez que vous ayez deux instances de votre application Azure (pour partager la charge par exemple), vous installez un module, il va modifier les fichiers sur une des deux machines donc. L’autre machine n’aura alors pas ces fichiers, pire, si la machine sur laquelle vous avez effectuées l’installation est recyclée, vous perdez ces fichiers !
@@ -206,45 +175,33 @@ Vous trouvez un module A intéressant, ni une ni deux vous l’installez sur une
 Vous testez le module, vérifiez qu’il couvre votre besoin, ne cause pas de plantage. Il pose problème, dans ce cas vous choisissez un module B et recommencez l’étape précédente.
 Le module B a passé les tests nous allons maintenant procéder à l’installation. Vous l’installez en pré-production (qui est strictement identique à la production est connectée à la même base de données).
 Grâce à la connexion RDP à votre machine de staging vous récupérez les fichiers modifiés et les intégrez dans votre projet sous Visual Studio.
-Enfin vous effectuez un déploiement de la web application en production pour pousser la nouvelle bulle et ses nouveaux fichiers.</p>
-<p>Le tour est joué, le module est correctement déployé et ne craint pas un recyclage de sa machine virtuelle.
-Note : si le module effectue des opérations en base pour son installation, la production risque d’être perturbée, pensez à faire un backup de la base avant de vous lancer et essayez d’être rapides pour le rapatriement des fichiers impactées et le redéploiement en production.</p>
-<p><strong>Conclusion et cas de migration</strong>
+Enfin vous effectuez un déploiement de la web application en production pour pousser la nouvelle bulle et ses nouveaux fichiers.</p><p>Le tour est joué, le module est correctement déployé et ne craint pas un recyclage de sa machine virtuelle.
+Note : si le module effectue des opérations en base pour son installation, la production risque d’être perturbée, pensez à faire un backup de la base avant de vous lancer et essayez d’être rapides pour le rapatriement des fichiers impactées et le redéploiement en production.</p><p><strong>Conclusion et cas de migration</strong>
 La dernière chose dont je voulais vous parler avant de conclure était des cas de migration d’un BlogEngine existant vers Azure.
 Avant tout effectuez la mise à jour vers la dernière version et vérifiez que tout fonctionne correctement.
 Ensuite deux cas de figure s’offrent à vous :
 - Ou bien vous stockiez tout dans du XML et il va falloir coder une moulinette pour pousser tout ça dans une ou deux bases de données
 - Ou bien vous utilisiez déjà une ou plusieurs bases pour le stockage des données et de la sécurité et auquel cas il vous suffit de les déplacer dans Azure.
 Ensuite il faut gérer les uploads, l’idéal reste encore de coder une autre moulinette permettant de pousser tous ces fichiers dans un Compte de Stockage et de remplacer les liens en base.
-Puis il vous suffit de jouer tout le tutoriel ci-dessus en adaptant un peu sur les étapes de création des bases & co.</p>
-<p>Merci à vous d’avoir suivi ce tutoriel, n’hésitez pas à me faire part de vos retours, j’espère que ça vous aura été utile.
+Puis il vous suffit de jouer tout le tutoriel ci-dessus en adaptant un peu sur les étapes de création des bases & co.</p><p>Merci à vous d’avoir suivi ce tutoriel, n’hésitez pas à me faire part de vos retours, j’espère que ça vous aura été utile.
 Lors de mon projet j’ai aussi trouvé un projet codeplex d’adaptation de blogengine pour Azure, je ne l’ai pas testé mais je vous donne le lien des fois que cela vous intéresse.
-<a href=https://azureblogengine.codeplex.com/>https://azureblogengine.codeplex.com/</a></p>
-</div>
-<br>
+<a href=https://azureblogengine.codeplex.com/>https://azureblogengine.codeplex.com/</a></p></div><br>
 <p class=heading>
 Edité la dernière fois le
-<a href=https://github.com/baywet/blogsource/commit/cc789d3724badafffc78a1f8824bb61439d4db9f>
-5 Nov 2021
+<a href=https://github.com/baywet/blogsource/commit/ed81153ce32a3288ff24e78527ac47cfa73c14e3>
+1 Mar 2022
 </a> par <a href=https://github.com/baywet>Vincent Biret</a>
-</p>
-<br>
-<div class=heading>Tags:</div>
-<div class="field is-grouped is-grouped-multiline">
+</p><br>
+<div class=heading>Tags:</div><div class="field is-grouped is-grouped-multiline">
 <div class=control>
 <a href=/fr/tags/azure>
 <span class=tag>Azure</span>
 </a>
-</div>
-<div class=control>
+</div><div class=control>
 <a href=/fr/tags/blogengine>
 <span class=tag>Blogengine</span>
 </a>
-</div>
-</div>
-</div>
-</section>
-<section class=section>
+</div></div></div></section><section class=section>
 <div class=container>
 <div class=level>
 <div class=level-left>
@@ -265,10 +222,7 @@ Créer des librairies pour les projets SharePoint
 Créer des librairies pour les projets...
 </span>
 </a>
-</p>
-</div>
-</div>
-<div class=level-right>
+</p></div></div><div class=level-right>
 <div class=level-item>
 <p class="control has-addons">
 <a class=button href=https://baywet.github.io/fr/sharepoint-auto-upgrade-soluti/>
@@ -286,47 +240,30 @@ SharePoint Auto Upgrade Solution
 </span>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 </a>
-</p>
-</div>
-</div>
-</div>
-</div>
-<br>
+</p></div></div></div></div><br>
 <br>
 <div class=container>
-<div id=disqus_thread></div>
-<script>var disqus_config=function(){this.page.url="https://baywet.github.io/fr/deployer-son-ou-ses-blogs-blog/",this.page.identifier=window.location.pathname};(function(){var a=document,b=a.createElement('script');b.src='https://baywet.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script>
-<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
-</div>
-<br>
+<div id=disqus_thread></div><script>var disqus_config=function(){this.page.url="https://baywet.github.io/fr/deployer-son-ou-ses-blogs-blog/",this.page.identifier=window.location.pathname};(function(){var e=document,t=e.createElement("script");t.src="https://baywet.disqus.com/embed.js",t.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(t)})()</script>
+<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div><br>
 <div class=container>
 <nav class=panel>
-<p class=panel-heading>Related</p>
-<a class=panel-block href=https://baywet.github.io/fr/migrations-du-laboratoire-part-2010-11-08-08-51-00/>
+<p class=panel-heading>Related</p><a class=panel-block href=https://baywet.github.io/fr/migrations-du-laboratoire-part-2010-11-08-08-51-00/>
 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
 <span>Migrations du Laboratoire Partie 1&nbsp;
-<div class=tag>Blogengine</div>
-</span>
+<div class=tag>Blogengine</div></span>
 </a>
-</nav>
-</div>
-</section>
-<footer class=footer>
+</nav></div></section><footer class=footer>
 <div class=container>
 <nav class=level>
-</nav>
-<nav class=level>
+</nav><nav class=level>
 <div class="level-left has-text-centered">
 <div class=level-item>
 <form class="control has-icons has-icons-right" method=get action=https://bing.com>
 <input class=input type=text name=q maxlength=255 placeholder=Search>
 <input class=input type=hidden name=sites value=https://baywet.github.io/>
 <span class="icon is-small is-right"><i class="fa fa-search"></i></span>
-</form>
-</div>
-</div>
-<div class="level-right has-text-centered">
+</form></div></div><div class="level-right has-text-centered">
 <div class=level-item>
 <a class=button href=https://baywet.github.io/fr>
 <span class=icon><i class="fa fa-home"></i></span>
@@ -334,11 +271,5 @@ SharePoint Auto Upgrade Solution
 <a class=button href>
 <span class=icon><i class="fa fa-rss"></i></span>
 </a>
-</div>
-</div>
-</nav>
-</div>
-</footer>
-<script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script>
-</body>
-</html>
+</div></div></nav></div></footer><script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script>
+</body></html>
