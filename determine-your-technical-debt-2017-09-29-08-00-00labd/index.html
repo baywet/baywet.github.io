@@ -1,246 +1,57 @@
-<!doctype html><html lang=en dir=ltr itemscope itemtype=https://schema.org/Article>
-<head>
-<meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<meta name=viewport content="width=device-width,initial-scale=1">
-<title>Determine your technical debt using SonarQube - Updating your build definitions</title><meta name=author content="Vincent Biret">
-<meta name=description content="TL; DR
+<!doctype html><html lang=en dir=ltr itemscope itemtype=https://schema.org/Article><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>Determine your technical debt using SonarQube - Updating your build definitions</title><meta name=author content="Vincent Biret"><meta name=description content="TL; DR
 Static analysis will be executed when building your source base using the central build machine. You have two options to set this up with VSTS:
 
-Your project is &ldquo;Visual Studio&#34;...">
-<meta name=generator content="Hugo 0.93.0">
-<meta itemprop=name content="Determine your technical debt using SonarQube - Updating your build definitions">
-<meta itemprop=description content="TL; DR
+Your project is &ldquo;Visual Studio&#34;..."><meta name=generator content="Hugo 0.94.2"><meta itemprop=name content="Determine your technical debt using SonarQube - Updating your build definitions"><meta itemprop=description content="TL; DR
 Static analysis will be executed when building your source base using the central build machine. You have two options to set this up with VSTS:
 
-Your project is &ldquo;Visual Studio&#34;...">
-<meta itemprop=image content="/img/logo.svg">
-<meta property="og:title" content="Determine your technical debt using SonarQube - Updating your build definitions">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://baywet.github.io/determine-your-technical-debt-2017-09-29-08-00-00labd/">
-<meta property="og:image" content="/img/logo.svg">
-<meta property="og:description" content="TL; DR
+Your project is &ldquo;Visual Studio&#34;..."><meta itemprop=image content="/img/logo.svg"><meta property="og:title" content="Determine your technical debt using SonarQube - Updating your build definitions"><meta property="og:type" content="article"><meta property="og:url" content="https://baywet.github.io/determine-your-technical-debt-2017-09-29-08-00-00labd/"><meta property="og:image" content="/img/logo.svg"><meta property="og:description" content="TL; DR
 Static analysis will be executed when building your source base using the central build machine. You have two options to set this up with VSTS:
 
-Your project is &ldquo;Visual Studio&#34;...">
-<meta property="og:site_name" content="Baywet's blog">
-<meta property="og:updated_time" content="2022-03-01T17:40:17-08:00">
-<meta property="article:published_time" content="2017-09-29T08:00:00+00:00">
-<meta property="article:modified_time" content="2022-03-01T17:40:17-08:00">
-<meta property="article:section" content>
-<meta property="article:tag" content="sonarqube">
-<meta property="article:tag" content="devops">
-<meta property="article:tag" content="vsts">
-<meta property="article:tag" content="static analysis">
-<meta name=twitter:card content="summary">
-<meta name=twitter:site content>
-<meta name=twitter:title content="Determine your technical debt using SonarQube - Updating your build definitions">
-<meta name=twitter:description content="TL; DR
+Your project is &ldquo;Visual Studio&#34;..."><meta property="og:site_name" content="Baywet's blog"><meta property="og:updated_time" content="2022-03-16T06:46:54-04:00"><meta property="article:published_time" content="2017-09-29T08:00:00+00:00"><meta property="article:modified_time" content="2022-03-16T06:46:54-04:00"><meta property="article:section" content><meta property="article:tag" content="sonarqube"><meta property="article:tag" content="devops"><meta property="article:tag" content="vsts"><meta property="article:tag" content="static analysis"><meta name=twitter:card content="summary"><meta name=twitter:site content><meta name=twitter:title content="Determine your technical debt using SonarQube - Updating your build definitions"><meta name=twitter:description content="TL; DR
 Static analysis will be executed when building your source base using the central build machine. You have two options to set this up with VSTS:
 
-Your project is &ldquo;Visual Studio&#34;...">
-<meta name=twitter:creator content>
-<meta name=twitter:image:src content="/img/logo.svg">
-<link rel=stylesheet type=text/css href=/css/capsule.min.css>
-<script>(function(e,o,i,a,t,n,s){e.GoogleAnalyticsObject=t,e[t]=e[t]||function(){(e[t].q=e[t].q||[]).push(arguments)},e[t].l=1*new Date,n=o.createElement(i),s=o.getElementsByTagName(i)[0],n.async=1,n.src=a,s.parentNode.insertBefore(n,s)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-176061333-1","auto"),ga("send","pageview")</script>
-<link rel=apple-touch-icon href=/img/apple-touch-icon.png>
-<link rel=icon href=/img/favicon.ico>
-</head><body style=min-height:100vh;display:flex;flex-direction:column>
-<nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation">
-<div class=container>
-<div class=navbar-brand>
-<a class=navbar-item href=/en>
-<div class="title is-4">&nbsp;Baywet's blog</div></a>
-<label class="button navbar-burger is-white" for=navbar-burger-state>
+Your project is &ldquo;Visual Studio&#34;..."><meta name=twitter:creator content><meta name=twitter:image:src content="/img/logo.svg"><link rel=stylesheet type=text/css href=/css/capsule.min.css><script>(function(e,o,i,a,t,n,s){e.GoogleAnalyticsObject=t,e[t]=e[t]||function(){(e[t].q=e[t].q||[]).push(arguments)},e[t].l=1*new Date,n=o.createElement(i),s=o.getElementsByTagName(i)[0],n.async=1,n.src=a,s.parentNode.insertBefore(n,s)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-176061333-1","auto"),ga("send","pageview")</script><link rel=apple-touch-icon href=/img/apple-touch-icon.png><link rel=icon href=/img/favicon.ico></head><body style=min-height:100vh;display:flex;flex-direction:column><nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation"><div class=container><div class=navbar-brand><a class=navbar-item href=/en><div class="title is-4">&nbsp;Baywet's blog</div></a><label class="button navbar-burger is-white" for=navbar-burger-state><span></span>
 <span></span>
-<span></span>
-<span></span>
-</label>
-</div><input type=checkbox id=navbar-burger-state>
-<div class=navbar-menu>
-<div class=navbar-end>
-<a class=navbar-item href=/fr>Français</a>
-</div></div></div></nav><section class=section style=flex:1>
-<div class=container>
-<h1 class=title>Determine your technical debt using SonarQube - Updating your build definitions</h1><p class=subtitle>Sep 29, 2017</p><div class=content>
-<h2 id=tl-dr>TL; DR</h2><p>Static analysis will be executed when building your source base using the central build machine. You have two options to set this up with VSTS:</p><ul>
-<li>Your project is &ldquo;Visual Studio" related and leverages sln and cs/vb proj files: in that case you can leverage integrated pre and post build tasks provided by the SonarQube VSTS extension.</li><li>Your project is not build using msbuild: in that case you must leverage the SonarQube CLI task. It&rsquo;s a little bit more complicated so I&rsquo;ll demonstrate only the first case for now.</li></ul><h2 id=adding-tasks-to-the-build-definition>Adding tasks to the build definition</h2><p>We&rsquo;ll go under the assumption that you&rsquo;re already using build 2015/vNext and you have working with build definitions for at least one project.</p><p>Edit your build definition and add two SonarQube tasks, place the begin analysis before the visual studio build task and the end of analysis after the execution of unit tests. (that way, if you have code coverage results, they will surface in SonarQube).</p><p>Under the &ldquo;begin analysis" task, set the endpoint, name of project, key to the project, as well as optional parameters if needed.</p><p><img src=./27.png alt=27.png></p><p>In my case I also added /d:sonar.exclusions=**/*.min.js,**/*.min.css in optional parameters to exclude minified javascript files from analysis.</p><p>Note: these settings can also be specified in the global SonarQube settings or in SQ project settings.</p><p>Note: java must be installed on the build machine if you have your own build machines.</p><p>Note: I recommend you add a &lsquo;SonarQubeAnalysisTimeoutInSeconds&rsquo; variable to the build definition with the following value &ldquo;600&rdquo;. This will extend the time-out for the static analysis, sometime your machine to have several results to import at a time, stale a little bit, which can cause builds to take longer and/or time-out.</p><p>If you&rsquo;re working on a non-msbuild project just use the CLI task somewhere after you built and unit tested your code.</p><p><img src=./28.png alt=28.png></p></div><br>
-<p class=heading>
-Last edited
-<a href=https://github.com/baywet/blogsource/commit/ed81153ce32a3288ff24e78527ac47cfa73c14e3>
-Mar 1, 2022
-</a> by <a href=https://github.com/baywet>Vincent Biret</a>
-</p><br>
-<div class=heading>Tags:</div><div class="field is-grouped is-grouped-multiline">
-<div class=control>
-<a href=/tags/sonarqube>
-<span class=tag>Sonarqube</span>
-</a>
-</div><div class=control>
-<a href=/tags/devops>
-<span class=tag>Devops</span>
-</a>
-</div><div class=control>
-<a href=/tags/vsts>
-<span class=tag>Vsts</span>
-</a>
-</div><div class=control>
-<a href=/tags/static-analysis>
-<span class=tag>Static Analysis</span>
-</a>
-</div></div></div></section><section class=section>
-<div class=container>
-<div class=level>
-<div class=level-left>
-<div class=level-item>
-<p class="control has-addons">
-<a class=button href=https://baywet.github.io/determine-your-technical-debt-2017-09-29-08-00-00qwqw/>
-<span class="icon is-small"><i class="fa fa-chevron-left"></i></span>
-<span class="is-hidden-touch is-hidden-desktop-only">
-Determine your technical debt using SonarQube - Creating the SonarQube project
-</span>
-<span class="is-hidden-touch is-hidden-widescreen">
-Determine your technical debt using SonarQube - Creating the SonarQube...
-</span>
-<span class="is-hidden-mobile is-hidden-desktop">
-Determine your technical debt using SonarQube -...
-</span>
-<span class=is-hidden-tablet>
-Determine your technical debt using...
-</span>
-</a>
-</p></div></div><div class=level-right>
-<div class=level-item>
-<p class="control has-addons">
-<a class=button href=https://baywet.github.io/determine-your-technical-debt-2017-09-27-08-00-00/>
-<span class="is-hidden-touch is-hidden-desktop-only">
-Determine your technical debt using SonarQube - Creating and configuring a service account for VSTS...
-</span>
-<span class="is-hidden-touch is-hidden-widescreen">
-Determine your technical debt using SonarQube - Creating and configuring a...
-</span>
-<span class="is-hidden-mobile is-hidden-desktop">
-Determine your technical debt using SonarQube -...
-</span>
-<span class=is-hidden-tablet>
-Determine your technical debt using...
-</span>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
-</a>
-</p></div></div></div></div><br>
-<br>
-<div class=container>
-<div id=disqus_thread></div><script>var disqus_config=function(){this.page.url="https://baywet.github.io/determine-your-technical-debt-2017-09-29-08-00-00labd/",this.page.identifier=window.location.pathname};(function(){var e=document,t=e.createElement("script");t.src="https://baywet.disqus.com/embed.js",t.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(t)})()</script>
-<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div><br>
-<div class=container>
-<nav class=panel>
-<p class=panel-heading>Related</p><a class=panel-block href=https://baywet.github.io/determine-your-technical-debt-2017-09-29-08-00-00qwqw/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span></span></label></div><input type=checkbox id=navbar-burger-state><div class=navbar-menu><div class=navbar-end><a class=navbar-item href=/fr>Français</a></div></div></div></nav><section class=section style=flex:1><div class=container><h1 class=title>Determine your technical debt using SonarQube - Updating your build definitions</h1><p class=subtitle>Sep 29, 2017</p><div class=content><h2 id=tl-dr>TL; DR</h2><p>Static analysis will be executed when building your source base using the central build machine. You have two options to set this up with VSTS:</p><ul><li>Your project is &ldquo;Visual Studio" related and leverages sln and cs/vb proj files: in that case you can leverage integrated pre and post build tasks provided by the SonarQube VSTS extension.</li><li>Your project is not build using msbuild: in that case you must leverage the SonarQube CLI task. It&rsquo;s a little bit more complicated so I&rsquo;ll demonstrate only the first case for now.</li></ul><h2 id=adding-tasks-to-the-build-definition>Adding tasks to the build definition</h2><p>We&rsquo;ll go under the assumption that you&rsquo;re already using build 2015/vNext and you have working with build definitions for at least one project.</p><p>Edit your build definition and add two SonarQube tasks, place the begin analysis before the visual studio build task and the end of analysis after the execution of unit tests. (that way, if you have code coverage results, they will surface in SonarQube).</p><p>Under the &ldquo;begin analysis" task, set the endpoint, name of project, key to the project, as well as optional parameters if needed.</p><p><img src=./27.png alt=27.png></p><p>In my case I also added /d:sonar.exclusions=**/*.min.js,**/*.min.css in optional parameters to exclude minified javascript files from analysis.</p><p>Note: these settings can also be specified in the global SonarQube settings or in SQ project settings.</p><p>Note: java must be installed on the build machine if you have your own build machines.</p><p>Note: I recommend you add a &lsquo;SonarQubeAnalysisTimeoutInSeconds&rsquo; variable to the build definition with the following value &ldquo;600&rdquo;. This will extend the time-out for the static analysis, sometime your machine to have several results to import at a time, stale a little bit, which can cause builds to take longer and/or time-out.</p><p>If you&rsquo;re working on a non-msbuild project just use the CLI task somewhere after you built and unit tested your code.</p><p><img src=./28.png alt=28.png></p></div><br><p class=heading>Last edited
+<a href=https://github.com/baywet/blogsource/commit/303d32e0e3c16c8f17332ab1b984585fa53c579f>Mar 16, 2022</a> by <a href=https://github.com/baywet>Vincent Biret</a></p><br><div class=heading>Tags:</div><div class="field is-grouped is-grouped-multiline"><div class=control><a href=/tags/sonarqube><span class=tag>Sonarqube</span></a></div><div class=control><a href=/tags/devops><span class=tag>Devops</span></a></div><div class=control><a href=/tags/vsts><span class=tag>Vsts</span></a></div><div class=control><a href=/tags/static-analysis><span class=tag>Static Analysis</span></a></div></div></div></section><section class=section><div class=container><div class=level><div class=level-left><div class=level-item><p class="control has-addons"><a class=button href=https://baywet.github.io/determine-your-technical-debt-2017-09-29-08-00-00qwqw/><span class="icon is-small"><i class="fa fa-chevron-left"></i></span>
+<span class="is-hidden-touch is-hidden-desktop-only">Determine your technical debt using SonarQube - Creating the SonarQube project</span>
+<span class="is-hidden-touch is-hidden-widescreen">Determine your technical debt using SonarQube - Creating the SonarQube...</span>
+<span class="is-hidden-mobile is-hidden-desktop">Determine your technical debt using SonarQube -...</span>
+<span class=is-hidden-tablet>Determine your technical debt using...</span></a></p></div></div><div class=level-right><div class=level-item><p class="control has-addons"><a class=button href=https://baywet.github.io/determine-your-technical-debt-2017-09-27-08-00-00/><span class="is-hidden-touch is-hidden-desktop-only">Determine your technical debt using SonarQube - Creating and configuring a service account for VSTS...</span>
+<span class="is-hidden-touch is-hidden-widescreen">Determine your technical debt using SonarQube - Creating and configuring a...</span>
+<span class="is-hidden-mobile is-hidden-desktop">Determine your technical debt using SonarQube -...</span>
+<span class=is-hidden-tablet>Determine your technical debt using...</span>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span></a></p></div></div></div></div><br><br><div class=container><div id=disqus_thread></div><script>var disqus_config=function(){this.page.url="https://baywet.github.io/determine-your-technical-debt-2017-09-29-08-00-00labd/",this.page.identifier=window.location.pathname};(function(){var e=document,t=e.createElement("script");t.src="https://baywet.disqus.com/embed.js",t.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(t)})()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div><br><div class=container><nav class=panel><p class=panel-heading>Related</p><a class=panel-block href=https://baywet.github.io/determine-your-technical-debt-2017-09-29-08-00-00qwqw/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Determine your technical debt using SonarQube - Creating the SonarQube project&nbsp;
-<div class=tag>Sonarqube</div><div class=tag>Devops</div><div class=tag>Vsts</div><div class=tag>Static Analysis</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/determine-your-technical-debt-2017-09-27-08-00-00/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Determine your technical debt using SonarQube - Creating the SonarQube project&nbsp;<div class=tag>Sonarqube</div><div class=tag>Devops</div><div class=tag>Vsts</div><div class=tag>Static Analysis</div></span></a><a class=panel-block href=https://baywet.github.io/determine-your-technical-debt-2017-09-27-08-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Determine your technical debt using SonarQube - Creating and configuring a service account for VSTS in SonarQube&nbsp;
-<div class=tag>Sonarqube</div><div class=tag>Devops</div><div class=tag>Vsts</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/determine-your-technical-debt-2017-09-25-08-00-00/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Determine your technical debt using SonarQube - Creating and configuring a service account for VSTS in SonarQube&nbsp;<div class=tag>Sonarqube</div><div class=tag>Devops</div><div class=tag>Vsts</div></span></a><a class=panel-block href=https://baywet.github.io/determine-your-technical-debt-2017-09-25-08-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Determine your technical debt using SonarQube - Setting up Azure Active directory for authentication&nbsp;
-<div class=tag>Sonarqube</div><div class=tag>Devops</div><div class=tag>Vsts</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/determine-your-technical-debt-2017-09-22-08-00-00/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Determine your technical debt using SonarQube - Setting up Azure Active directory for authentication&nbsp;<div class=tag>Sonarqube</div><div class=tag>Devops</div><div class=tag>Vsts</div></span></a><a class=panel-block href=https://baywet.github.io/determine-your-technical-debt-2017-09-22-08-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Determine your technical debt using SonarQube - Adding modules&nbsp;
-<div class=tag>Sonarqube</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/determine-your-technical-debt-2017-09-20-08-00-00/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Determine your technical debt using SonarQube - Adding modules&nbsp;<div class=tag>Sonarqube</div></span></a><a class=panel-block href=https://baywet.github.io/determine-your-technical-debt-2017-09-20-08-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Determine your technical debt using SonarQube - Opening SonarQube’s ports&nbsp;
-<div class=tag>Sonarqube</div><div class=tag>Devops</div><div class=tag>Vsts</div><div class=tag>Static Analysis</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/determine-your-technical-debt-2017-09-18-08-00-00/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Determine your technical debt using SonarQube - Opening SonarQube’s ports&nbsp;<div class=tag>Sonarqube</div><div class=tag>Devops</div><div class=tag>Vsts</div><div class=tag>Static Analysis</div></span></a><a class=panel-block href=https://baywet.github.io/determine-your-technical-debt-2017-09-18-08-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Determine your technical debt using SonarQube - Installing the machine&nbsp;
-<div class=tag>Sonarqube</div><div class=tag>Devops</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/determine-your-technical-debt-2017-09-15-08-00-00/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Determine your technical debt using SonarQube - Installing the machine&nbsp;<div class=tag>Sonarqube</div><div class=tag>Devops</div></span></a><a class=panel-block href=https://baywet.github.io/determine-your-technical-debt-2017-09-15-08-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Determine your technical debt using SonarQube - Creating the database&nbsp;
-<div class=tag>Sonarqube</div><div class=tag>Devops</div><div class=tag>Vsts</div><div class=tag>Static Analysis</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/determine-your-technical-debt-2017-09-13-08-00-00/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Determine your technical debt using SonarQube - Creating the database&nbsp;<div class=tag>Sonarqube</div><div class=tag>Devops</div><div class=tag>Vsts</div><div class=tag>Static Analysis</div></span></a><a class=panel-block href=https://baywet.github.io/determine-your-technical-debt-2017-09-13-08-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Determine your technical debt using SonarQube - Provisioning the SonarQube VM&nbsp;
-<div class=tag>Sonarqube</div><div class=tag>Devops</div><div class=tag>Vsts</div><div class=tag>Static Analysis</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/determine-your-technical-debt-2017-09-11-08-00-00/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Determine your technical debt using SonarQube - Provisioning the SonarQube VM&nbsp;<div class=tag>Sonarqube</div><div class=tag>Devops</div><div class=tag>Vsts</div><div class=tag>Static Analysis</div></span></a><a class=panel-block href=https://baywet.github.io/determine-your-technical-debt-2017-09-11-08-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Determine your technical debt using SonarQube - What parts to use?&nbsp;
-<div class=tag>Sonarqube</div><div class=tag>Devops</div><div class=tag>Vsts</div><div class=tag>Static Analysis</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/determine-your-technical-debt-2017-09-08-08-00-00/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Determine your technical debt using SonarQube - What parts to use?&nbsp;<div class=tag>Sonarqube</div><div class=tag>Devops</div><div class=tag>Vsts</div><div class=tag>Static Analysis</div></span></a><a class=panel-block href=https://baywet.github.io/determine-your-technical-debt-2017-09-08-08-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Determine your technical debt using SonarQube - Static analysis&nbsp;
-<div class=tag>Sonarqube</div><div class=tag>Devops</div><div class=tag>Vsts</div><div class=tag>Static Analysis</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/determine-your-technical-debt-2017-09-06-08-00-00/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Determine your technical debt using SonarQube - Static analysis&nbsp;<div class=tag>Sonarqube</div><div class=tag>Devops</div><div class=tag>Vsts</div><div class=tag>Static Analysis</div></span></a><a class=panel-block href=https://baywet.github.io/determine-your-technical-debt-2017-09-06-08-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Determine your technical debt using SonarQube - Introduction&nbsp;
-<div class=tag>Sonarqube</div><div class=tag>Devops</div><div class=tag>Vsts</div><div class=tag>Static Analysis</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2017-07-06-08-00-00/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Determine your technical debt using SonarQube - Introduction&nbsp;<div class=tag>Sonarqube</div><div class=tag>Devops</div><div class=tag>Vsts</div><div class=tag>Static Analysis</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2017-07-06-08-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at SharePoint Saturday New York City 2017&nbsp;
-<div class=tag>Devops</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/speaking-at-techorama-belgium/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at SharePoint Saturday New York City 2017&nbsp;<div class=tag>Devops</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-techorama-belgium/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at Techorama Belgium 2017&nbsp;
-<div class=tag>Devops</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2017-03-09-14-00-00/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at Techorama Belgium 2017&nbsp;<div class=tag>Devops</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2017-03-09-14-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at SharePoint Saturday Vancouver 2017&nbsp;
-<div class=tag>Devops</div><div class=tag>Vsts</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/update-continuous-integration/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at SharePoint Saturday Vancouver 2017&nbsp;<div class=tag>Devops</div><div class=tag>Vsts</div></span></a><a class=panel-block href=https://baywet.github.io/update-continuous-integration/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Update: continuous integration for dot net core&nbsp;
-<div class=tag>Devops</div><div class=tag>Vsts</div></span>
-</a>
-</nav></div></section><footer class=footer>
-<div class=container>
-<nav class=level>
-</nav><nav class=level>
-<div class="level-left has-text-centered">
-<div class=level-item>
-<form class="control has-icons has-icons-right" method=get action=https://bing.com>
-<input class=input type=text name=q maxlength=255 placeholder=Search>
+<span>Update: continuous integration for dot net core&nbsp;<div class=tag>Devops</div><div class=tag>Vsts</div></span></a></nav></div></section><footer class=footer><div class=container><nav class=level></nav><nav class=level><div class="level-left has-text-centered"><div class=level-item><form class="control has-icons has-icons-right" method=get action=https://bing.com><input class=input type=text name=q maxlength=255 placeholder=Search>
 <input class=input type=hidden name=sites value=https://baywet.github.io/>
-<span class="icon is-small is-right"><i class="fa fa-search"></i></span>
-</form></div></div><div class="level-right has-text-centered">
-<div class=level-item>
-<a class=button href=https://baywet.github.io/en>
-<span class=icon><i class="fa fa-home"></i></span>
-</a> &nbsp;
-<a class=button href>
-<span class=icon><i class="fa fa-rss"></i></span>
-</a>
-</div></div></nav></div></footer><script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script>
-</body></html>
+<span class="icon is-small is-right"><i class="fa fa-search"></i></span></form></div></div><div class="level-right has-text-centered"><div class=level-item><a class=button href=https://baywet.github.io/en><span class=icon><i class="fa fa-home"></i></span></a> &nbsp;
+<a class=button href><span class=icon><i class="fa fa-rss"></i></span></a></div></div></nav></div></footer><script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script></body></html>

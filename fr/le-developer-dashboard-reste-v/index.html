@@ -1,262 +1,49 @@
-<!doctype html><html lang=fr dir=ltr itemscope itemtype=https://schema.org/Article>
-<head>
-<meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<meta name=viewport content="width=device-width,initial-scale=1">
-<title>Le developer dashboard reste vide sur SharePoint 2013</title><meta name=author content="Vincent Biret">
-<meta name=description content="Vous l’avez déjà remarqué mais le développer dashboard de SharePoint a bien évolué sous SharePoint 2013. Intégrant plein de nouvelles données et étant plus clair à lire.
-Cependant il peut arriver...">
-<meta name=generator content="Hugo 0.93.0">
-<meta itemprop=name content="Le developer dashboard reste vide sur SharePoint 2013">
-<meta itemprop=description content="Vous l’avez déjà remarqué mais le développer dashboard de SharePoint a bien évolué sous SharePoint 2013. Intégrant plein de nouvelles données et étant plus clair à lire.
-Cependant il peut arriver...">
-<meta itemprop=image content="/img/logo.svg">
-<meta property="og:title" content="Le developer dashboard reste vide sur SharePoint 2013">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://baywet.github.io/fr/le-developer-dashboard-reste-v/">
-<meta property="og:image" content="/img/logo.svg">
-<meta property="og:description" content="Vous l’avez déjà remarqué mais le développer dashboard de SharePoint a bien évolué sous SharePoint 2013. Intégrant plein de nouvelles données et étant plus clair à lire.
-Cependant il peut arriver...">
-<meta property="og:site_name" content="Le blog de baywet">
-<meta property="og:updated_time" content="2022-03-01T17:40:17-08:00">
-<meta property="article:published_time" content="2013-08-08T02:54:14+00:00">
-<meta property="article:modified_time" content="2022-03-01T17:40:17-08:00">
-<meta property="article:section" content>
-<meta property="article:tag" content="marchepas">
-<meta property="article:tag" content="outils">
-<meta property="article:tag" content="2013">
-<meta property="article:tag" content="tips">
-<meta property="article:tag" content="developer">
-<meta name=twitter:card content="summary">
-<meta name=twitter:site content>
-<meta name=twitter:title content="Le developer dashboard reste vide sur SharePoint 2013">
-<meta name=twitter:description content="Vous l’avez déjà remarqué mais le développer dashboard de SharePoint a bien évolué sous SharePoint 2013. Intégrant plein de nouvelles données et étant plus clair à lire.
-Cependant il peut arriver...">
-<meta name=twitter:creator content>
-<meta name=twitter:image:src content="/img/logo.svg">
-<link rel=stylesheet type=text/css href=/css/capsule.min.css>
-<script>(function(e,o,i,a,t,n,s){e.GoogleAnalyticsObject=t,e[t]=e[t]||function(){(e[t].q=e[t].q||[]).push(arguments)},e[t].l=1*new Date,n=o.createElement(i),s=o.getElementsByTagName(i)[0],n.async=1,n.src=a,s.parentNode.insertBefore(n,s)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-176061333-1","auto"),ga("send","pageview")</script>
-<link rel=apple-touch-icon href=/img/apple-touch-icon.png>
-<link rel=icon href=/img/favicon.ico>
-</head><body style=min-height:100vh;display:flex;flex-direction:column>
-<nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation">
-<div class=container>
-<div class=navbar-brand>
-<a class=navbar-item href=/fr>
-<div class="title is-4">&nbsp;Le blog de baywet</div></a>
-<label class="button navbar-burger is-white" for=navbar-burger-state>
+<!doctype html><html lang=fr dir=ltr itemscope itemtype=https://schema.org/Article><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>Le developer dashboard reste vide sur SharePoint 2013</title><meta name=author content="Vincent Biret"><meta name=description content="Vous l’avez déjà remarqué mais le développer dashboard de SharePoint a bien évolué sous SharePoint 2013. Intégrant plein de nouvelles données et étant plus clair à lire.
+Cependant il peut arriver..."><meta name=generator content="Hugo 0.94.2"><meta itemprop=name content="Le developer dashboard reste vide sur SharePoint 2013"><meta itemprop=description content="Vous l’avez déjà remarqué mais le développer dashboard de SharePoint a bien évolué sous SharePoint 2013. Intégrant plein de nouvelles données et étant plus clair à lire.
+Cependant il peut arriver..."><meta itemprop=image content="/img/logo.svg"><meta property="og:title" content="Le developer dashboard reste vide sur SharePoint 2013"><meta property="og:type" content="article"><meta property="og:url" content="https://baywet.github.io/fr/le-developer-dashboard-reste-v/"><meta property="og:image" content="/img/logo.svg"><meta property="og:description" content="Vous l’avez déjà remarqué mais le développer dashboard de SharePoint a bien évolué sous SharePoint 2013. Intégrant plein de nouvelles données et étant plus clair à lire.
+Cependant il peut arriver..."><meta property="og:site_name" content="Le blog de baywet"><meta property="og:updated_time" content="2022-03-16T06:46:54-04:00"><meta property="article:published_time" content="2013-08-08T02:54:14+00:00"><meta property="article:modified_time" content="2022-03-16T06:46:54-04:00"><meta property="article:section" content><meta property="article:tag" content="marchepas"><meta property="article:tag" content="outils"><meta property="article:tag" content="2013"><meta property="article:tag" content="tips"><meta property="article:tag" content="developer"><meta name=twitter:card content="summary"><meta name=twitter:site content><meta name=twitter:title content="Le developer dashboard reste vide sur SharePoint 2013"><meta name=twitter:description content="Vous l’avez déjà remarqué mais le développer dashboard de SharePoint a bien évolué sous SharePoint 2013. Intégrant plein de nouvelles données et étant plus clair à lire.
+Cependant il peut arriver..."><meta name=twitter:creator content><meta name=twitter:image:src content="/img/logo.svg"><link rel=stylesheet type=text/css href=/css/capsule.min.css><script>(function(e,o,i,a,t,n,s){e.GoogleAnalyticsObject=t,e[t]=e[t]||function(){(e[t].q=e[t].q||[]).push(arguments)},e[t].l=1*new Date,n=o.createElement(i),s=o.getElementsByTagName(i)[0],n.async=1,n.src=a,s.parentNode.insertBefore(n,s)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-176061333-1","auto"),ga("send","pageview")</script><link rel=apple-touch-icon href=/img/apple-touch-icon.png><link rel=icon href=/img/favicon.ico></head><body style=min-height:100vh;display:flex;flex-direction:column><nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation"><div class=container><div class=navbar-brand><a class=navbar-item href=/fr><div class="title is-4">&nbsp;Le blog de baywet</div></a><label class="button navbar-burger is-white" for=navbar-burger-state><span></span>
 <span></span>
-<span></span>
-<span></span>
-</label>
-</div><input type=checkbox id=navbar-burger-state>
-<div class=navbar-menu>
-<div class=navbar-end>
-<a class=navbar-item href=/en>English</a>
-</div></div></div></nav><section class=section style=flex:1>
-<div class=container>
-<h1 class=title>Le developer dashboard reste vide sur SharePoint 2013</h1><p class=subtitle>Aug 8, 2013</p><div class=content>
-<p>Vous l’avez déjà remarqué mais le développer dashboard de SharePoint a bien évolué sous SharePoint 2013. Intégrant plein de nouvelles données et étant plus clair à lire.</p><p>Cependant il peut arriver qu’il reste désespérément vide, le tout sans message d’erreur très explicite dans les logs SharePoint, ce qui est parfois frustrant.</p><p>Le point de départ de la mise en route de cet outil formidable est l’application de service d’usage et statiques (puisqu’il faut bien que quelque chose s’occupe de connecter les données) j’ai trouvé un post assez bien fait sur le sujet à vous de lire <a href=https://www.wictorwilen.se/sharepoint-2013-developer-dashboard-shows-no-data-issue>https://www.wictorwilen.se/sharepoint-2013-developer-dashboard-shows-no-data-issue</a></p><p>Simplement il peut arriver que vous ayez déjà une application de service qui est configurée (en tant que bon dev/admin sharepoint qui a bien configuré son environnement). J’ai personnellement pu constater sur plusieurs environnements de développement (oui parce que je me paie le luxe d’en avoir plusieurs) qu’il arrivait assez souvent qu’une application de service de statistiques soit configurée mais que son proxy soit arrêté. Une web application ayant obligation de passer par un proxy pour communiquer avec l’application de service, rien d’étonnant donc à ce que ça ne fonctionne toujours pas.</p><p>Apparemment je ne suis pas le seul à rencontrer ce problème sur SharePoint 2013 et quelqu’un a déjà expliqué comment le faire repartir <a href=https://sp-vinod.blogspot.ca/2013/02/wss-usage-application-proxy-stopped-on.html>https://sp-vinod.blogspot.ca/2013/02/wss-usage-application-proxy-stopped-on.html</a> (enfin si vous avez des bases en powershell et en admin sharepoint, vous n’avez pas eu besoin de cliquer sur le lien pour provisionner ce proxy, je vous donne juste le lien au cas où ;-)</p><p>Dernier point qui pose assez souvent problème sur les plateformes de développement (parce qu’on passe notre temps à déployer/rétracter/stresser/redémarrer) le fameux service de cache distribué dans sharepoint 2013. S’il est dans un état incohérent ce peut être aussi la cause de ce tableau de bord vide.</p><p>Pas de panique :</p><p>Use-cachecluster</p><p>Restart-cachecluster</p><p>Puis get-cacheclusterhealth pour voir l’avancement de la reconstruction des partitions (quand vous n’avez plus rien qui parle de fragment non alloué c’est bon)</p><p>Et voilà ! ôh miracle ! on rafraichit la page et hop des données s’affichent dans le dashboard ! Allez en paix amis développeurs et codez de belles applications performantes avec ça !*</p><p>*pour un de mes collègues il a fallut faire un traditionnel iisreset /noforce avant</p></div><br>
-<p class=heading>
-Edité la dernière fois le
-<a href=https://github.com/baywet/blogsource/commit/ed81153ce32a3288ff24e78527ac47cfa73c14e3>
-1 Mar 2022
-</a> par <a href=https://github.com/baywet>Vincent Biret</a>
-</p><br>
-<div class=heading>Tags:</div><div class="field is-grouped is-grouped-multiline">
-<div class=control>
-<a href=/fr/tags/marchepas>
-<span class=tag>Marchepas</span>
-</a>
-</div><div class=control>
-<a href=/fr/tags/outils>
-<span class=tag>Outils</span>
-</a>
-</div><div class=control>
-<a href=/fr/tags/2013>
-<span class=tag>2013th</span>
-</a>
-</div><div class=control>
-<a href=/fr/tags/tips>
-<span class=tag>Tips</span>
-</a>
-</div><div class=control>
-<a href=/fr/tags/developer>
-<span class=tag>Developer</span>
-</a>
-</div><div class=control>
-<a href=/fr/tags/tricks>
-<span class=tag>Tricks</span>
-</a>
-</div><div class=control>
-<a href=/fr/tags/dev>
-<span class=tag>Dev</span>
-</a>
-</div><div class=control>
-<a href=/fr/tags/debug>
-<span class=tag>Debug</span>
-</a>
-</div><div class=control>
-<a href=/fr/tags/dashboard>
-<span class=tag>Dashboard</span>
-</a>
-</div><div class=control>
-<a href=/fr/tags/sharepoint>
-<span class=tag>Sharepoint</span>
-</a>
-</div></div></div></section><section class=section>
-<div class=container>
-<div class=level>
-<div class=level-left>
-<div class=level-item>
-<p class="control has-addons">
-<a class=button href=https://baywet.github.io/fr/mise-a-jour-des-outils-cks/>
-<span class="icon is-small"><i class="fa fa-chevron-left"></i></span>
-<span class="is-hidden-touch is-hidden-desktop-only">
-Mise à jour des Outils CKS
-</span>
-<span class="is-hidden-touch is-hidden-widescreen">
-Mise à jour des Outils CKS
-</span>
-<span class="is-hidden-mobile is-hidden-desktop">
-Mise à jour des Outils CKS
-</span>
-<span class=is-hidden-tablet>
-Mise à jour des Outils CKS
-</span>
-</a>
-</p></div></div><div class=level-right>
-<div class=level-item>
-<p class="control has-addons">
-<a class=button href=https://baywet.github.io/fr/sortie-du-service-pack-2-pour/>
-<span class="is-hidden-touch is-hidden-desktop-only">
-Sortie du Service Pack 2 pour SharePoint 2010
-</span>
-<span class="is-hidden-touch is-hidden-widescreen">
-Sortie du Service Pack 2 pour SharePoint 2010
-</span>
-<span class="is-hidden-mobile is-hidden-desktop">
-Sortie du Service Pack 2 pour SharePoint 2010
-</span>
-<span class=is-hidden-tablet>
-Sortie du Service Pack 2 pour SharePoint...
-</span>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
-</a>
-</p></div></div></div></div><br>
-<br>
-<div class=container>
-<div id=disqus_thread></div><script>var disqus_config=function(){this.page.url="https://baywet.github.io/fr/le-developer-dashboard-reste-v/",this.page.identifier=window.location.pathname};(function(){var e=document,t=e.createElement("script");t.src="https://baywet.disqus.com/embed.js",t.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(t)})()</script>
-<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div><br>
-<div class=container>
-<nav class=panel>
-<p class=panel-heading>Related</p><a class=panel-block href=https://baywet.github.io/fr/sortie-du-service-pack-2-pour/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span></span></label></div><input type=checkbox id=navbar-burger-state><div class=navbar-menu><div class=navbar-end><a class=navbar-item href=/en>English</a></div></div></div></nav><section class=section style=flex:1><div class=container><h1 class=title>Le developer dashboard reste vide sur SharePoint 2013</h1><p class=subtitle>Aug 8, 2013</p><div class=content><p>Vous l’avez déjà remarqué mais le développer dashboard de SharePoint a bien évolué sous SharePoint 2013. Intégrant plein de nouvelles données et étant plus clair à lire.</p><p>Cependant il peut arriver qu’il reste désespérément vide, le tout sans message d’erreur très explicite dans les logs SharePoint, ce qui est parfois frustrant.</p><p>Le point de départ de la mise en route de cet outil formidable est l’application de service d’usage et statiques (puisqu’il faut bien que quelque chose s’occupe de connecter les données) j’ai trouvé un post assez bien fait sur le sujet à vous de lire <a href=https://www.wictorwilen.se/sharepoint-2013-developer-dashboard-shows-no-data-issue>https://www.wictorwilen.se/sharepoint-2013-developer-dashboard-shows-no-data-issue</a></p><p>Simplement il peut arriver que vous ayez déjà une application de service qui est configurée (en tant que bon dev/admin sharepoint qui a bien configuré son environnement). J’ai personnellement pu constater sur plusieurs environnements de développement (oui parce que je me paie le luxe d’en avoir plusieurs) qu’il arrivait assez souvent qu’une application de service de statistiques soit configurée mais que son proxy soit arrêté. Une web application ayant obligation de passer par un proxy pour communiquer avec l’application de service, rien d’étonnant donc à ce que ça ne fonctionne toujours pas.</p><p>Apparemment je ne suis pas le seul à rencontrer ce problème sur SharePoint 2013 et quelqu’un a déjà expliqué comment le faire repartir <a href=https://sp-vinod.blogspot.ca/2013/02/wss-usage-application-proxy-stopped-on.html>https://sp-vinod.blogspot.ca/2013/02/wss-usage-application-proxy-stopped-on.html</a> (enfin si vous avez des bases en powershell et en admin sharepoint, vous n’avez pas eu besoin de cliquer sur le lien pour provisionner ce proxy, je vous donne juste le lien au cas où ;-)</p><p>Dernier point qui pose assez souvent problème sur les plateformes de développement (parce qu’on passe notre temps à déployer/rétracter/stresser/redémarrer) le fameux service de cache distribué dans sharepoint 2013. S’il est dans un état incohérent ce peut être aussi la cause de ce tableau de bord vide.</p><p>Pas de panique :</p><p>Use-cachecluster</p><p>Restart-cachecluster</p><p>Puis get-cacheclusterhealth pour voir l’avancement de la reconstruction des partitions (quand vous n’avez plus rien qui parle de fragment non alloué c’est bon)</p><p>Et voilà ! ôh miracle ! on rafraichit la page et hop des données s’affichent dans le dashboard ! Allez en paix amis développeurs et codez de belles applications performantes avec ça !*</p><p>*pour un de mes collègues il a fallut faire un traditionnel iisreset /noforce avant</p></div><br><p class=heading>Edité la dernière fois le
+<a href=https://github.com/baywet/blogsource/commit/303d32e0e3c16c8f17332ab1b984585fa53c579f>16 Mar 2022</a> par <a href=https://github.com/baywet>Vincent Biret</a></p><br><div class=heading>Tags:</div><div class="field is-grouped is-grouped-multiline"><div class=control><a href=/fr/tags/marchepas><span class=tag>Marchepas</span></a></div><div class=control><a href=/fr/tags/outils><span class=tag>Outils</span></a></div><div class=control><a href=/fr/tags/2013><span class=tag>2013th</span></a></div><div class=control><a href=/fr/tags/tips><span class=tag>Tips</span></a></div><div class=control><a href=/fr/tags/developer><span class=tag>Developer</span></a></div><div class=control><a href=/fr/tags/tricks><span class=tag>Tricks</span></a></div><div class=control><a href=/fr/tags/dev><span class=tag>Dev</span></a></div><div class=control><a href=/fr/tags/debug><span class=tag>Debug</span></a></div><div class=control><a href=/fr/tags/dashboard><span class=tag>Dashboard</span></a></div><div class=control><a href=/fr/tags/sharepoint><span class=tag>Sharepoint</span></a></div></div></div></section><section class=section><div class=container><div class=level><div class=level-left><div class=level-item><p class="control has-addons"><a class=button href=https://baywet.github.io/fr/mise-a-jour-des-outils-cks/><span class="icon is-small"><i class="fa fa-chevron-left"></i></span>
+<span class="is-hidden-touch is-hidden-desktop-only">Mise à jour des Outils CKS</span>
+<span class="is-hidden-touch is-hidden-widescreen">Mise à jour des Outils CKS</span>
+<span class="is-hidden-mobile is-hidden-desktop">Mise à jour des Outils CKS</span>
+<span class=is-hidden-tablet>Mise à jour des Outils CKS</span></a></p></div></div><div class=level-right><div class=level-item><p class="control has-addons"><a class=button href=https://baywet.github.io/fr/sortie-du-service-pack-2-pour/><span class="is-hidden-touch is-hidden-desktop-only">Sortie du Service Pack 2 pour SharePoint 2010</span>
+<span class="is-hidden-touch is-hidden-widescreen">Sortie du Service Pack 2 pour SharePoint 2010</span>
+<span class="is-hidden-mobile is-hidden-desktop">Sortie du Service Pack 2 pour SharePoint 2010</span>
+<span class=is-hidden-tablet>Sortie du Service Pack 2 pour SharePoint...</span>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span></a></p></div></div></div></div><br><br><div class=container><div id=disqus_thread></div><script>var disqus_config=function(){this.page.url="https://baywet.github.io/fr/le-developer-dashboard-reste-v/",this.page.identifier=window.location.pathname};(function(){var e=document,t=e.createElement("script");t.src="https://baywet.disqus.com/embed.js",t.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(t)})()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div><br><div class=container><nav class=panel><p class=panel-heading>Related</p><a class=panel-block href=https://baywet.github.io/fr/sortie-du-service-pack-2-pour/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Sortie du Service Pack 2 pour SharePoint 2010&nbsp;
-<div class=tag>Sharepoint</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/sortie-de-la-mise-a-jour-cumul/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Sortie du Service Pack 2 pour SharePoint 2010&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/sortie-de-la-mise-a-jour-cumul/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Sortie de la mise à jour cumulative de Juin 2013 pour SharePoint&nbsp;
-<div class=tag>2013th</div><div class=tag>Sharepoint</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/selectionne-pour-les-10-plus-g/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Sortie de la mise à jour cumulative de Juin 2013 pour SharePoint&nbsp;<div class=tag>2013th</div><div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/selectionne-pour-les-10-plus-g/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Sélectionné pour les 10 plus grands influenceurs SharePoint Francophones!&nbsp;
-<div class=tag>Sharepoint</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/ecrire-du-code-securise-pour-s/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Sélectionné pour les 10 plus grands influenceurs SharePoint Francophones!&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/ecrire-du-code-securise-pour-s/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Ecrire du code sécurisé pour SharePoint&nbsp;
-<div class=tag>Sharepoint</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/retour-sur-le-sharepoint-summi/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Ecrire du code sécurisé pour SharePoint&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/retour-sur-le-sharepoint-summi/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Retour sur le SharePoint Summit de Québec 2013&nbsp;
-<div class=tag>2013th</div><div class=tag>Sharepoint</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/la-mise-a-jour-davril-2013-pou/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Retour sur le SharePoint Summit de Québec 2013&nbsp;<div class=tag>2013th</div><div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/la-mise-a-jour-davril-2013-pou/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>La mise à jour d’avril 2013 pour SharePoint est disponible&nbsp;
-<div class=tag>2013th</div><div class=tag>Sharepoint</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/the-name-initializecontrol-doe/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>La mise à jour d’avril 2013 pour SharePoint est disponible&nbsp;<div class=tag>2013th</div><div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/the-name-initializecontrol-doe/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>The name 'InitializeControl' does not exist in the current context Controles utilisateur, SharePoint 2013 et Ressources&nbsp;
-<div class=tag>2013th</div><div class=tag>Sharepoint</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/sharepoint-2013-disponibilite/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>The name 'InitializeControl' does not exist in the current context Controles utilisateur, SharePoint 2013 et Ressources&nbsp;<div class=tag>2013th</div><div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/sharepoint-2013-disponibilite/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>SharePoint 2013 – Disponibilité Générale et Mise à jour obligatoire de Mars&nbsp;
-<div class=tag>2013th</div><div class=tag>Sharepoint</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/sharepoint-summit-2013-a-quebe/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>SharePoint 2013 – Disponibilité Générale et Mise à jour obligatoire de Mars&nbsp;<div class=tag>2013th</div><div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/sharepoint-summit-2013-a-quebe/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>SharePoint Summit 2013 à Québec&nbsp;
-<div class=tag>2013th</div><div class=tag>Sharepoint</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/conferences-a-venir-en-2013/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>SharePoint Summit 2013 à Québec&nbsp;<div class=tag>2013th</div><div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/conferences-a-venir-en-2013/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Conférences à venir en 2013&nbsp;
-<div class=tag>2013th</div><div class=tag>Sharepoint</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/service-de-cache-distribue-de/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Conférences à venir en 2013&nbsp;<div class=tag>2013th</div><div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/service-de-cache-distribue-de/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Service de Cache distribué de SharePoint 2013 – SPDistributedCacheService – comment ne pas se manger ?&nbsp;
-<div class=tag>2013th</div><div class=tag>Tips</div><div class=tag>Sharepoint</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/configuration-de-la-topologie/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Service de Cache distribué de SharePoint 2013 – SPDistributedCacheService – comment ne pas se manger ?&nbsp;<div class=tag>2013th</div><div class=tag>Tips</div><div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/configuration-de-la-topologie/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Configuration de la topologie de recherche d’entreprise dans SharePoint 2013&nbsp;
-<div class=tag>2013th</div><div class=tag>Sharepoint</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/itemupdating-et-itemupdated-le/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Configuration de la topologie de recherche d’entreprise dans SharePoint 2013&nbsp;<div class=tag>2013th</div><div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/itemupdating-et-itemupdated-le/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>ItemUpdating et ItemUpdated levé deux fois dans des SPDocuementLibrary&nbsp;
-<div class=tag>Sharepoint</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/les-joies-de-spitemeventproper/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>ItemUpdating et ItemUpdated levé deux fois dans des SPDocuementLibrary&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/les-joies-de-spitemeventproper/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Les joies de SPItemEventProperties.AfterProperties&nbsp;
-<div class=tag>Sharepoint</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/upgrade-sharepoint-2013-sche/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Les joies de SPItemEventProperties.AfterProperties&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/fr/upgrade-sharepoint-2013-sche/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Upgrade SharePoint 2013 - Schemas&nbsp;
-<div class=tag>2013th</div><div class=tag>Sharepoint</div></span>
-</a>
-</nav></div></section><footer class=footer>
-<div class=container>
-<nav class=level>
-</nav><nav class=level>
-<div class="level-left has-text-centered">
-<div class=level-item>
-<form class="control has-icons has-icons-right" method=get action=https://bing.com>
-<input class=input type=text name=q maxlength=255 placeholder=Search>
+<span>Upgrade SharePoint 2013 - Schemas&nbsp;<div class=tag>2013th</div><div class=tag>Sharepoint</div></span></a></nav></div></section><footer class=footer><div class=container><nav class=level></nav><nav class=level><div class="level-left has-text-centered"><div class=level-item><form class="control has-icons has-icons-right" method=get action=https://bing.com><input class=input type=text name=q maxlength=255 placeholder=Search>
 <input class=input type=hidden name=sites value=https://baywet.github.io/>
-<span class="icon is-small is-right"><i class="fa fa-search"></i></span>
-</form></div></div><div class="level-right has-text-centered">
-<div class=level-item>
-<a class=button href=https://baywet.github.io/fr>
-<span class=icon><i class="fa fa-home"></i></span>
-</a> &nbsp;
-<a class=button href>
-<span class=icon><i class="fa fa-rss"></i></span>
-</a>
-</div></div></nav></div></footer><script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script>
-</body></html>
+<span class="icon is-small is-right"><i class="fa fa-search"></i></span></form></div></div><div class="level-right has-text-centered"><div class=level-item><a class=button href=https://baywet.github.io/fr><span class=icon><i class="fa fa-home"></i></span></a> &nbsp;
+<a class=button href><span class=icon><i class="fa fa-rss"></i></span></a></div></div></nav></div></footer><script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script></body></html>

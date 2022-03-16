@@ -1,243 +1,49 @@
-<!doctype html><html lang=en dir=ltr itemscope itemtype=https://schema.org/Article>
-<head>
-<meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<meta name=viewport content="width=device-width,initial-scale=1">
-<title>Troubleshooting load balancing issues with SharePoint</title><meta name=author content="Vincent Biret">
-<meta name=description content="A few weeks ago, I’ve had to get hands on a customer’s SharePoint farm showing performance problems. They also had inconsistencies with display data between multiple calls.
-I quickly suspected a...">
-<meta name=generator content="Hugo 0.93.0">
-<meta itemprop=name content="Troubleshooting load balancing issues with SharePoint">
-<meta itemprop=description content="A few weeks ago, I’ve had to get hands on a customer’s SharePoint farm showing performance problems. They also had inconsistencies with display data between multiple calls.
-I quickly suspected a...">
-<meta itemprop=image content="/img/logo.svg">
-<meta property="og:title" content="Troubleshooting load balancing issues with SharePoint">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://baywet.github.io/troubleshooting-load-balancing/">
-<meta property="og:image" content="/img/logo.svg">
-<meta property="og:description" content="A few weeks ago, I’ve had to get hands on a customer’s SharePoint farm showing performance problems. They also had inconsistencies with display data between multiple calls.
-I quickly suspected a...">
-<meta property="og:site_name" content="Baywet's blog">
-<meta property="og:updated_time" content="2022-03-01T17:40:17-08:00">
-<meta property="article:published_time" content="2016-12-13T14:00:00+00:00">
-<meta property="article:modified_time" content="2022-03-01T17:40:17-08:00">
-<meta property="article:section" content>
-<meta property="article:tag" content="infrastructure">
-<meta property="article:tag" content="load balancer">
-<meta property="article:tag" content="network">
-<meta property="article:tag" content="sharepoint">
-<meta name=twitter:card content="summary">
-<meta name=twitter:site content>
-<meta name=twitter:title content="Troubleshooting load balancing issues with SharePoint">
-<meta name=twitter:description content="A few weeks ago, I’ve had to get hands on a customer’s SharePoint farm showing performance problems. They also had inconsistencies with display data between multiple calls.
-I quickly suspected a...">
-<meta name=twitter:creator content>
-<meta name=twitter:image:src content="/img/logo.svg">
-<link rel=stylesheet type=text/css href=/css/capsule.min.css>
-<script>(function(e,o,i,a,t,n,s){e.GoogleAnalyticsObject=t,e[t]=e[t]||function(){(e[t].q=e[t].q||[]).push(arguments)},e[t].l=1*new Date,n=o.createElement(i),s=o.getElementsByTagName(i)[0],n.async=1,n.src=a,s.parentNode.insertBefore(n,s)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-176061333-1","auto"),ga("send","pageview")</script>
-<link rel=apple-touch-icon href=/img/apple-touch-icon.png>
-<link rel=icon href=/img/favicon.ico>
-</head><body style=min-height:100vh;display:flex;flex-direction:column>
-<nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation">
-<div class=container>
-<div class=navbar-brand>
-<a class=navbar-item href=/en>
-<div class="title is-4">&nbsp;Baywet's blog</div></a>
-<label class="button navbar-burger is-white" for=navbar-burger-state>
+<!doctype html><html lang=en dir=ltr itemscope itemtype=https://schema.org/Article><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>Troubleshooting load balancing issues with SharePoint</title><meta name=author content="Vincent Biret"><meta name=description content="A few weeks ago, I’ve had to get hands on a customer’s SharePoint farm showing performance problems. They also had inconsistencies with display data between multiple calls.
+I quickly suspected a..."><meta name=generator content="Hugo 0.94.2"><meta itemprop=name content="Troubleshooting load balancing issues with SharePoint"><meta itemprop=description content="A few weeks ago, I’ve had to get hands on a customer’s SharePoint farm showing performance problems. They also had inconsistencies with display data between multiple calls.
+I quickly suspected a..."><meta itemprop=image content="/img/logo.svg"><meta property="og:title" content="Troubleshooting load balancing issues with SharePoint"><meta property="og:type" content="article"><meta property="og:url" content="https://baywet.github.io/troubleshooting-load-balancing/"><meta property="og:image" content="/img/logo.svg"><meta property="og:description" content="A few weeks ago, I’ve had to get hands on a customer’s SharePoint farm showing performance problems. They also had inconsistencies with display data between multiple calls.
+I quickly suspected a..."><meta property="og:site_name" content="Baywet's blog"><meta property="og:updated_time" content="2022-03-16T06:46:54-04:00"><meta property="article:published_time" content="2016-12-13T14:00:00+00:00"><meta property="article:modified_time" content="2022-03-16T06:46:54-04:00"><meta property="article:section" content><meta property="article:tag" content="infrastructure"><meta property="article:tag" content="load balancer"><meta property="article:tag" content="network"><meta property="article:tag" content="sharepoint"><meta name=twitter:card content="summary"><meta name=twitter:site content><meta name=twitter:title content="Troubleshooting load balancing issues with SharePoint"><meta name=twitter:description content="A few weeks ago, I’ve had to get hands on a customer’s SharePoint farm showing performance problems. They also had inconsistencies with display data between multiple calls.
+I quickly suspected a..."><meta name=twitter:creator content><meta name=twitter:image:src content="/img/logo.svg"><link rel=stylesheet type=text/css href=/css/capsule.min.css><script>(function(e,o,i,a,t,n,s){e.GoogleAnalyticsObject=t,e[t]=e[t]||function(){(e[t].q=e[t].q||[]).push(arguments)},e[t].l=1*new Date,n=o.createElement(i),s=o.getElementsByTagName(i)[0],n.async=1,n.src=a,s.parentNode.insertBefore(n,s)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-176061333-1","auto"),ga("send","pageview")</script><link rel=apple-touch-icon href=/img/apple-touch-icon.png><link rel=icon href=/img/favicon.ico></head><body style=min-height:100vh;display:flex;flex-direction:column><nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation"><div class=container><div class=navbar-brand><a class=navbar-item href=/en><div class="title is-4">&nbsp;Baywet's blog</div></a><label class="button navbar-burger is-white" for=navbar-burger-state><span></span>
 <span></span>
-<span></span>
-<span></span>
-</label>
-</div><input type=checkbox id=navbar-burger-state>
-<div class=navbar-menu>
-<div class=navbar-end>
-<a class=navbar-item href=https://baywet.github.io/fr/diagnotiquer-les-problemes-de/>Français</a>
-</div></div></div></nav><section class=section style=flex:1>
-<div class=container>
-<h1 class=title>Troubleshooting load balancing issues with SharePoint</h1><p class=subtitle>Dec 13, 2016</p><div class=content>
-<p>A few weeks ago, I’ve had to get hands on a customer’s SharePoint farm showing performance problems. They also had inconsistencies with display data between multiple calls.</p><p>I quickly suspected a configuration issue for the load balancer dispatching calls between the front-end servers. However, I only had access to the SharePoint farm and I had to provide data so the network team so they could start investigating.</p><p>Hence the question: how can we determine which server served the request between multiple calls?</p><p>Most of the content out there suggests adding a text file containing the server’s name to the root of the web application. I’m not a big fan of this situation for multiple reasons:</p><ul>
-<li>
-<p>Adding/deleting files to SharePoint’s content is not something to do without being cautious, especially if you don’t know SharePoint very well.</p></li><li>
-<p>You can have cases, depending on the load balancer’s configuration (and especially if it’s not configured properly), that a server answers to one request and another one to the next one in subsequent calls. You have to determine which server has served each request.</p></li></ul><p>Obviously I didn’t try solutions like “deploy this custom solution and add that custom web part which is going to tell you which server is doing what”.</p><p>I decided to add a Http response header that the server is going to send over with each request.</p><p>The only downside of that solution is that it’s that setting up the header will recycle the application pool, causing a service interruption.</p><p>To setup the header go to the IIS management console and select the web application you’re working with.</p><p>Click on “http response headers”</p><p><img src=./42.png alt=42.png></p><p>Add a new entry giving the name you want and the server name as the value.</p><p><img src=./43.png alt=43.png></p><p>(repeat those steps for each server of the farm)</p><p>Using any browser, open developer tools (most likely pressing F12), enable requests tracing and go to the response’s headers of any request. You’ll see your header with the name of the server as the value.</p><p><img src=./44.png alt=44.png></p><p>Once you’re done troubleshooting, don’t forget to remove the header for two reasons:</p><ul>
-<li>
-<p>Http headers, before Http2 (which as of today is far from being widely implemented), are not being compressed which will increase network traffic.</p></li><li>
-<p>For security reasons, it’s never good to expose your server’s names.</p></li></ul><p>Have fun troubleshooting your load balancers.</p></div><br>
-<p class=heading>
-Last edited
-<a href=https://github.com/baywet/blogsource/commit/ed81153ce32a3288ff24e78527ac47cfa73c14e3>
-Mar 1, 2022
-</a> by <a href=https://github.com/baywet>Vincent Biret</a>
-</p><br>
-<div class=heading>Tags:</div><div class="field is-grouped is-grouped-multiline">
-<div class=control>
-<a href=/tags/infrastructure>
-<span class=tag>Infrastructure</span>
-</a>
-</div><div class=control>
-<a href=/tags/load-balancer>
-<span class=tag>Load Balancer</span>
-</a>
-</div><div class=control>
-<a href=/tags/network>
-<span class=tag>Network</span>
-</a>
-</div><div class=control>
-<a href=/tags/sharepoint>
-<span class=tag>Sharepoint</span>
-</a>
-</div></div></div></section><section class=section>
-<div class=container>
-<div class=level>
-<div class=level-left>
-<div class=level-item>
-<p class="control has-addons">
-<a class=button href=https://baywet.github.io/joining-2tolead/>
-<span class="icon is-small"><i class="fa fa-chevron-left"></i></span>
-<span class="is-hidden-touch is-hidden-desktop-only">
-Joining 2ToLead
-</span>
-<span class="is-hidden-touch is-hidden-widescreen">
-Joining 2ToLead
-</span>
-<span class="is-hidden-mobile is-hidden-desktop">
-Joining 2ToLead
-</span>
-<span class=is-hidden-tablet>
-Joining 2ToLead
-</span>
-</a>
-</p></div></div><div class=level-right>
-<div class=level-item>
-<p class="control has-addons">
-<a class=button href=https://baywet.github.io/speaking-at-sharepoint-saturda-2016-11-29-14-00-00/>
-<span class="is-hidden-touch is-hidden-desktop-only">
-Speaking at SharePoint Saturday Ottawa 2016
-</span>
-<span class="is-hidden-touch is-hidden-widescreen">
-Speaking at SharePoint Saturday Ottawa 2016
-</span>
-<span class="is-hidden-mobile is-hidden-desktop">
-Speaking at SharePoint Saturday Ottawa 2016
-</span>
-<span class=is-hidden-tablet>
-Speaking at SharePoint Saturday Ottawa...
-</span>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
-</a>
-</p></div></div></div></div><br>
-<br>
-<div class=container>
-<div id=disqus_thread></div><script>var disqus_config=function(){this.page.url="https://baywet.github.io/troubleshooting-load-balancing/",this.page.identifier=window.location.pathname};(function(){var e=document,t=e.createElement("script");t.src="https://baywet.disqus.com/embed.js",t.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(t)})()</script>
-<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div><br>
-<div class=container>
-<nav class=panel>
-<p class=panel-heading>Related</p><a class=panel-block href=https://baywet.github.io/old-english-posts-migrated-to/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span></span></label></div><input type=checkbox id=navbar-burger-state><div class=navbar-menu><div class=navbar-end><a class=navbar-item href=https://baywet.github.io/fr/diagnotiquer-les-problemes-de/>Français</a></div></div></div></nav><section class=section style=flex:1><div class=container><h1 class=title>Troubleshooting load balancing issues with SharePoint</h1><p class=subtitle>Dec 13, 2016</p><div class=content><p>A few weeks ago, I’ve had to get hands on a customer’s SharePoint farm showing performance problems. They also had inconsistencies with display data between multiple calls.</p><p>I quickly suspected a configuration issue for the load balancer dispatching calls between the front-end servers. However, I only had access to the SharePoint farm and I had to provide data so the network team so they could start investigating.</p><p>Hence the question: how can we determine which server served the request between multiple calls?</p><p>Most of the content out there suggests adding a text file containing the server’s name to the root of the web application. I’m not a big fan of this situation for multiple reasons:</p><ul><li><p>Adding/deleting files to SharePoint’s content is not something to do without being cautious, especially if you don’t know SharePoint very well.</p></li><li><p>You can have cases, depending on the load balancer’s configuration (and especially if it’s not configured properly), that a server answers to one request and another one to the next one in subsequent calls. You have to determine which server has served each request.</p></li></ul><p>Obviously I didn’t try solutions like “deploy this custom solution and add that custom web part which is going to tell you which server is doing what”.</p><p>I decided to add a Http response header that the server is going to send over with each request.</p><p>The only downside of that solution is that it’s that setting up the header will recycle the application pool, causing a service interruption.</p><p>To setup the header go to the IIS management console and select the web application you’re working with.</p><p>Click on “http response headers”</p><p><img src=./42.png alt=42.png></p><p>Add a new entry giving the name you want and the server name as the value.</p><p><img src=./43.png alt=43.png></p><p>(repeat those steps for each server of the farm)</p><p>Using any browser, open developer tools (most likely pressing F12), enable requests tracing and go to the response’s headers of any request. You’ll see your header with the name of the server as the value.</p><p><img src=./44.png alt=44.png></p><p>Once you’re done troubleshooting, don’t forget to remove the header for two reasons:</p><ul><li><p>Http headers, before Http2 (which as of today is far from being widely implemented), are not being compressed which will increase network traffic.</p></li><li><p>For security reasons, it’s never good to expose your server’s names.</p></li></ul><p>Have fun troubleshooting your load balancers.</p></div><br><p class=heading>Last edited
+<a href=https://github.com/baywet/blogsource/commit/303d32e0e3c16c8f17332ab1b984585fa53c579f>Mar 16, 2022</a> by <a href=https://github.com/baywet>Vincent Biret</a></p><br><div class=heading>Tags:</div><div class="field is-grouped is-grouped-multiline"><div class=control><a href=/tags/infrastructure><span class=tag>Infrastructure</span></a></div><div class=control><a href=/tags/load-balancer><span class=tag>Load Balancer</span></a></div><div class=control><a href=/tags/network><span class=tag>Network</span></a></div><div class=control><a href=/tags/sharepoint><span class=tag>Sharepoint</span></a></div></div></div></section><section class=section><div class=container><div class=level><div class=level-left><div class=level-item><p class="control has-addons"><a class=button href=https://baywet.github.io/joining-2tolead/><span class="icon is-small"><i class="fa fa-chevron-left"></i></span>
+<span class="is-hidden-touch is-hidden-desktop-only">Joining 2ToLead</span>
+<span class="is-hidden-touch is-hidden-widescreen">Joining 2ToLead</span>
+<span class="is-hidden-mobile is-hidden-desktop">Joining 2ToLead</span>
+<span class=is-hidden-tablet>Joining 2ToLead</span></a></p></div></div><div class=level-right><div class=level-item><p class="control has-addons"><a class=button href=https://baywet.github.io/speaking-at-sharepoint-saturda-2016-11-29-14-00-00/><span class="is-hidden-touch is-hidden-desktop-only">Speaking at SharePoint Saturday Ottawa 2016</span>
+<span class="is-hidden-touch is-hidden-widescreen">Speaking at SharePoint Saturday Ottawa 2016</span>
+<span class="is-hidden-mobile is-hidden-desktop">Speaking at SharePoint Saturday Ottawa 2016</span>
+<span class=is-hidden-tablet>Speaking at SharePoint Saturday Ottawa...</span>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span></a></p></div></div></div></div><br><br><div class=container><div id=disqus_thread></div><script>var disqus_config=function(){this.page.url="https://baywet.github.io/troubleshooting-load-balancing/",this.page.identifier=window.location.pathname};(function(){var e=document,t=e.createElement("script");t.src="https://baywet.disqus.com/embed.js",t.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(t)})()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div><br><div class=container><nav class=panel><p class=panel-heading>Related</p><a class=panel-block href=https://baywet.github.io/old-english-posts-migrated-to/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Old English posts migrated to this blog&nbsp;
-<div class=tag>Sharepoint</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2016-09-22-14-00-00/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Old English posts migrated to this blog&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2016-09-22-14-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at SharePoint Saturday Brussels 2016&nbsp;
-<div class=tag>Sharepoint</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/systemupdate-method-available/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at SharePoint Saturday Brussels 2016&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/systemupdate-method-available/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>SystemUpdate method available in CSOM at last!!!&nbsp;
-<div class=tag>Sharepoint</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2016-09-15-14-00-00/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>SystemUpdate method available in CSOM at last!!!&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2016-09-15-14-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at SharePoint Saturday Oslo 2016&nbsp;
-<div class=tag>Sharepoint</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2016-09-09-14-00-00/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at SharePoint Saturday Oslo 2016&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2016-09-09-14-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at SharePoint Saturday Detroit 2016&nbsp;
-<div class=tag>Sharepoint</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/determine-whether-or-not-a-sha/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at SharePoint Saturday Detroit 2016&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/determine-whether-or-not-a-sha/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Determine whether or not a SharePoint library is running with the new experience&nbsp;
-<div class=tag>Sharepoint</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/building-sharepoint-2016-wspft/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Determine whether or not a SharePoint library is running with the new experience&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/building-sharepoint-2016-wspft/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Building SharePoint 2016 WSP/FTC projects&nbsp;
-<div class=tag>Sharepoint</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2016-04-04-14-00-00/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Building SharePoint 2016 WSP/FTC projects&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2016-04-04-14-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at SharePoint Saturday Calgary 2016&nbsp;
-<div class=tag>Sharepoint</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2016-03-30-15-36-54/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at SharePoint Saturday Calgary 2016&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2016-03-30-15-36-54/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at SharePoint Saturday Montréal 2016&nbsp;
-<div class=tag>Sharepoint</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2016-02-10-14-00-00/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at SharePoint Saturday Montréal 2016&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2016-02-10-14-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at SharePoint Saturday Vancouver 2016&nbsp;
-<div class=tag>Sharepoint</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/automatically-increment-sharep/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at SharePoint Saturday Vancouver 2016&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/automatically-increment-sharep/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Automatically increment SharePoint feature version number during build with build 2015&nbsp;
-<div class=tag>Sharepoint</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2015-11-10-14-00-00/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Automatically increment SharePoint feature version number during build with build 2015&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2015-11-10-14-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at SharePoint Saturday Ottawa 2015&nbsp;
-<div class=tag>Sharepoint</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/disabling-sharepoints-seo-feat/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at SharePoint Saturday Ottawa 2015&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/disabling-sharepoints-seo-feat/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Disabling SharePoint’s SEO features&nbsp;
-<div class=tag>Sharepoint</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2015-10-23-14-00-00/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Disabling SharePoint’s SEO features&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-sharepoint-saturda-2015-10-23-14-00-00/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Speaking at SharePoint Saturday New Hampshire 2015&nbsp;
-<div class=tag>Sharepoint</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/programmatically-add-permissio/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Speaking at SharePoint Saturday New Hampshire 2015&nbsp;<div class=tag>Sharepoint</div></span></a><a class=panel-block href=https://baywet.github.io/programmatically-add-permissio/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Programmatically add permissions to “everyone” in SharePoint Online&nbsp;
-<div class=tag>Sharepoint</div></span>
-</a>
-</nav></div></section><footer class=footer>
-<div class=container>
-<nav class=level>
-</nav><nav class=level>
-<div class="level-left has-text-centered">
-<div class=level-item>
-<form class="control has-icons has-icons-right" method=get action=https://bing.com>
-<input class=input type=text name=q maxlength=255 placeholder=Search>
+<span>Programmatically add permissions to “everyone” in SharePoint Online&nbsp;<div class=tag>Sharepoint</div></span></a></nav></div></section><footer class=footer><div class=container><nav class=level></nav><nav class=level><div class="level-left has-text-centered"><div class=level-item><form class="control has-icons has-icons-right" method=get action=https://bing.com><input class=input type=text name=q maxlength=255 placeholder=Search>
 <input class=input type=hidden name=sites value=https://baywet.github.io/>
-<span class="icon is-small is-right"><i class="fa fa-search"></i></span>
-</form></div></div><div class="level-right has-text-centered">
-<div class=level-item>
-<a class=button href=https://baywet.github.io/en>
-<span class=icon><i class="fa fa-home"></i></span>
-</a> &nbsp;
-<a class=button href>
-<span class=icon><i class="fa fa-rss"></i></span>
-</a>
-</div></div></nav></div></footer><script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script>
-</body></html>
+<span class="icon is-small is-right"><i class="fa fa-search"></i></span></form></div></div><div class="level-right has-text-centered"><div class=level-item><a class=button href=https://baywet.github.io/en><span class=icon><i class="fa fa-home"></i></span></a> &nbsp;
+<a class=button href><span class=icon><i class="fa fa-rss"></i></span></a></div></div></nav></div></footer><script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script></body></html>

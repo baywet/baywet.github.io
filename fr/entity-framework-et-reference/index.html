@@ -1,62 +1,10 @@
-<!doctype html><html lang=fr dir=ltr itemscope itemtype=https://schema.org/Article>
-<head>
-<meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<meta name=viewport content="width=device-width,initial-scale=1">
-<title>Entity Framework et référence au dataContext pour une application web</title><meta name=author content="Vincent Biret">
-<meta name=description content="Lorsque l’on utilise l’entity framework et un datacontext on se pose souvent la question suivante :
-Faut-il favoriser la performance et la simplicité d’utilisation ou bien la flexibilité (scalability)...">
-<meta name=generator content="Hugo 0.93.0">
-<meta itemprop=name content="Entity Framework et référence au dataContext pour une application web">
-<meta itemprop=description content="Lorsque l’on utilise l’entity framework et un datacontext on se pose souvent la question suivante :
-Faut-il favoriser la performance et la simplicité d’utilisation ou bien la flexibilité (scalability)...">
-<meta itemprop=image content="/img/logo.svg">
-<meta property="og:title" content="Entity Framework et référence au dataContext pour une application web">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://baywet.github.io/fr/entity-framework-et-reference/">
-<meta property="og:image" content="/img/logo.svg">
-<meta property="og:description" content="Lorsque l’on utilise l’entity framework et un datacontext on se pose souvent la question suivante :
-Faut-il favoriser la performance et la simplicité d’utilisation ou bien la flexibilité (scalability)...">
-<meta property="og:site_name" content="Le blog de baywet">
-<meta property="og:updated_time" content="2022-03-01T17:40:17-08:00">
-<meta property="article:published_time" content="2013-11-07T02:59:00+00:00">
-<meta property="article:modified_time" content="2022-03-01T17:40:17-08:00">
-<meta property="article:section" content>
-<meta property="article:tag" content="entity framework">
-<meta property="article:tag" content="dev">
-<meta property="article:tag" content=".net">
-<meta property="article:tag" content="developer">
-<meta property="article:tag" content="asp.net">
-<meta name=twitter:card content="summary">
-<meta name=twitter:site content>
-<meta name=twitter:title content="Entity Framework et référence au dataContext pour une application web">
-<meta name=twitter:description content="Lorsque l’on utilise l’entity framework et un datacontext on se pose souvent la question suivante :
-Faut-il favoriser la performance et la simplicité d’utilisation ou bien la flexibilité (scalability)...">
-<meta name=twitter:creator content>
-<meta name=twitter:image:src content="/img/logo.svg">
-<link rel=stylesheet type=text/css href=/css/capsule.min.css>
-<script>(function(e,o,i,a,t,n,s){e.GoogleAnalyticsObject=t,e[t]=e[t]||function(){(e[t].q=e[t].q||[]).push(arguments)},e[t].l=1*new Date,n=o.createElement(i),s=o.getElementsByTagName(i)[0],n.async=1,n.src=a,s.parentNode.insertBefore(n,s)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-176061333-1","auto"),ga("send","pageview")</script>
-<link rel=apple-touch-icon href=/img/apple-touch-icon.png>
-<link rel=icon href=/img/favicon.ico>
-</head><body style=min-height:100vh;display:flex;flex-direction:column>
-<nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation">
-<div class=container>
-<div class=navbar-brand>
-<a class=navbar-item href=/fr>
-<div class="title is-4">&nbsp;Le blog de baywet</div></a>
-<label class="button navbar-burger is-white" for=navbar-burger-state>
+<!doctype html><html lang=fr dir=ltr itemscope itemtype=https://schema.org/Article><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>Entity Framework et référence au dataContext pour une application web</title><meta name=author content="Vincent Biret"><meta name=description content="Lorsque l’on utilise l’entity framework et un datacontext on se pose souvent la question suivante :
+Faut-il favoriser la performance et la simplicité d’utilisation ou bien la flexibilité (scalability)..."><meta name=generator content="Hugo 0.94.2"><meta itemprop=name content="Entity Framework et référence au dataContext pour une application web"><meta itemprop=description content="Lorsque l’on utilise l’entity framework et un datacontext on se pose souvent la question suivante :
+Faut-il favoriser la performance et la simplicité d’utilisation ou bien la flexibilité (scalability)..."><meta itemprop=image content="/img/logo.svg"><meta property="og:title" content="Entity Framework et référence au dataContext pour une application web"><meta property="og:type" content="article"><meta property="og:url" content="https://baywet.github.io/fr/entity-framework-et-reference/"><meta property="og:image" content="/img/logo.svg"><meta property="og:description" content="Lorsque l’on utilise l’entity framework et un datacontext on se pose souvent la question suivante :
+Faut-il favoriser la performance et la simplicité d’utilisation ou bien la flexibilité (scalability)..."><meta property="og:site_name" content="Le blog de baywet"><meta property="og:updated_time" content="2022-03-16T06:46:54-04:00"><meta property="article:published_time" content="2013-11-07T02:59:00+00:00"><meta property="article:modified_time" content="2022-03-16T06:46:54-04:00"><meta property="article:section" content><meta property="article:tag" content="entity framework"><meta property="article:tag" content="dev"><meta property="article:tag" content=".net"><meta property="article:tag" content="developer"><meta property="article:tag" content="asp.net"><meta name=twitter:card content="summary"><meta name=twitter:site content><meta name=twitter:title content="Entity Framework et référence au dataContext pour une application web"><meta name=twitter:description content="Lorsque l’on utilise l’entity framework et un datacontext on se pose souvent la question suivante :
+Faut-il favoriser la performance et la simplicité d’utilisation ou bien la flexibilité (scalability)..."><meta name=twitter:creator content><meta name=twitter:image:src content="/img/logo.svg"><link rel=stylesheet type=text/css href=/css/capsule.min.css><script>(function(e,o,i,a,t,n,s){e.GoogleAnalyticsObject=t,e[t]=e[t]||function(){(e[t].q=e[t].q||[]).push(arguments)},e[t].l=1*new Date,n=o.createElement(i),s=o.getElementsByTagName(i)[0],n.async=1,n.src=a,s.parentNode.insertBefore(n,s)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-176061333-1","auto"),ga("send","pageview")</script><link rel=apple-touch-icon href=/img/apple-touch-icon.png><link rel=icon href=/img/favicon.ico></head><body style=min-height:100vh;display:flex;flex-direction:column><nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation"><div class=container><div class=navbar-brand><a class=navbar-item href=/fr><div class="title is-4">&nbsp;Le blog de baywet</div></a><label class="button navbar-burger is-white" for=navbar-burger-state><span></span>
 <span></span>
-<span></span>
-<span></span>
-</label>
-</div><input type=checkbox id=navbar-burger-state>
-<div class=navbar-menu>
-<div class=navbar-end>
-<a class=navbar-item href=https://baywet.github.io/entity-framework-and-dataconte/>English</a>
-</div></div></div></nav><section class=section style=flex:1>
-<div class=container>
-<h1 class=title>Entity Framework et référence au dataContext pour une application web</h1><p class=subtitle>Nov 7, 2013</p><div class=content>
-<p>Lorsque l’on utilise l’entity framework et un datacontext on se pose souvent la question suivante :</p><p><strong>Faut-il favoriser la performance et la simplicité d’utilisation ou bien la flexibilité (scalability) ?</strong></p><p>(non ? vous ne vous posez pas ce genre de question existentielle ?)</p><p>Je détaille ma question :</p><p><strong>Référence statique</strong></p><p>Dans un premier cas vous faites une référence static au contexte, avec certaines fois du lazy loading et/ou une gestion du dispose dans le global.asax (évènement application end).</p><p>C’est performant (dans le sens c’est rapide) car selon comment c’est codé le contexte est instancié en même temps que le domaine applicatif (quand le pool démarre) ou bien au premier appel.</p><p>L’instance est ensuite détruite quand l’application s’arrête (reset iis, du pool, etc).</p><p>L’avantage c’est que pour chacun des appels de page, le model est déjà en mémoire, Entity Framework n’a donc pas à re-schématiser le modèle en mémoire et à vérifier la cohérence du modèle avec la base de donnée.</p><p>L’autre avantage c’est que vous travaillez avec une seule instance de contexte tout au long de la génération de la page, et que donc vous pouvez utiliser des entités liées (donc propriétés de navigation et tout le confort moderne).</p><p>Le problème c’est que cette instance est partagée au travers de tout le contexte applicatif. Donc pour toutes les requêtes en cours. Ça peut poser des problèmes si vous utilisez des transactions mais surtout c’est un goulot d’étranglement potentiel. En effet l’entity framework pour SQL est une UPA (Unité de persistance applicative) qui ne fait pas ou peu de pooling pour les connections à la base de données.</p><p>Une seule instance = connexions limitées = attentes du thread.</p><p><strong>Instanciation à l’appel</strong></p><p>Dans ce cas de figure le contexte est instancié à chaque fois qu’on en a besoin et détruit aussi tôt. Si l’on dispose d’une couche de service, il est instancié dans chacune des méthodes de service. Il est généralement utilisé dans un bloc using () {}.</p><p>L’avantage c’est que l’application travaille sur plusieurs instances de contexte, et qu’elle peut monter en charge bien plus facilement.</p><p>L’inconvénient c’est qu’on travaille avec des entités déconnectées du contexte, il faut donc penser à les rattacher entre deux contextes. Il faut aussi penser à demander explicitement le chargement des propriétés de navigation (avec la méthode .Include). Ça complique nettement plus les choses.</p><p><strong>Instanciation à la requête</strong></p><p>La solution que mon collègue <a href="https://www.linkedin.com/profile/view?id=2248917" title="https://www.linkedin.com/profile/view?id=2248917">Brian Knoepfel</a> et moi avons trouvée est la suivante : instancier un seul contexte pour toute la durée de la requête. On profite ainsi du meilleur des deux mondes : simplicité, performances et flexibilité.</p><p>Dans le Init on enregistre un évènement qui sera levé à chaque fois qu’une requête est traitée.</p><p>A chaque fois qu’une requête se présente, on instancie un nouveau contexte entity framework qu’on stocke dans le contexte http (unique à chaque requête et stocké en mémoire).</p><p>Lorsque l’on a besoin de travailler avec le contexte un helper nous aide à y accéder.</p><p>Dans l’évènement de fin de requête, on dispose le contexte pour éviter fuites de mémoires et autres.</p><p>Voilà j’espère que cette solution vous aidera. Et n’hésitez pas à commenter si vous en avez une meilleure.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-CSharp data-lang=CSharp><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Global</span> : System.Web.HttpApplication
+<span></span></label></div><input type=checkbox id=navbar-burger-state><div class=navbar-menu><div class=navbar-end><a class=navbar-item href=https://baywet.github.io/entity-framework-and-dataconte/>English</a></div></div></div></nav><section class=section style=flex:1><div class=container><h1 class=title>Entity Framework et référence au dataContext pour une application web</h1><p class=subtitle>Nov 7, 2013</p><div class=content><p>Lorsque l’on utilise l’entity framework et un datacontext on se pose souvent la question suivante :</p><p><strong>Faut-il favoriser la performance et la simplicité d’utilisation ou bien la flexibilité (scalability) ?</strong></p><p>(non ? vous ne vous posez pas ce genre de question existentielle ?)</p><p>Je détaille ma question :</p><p><strong>Référence statique</strong></p><p>Dans un premier cas vous faites une référence static au contexte, avec certaines fois du lazy loading et/ou une gestion du dispose dans le global.asax (évènement application end).</p><p>C’est performant (dans le sens c’est rapide) car selon comment c’est codé le contexte est instancié en même temps que le domaine applicatif (quand le pool démarre) ou bien au premier appel.</p><p>L’instance est ensuite détruite quand l’application s’arrête (reset iis, du pool, etc).</p><p>L’avantage c’est que pour chacun des appels de page, le model est déjà en mémoire, Entity Framework n’a donc pas à re-schématiser le modèle en mémoire et à vérifier la cohérence du modèle avec la base de donnée.</p><p>L’autre avantage c’est que vous travaillez avec une seule instance de contexte tout au long de la génération de la page, et que donc vous pouvez utiliser des entités liées (donc propriétés de navigation et tout le confort moderne).</p><p>Le problème c’est que cette instance est partagée au travers de tout le contexte applicatif. Donc pour toutes les requêtes en cours. Ça peut poser des problèmes si vous utilisez des transactions mais surtout c’est un goulot d’étranglement potentiel. En effet l’entity framework pour SQL est une UPA (Unité de persistance applicative) qui ne fait pas ou peu de pooling pour les connections à la base de données.</p><p>Une seule instance = connexions limitées = attentes du thread.</p><p><strong>Instanciation à l’appel</strong></p><p>Dans ce cas de figure le contexte est instancié à chaque fois qu’on en a besoin et détruit aussi tôt. Si l’on dispose d’une couche de service, il est instancié dans chacune des méthodes de service. Il est généralement utilisé dans un bloc using () {}.</p><p>L’avantage c’est que l’application travaille sur plusieurs instances de contexte, et qu’elle peut monter en charge bien plus facilement.</p><p>L’inconvénient c’est qu’on travaille avec des entités déconnectées du contexte, il faut donc penser à les rattacher entre deux contextes. Il faut aussi penser à demander explicitement le chargement des propriétés de navigation (avec la méthode .Include). Ça complique nettement plus les choses.</p><p><strong>Instanciation à la requête</strong></p><p>La solution que mon collègue <a href="https://www.linkedin.com/profile/view?id=2248917" title="https://www.linkedin.com/profile/view?id=2248917">Brian Knoepfel</a> et moi avons trouvée est la suivante : instancier un seul contexte pour toute la durée de la requête. On profite ainsi du meilleur des deux mondes : simplicité, performances et flexibilité.</p><p>Dans le Init on enregistre un évènement qui sera levé à chaque fois qu’une requête est traitée.</p><p>A chaque fois qu’une requête se présente, on instancie un nouveau contexte entity framework qu’on stocke dans le contexte http (unique à chaque requête et stocké en mémoire).</p><p>Lorsque l’on a besoin de travailler avec le contexte un helper nous aide à y accéder.</p><p>Dans l’évènement de fin de requête, on dispose le contexte pour éviter fuites de mémoires et autres.</p><p>Voilà j’espère que cette solution vous aidera. Et n’hésitez pas à commenter si vous en avez une meilleure.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-CSharp data-lang=CSharp><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Global</span> : System.Web.HttpApplication
 </span></span><span style=display:flex><span>{
 </span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>override</span> <span style=color:#66d9ef>void</span> Init()
 </span></span><span style=display:flex><span>    {
@@ -85,141 +33,28 @@ Faut-il favoriser la performance et la simplicité d’utilisation ou bien la fl
 </span></span><span style=display:flex><span>        }
 </span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>}
-</span></span></code></pre></div></div><br>
-<p class=heading>
-Edité la dernière fois le
-<a href=https://github.com/baywet/blogsource/commit/ed81153ce32a3288ff24e78527ac47cfa73c14e3>
-1 Mar 2022
-</a> par <a href=https://github.com/baywet>Vincent Biret</a>
-</p><br>
-<div class=heading>Tags:</div><div class="field is-grouped is-grouped-multiline">
-<div class=control>
-<a href=/fr/tags/entity-framework>
-<span class=tag>Entity Framework</span>
-</a>
-</div><div class=control>
-<a href=/fr/tags/dev>
-<span class=tag>Dev</span>
-</a>
-</div><div class=control>
-<a href=/fr/tags/.net>
-<span class=tag>.Net</span>
-</a>
-</div><div class=control>
-<a href=/fr/tags/developer>
-<span class=tag>Developer</span>
-</a>
-</div><div class=control>
-<a href=/fr/tags/asp.net>
-<span class=tag>Asp.Net</span>
-</a>
-</div><div class=control>
-<a href=/fr/tags/visual-studio>
-<span class=tag>Visual Studio</span>
-</a>
-</div><div class=control>
-<a href=/fr/tags/c>
-<span class=tag>C#</span>
-</a>
-</div></div></div></section><section class=section>
-<div class=container>
-<div class=level>
-<div class=level-left>
-<div class=level-item>
-<p class="control has-addons">
-<a class=button href=https://baywet.github.io/fr/sharepoint-autohosted-app-et-a/>
-<span class="icon is-small"><i class="fa fa-chevron-left"></i></span>
-<span class="is-hidden-touch is-hidden-desktop-only">
-SharePoint autohosted app et ASP.NET MVC
-</span>
-<span class="is-hidden-touch is-hidden-widescreen">
-SharePoint autohosted app et ASP.NET MVC
-</span>
-<span class="is-hidden-mobile is-hidden-desktop">
-SharePoint autohosted app et ASP.NET MVC
-</span>
-<span class=is-hidden-tablet>
-SharePoint autohosted app et ASP.NET MVC
-</span>
-</a>
-</p></div></div><div class=level-right>
-<div class=level-item>
-<p class="control has-addons">
-<a class=button href=https://baywet.github.io/fr/sharepoint-2013-vectorized-log/>
-<span class="is-hidden-touch is-hidden-desktop-only">
-SharePoint 2013 vectorized logo / logo SharePoint 2013 vectorialisé
-</span>
-<span class="is-hidden-touch is-hidden-widescreen">
-SharePoint 2013 vectorized logo / logo SharePoint 2013 vectorialisé
-</span>
-<span class="is-hidden-mobile is-hidden-desktop">
-SharePoint 2013 vectorized logo / logo SharePoint...
-</span>
-<span class=is-hidden-tablet>
-SharePoint 2013 vectorized logo / logo...
-</span>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
-</a>
-</p></div></div></div></div><br>
-<br>
-<div class=container>
-<div id=disqus_thread></div><script>var disqus_config=function(){this.page.url="https://baywet.github.io/fr/entity-framework-et-reference/",this.page.identifier=window.location.pathname};(function(){var e=document,t=e.createElement("script");t.src="https://baywet.disqus.com/embed.js",t.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(t)})()</script>
-<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div><br>
-<div class=container>
-<nav class=panel>
-<p class=panel-heading>Related</p><a class=panel-block href=https://baywet.github.io/fr/visual-studio-2013-rc-comptag/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+</span></span></code></pre></div></div><br><p class=heading>Edité la dernière fois le
+<a href=https://github.com/baywet/blogsource/commit/303d32e0e3c16c8f17332ab1b984585fa53c579f>16 Mar 2022</a> par <a href=https://github.com/baywet>Vincent Biret</a></p><br><div class=heading>Tags:</div><div class="field is-grouped is-grouped-multiline"><div class=control><a href=/fr/tags/entity-framework><span class=tag>Entity Framework</span></a></div><div class=control><a href=/fr/tags/dev><span class=tag>Dev</span></a></div><div class=control><a href=/fr/tags/.net><span class=tag>.Net</span></a></div><div class=control><a href=/fr/tags/developer><span class=tag>Developer</span></a></div><div class=control><a href=/fr/tags/asp.net><span class=tag>Asp.Net</span></a></div><div class=control><a href=/fr/tags/visual-studio><span class=tag>Visual Studio</span></a></div><div class=control><a href=/fr/tags/c><span class=tag>C#</span></a></div></div></div></section><section class=section><div class=container><div class=level><div class=level-left><div class=level-item><p class="control has-addons"><a class=button href=https://baywet.github.io/fr/sharepoint-autohosted-app-et-a/><span class="icon is-small"><i class="fa fa-chevron-left"></i></span>
+<span class="is-hidden-touch is-hidden-desktop-only">SharePoint autohosted app et ASP.NET MVC</span>
+<span class="is-hidden-touch is-hidden-widescreen">SharePoint autohosted app et ASP.NET MVC</span>
+<span class="is-hidden-mobile is-hidden-desktop">SharePoint autohosted app et ASP.NET MVC</span>
+<span class=is-hidden-tablet>SharePoint autohosted app et ASP.NET MVC</span></a></p></div></div><div class=level-right><div class=level-item><p class="control has-addons"><a class=button href=https://baywet.github.io/fr/sharepoint-2013-vectorized-log/><span class="is-hidden-touch is-hidden-desktop-only">SharePoint 2013 vectorized logo / logo SharePoint 2013 vectorialisé</span>
+<span class="is-hidden-touch is-hidden-widescreen">SharePoint 2013 vectorized logo / logo SharePoint 2013 vectorialisé</span>
+<span class="is-hidden-mobile is-hidden-desktop">SharePoint 2013 vectorized logo / logo SharePoint...</span>
+<span class=is-hidden-tablet>SharePoint 2013 vectorized logo / logo...</span>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span></a></p></div></div></div></div><br><br><div class=container><div id=disqus_thread></div><script>var disqus_config=function(){this.page.url="https://baywet.github.io/fr/entity-framework-et-reference/",this.page.identifier=window.location.pathname};(function(){var e=document,t=e.createElement("script");t.src="https://baywet.disqus.com/embed.js",t.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(t)})()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div><br><div class=container><nav class=panel><p class=panel-heading>Related</p><a class=panel-block href=https://baywet.github.io/fr/visual-studio-2013-rc-comptag/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Visual Studio 2013 RC : Comptage des références à votre code&nbsp;
-<div class=tag>Visual Studio</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/mise-a-jour-des-outils-cks/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Visual Studio 2013 RC : Comptage des références à votre code&nbsp;<div class=tag>Visual Studio</div></span></a><a class=panel-block href=https://baywet.github.io/fr/mise-a-jour-des-outils-cks/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Mise à jour des Outils CKS&nbsp;
-<div class=tag>Visual Studio</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/le-developer-dashboard-reste-v/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Mise à jour des Outils CKS&nbsp;<div class=tag>Visual Studio</div></span></a><a class=panel-block href=https://baywet.github.io/fr/le-developer-dashboard-reste-v/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Le developer dashboard reste vide sur SharePoint 2013&nbsp;
-<div class=tag>Dev</div><div class=tag>Developer</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/sharepoint-2013-et-les-workflo/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Le developer dashboard reste vide sur SharePoint 2013&nbsp;<div class=tag>Dev</div><div class=tag>Developer</div></span></a><a class=panel-block href=https://baywet.github.io/fr/sharepoint-2013-et-les-workflo/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>SharePoint 2013 et les workflows - nouveautés&nbsp;
-<div class=tag>Visual Studio</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/creer-des-librairies-pour-les/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>SharePoint 2013 et les workflows - nouveautés&nbsp;<div class=tag>Visual Studio</div></span></a><a class=panel-block href=https://baywet.github.io/fr/creer-des-librairies-pour-les/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Créer des librairies pour les projets SharePoint&nbsp;
-<div class=tag>Visual Studio</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/visual-studio-2010-amp-les-out/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Créer des librairies pour les projets SharePoint&nbsp;<div class=tag>Visual Studio</div></span></a><a class=panel-block href=https://baywet.github.io/fr/visual-studio-2010-amp-les-out/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Visual Studio 2010 & les outils autours des données (SQL)&nbsp;
-<div class=tag>Visual Studio</div></span>
-</a>
-</nav></div></section><footer class=footer>
-<div class=container>
-<nav class=level>
-</nav><nav class=level>
-<div class="level-left has-text-centered">
-<div class=level-item>
-<form class="control has-icons has-icons-right" method=get action=https://bing.com>
-<input class=input type=text name=q maxlength=255 placeholder=Search>
+<span>Visual Studio 2010 & les outils autours des données (SQL)&nbsp;<div class=tag>Visual Studio</div></span></a></nav></div></section><footer class=footer><div class=container><nav class=level></nav><nav class=level><div class="level-left has-text-centered"><div class=level-item><form class="control has-icons has-icons-right" method=get action=https://bing.com><input class=input type=text name=q maxlength=255 placeholder=Search>
 <input class=input type=hidden name=sites value=https://baywet.github.io/>
-<span class="icon is-small is-right"><i class="fa fa-search"></i></span>
-</form></div></div><div class="level-right has-text-centered">
-<div class=level-item>
-<a class=button href=https://baywet.github.io/fr>
-<span class=icon><i class="fa fa-home"></i></span>
-</a> &nbsp;
-<a class=button href>
-<span class=icon><i class="fa fa-rss"></i></span>
-</a>
-</div></div></nav></div></footer><script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script>
-</body></html>
+<span class="icon is-small is-right"><i class="fa fa-search"></i></span></form></div></div><div class="level-right has-text-centered"><div class=level-item><a class=button href=https://baywet.github.io/fr><span class=icon><i class="fa fa-home"></i></span></a> &nbsp;
+<a class=button href><span class=icon><i class="fa fa-rss"></i></span></a></div></div></nav></div></footer><script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script></body></html>

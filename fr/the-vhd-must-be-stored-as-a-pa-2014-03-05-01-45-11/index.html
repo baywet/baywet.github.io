@@ -1,251 +1,51 @@
-<!doctype html><html lang=fr dir=ltr itemscope itemtype=https://schema.org/Article>
-<head>
-<meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<meta name=viewport content="width=device-width,initial-scale=1">
-<title>The VHD must be stored as a page blob. Upload a vhd to azure</title><meta name=author content="Vincent Biret">
-<meta name=description content="
+<!doctype html><html lang=fr dir=ltr itemscope itemtype=https://schema.org/Article><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>The VHD must be stored as a page blob. Upload a vhd to azure</title><meta name=author content="Vincent Biret"><meta name=description content="
 Context
-I recently had to setup a SharePoint farm on Azure. It’s a great tool in terms of provisioning delays and simplicity of usage. In order to setup my farm I needed ISO files (installation...">
-<meta name=generator content="Hugo 0.93.0">
-<meta itemprop=name content="The VHD must be stored as a page blob. Upload a vhd to azure">
-<meta itemprop=description content="
+I recently had to setup a SharePoint farm on Azure. It’s a great tool in terms of provisioning delays and simplicity of usage. In order to setup my farm I needed ISO files (installation..."><meta name=generator content="Hugo 0.94.2"><meta itemprop=name content="The VHD must be stored as a page blob. Upload a vhd to azure"><meta itemprop=description content="
 Context
-I recently had to setup a SharePoint farm on Azure. It’s a great tool in terms of provisioning delays and simplicity of usage. In order to setup my farm I needed ISO files (installation...">
-<meta itemprop=image content="/img/logo.svg">
-<meta property="og:title" content="The VHD must be stored as a page blob. Upload a vhd to azure">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://baywet.github.io/fr/the-vhd-must-be-stored-as-a-pa-2014-03-05-01-45-11/">
-<meta property="og:image" content="/img/logo.svg">
-<meta property="og:description" content="
+I recently had to setup a SharePoint farm on Azure. It’s a great tool in terms of provisioning delays and simplicity of usage. In order to setup my farm I needed ISO files (installation..."><meta itemprop=image content="/img/logo.svg"><meta property="og:title" content="The VHD must be stored as a page blob. Upload a vhd to azure"><meta property="og:type" content="article"><meta property="og:url" content="https://baywet.github.io/fr/the-vhd-must-be-stored-as-a-pa-2014-03-05-01-45-11/"><meta property="og:image" content="/img/logo.svg"><meta property="og:description" content="
 Context
-I recently had to setup a SharePoint farm on Azure. It’s a great tool in terms of provisioning delays and simplicity of usage. In order to setup my farm I needed ISO files (installation...">
-<meta property="og:site_name" content="Le blog de baywet">
-<meta property="og:updated_time" content="2022-03-01T17:40:17-08:00">
-<meta property="article:published_time" content="2014-03-05T01:45:11+00:00">
-<meta property="article:modified_time" content="2022-03-01T17:40:17-08:00">
-<meta property="article:section" content>
-<meta property="article:tag" content="tools">
-<meta property="article:tag" content="vm">
-<meta property="article:tag" content="upload">
-<meta property="article:tag" content="azure">
-<meta property="article:tag" content="visual studio">
-<meta name=twitter:card content="summary">
-<meta name=twitter:site content>
-<meta name=twitter:title content="The VHD must be stored as a page blob. Upload a vhd to azure">
-<meta name=twitter:description content="
+I recently had to setup a SharePoint farm on Azure. It’s a great tool in terms of provisioning delays and simplicity of usage. In order to setup my farm I needed ISO files (installation..."><meta property="og:site_name" content="Le blog de baywet"><meta property="og:updated_time" content="2022-03-16T06:46:54-04:00"><meta property="article:published_time" content="2014-03-05T01:45:11+00:00"><meta property="article:modified_time" content="2022-03-16T06:46:54-04:00"><meta property="article:section" content><meta property="article:tag" content="tools"><meta property="article:tag" content="vm"><meta property="article:tag" content="upload"><meta property="article:tag" content="azure"><meta property="article:tag" content="visual studio"><meta name=twitter:card content="summary"><meta name=twitter:site content><meta name=twitter:title content="The VHD must be stored as a page blob. Upload a vhd to azure"><meta name=twitter:description content="
 Context
-I recently had to setup a SharePoint farm on Azure. It’s a great tool in terms of provisioning delays and simplicity of usage. In order to setup my farm I needed ISO files (installation...">
-<meta name=twitter:creator content>
-<meta name=twitter:image:src content="/img/logo.svg">
-<link rel=stylesheet type=text/css href=/css/capsule.min.css>
-<script>(function(e,o,i,a,t,n,s){e.GoogleAnalyticsObject=t,e[t]=e[t]||function(){(e[t].q=e[t].q||[]).push(arguments)},e[t].l=1*new Date,n=o.createElement(i),s=o.getElementsByTagName(i)[0],n.async=1,n.src=a,s.parentNode.insertBefore(n,s)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-176061333-1","auto"),ga("send","pageview")</script>
-<link rel=apple-touch-icon href=/img/apple-touch-icon.png>
-<link rel=icon href=/img/favicon.ico>
-</head><body style=min-height:100vh;display:flex;flex-direction:column>
-<nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation">
-<div class=container>
-<div class=navbar-brand>
-<a class=navbar-item href=/fr>
-<div class="title is-4">&nbsp;Le blog de baywet</div></a>
-<label class="button navbar-burger is-white" for=navbar-burger-state>
+I recently had to setup a SharePoint farm on Azure. It’s a great tool in terms of provisioning delays and simplicity of usage. In order to setup my farm I needed ISO files (installation..."><meta name=twitter:creator content><meta name=twitter:image:src content="/img/logo.svg"><link rel=stylesheet type=text/css href=/css/capsule.min.css><script>(function(e,o,i,a,t,n,s){e.GoogleAnalyticsObject=t,e[t]=e[t]||function(){(e[t].q=e[t].q||[]).push(arguments)},e[t].l=1*new Date,n=o.createElement(i),s=o.getElementsByTagName(i)[0],n.async=1,n.src=a,s.parentNode.insertBefore(n,s)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-176061333-1","auto"),ga("send","pageview")</script><link rel=apple-touch-icon href=/img/apple-touch-icon.png><link rel=icon href=/img/favicon.ico></head><body style=min-height:100vh;display:flex;flex-direction:column><nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation"><div class=container><div class=navbar-brand><a class=navbar-item href=/fr><div class="title is-4">&nbsp;Le blog de baywet</div></a><label class="button navbar-burger is-white" for=navbar-burger-state><span></span>
 <span></span>
-<span></span>
-<span></span>
-</label>
-</div><input type=checkbox id=navbar-burger-state>
-<div class=navbar-menu>
-<div class=navbar-end>
-<a class=navbar-item href=/en>English</a>
-</div></div></div></nav><section class=section style=flex:1>
-<div class=container>
-<h1 class=title>The VHD must be stored as a page blob. Upload a vhd to azure</h1><p class=subtitle>Mar 5, 2014</p><div class=content>
-<p><img src=./clip_5F00_image002_5F00_thumb_5F00_223A25CA.jpg alt=clip_5F00_image002_5F00_thumb_5F00_223A25CA.jpg></p><h3 id=context>Context</h3><p>I recently had to setup a SharePoint farm on Azure. It’s a great tool in terms of provisioning delays and simplicity of usage. In order to setup my farm I needed ISO files (installation media). The most recommended way to do that according to the documentation is to locally create a vhd file and upload it to azure to then attach it to your machine.</p><p>As a fellow developer I thought right away “azure has a great tooling inside Visual Studio, we have a storage explorer, let’s use it”. If you did not know it, it is located in the server explorer window on the left.</p><p><img src=./clip_5F00_image004_5F00_thumb_5F00_00DFA190.jpg alt=clip_5F00_image004_5F00_thumb_5F00_00DFA190.jpg></p><p>Once the vhd has been uploaded, I connected to azure management portal and tried to create a disk (understand something that vm’s can use) from the file to then attach it to vm’s.</p><p>But I got an exception after starting this task “the VHD must be stored as a page blob”.</p><p>After several research I learnt Azure has two main files storage format:</p><ul>
-<li>
-<p>Page blob : mainly used for vhd’s (CloudPageBlob) <a href="https://msdn.microsoft.com/en-us/library/microsoft.windowsazure.storage.blob.cloudpageblob%28v=azure.10%29.aspx">https://msdn.microsoft.com/en-us/library/microsoft.windowsazure.storage.blob.cloudpageblob(v=azure.10).aspx</a></p></li><li>
-<p>Block Blob : for other files (CloudBlockBlob) <a href="https://msdn.microsoft.com/en-us/library/microsoft.windowsazure.storage.blob.cloudblockblob%28v=azure.10%29.aspx">https://msdn.microsoft.com/en-us/library/microsoft.windowsazure.storage.blob.cloudblockblob(v=azure.10).aspx</a></p></li></ul><p>We can also make the difference with mime type (the file I want to use as a disk is the first one)</p><p><img src=./clip_5F00_image006_5F00_thumb_5F00_182FC763.jpg alt=clip_5F00_image006_5F00_thumb_5F00_182FC763.jpg></p><h3 id=how-to-make-it-work>How to make it work</h3><p>I found the solution reading this blog post. The author explains that we had to use a special tool in order to upload vhd’s to Azure (which is now deprecated), he also explains how to do it via powershell.</p><p><a href=https://michaelwasham.com/windows-azure-powershell-reference-guide/uploading-and-downloading-vhds-to-windows-azure/>https://michaelwasham.com/windows-azure-powershell-reference-guide/uploading-and-downloading-vhds-to-windows-azure/</a></p><p>The general idea is you need to tell azure “that is a vhd I’m sending you” so it can store the file using the right format and you can use it as a disk later. It’s a pity that we cannot specify that when using Visual Studio’s explorer.</p><p>I hope you’ll save time reading me.</p></div><br>
-<p class=heading>
-Edité la dernière fois le
-<a href=https://github.com/baywet/blogsource/commit/ed81153ce32a3288ff24e78527ac47cfa73c14e3>
-1 Mar 2022
-</a> par <a href=https://github.com/baywet>Vincent Biret</a>
-</p><br>
-<div class=heading>Tags:</div><div class="field is-grouped is-grouped-multiline">
-<div class=control>
-<a href=/fr/tags/tools>
-<span class=tag>Tools</span>
-</a>
-</div><div class=control>
-<a href=/fr/tags/vm>
-<span class=tag>Vm</span>
-</a>
-</div><div class=control>
-<a href=/fr/tags/upload>
-<span class=tag>Upload</span>
-</a>
-</div><div class=control>
-<a href=/fr/tags/azure>
-<span class=tag>Azure</span>
-</a>
-</div><div class=control>
-<a href=/fr/tags/visual-studio>
-<span class=tag>Visual Studio</span>
-</a>
-</div><div class=control>
-<a href=/fr/tags/vhd>
-<span class=tag>Vhd</span>
-</a>
-</div><div class=control>
-<a href=/fr/tags/powershell>
-<span class=tag>Powershell</span>
-</a>
-</div></div></div></section><section class=section>
-<div class=container>
-<div class=level>
-<div class=level-left>
-<div class=level-item>
-<p class="control has-addons">
-<a class=button href=https://baywet.github.io/fr/mise-a-jour-de-mars-des-outils/>
-<span class="icon is-small"><i class="fa fa-chevron-left"></i></span>
-<span class="is-hidden-touch is-hidden-desktop-only">
-Mise à jour de Mars des outils de développement Office pour Visual Studio
-</span>
-<span class="is-hidden-touch is-hidden-widescreen">
-Mise à jour de Mars des outils de développement Office pour Visual Studio
-</span>
-<span class="is-hidden-mobile is-hidden-desktop">
-Mise à jour de Mars des outils de développement...
-</span>
-<span class=is-hidden-tablet>
-Mise à jour de Mars des outils de...
-</span>
-</a>
-</p></div></div><div class=level-right>
-<div class=level-item>
-<p class="control has-addons">
-<a class=button href=https://baywet.github.io/fr/the-vhd-must-be-stored-as-a-pa-2014-03-05-01-40-57/>
-<span class="is-hidden-touch is-hidden-desktop-only">
-The VHD must be stored as a page blob. Uploader un vhd vers azure
-</span>
-<span class="is-hidden-touch is-hidden-widescreen">
-The VHD must be stored as a page blob. Uploader un vhd vers azure
-</span>
-<span class="is-hidden-mobile is-hidden-desktop">
-The VHD must be stored as a page blob. Uploader un...
-</span>
-<span class=is-hidden-tablet>
-The VHD must be stored as a page blob....
-</span>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
-</a>
-</p></div></div></div></div><br>
-<br>
-<div class=container>
-<div id=disqus_thread></div><script>var disqus_config=function(){this.page.url="https://baywet.github.io/fr/the-vhd-must-be-stored-as-a-pa-2014-03-05-01-45-11/",this.page.identifier=window.location.pathname};(function(){var e=document,t=e.createElement("script");t.src="https://baywet.disqus.com/embed.js",t.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(t)})()</script>
-<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div><br>
-<div class=container>
-<nav class=panel>
-<p class=panel-heading>Related</p><a class=panel-block href=https://baywet.github.io/fr/the-vhd-must-be-stored-as-a-pa-2014-03-05-01-40-57/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span></span></label></div><input type=checkbox id=navbar-burger-state><div class=navbar-menu><div class=navbar-end><a class=navbar-item href=/en>English</a></div></div></div></nav><section class=section style=flex:1><div class=container><h1 class=title>The VHD must be stored as a page blob. Upload a vhd to azure</h1><p class=subtitle>Mar 5, 2014</p><div class=content><p><img src=./clip_5F00_image002_5F00_thumb_5F00_223A25CA.jpg alt=clip_5F00_image002_5F00_thumb_5F00_223A25CA.jpg></p><h3 id=context>Context</h3><p>I recently had to setup a SharePoint farm on Azure. It’s a great tool in terms of provisioning delays and simplicity of usage. In order to setup my farm I needed ISO files (installation media). The most recommended way to do that according to the documentation is to locally create a vhd file and upload it to azure to then attach it to your machine.</p><p>As a fellow developer I thought right away “azure has a great tooling inside Visual Studio, we have a storage explorer, let’s use it”. If you did not know it, it is located in the server explorer window on the left.</p><p><img src=./clip_5F00_image004_5F00_thumb_5F00_00DFA190.jpg alt=clip_5F00_image004_5F00_thumb_5F00_00DFA190.jpg></p><p>Once the vhd has been uploaded, I connected to azure management portal and tried to create a disk (understand something that vm’s can use) from the file to then attach it to vm’s.</p><p>But I got an exception after starting this task “the VHD must be stored as a page blob”.</p><p>After several research I learnt Azure has two main files storage format:</p><ul><li><p>Page blob : mainly used for vhd’s (CloudPageBlob) <a href="https://msdn.microsoft.com/en-us/library/microsoft.windowsazure.storage.blob.cloudpageblob%28v=azure.10%29.aspx">https://msdn.microsoft.com/en-us/library/microsoft.windowsazure.storage.blob.cloudpageblob(v=azure.10).aspx</a></p></li><li><p>Block Blob : for other files (CloudBlockBlob) <a href="https://msdn.microsoft.com/en-us/library/microsoft.windowsazure.storage.blob.cloudblockblob%28v=azure.10%29.aspx">https://msdn.microsoft.com/en-us/library/microsoft.windowsazure.storage.blob.cloudblockblob(v=azure.10).aspx</a></p></li></ul><p>We can also make the difference with mime type (the file I want to use as a disk is the first one)</p><p><img src=./clip_5F00_image006_5F00_thumb_5F00_182FC763.jpg alt=clip_5F00_image006_5F00_thumb_5F00_182FC763.jpg></p><h3 id=how-to-make-it-work>How to make it work</h3><p>I found the solution reading this blog post. The author explains that we had to use a special tool in order to upload vhd’s to Azure (which is now deprecated), he also explains how to do it via powershell.</p><p><a href=https://michaelwasham.com/windows-azure-powershell-reference-guide/uploading-and-downloading-vhds-to-windows-azure/>https://michaelwasham.com/windows-azure-powershell-reference-guide/uploading-and-downloading-vhds-to-windows-azure/</a></p><p>The general idea is you need to tell azure “that is a vhd I’m sending you” so it can store the file using the right format and you can use it as a disk later. It’s a pity that we cannot specify that when using Visual Studio’s explorer.</p><p>I hope you’ll save time reading me.</p></div><br><p class=heading>Edité la dernière fois le
+<a href=https://github.com/baywet/blogsource/commit/303d32e0e3c16c8f17332ab1b984585fa53c579f>16 Mar 2022</a> par <a href=https://github.com/baywet>Vincent Biret</a></p><br><div class=heading>Tags:</div><div class="field is-grouped is-grouped-multiline"><div class=control><a href=/fr/tags/tools><span class=tag>Tools</span></a></div><div class=control><a href=/fr/tags/vm><span class=tag>Vm</span></a></div><div class=control><a href=/fr/tags/upload><span class=tag>Upload</span></a></div><div class=control><a href=/fr/tags/azure><span class=tag>Azure</span></a></div><div class=control><a href=/fr/tags/visual-studio><span class=tag>Visual Studio</span></a></div><div class=control><a href=/fr/tags/vhd><span class=tag>Vhd</span></a></div><div class=control><a href=/fr/tags/powershell><span class=tag>Powershell</span></a></div></div></div></section><section class=section><div class=container><div class=level><div class=level-left><div class=level-item><p class="control has-addons"><a class=button href=https://baywet.github.io/fr/mise-a-jour-de-mars-des-outils/><span class="icon is-small"><i class="fa fa-chevron-left"></i></span>
+<span class="is-hidden-touch is-hidden-desktop-only">Mise à jour de Mars des outils de développement Office pour Visual Studio</span>
+<span class="is-hidden-touch is-hidden-widescreen">Mise à jour de Mars des outils de développement Office pour Visual Studio</span>
+<span class="is-hidden-mobile is-hidden-desktop">Mise à jour de Mars des outils de développement...</span>
+<span class=is-hidden-tablet>Mise à jour de Mars des outils de...</span></a></p></div></div><div class=level-right><div class=level-item><p class="control has-addons"><a class=button href=https://baywet.github.io/fr/the-vhd-must-be-stored-as-a-pa-2014-03-05-01-40-57/><span class="is-hidden-touch is-hidden-desktop-only">The VHD must be stored as a page blob. Uploader un vhd vers azure</span>
+<span class="is-hidden-touch is-hidden-widescreen">The VHD must be stored as a page blob. Uploader un vhd vers azure</span>
+<span class="is-hidden-mobile is-hidden-desktop">The VHD must be stored as a page blob. Uploader un...</span>
+<span class=is-hidden-tablet>The VHD must be stored as a page blob....</span>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span></a></p></div></div></div></div><br><br><div class=container><div id=disqus_thread></div><script>var disqus_config=function(){this.page.url="https://baywet.github.io/fr/the-vhd-must-be-stored-as-a-pa-2014-03-05-01-45-11/",this.page.identifier=window.location.pathname};(function(){var e=document,t=e.createElement("script");t.src="https://baywet.disqus.com/embed.js",t.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(t)})()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div><br><div class=container><nav class=panel><p class=panel-heading>Related</p><a class=panel-block href=https://baywet.github.io/fr/the-vhd-must-be-stored-as-a-pa-2014-03-05-01-40-57/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>The VHD must be stored as a page blob. Uploader un vhd vers azure&nbsp;
-<div class=tag>Tools</div><div class=tag>Vm</div><div class=tag>Upload</div><div class=tag>Azure</div><div class=tag>Visual Studio</div><div class=tag>Vhd</div><div class=tag>Powershell</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/trois-nouveaux-sur-la-platefor/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>The VHD must be stored as a page blob. Uploader un vhd vers azure&nbsp;<div class=tag>Tools</div><div class=tag>Vm</div><div class=tag>Upload</div><div class=tag>Azure</div><div class=tag>Visual Studio</div><div class=tag>Vhd</div><div class=tag>Powershell</div></span></a><a class=panel-block href=https://baywet.github.io/fr/trois-nouveaux-sur-la-platefor/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Trois nouveaux sur la plateforme Microsoft Touch !&nbsp;
-<div class=tag>Powershell</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/sharepoint-autohosted-app-et-a/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Trois nouveaux sur la plateforme Microsoft Touch !&nbsp;<div class=tag>Powershell</div></span></a><a class=panel-block href=https://baywet.github.io/fr/sharepoint-autohosted-app-et-a/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>SharePoint autohosted app et ASP.NET MVC&nbsp;
-<div class=tag>Visual Studio</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/entity-framework-et-reference/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>SharePoint autohosted app et ASP.NET MVC&nbsp;<div class=tag>Visual Studio</div></span></a><a class=panel-block href=https://baywet.github.io/fr/entity-framework-et-reference/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Entity Framework et référence au dataContext pour une application web&nbsp;
-<div class=tag>Visual Studio</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/visual-studio-2013-rc-comptag/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Entity Framework et référence au dataContext pour une application web&nbsp;<div class=tag>Visual Studio</div></span></a><a class=panel-block href=https://baywet.github.io/fr/visual-studio-2013-rc-comptag/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Visual Studio 2013 RC : Comptage des références à votre code&nbsp;
-<div class=tag>Visual Studio</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/mise-a-jour-des-outils-cks/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Visual Studio 2013 RC : Comptage des références à votre code&nbsp;<div class=tag>Visual Studio</div></span></a><a class=panel-block href=https://baywet.github.io/fr/mise-a-jour-des-outils-cks/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Mise à jour des Outils CKS&nbsp;
-<div class=tag>Visual Studio</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/configuration-de-la-topologie/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Mise à jour des Outils CKS&nbsp;<div class=tag>Visual Studio</div></span></a><a class=panel-block href=https://baywet.github.io/fr/configuration-de-la-topologie/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Configuration de la topologie de recherche d’entreprise dans SharePoint 2013&nbsp;
-<div class=tag>Powershell</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/sharepoint-2013-et-les-workflo/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Configuration de la topologie de recherche d’entreprise dans SharePoint 2013&nbsp;<div class=tag>Powershell</div></span></a><a class=panel-block href=https://baywet.github.io/fr/sharepoint-2013-et-les-workflo/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>SharePoint 2013 et les workflows - nouveautés&nbsp;
-<div class=tag>Visual Studio</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/wcf-entity-framework-code-fir/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>SharePoint 2013 et les workflows - nouveautés&nbsp;<div class=tag>Visual Studio</div></span></a><a class=panel-block href=https://baywet.github.io/fr/wcf-entity-framework-code-fir/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>WCF + Entity FrameWork Code First + Azure&nbsp;
-<div class=tag>Azure</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/creer-des-librairies-pour-les/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>WCF + Entity FrameWork Code First + Azure&nbsp;<div class=tag>Azure</div></span></a><a class=panel-block href=https://baywet.github.io/fr/creer-des-librairies-pour-les/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Créer des librairies pour les projets SharePoint&nbsp;
-<div class=tag>Visual Studio</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/deployer-son-ou-ses-blogs-blog/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Créer des librairies pour les projets SharePoint&nbsp;<div class=tag>Visual Studio</div></span></a><a class=panel-block href=https://baywet.github.io/fr/deployer-son-ou-ses-blogs-blog/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Déployer son (ou ses) blog(s) BlogEngine sur Azure&nbsp;
-<div class=tag>Azure</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/visual-studio-2010-amp-les-out/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Déployer son (ou ses) blog(s) BlogEngine sur Azure&nbsp;<div class=tag>Azure</div></span></a><a class=panel-block href=https://baywet.github.io/fr/visual-studio-2010-amp-les-out/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Visual Studio 2010 & les outils autours des données (SQL)&nbsp;
-<div class=tag>Visual Studio</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/uploader-automatiquement-les-p/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Visual Studio 2010 & les outils autours des données (SQL)&nbsp;<div class=tag>Visual Studio</div></span></a><a class=panel-block href=https://baywet.github.io/fr/uploader-automatiquement-les-p/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Uploader automatiquement les photos des utilisateurs SharePoint sur leur profil en PowerShell&nbsp;
-<div class=tag>Upload</div><div class=tag>Powershell</div></span>
-</a>
-<a class=panel-block href=https://baywet.github.io/fr/ajouter-un-nouvel-administrate/>
-<span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>Uploader automatiquement les photos des utilisateurs SharePoint sur leur profil en PowerShell&nbsp;<div class=tag>Upload</div><div class=tag>Powershell</div></span></a><a class=panel-block href=https://baywet.github.io/fr/ajouter-un-nouvel-administrate/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
 <span>&nbsp;</span>
-<span>Ajouter un nouvel administrateur de ferme SharePoint pouvant éxécuter la console PowerShell sans encombres&nbsp;
-<div class=tag>Powershell</div></span>
-</a>
-</nav></div></section><footer class=footer>
-<div class=container>
-<nav class=level>
-</nav><nav class=level>
-<div class="level-left has-text-centered">
-<div class=level-item>
-<form class="control has-icons has-icons-right" method=get action=https://bing.com>
-<input class=input type=text name=q maxlength=255 placeholder=Search>
+<span>Ajouter un nouvel administrateur de ferme SharePoint pouvant éxécuter la console PowerShell sans encombres&nbsp;<div class=tag>Powershell</div></span></a></nav></div></section><footer class=footer><div class=container><nav class=level></nav><nav class=level><div class="level-left has-text-centered"><div class=level-item><form class="control has-icons has-icons-right" method=get action=https://bing.com><input class=input type=text name=q maxlength=255 placeholder=Search>
 <input class=input type=hidden name=sites value=https://baywet.github.io/>
-<span class="icon is-small is-right"><i class="fa fa-search"></i></span>
-</form></div></div><div class="level-right has-text-centered">
-<div class=level-item>
-<a class=button href=https://baywet.github.io/fr>
-<span class=icon><i class="fa fa-home"></i></span>
-</a> &nbsp;
-<a class=button href>
-<span class=icon><i class="fa fa-rss"></i></span>
-</a>
-</div></div></nav></div></footer><script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script>
-</body></html>
+<span class="icon is-small is-right"><i class="fa fa-search"></i></span></form></div></div><div class="level-right has-text-centered"><div class=level-item><a class=button href=https://baywet.github.io/fr><span class=icon><i class="fa fa-home"></i></span></a> &nbsp;
+<a class=button href><span class=icon><i class="fa fa-rss"></i></span></a></div></div></nav></div></footer><script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script></body></html>
