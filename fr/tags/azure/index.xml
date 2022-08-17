@@ -9,7 +9,9 @@ Web Apps
 Stockage
 Fonctions
 Cognitive Services
-DocumentDB</description></item><item><title>Conférencier au Aos Tours Montréal et Québec</title><link>https://baywet.github.io/fr/conferencier-au-aos-tours-mont/</link><pubDate>Thu, 05 Jan 2017 14:00:00 +0000</pubDate><author>vbiret+blog@outlook.com (Vincent Biret)</author><guid>https://baywet.github.io/fr/conferencier-au-aos-tours-mont/</guid><description>J’aurai le privilège d’être conférencier aux prochains AOS (Azure, Office 365, SharePoint) de Québec (6 Février) et de Montréal (7).
+DocumentDB
+Application Insights
+La journée est animée par des conférenciers de Microsoft et des MVP et sera en Français</description></item><item><title>Conférencier au Aos Tours Montréal et Québec</title><link>https://baywet.github.io/fr/conferencier-au-aos-tours-mont/</link><pubDate>Thu, 05 Jan 2017 14:00:00 +0000</pubDate><author>vbiret+blog@outlook.com (Vincent Biret)</author><guid>https://baywet.github.io/fr/conferencier-au-aos-tours-mont/</guid><description>J’aurai le privilège d’être conférencier aux prochains AOS (Azure, Office 365, SharePoint) de Québec (6 Février) et de Montréal (7).
 J’aurai le privilège de présenter en Français : Introduction à Azure Fonctions et Flow
 Flow et Azure Functions sont deux outils de développement rapides qui viennent changer le paradigme d’architecture des applications modernes. Au lieu de livrer les solutions d’un seul bloc ce qui peut prendre plusieurs mois, nous allons voir comment livrer des solutions par fonctionnalités.</description></item><item><title>Déterminez votre dette technique à l’aide de SonarQube : 14 - Conclusion</title><link>https://baywet.github.io/fr/determinez-votre-dette-techniq-2016-12-02-14-00-00/</link><pubDate>Fri, 02 Dec 2016 14:00:00 +0000</pubDate><author>vbiret+blog@outlook.com (Vincent Biret)</author><guid>https://baywet.github.io/fr/determinez-votre-dette-techniq-2016-12-02-14-00-00/</guid><description>L’installation et la mise en place de SonarQube peut paraitre assez complexe et fastidieuse.
 J’espère que cette suite d’articles et les scripts que je vous ai fournis vous ont permis d’aller plus vite dans sa mise en place.

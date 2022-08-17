@@ -5,7 +5,8 @@ Ce soir avec Rémi Assailly du SIS (encore une fois merci à lui) nous avons mig
 7.supinfo.com
 www.faqxp.com
 www.certifexpress.org
-Ce sont des sites à fort trafic eux aussi (pas du même ordre que celui du labo ou du forum mais respectables eux aussi).</description></item><item><title>Migrations du Laboratoire Partie 2 - Forum</title><link>https://baywet.github.io/fr/migrations-du-laboratoire-part-2010-11-15-17-06-00/</link><pubDate>Mon, 15 Nov 2010 17:06:00 +0000</pubDate><author>vbiret+blog@outlook.com (Vincent Biret)</author><guid>https://baywet.github.io/fr/migrations-du-laboratoire-part-2010-11-15-17-06-00/</guid><description>Pour continuer avec notre série sur les migrations du laboratoire entamée ici nous avons ce soir migré le forum du laboratoire.
+Ce sont des sites à fort trafic eux aussi (pas du même ordre que celui du labo ou du forum mais respectables eux aussi).
+La migration s&amp;rsquo;est passée sans problème majeur et en un temps assez court (environ une heure), presque ennuyeuse quoi [;)]</description></item><item><title>Migrations du Laboratoire Partie 2 - Forum</title><link>https://baywet.github.io/fr/migrations-du-laboratoire-part-2010-11-15-17-06-00/</link><pubDate>Mon, 15 Nov 2010 17:06:00 +0000</pubDate><author>vbiret+blog@outlook.com (Vincent Biret)</author><guid>https://baywet.github.io/fr/migrations-du-laboratoire-part-2010-11-15-17-06-00/</guid><description>Pour continuer avec notre série sur les migrations du laboratoire entamée ici nous avons ce soir migré le forum du laboratoire.
 Forum d&amp;rsquo;envergure basé sur phpbb comptant près de 650 000 messages et 50 000 utilisateurs inscrits.
 Si la technologie est plus récente deux difficultés viennent d&amp;rsquo;ajouter:
 Migration débian =&amp;gt; Windows Server

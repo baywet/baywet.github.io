@@ -3,4 +3,6 @@ Ideally you’d like to run these unit tests in a continuous integration process
 In .NET world you have many tools to write unit tests:
 MSTest/VSTest
 NUnit
-xUnit</description></item></channel></rss>
+xUnit
+…
+(a non-exhaustive list https://en.wikipedia.org/wiki/List_of_unit_testing_frameworks#C.23 )</description></item></channel></rss>

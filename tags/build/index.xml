@@ -18,7 +18,9 @@ Ideally you’d like to run these unit tests in a continuous integration process
 In .NET world you have many tools to write unit tests:
 MSTest/VSTest
 NUnit
-xUnit</description></item><item><title>Building DNX projects using home installed build agent (TFS, VSTS)</title><link>https://baywet.github.io/building-dnx-projects-using-ho/</link><pubDate>Fri, 19 Feb 2016 14:00:00 +0000</pubDate><author>vbiret+blog@outlook.com (Vincent Biret)</author><guid>https://baywet.github.io/building-dnx-projects-using-ho/</guid><description>With DNX/DNU soon to be RTM there’ll be more and more developers eagers to build and deploy ASP.NET core 1 (formerly ASP.NET MVC 5) projects.
+xUnit
+…
+(a non-exhaustive list https://en.wikipedia.org/wiki/List_of_unit_testing_frameworks#C.23 )</description></item><item><title>Building DNX projects using home installed build agent (TFS, VSTS)</title><link>https://baywet.github.io/building-dnx-projects-using-ho/</link><pubDate>Fri, 19 Feb 2016 14:00:00 +0000</pubDate><author>vbiret+blog@outlook.com (Vincent Biret)</author><guid>https://baywet.github.io/building-dnx-projects-using-ho/</guid><description>With DNX/DNU soon to be RTM there’ll be more and more developers eagers to build and deploy ASP.NET core 1 (formerly ASP.NET MVC 5) projects.
 If the procedure is well described when you are using hosted agents (the ones microsoft runs for you on Azure), it’s a little more complex when you want to do it on a local agent.
 https://msdn.microsoft.com/en-us/Library/vs/alm/Build/azure/deploy-aspnet5?f=255&amp;amp;MSPPError=-2147217396
 On your agent’s machine you installed and updated visual studio and all the tools right?</description></item><item><title>Automatically increment SharePoint feature version number during build with build 2015</title><link>https://baywet.github.io/automatically-increment-sharep/</link><pubDate>Wed, 18 Nov 2015 14:00:00 +0000</pubDate><author>vbiret+blog@outlook.com (Vincent Biret)</author><guid>https://baywet.github.io/automatically-increment-sharep/</guid><description>A few months ago Microsoft released a new automated build system with visual studio online /tfs 2015.

@@ -6,7 +6,9 @@ Ideally you’d like to run these unit tests in a continuous integration process
 In .NET world you have many tools to write unit tests:
 MSTest/VSTest
 NUnit
-xUnit</description></item><item><title>Error publishing asp.net 5 (core) websites to Azure</title><link>https://baywet.github.io/error-publishing-aspnet-5-core/</link><pubDate>Tue, 23 Feb 2016 14:00:00 +0000</pubDate><author>vbiret+blog@outlook.com (Vincent Biret)</author><guid>https://baywet.github.io/error-publishing-aspnet-5-core/</guid><description>If you’re doing asp.net core development and if you’re trying to publish your website to an azure website you might run into the following error when implementing this documentation.
+xUnit
+…
+(a non-exhaustive list https://en.wikipedia.org/wiki/List_of_unit_testing_frameworks#C.23 )</description></item><item><title>Error publishing asp.net 5 (core) websites to Azure</title><link>https://baywet.github.io/error-publishing-aspnet-5-core/</link><pubDate>Tue, 23 Feb 2016 14:00:00 +0000</pubDate><author>vbiret+blog@outlook.com (Vincent Biret)</author><guid>https://baywet.github.io/error-publishing-aspnet-5-core/</guid><description>If you’re doing asp.net core development and if you’re trying to publish your website to an azure website you might run into the following error when implementing this documentation.
 https://msdn.microsoft.com/en-us/Library/vs/alm/Build/azure/deploy-aspnet5?f=255&amp;amp;MSPPError=-2147217396
 [error]Error: The specified credentials cannot be used with the authentication scheme &amp;lsquo;Basic&amp;rsquo;.
 [error]Error: Default credentials cannot be supplied for the Basic authentication scheme.
