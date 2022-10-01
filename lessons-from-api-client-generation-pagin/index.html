@@ -1,0 +1,120 @@
+<!doctype html><html lang=en dir=ltr itemscope itemtype=https://schema.org/Article><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>Lessons learned from API client generation - 06 Paging</title><meta name=author content="Vincent Biret"><meta name=description content="Fifth pattern of our series: paging conventions. The following examples describes a page as with a value property (array) which will contain the resulting items, and a nextLink property which contains..."><meta name=generator content="Hugo 0.104.2"><meta itemprop=name content="Lessons learned from API client generation - 06 Paging"><meta itemprop=description content="Fifth pattern of our series: paging conventions. The following examples describes a page as with a value property (array) which will contain the resulting items, and a nextLink property which contains..."><meta itemprop=image content="/img/logo.svg"><meta property="og:title" content="Lessons learned from API client generation - 06 Paging"><meta property="og:type" content="article"><meta property="og:url" content="https://baywet.github.io/lessons-from-api-client-generation-pagin/"><meta property="og:image" content="/img/logo.svg"><meta property="og:description" content="Fifth pattern of our series: paging conventions. The following examples describes a page as with a value property (array) which will contain the resulting items, and a nextLink property which contains..."><meta property="og:site_name" content="Baywet's blog"><meta property="og:updated_time" content="2022-10-01T14:17:24-04:00"><meta property="article:published_time" content="2022-10-01T10:25:00+00:00"><meta property="article:modified_time" content="2022-10-01T14:17:24-04:00"><meta property="article:section" content><meta property="article:tag" content="kiota"><meta property="article:tag" content="OpenAPI"><meta property="article:tag" content="REST"><meta property="article:tag" content="JSON Schema"><meta property="article:tag" content="ASC 2022 session rundown"><meta name=twitter:card content="summary"><meta name=twitter:site content><meta name=twitter:title content="Lessons learned from API client generation - 06 Paging"><meta name=twitter:description content="Fifth pattern of our series: paging conventions. The following examples describes a page as with a value property (array) which will contain the resulting items, and a nextLink property which contains..."><meta name=twitter:creator content><meta name=twitter:image:src content="/img/logo.svg"><link rel=stylesheet type=text/css href=/css/capsule.min.css><script>(function(e,t,n,s,o,i,a){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,i=t.createElement(n),a=t.getElementsByTagName(n)[0],i.async=1,i.src=s,a.parentNode.insertBefore(i,a)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-176061333-1","auto"),ga("send","pageview")</script><link rel=apple-touch-icon href=/img/apple-touch-icon.png><link rel=icon href=/img/favicon.ico></head><body style=min-height:100vh;display:flex;flex-direction:column><nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation"><div class=container><div class=navbar-brand><a class=navbar-item href=/en><div class="title is-4">&nbsp;Baywet's blog</div></a><label class="button navbar-burger is-white" for=navbar-burger-state><span></span>
+<span></span>
+<span></span></label></div><input type=checkbox id=navbar-burger-state><div class=navbar-menu><div class=navbar-end><a class=navbar-item href=/fr>Français</a></div></div></div></nav><section class=section style=flex:1><div class=container><h1 class=title>Lessons learned from API client generation - 06 Paging</h1><p class=subtitle>Oct 1, 2022</p><div class=content><p>Fifth pattern of <a href=https://baywet.github.io/tags/asc-2022-session-rundown/>our series</a>: paging conventions. The following examples describes a page as with a value property (array) which will contain the resulting items, and a nextLink property which contains the link to the next page.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>paths</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>/path</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>get</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>summary</span>: <span style=color:#ae81ff>Get</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>description</span>: <span style=color:#ae81ff>Get</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>operationId</span>: <span style=color:#ae81ff>get</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>tags</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>api1</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>responses</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#39;200&#39;</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>description</span>: <span style=color:#ae81ff>OK</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>content</span>:
+</span></span><span style=display:flex><span>            <span style=color:#f92672>application/json</span>:
+</span></span><span style=display:flex><span>              <span style=color:#f92672>schema</span>:
+</span></span><span style=display:flex><span>                <span style=color:#f92672>type</span>: <span style=color:#ae81ff>object</span>
+</span></span><span style=display:flex><span>                <span style=color:#f92672>properties</span>:
+</span></span><span style=display:flex><span>                  <span style=color:#f92672>value</span>:
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>array</span>
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>items</span>:
+</span></span><span style=display:flex><span>                      <span style=color:#f92672>type</span>: <span style=color:#ae81ff>string</span>
+</span></span><span style=display:flex><span>                  <span style=color:#f92672>nextLink</span>:
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>string</span>
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>nullable</span>: <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>x-ms-pageable</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>nextLinkName</span>: <span style=color:#ae81ff>nextLink</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>itemName</span>: <span style=color:#ae81ff>value</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>operationName</span>: <span style=color:#ae81ff>get</span>
+</span></span></code></pre></div><p>This is missing a lot of information to make the life of the client easier:</p><ul><li>How do we identify the property that contains the next link? (and the previous one)</li><li>What operation to use?</li><li>How to get the items in the payload?</li><li>What’s the default size of a page?</li><li>What’s the maxSize of a page?</li><li>Is there any parameter to specify the number of items per page?</li><li>Is there any parameter to specify the total number of items to return (across pages)?</li><li>Is there a parameter to skip the first X parameters?</li></ul><p>Autorest <a href=https://azure.github.io/autorest/extensions/#x-ms-pageable>already has an extension</a> which covers some of those concerns, but I think we should expand it.
+Suggestions
+The following snippet describes a data structure that could be part of the operation schema, and which would cover the concerns I’ve outlined above. It’d be additive and non-breaking, would allow generators to generate code that automatically crawls pages for the application developer.</p><h2 id=suggestions>Suggestions</h2><p>The following snippet describes a data structure that could be part of the operation schema, and which would cover the concerns I’ve outlined above. It’d be additive and non-breaking, would allow generators to generate code that automatically crawls pages for the application developer.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>paths</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>/path</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>get</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>summary</span>: <span style=color:#ae81ff>Get</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>description</span>: <span style=color:#ae81ff>Get</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>operationId</span>: <span style=color:#ae81ff>get</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>tags</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>api1</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>parameters</span>:
+</span></span><span style=display:flex><span>        - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>maxItems</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>in</span>: <span style=color:#ae81ff>query</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>description</span>: <span style=color:#ae81ff>Maximum number of items to return per page</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>required</span>: <span style=color:#66d9ef>false</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>schema</span>:
+</span></span><span style=display:flex><span>            <span style=color:#f92672>type</span>: <span style=color:#ae81ff>integer</span>
+</span></span><span style=display:flex><span>            <span style=color:#f92672>format</span>: <span style=color:#ae81ff>int32</span>
+</span></span><span style=display:flex><span>        - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>top</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>in</span>: <span style=color:#ae81ff>query</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>description</span>: <span style=color:#ae81ff>Maximum number of items to return across all pages</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>required</span>: <span style=color:#66d9ef>false</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>schema</span>:
+</span></span><span style=display:flex><span>            <span style=color:#f92672>type</span>: <span style=color:#ae81ff>integer</span>
+</span></span><span style=display:flex><span>            <span style=color:#f92672>format</span>: <span style=color:#ae81ff>int32</span>
+</span></span><span style=display:flex><span>        - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>skip</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>in</span>: <span style=color:#ae81ff>query</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>description</span>: <span style=color:#ae81ff>Number of items to skip before returning results</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>required</span>: <span style=color:#66d9ef>false</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>schema</span>:
+</span></span><span style=display:flex><span>            <span style=color:#f92672>type</span>: <span style=color:#ae81ff>integer</span>
+</span></span><span style=display:flex><span>            <span style=color:#f92672>format</span>: <span style=color:#ae81ff>int32</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>responses</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#39;200&#39;</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>description</span>: <span style=color:#ae81ff>OK</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>content</span>:
+</span></span><span style=display:flex><span>            <span style=color:#f92672>application/json</span>:
+</span></span><span style=display:flex><span>              <span style=color:#f92672>schema</span>:
+</span></span><span style=display:flex><span>                <span style=color:#f92672>type</span>: <span style=color:#ae81ff>object</span>
+</span></span><span style=display:flex><span>                <span style=color:#f92672>properties</span>:
+</span></span><span style=display:flex><span>                  <span style=color:#f92672>value</span>:
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>array</span>
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>items</span>:
+</span></span><span style=display:flex><span>                      <span style=color:#f92672>type</span>: <span style=color:#ae81ff>string</span>
+</span></span><span style=display:flex><span>                  <span style=color:#f92672>nextLink</span>:
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>string</span>
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>nullable</span>: <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>x-ms-pageable</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>nextLink</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>path</span>: <span style=color:#ae81ff>nextLink</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>in</span>: <span style=color:#ae81ff>body</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>previousLink</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>path</span>: <span style=color:#ae81ff>previousLink</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>in</span>: <span style=color:#ae81ff>body</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>itemName</span>: <span style=color:#ae81ff>value</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>operationName</span>: <span style=color:#ae81ff>get</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>configuration</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>defaultSize</span>: <span style=color:#ae81ff>10</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>maxSize</span>: <span style=color:#ae81ff>100</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>maxItemsParameterName</span>: <span style=color:#ae81ff>maxItems</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>topParameterName</span>: <span style=color:#ae81ff>top</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>skipParameterName</span>: <span style=color:#ae81ff>skip</span>
+</span></span></code></pre></div></div><br><p class=heading>Last edited
+<a href=https://github.com/baywet/blogsource/commit/5eb85fe703904d7842207da379396fd438704e42>Oct 1, 2022</a> by <a href=https://github.com/baywet>Vincent Biret</a></p><br><div class=heading>Tags:</div><div class="field is-grouped is-grouped-multiline"><div class=control><a href=/tags/kiota><span class=tag>Kiota</span></a></div><div class=control><a href=/tags/openapi><span class=tag>Open API</span></a></div><div class=control><a href=/tags/rest><span class=tag>Rest</span></a></div><div class=control><a href=/tags/json-schema><span class=tag>JSON Schema</span></a></div><div class=control><a href=/tags/asc-2022-session-rundown><span class=tag>Asc 2022 Session Rundown</span></a></div></div></div></section><section class=section><div class=container><div class=level><div class=level-left><div class=level-item><p class="control has-addons"><a class=button href=https://baywet.github.io/lessons-from-api-client-generation-nullable/><span class="icon is-small"><i class="fa fa-chevron-left"></i></span>
+<span class="is-hidden-touch is-hidden-desktop-only">Lessons learned from API client generation - 07 Nullable</span>
+<span class="is-hidden-touch is-hidden-widescreen">Lessons learned from API client generation - 07 Nullable</span>
+<span class="is-hidden-mobile is-hidden-desktop">Lessons learned from API client generation - 07...</span>
+<span class=is-hidden-tablet>Lessons learned from API client...</span></a></p></div></div><div class=level-right><div class=level-item><p class="control has-addons"><a class=button href=https://baywet.github.io/lessons-from-api-client-generation-naming-conventions/><span class="is-hidden-touch is-hidden-desktop-only">Lessons learned from API client generation - 05 Naming conventions</span>
+<span class="is-hidden-touch is-hidden-widescreen">Lessons learned from API client generation - 05 Naming conventions</span>
+<span class="is-hidden-mobile is-hidden-desktop">Lessons learned from API client generation - 05...</span>
+<span class=is-hidden-tablet>Lessons learned from API client...</span>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span></a></p></div></div></div></div><br><br><div class=container><div id=disqus_thread></div><script>var disqus_config=function(){this.page.url="https://baywet.github.io/lessons-from-api-client-generation-pagin/",this.page.identifier=window.location.pathname};(function(){var e=document,t=e.createElement("script");t.src="https://baywet.disqus.com/embed.js",t.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(t)})()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div><br><div class=container><nav class=panel><p class=panel-heading>Related</p><a class=panel-block href=https://baywet.github.io/lessons-from-api-client-generation-naming-conventions/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>&nbsp;</span>
+<span>Lessons learned from API client generation - 05 Naming conventions&nbsp;<div class=tag>Kiota</div><div class=tag>Open API</div><div class=tag>Rest</div><div class=tag>JSON Schema</div><div class=tag>Asc 2022 Session Rundown</div></span></a><a class=panel-block href=https://baywet.github.io/lessons-from-api-client-generation-type-format/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>&nbsp;</span>
+<span>Lessons learned from API client generation - 04 Type and format&nbsp;<div class=tag>Kiota</div><div class=tag>Open API</div><div class=tag>Rest</div><div class=tag>JSON Schema</div><div class=tag>Asc 2022 Session Rundown</div></span></a><a class=panel-block href=https://baywet.github.io/lessons-from-api-client-generation-collections/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>&nbsp;</span>
+<span>Lessons learned from API client generation - 03 Collections&nbsp;<div class=tag>Kiota</div><div class=tag>Open API</div><div class=tag>Rest</div><div class=tag>JSON Schema</div><div class=tag>Asc 2022 Session Rundown</div></span></a><a class=panel-block href=https://baywet.github.io/lessons-from-api-client-generation-enums/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>&nbsp;</span>
+<span>Lessons learned from API client generation - 02 Enumerations&nbsp;<div class=tag>Kiota</div><div class=tag>Open API</div><div class=tag>Rest</div><div class=tag>JSON Schema</div><div class=tag>Asc 2022 Session Rundown</div></span></a><a class=panel-block href=https://baywet.github.io/lessons-from-api-client-generation-intro/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>&nbsp;</span>
+<span>Lessons learned from API client generation - 01 Introduction&nbsp;<div class=tag>Kiota</div><div class=tag>Open API</div><div class=tag>Rest</div><div class=tag>JSON Schema</div><div class=tag>Asc 2022 Session Rundown</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-cdc-2022/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>&nbsp;</span>
+<span>Speaking at Caribbean Developer Conference 2022&nbsp;<div class=tag>Kiota</div><div class=tag>Open API</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-collabdays-belgium-2022/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>&nbsp;</span>
+<span>Speaking at CollabDays Belgium 2022&nbsp;<div class=tag>Kiota</div><div class=tag>Open API</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-api-specification-conf-2022/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>&nbsp;</span>
+<span>Speaking at the API specification conference 2022&nbsp;<div class=tag>Kiota</div><div class=tag>Open API</div><div class=tag>JSON Schema</div></span></a></nav></div></section><footer class=footer><div class=container><nav class=level></nav><nav class=level><div class="level-left has-text-centered"><div class=level-item><form class="control has-icons has-icons-right" method=get action=https://bing.com><input class=input type=text name=q maxlength=255 placeholder=Search>
+<input class=input type=hidden name=sites value=https://baywet.github.io/>
+<span class="icon is-small is-right"><i class="fa fa-search"></i></span></form></div></div><div class="level-right has-text-centered"><div class=level-item><a class=button href=https://baywet.github.io/en><span class=icon><i class="fa fa-home"></i></span></a> &nbsp;
+<a class=button href><span class=icon><i class="fa fa-rss"></i></span></a></div></div></nav></div></footer><script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script></body></html>

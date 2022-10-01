@@ -1,0 +1,86 @@
+<!doctype html><html lang=en dir=ltr itemscope itemtype=https://schema.org/Article><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>Lessons learned from API client generation - 03 Collections</title><meta name=author content="Vincent Biret"><meta name=description content="Second pattern of our series: collections.
+components:
+  schemas:
+    Model:
+      type: object
+      properties:
+        stringArray:
+          type: array
+          items:
+            type: string..."><meta name=generator content="Hugo 0.104.2"><meta itemprop=name content="Lessons learned from API client generation - 03 Collections"><meta itemprop=description content="Second pattern of our series: collections.
+components:
+  schemas:
+    Model:
+      type: object
+      properties:
+        stringArray:
+          type: array
+          items:
+            type: string..."><meta itemprop=image content="/img/logo.svg"><meta property="og:title" content="Lessons learned from API client generation - 03 Collections"><meta property="og:type" content="article"><meta property="og:url" content="https://baywet.github.io/lessons-from-api-client-generation-collections/"><meta property="og:image" content="/img/logo.svg"><meta property="og:description" content="Second pattern of our series: collections.
+components:
+  schemas:
+    Model:
+      type: object
+      properties:
+        stringArray:
+          type: array
+          items:
+            type: string..."><meta property="og:site_name" content="Baywet's blog"><meta property="og:updated_time" content="2022-10-01T14:17:24-04:00"><meta property="article:published_time" content="2022-10-01T10:22:00+00:00"><meta property="article:modified_time" content="2022-10-01T14:17:24-04:00"><meta property="article:section" content><meta property="article:tag" content="kiota"><meta property="article:tag" content="OpenAPI"><meta property="article:tag" content="REST"><meta property="article:tag" content="JSON Schema"><meta property="article:tag" content="ASC 2022 session rundown"><meta name=twitter:card content="summary"><meta name=twitter:site content><meta name=twitter:title content="Lessons learned from API client generation - 03 Collections"><meta name=twitter:description content="Second pattern of our series: collections.
+components:
+  schemas:
+    Model:
+      type: object
+      properties:
+        stringArray:
+          type: array
+          items:
+            type: string..."><meta name=twitter:creator content><meta name=twitter:image:src content="/img/logo.svg"><link rel=stylesheet type=text/css href=/css/capsule.min.css><script>(function(e,t,n,s,o,i,a){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,i=t.createElement(n),a=t.getElementsByTagName(n)[0],i.async=1,i.src=s,a.parentNode.insertBefore(i,a)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-176061333-1","auto"),ga("send","pageview")</script><link rel=apple-touch-icon href=/img/apple-touch-icon.png><link rel=icon href=/img/favicon.ico></head><body style=min-height:100vh;display:flex;flex-direction:column><nav class="navbar has-shadow is-white" role=navigation aria-label="main navigation"><div class=container><div class=navbar-brand><a class=navbar-item href=/en><div class="title is-4">&nbsp;Baywet's blog</div></a><label class="button navbar-burger is-white" for=navbar-burger-state><span></span>
+<span></span>
+<span></span></label></div><input type=checkbox id=navbar-burger-state><div class=navbar-menu><div class=navbar-end><a class=navbar-item href=/fr>Français</a></div></div></div></nav><section class=section style=flex:1><div class=container><h1 class=title>Lessons learned from API client generation - 03 Collections</h1><p class=subtitle>Oct 1, 2022</p><div class=content><p>Second pattern of <a href=https://baywet.github.io/tags/asc-2022-session-rundown/>our series</a>: collections.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>components</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>schemas</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>Model</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>type</span>: <span style=color:#ae81ff>object</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>properties</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>stringArray</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>type</span>: <span style=color:#ae81ff>array</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>items</span>:
+</span></span><span style=display:flex><span>            <span style=color:#f92672>type</span>: <span style=color:#ae81ff>string</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>stringArrayNoType</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>items</span>:
+</span></span><span style=display:flex><span>            <span style=color:#f92672>type</span>: <span style=color:#ae81ff>string</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>arrayOfUnknown</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>type</span>: <span style=color:#ae81ff>array</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>items</span>: {}
+</span></span></code></pre></div><p>In the above snippet, <strong>stringArray</strong> describes an array of string values. While this works well for the purpose of generating code, it is not very specific. It is assumed that an array will be enough for the application developer, and while that might be the case, signaling generator whether to use a <em>basic</em> array or a more advanced data structure would help for scenarios where the client application cannot have duplicate entries, or needs to quickly find one of the entries, or needs to do some sorting, etc.</p><p><strong>StringArrayNoType</strong>, while valid for data validation purposes, makes for a more complex decision tree in the generator as the type is not set and we have to infer the use of a collection through the use of the items property.</p><p><strong>ArrayOfUnknown</strong> does not contain enough information for code generation, array of what exactly?</p><h2 id=suggestions>Suggestions</h2><p>We’ll need to add the placeholder for the missing information, we could add a <strong>collectionKind</strong> property for the items property in the OAS vocabulary. (array, hashset, list, default array). Which should not be a breaking change.</p><p>We can then make sure that API owners improve their descriptions through linting tools rules:</p><ul><li>Error when using the items property and the type is not set to array.</li><li>Error when using the items property and the items type is not set.</li><li>Warning when the collection kind is not set.</li></ul><p>Here is an example of what the solution would look like.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>components</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>schemas</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>Model</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>type</span>: <span style=color:#ae81ff>object</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>properties</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>stringArray</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>type</span>: <span style=color:#ae81ff>array</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>items</span>:
+</span></span><span style=display:flex><span>            <span style=color:#f92672>type</span>: <span style=color:#ae81ff>string</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>x-ms-collection-kind</span>: <span style=color:#ae81ff>array</span> <span style=color:#75715e># or hashset or list</span>
+</span></span></code></pre></div></div><br><p class=heading>Last edited
+<a href=https://github.com/baywet/blogsource/commit/5eb85fe703904d7842207da379396fd438704e42>Oct 1, 2022</a> by <a href=https://github.com/baywet>Vincent Biret</a></p><br><div class=heading>Tags:</div><div class="field is-grouped is-grouped-multiline"><div class=control><a href=/tags/kiota><span class=tag>Kiota</span></a></div><div class=control><a href=/tags/openapi><span class=tag>Open API</span></a></div><div class=control><a href=/tags/rest><span class=tag>Rest</span></a></div><div class=control><a href=/tags/json-schema><span class=tag>JSON Schema</span></a></div><div class=control><a href=/tags/asc-2022-session-rundown><span class=tag>Asc 2022 Session Rundown</span></a></div></div></div></section><section class=section><div class=container><div class=level><div class=level-left><div class=level-item><p class="control has-addons"><a class=button href=https://baywet.github.io/lessons-from-api-client-generation-type-format/><span class="icon is-small"><i class="fa fa-chevron-left"></i></span>
+<span class="is-hidden-touch is-hidden-desktop-only">Lessons learned from API client generation - 04 Type and format</span>
+<span class="is-hidden-touch is-hidden-widescreen">Lessons learned from API client generation - 04 Type and format</span>
+<span class="is-hidden-mobile is-hidden-desktop">Lessons learned from API client generation - 04...</span>
+<span class=is-hidden-tablet>Lessons learned from API client...</span></a></p></div></div><div class=level-right><div class=level-item><p class="control has-addons"><a class=button href=https://baywet.github.io/lessons-from-api-client-generation-enums/><span class="is-hidden-touch is-hidden-desktop-only">Lessons learned from API client generation - 02 Enumerations</span>
+<span class="is-hidden-touch is-hidden-widescreen">Lessons learned from API client generation - 02 Enumerations</span>
+<span class="is-hidden-mobile is-hidden-desktop">Lessons learned from API client generation - 02...</span>
+<span class=is-hidden-tablet>Lessons learned from API client...</span>
+<span class="icon is-small"><i class="fa fa-chevron-right"></i></span></a></p></div></div></div></div><br><br><div class=container><div id=disqus_thread></div><script>var disqus_config=function(){this.page.url="https://baywet.github.io/lessons-from-api-client-generation-collections/",this.page.identifier=window.location.pathname};(function(){var e=document,t=e.createElement("script");t.src="https://baywet.disqus.com/embed.js",t.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(t)})()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div><br><div class=container><nav class=panel><p class=panel-heading>Related</p><a class=panel-block href=https://baywet.github.io/lessons-from-api-client-generation-enums/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>&nbsp;</span>
+<span>Lessons learned from API client generation - 02 Enumerations&nbsp;<div class=tag>Kiota</div><div class=tag>Open API</div><div class=tag>Rest</div><div class=tag>JSON Schema</div><div class=tag>Asc 2022 Session Rundown</div></span></a><a class=panel-block href=https://baywet.github.io/lessons-from-api-client-generation-intro/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>&nbsp;</span>
+<span>Lessons learned from API client generation - 01 Introduction&nbsp;<div class=tag>Kiota</div><div class=tag>Open API</div><div class=tag>Rest</div><div class=tag>JSON Schema</div><div class=tag>Asc 2022 Session Rundown</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-cdc-2022/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>&nbsp;</span>
+<span>Speaking at Caribbean Developer Conference 2022&nbsp;<div class=tag>Kiota</div><div class=tag>Open API</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-collabdays-belgium-2022/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>&nbsp;</span>
+<span>Speaking at CollabDays Belgium 2022&nbsp;<div class=tag>Kiota</div><div class=tag>Open API</div></span></a><a class=panel-block href=https://baywet.github.io/speaking-at-api-specification-conf-2022/><span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
+<span>&nbsp;</span>
+<span>Speaking at the API specification conference 2022&nbsp;<div class=tag>Kiota</div><div class=tag>Open API</div><div class=tag>JSON Schema</div></span></a></nav></div></section><footer class=footer><div class=container><nav class=level></nav><nav class=level><div class="level-left has-text-centered"><div class=level-item><form class="control has-icons has-icons-right" method=get action=https://bing.com><input class=input type=text name=q maxlength=255 placeholder=Search>
+<input class=input type=hidden name=sites value=https://baywet.github.io/>
+<span class="icon is-small is-right"><i class="fa fa-search"></i></span></form></div></div><div class="level-right has-text-centered"><div class=level-item><a class=button href=https://baywet.github.io/en><span class=icon><i class="fa fa-home"></i></span></a> &nbsp;
+<a class=button href><span class=icon><i class="fa fa-rss"></i></span></a></div></div></nav></div></footer><script id=dsq-count-scr src=//baywet.disqus.com/count.js async></script></body></html>
