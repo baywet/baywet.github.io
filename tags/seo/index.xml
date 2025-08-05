@@ -1,4 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Seo on Baywet's blog</title><link>https://baywet.github.io/tags/seo/</link><description>Recent content in Seo on Baywet's blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>vbiret+blog@outlook.com (Vincent Biret)</managingEditor><webMaster>vbiret+blog@outlook.com (Vincent Biret)</webMaster><lastBuildDate>Mon, 15 Apr 2024 10:13:42 -0400</lastBuildDate><atom:link href="https://baywet.github.io/tags/seo/index.xml" rel="self" type="application/rss+xml"/><item><title>Disabling SharePoint’s SEO features</title><link>https://baywet.github.io/disabling-sharepoints-seo-feat/</link><pubDate>Tue, 03 Nov 2015 14:00:00 +0000</pubDate><author>vbiret+blog@outlook.com (Vincent Biret)</author><guid>https://baywet.github.io/disabling-sharepoints-seo-feat/</guid><description>I recently had a customer who wanted to disable SharePoint’s native SEO capabilities (Search Engine Optimization) including:
-Sitemap generation Canonical url generation Metadata generation on pages Explicit titles generation Etc The main reason was he had very specific needs and wanted to implement his own custom SEO features.
-The thing is that feature is hidden and enabled by default for any publishing site.
-The simplest way to disable it then is using powershell, here is the command in case anyone else needs it.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Seo on Baywet's blog</title><link>https://baywet.github.io/tags/seo/</link><description>Recent content in Seo on Baywet's blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Tue, 05 Aug 2025 11:06:28 -0400</lastBuildDate><atom:link href="https://baywet.github.io/tags/seo/index.xml" rel="self" type="application/rss+xml"/><item><title>Disabling SharePoint’s SEO features</title><link>https://baywet.github.io/disabling-sharepoints-seo-feat/</link><pubDate>Tue, 03 Nov 2015 14:00:00 +0000</pubDate><guid>https://baywet.github.io/disabling-sharepoints-seo-feat/</guid><description>&lt;p>I recently had a customer who wanted to disable SharePoint’s native SEO capabilities (Search Engine Optimization) including:&lt;/p>
+&lt;ul>
+&lt;li>Sitemap generation&lt;/li>
+&lt;li>Canonical url generation&lt;/li>
+&lt;li>Metadata generation on pages&lt;/li>
+&lt;li>Explicit titles generation&lt;/li>
+&lt;li>Etc&lt;/li>
+&lt;/ul>
+&lt;p>The main reason was he had very specific needs and wanted to implement his own custom SEO features.&lt;/p>
+&lt;p>The thing is that feature is hidden and enabled by default for any publishing site.&lt;/p>
+&lt;p>The simplest way to disable it then is using powershell, here is the command in case anyone else needs it.&lt;/p></description></item></channel></rss>

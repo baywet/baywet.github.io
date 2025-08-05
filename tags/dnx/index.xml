@@ -1,19 +1,32 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Dnx on Baywet's blog</title><link>https://baywet.github.io/tags/dnx/</link><description>Recent content in Dnx on Baywet's blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>vbiret+blog@outlook.com (Vincent Biret)</managingEditor><webMaster>vbiret+blog@outlook.com (Vincent Biret)</webMaster><lastBuildDate>Mon, 15 Apr 2024 10:13:42 -0400</lastBuildDate><atom:link href="https://baywet.github.io/tags/dnx/index.xml" rel="self" type="application/rss+xml"/><item><title>New tasks to build/release dotnetcore project with vsts</title><link>https://baywet.github.io/new-tasks-to-buildrelease-dotn/</link><pubDate>Wed, 10 Aug 2016 14:02:00 +0000</pubDate><author>vbiret+blog@outlook.com (Vincent Biret)</author><guid>https://baywet.github.io/new-tasks-to-buildrelease-dotn/</guid><description>A few months ago I wrote a series of articles on how to set up a release pipeline for dnx/dotnetcore projects with vsts targeting azure web apps.
-This series would require you to use a few scripts to build and publish the website executing them using powershell tasks in the build definition.
-You don’t need to do that anymore because two new extensions are available on the marketplace:
-I’ve been able to replace most of my scripts using VSTS DNX Tasks</description></item><item><title>Units tests using xUnit and Visual Studio Team Services for DNX projects</title><link>https://baywet.github.io/units-tests-using-xunit-and-vi/</link><pubDate>Tue, 01 Mar 2016 14:00:00 +0000</pubDate><author>vbiret+blog@outlook.com (Vincent Biret)</author><guid>https://baywet.github.io/units-tests-using-xunit-and-vi/</guid><description>Introduction DNX will soon be released and there’ll be a growing number of developers wanting to write unit tests to improve the quality of developments.
-Ideally you’d like to run these unit tests in a continuous integration process in order to make sure you didn’t introduce any regression/bug or degraded performances.
-In .NET world you have many tools to write unit tests:
-MSTest/VSTest
-NUnit
-xUnit
-…
-(a non-exhaustive list https://en.wikipedia.org/wiki/List_of_unit_testing_frameworks#C.23 )</description></item><item><title>Error publishing asp.net 5 (core) websites to Azure</title><link>https://baywet.github.io/error-publishing-aspnet-5-core/</link><pubDate>Tue, 23 Feb 2016 14:00:00 +0000</pubDate><author>vbiret+blog@outlook.com (Vincent Biret)</author><guid>https://baywet.github.io/error-publishing-aspnet-5-core/</guid><description>If you’re doing asp.net core development and if you’re trying to publish your website to an azure website you might run into the following error when implementing this documentation.
-https://msdn.microsoft.com/en-us/Library/vs/alm/Build/azure/deploy-aspnet5?f=255&amp;amp;MSPPError=-2147217396
-[error]Error: The specified credentials cannot be used with the authentication scheme &amp;lsquo;Basic&amp;rsquo;.
-[error]Error: Default credentials cannot be supplied for the Basic authentication scheme.
-[error]Parameter name: authType
-This comes from the fact the provided script doesn’t support azure websies with multiple deployment slots.</description></item><item><title>Building DNX projects using home installed build agent (TFS, VSTS)</title><link>https://baywet.github.io/building-dnx-projects-using-ho/</link><pubDate>Fri, 19 Feb 2016 14:00:00 +0000</pubDate><author>vbiret+blog@outlook.com (Vincent Biret)</author><guid>https://baywet.github.io/building-dnx-projects-using-ho/</guid><description>With DNX/DNU soon to be RTM there’ll be more and more developers eagers to build and deploy ASP.NET core 1 (formerly ASP.NET MVC 5) projects.
-If the procedure is well described when you are using hosted agents (the ones microsoft runs for you on Azure), it’s a little more complex when you want to do it on a local agent.
-https://msdn.microsoft.com/en-us/Library/vs/alm/Build/azure/deploy-aspnet5?f=255&amp;amp;MSPPError=-2147217396
-On your agent’s machine you installed and updated visual studio and all the tools right?</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Dnx on Baywet's blog</title><link>https://baywet.github.io/tags/dnx/</link><description>Recent content in Dnx on Baywet's blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Tue, 05 Aug 2025 11:06:28 -0400</lastBuildDate><atom:link href="https://baywet.github.io/tags/dnx/index.xml" rel="self" type="application/rss+xml"/><item><title>New tasks to build/release dotnetcore project with vsts</title><link>https://baywet.github.io/new-tasks-to-buildrelease-dotn/</link><pubDate>Wed, 10 Aug 2016 14:02:00 +0000</pubDate><guid>https://baywet.github.io/new-tasks-to-buildrelease-dotn/</guid><description>&lt;p>A few months ago I wrote a series of articles on how to set up a release pipeline for dnx/dotnetcore projects with vsts targeting azure web apps.&lt;/p>
+&lt;p>This series would require you to use a few scripts to build and publish the website executing them using powershell tasks in the build definition.&lt;/p>
+&lt;p>You don’t need to do that anymore because two new extensions are available on the marketplace:&lt;/p>
+&lt;p>&lt;img src="https://baywet.github.io/new-tasks-to-buildrelease-dotn/59.png" alt="59.png">&lt;/p>
+&lt;p>I’ve been able to replace most of my scripts using VSTS DNX Tasks&lt;/p></description></item><item><title>Units tests using xUnit and Visual Studio Team Services for DNX projects</title><link>https://baywet.github.io/units-tests-using-xunit-and-vi/</link><pubDate>Tue, 01 Mar 2016 14:00:00 +0000</pubDate><guid>https://baywet.github.io/units-tests-using-xunit-and-vi/</guid><description>&lt;h2 id="introduction">Introduction&lt;/h2>
+&lt;p>DNX will soon be released and there’ll be a growing number of developers wanting to write unit tests to improve the quality of developments.&lt;/p>
+&lt;p>Ideally you’d like to run these unit tests in a continuous integration process in order to make sure you didn’t introduce any regression/bug or degraded performances.&lt;/p>
+&lt;p>In .NET world you have many tools to write unit tests:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>MSTest/VSTest&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>NUnit&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>xUnit&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>…&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>(a non-exhaustive list &lt;a href="https://en.wikipedia.org/wiki/List_of_unit_testing_frameworks#C.23">https://en.wikipedia.org/wiki/List_of_unit_testing_frameworks#C.23&lt;/a> )&lt;/p>
+&lt;p>In our case we chose to use xUnit because it is widely used and supported by the community, and it’s one of the few to support DNX at the moment.&lt;/p></description></item><item><title>Error publishing asp.net 5 (core) websites to Azure</title><link>https://baywet.github.io/error-publishing-aspnet-5-core/</link><pubDate>Tue, 23 Feb 2016 14:00:00 +0000</pubDate><guid>https://baywet.github.io/error-publishing-aspnet-5-core/</guid><description>&lt;p>If you’re doing asp.net core development and if you’re trying to publish your website to an azure website you might run into the following error when implementing this documentation.&lt;/p>
+&lt;p>&lt;a href="https://msdn.microsoft.com/en-us/Library/vs/alm/Build/azure/deploy-aspnet5?f=255&amp;amp;MSPPError=-2147217396">https://msdn.microsoft.com/en-us/Library/vs/alm/Build/azure/deploy-aspnet5?f=255&amp;amp;MSPPError=-2147217396&lt;/a>&lt;/p>
+&lt;p>[error]Error: The specified credentials cannot be used with the authentication scheme &amp;lsquo;Basic&amp;rsquo;.&lt;/p>
+&lt;p>[error]Error: Default credentials cannot be supplied for the Basic authentication scheme.&lt;/p>
+&lt;p>[error]Parameter name: authType&lt;/p>
+&lt;p>This comes from the fact the provided script doesn’t support azure websies with multiple deployment slots.&lt;/p></description></item><item><title>Building DNX projects using home installed build agent (TFS, VSTS)</title><link>https://baywet.github.io/building-dnx-projects-using-ho/</link><pubDate>Fri, 19 Feb 2016 14:00:00 +0000</pubDate><guid>https://baywet.github.io/building-dnx-projects-using-ho/</guid><description>&lt;p>With DNX/DNU soon to be RTM there’ll be more and more developers eagers to build and deploy ASP.NET core 1 (formerly ASP.NET MVC 5) projects.&lt;/p>
+&lt;p>If the procedure is well described when you are using hosted agents (the ones microsoft runs for you on Azure), it’s a little more complex when you want to do it on a local agent.&lt;/p>
+&lt;p>&lt;a href="https://msdn.microsoft.com/en-us/Library/vs/alm/Build/azure/deploy-aspnet5?f=255&amp;amp;MSPPError=-2147217396">https://msdn.microsoft.com/en-us/Library/vs/alm/Build/azure/deploy-aspnet5?f=255&amp;amp;MSPPError=-2147217396&lt;/a>&lt;/p>
+&lt;p>On your agent’s machine you installed and updated visual studio and all the tools right?&lt;/p></description></item></channel></rss>
