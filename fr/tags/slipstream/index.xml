@@ -1,29 +1,29 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Slipstream on Le blog de baywet</title><link>https://baywet.github.io/fr/tags/slipstream/</link><description>Recent content in Slipstream on Le blog de baywet</description><generator>Hugo</generator><language>fr</language><lastBuildDate>Tue, 12 Aug 2025 07:59:57 -0400</lastBuildDate><atom:link href="https://baywet.github.io/fr/tags/slipstream/index.xml" rel="self" type="application/rss+xml"/><item><title>Industrialisation des installations de ferme SharePoint 2010(CU, SP, Langues, SlipStream) Part 3</title><link>https://baywet.github.io/fr/industrialisation-des-installa-2011-07-06-16-42-00/</link><pubDate>Wed, 06 Jul 2011 16:42:00 +0000</pubDate><guid>https://baywet.github.io/fr/industrialisation-des-installa-2011-07-06-16-42-00/</guid><description>&lt;p>Troisième partie, celle qui vous intéresse surement le plus, slipstream des Mises à jours, service packs et packs de langues&lt;/p>
-&lt;p>Premier point, les mises à jour cumulatives et hotfix. il ne faut pas les installer si vous installez un service pack plus récent (qui les contiendra)&lt;/p>
-&lt;p>Les mises à jour peuvent être soit multilingues (globales donc, une seule installation), soit régionalisées, auquel cas il faut les télécharger et installer autant de fois que de langues installées.&lt;/p></description></item><item><title>Industrialisation des installations de ferme SharePoint 2010(CU, SP, Langues, SlipStream) Part 2</title><link>https://baywet.github.io/fr/industrialisation-des-installa-2011-07-06-16-11-00/</link><pubDate>Wed, 06 Jul 2011 16:11:00 +0000</pubDate><guid>https://baywet.github.io/fr/industrialisation-des-installa-2011-07-06-16-11-00/</guid><description>&lt;p>Deuxième partie en 2 étapes, les prérequis en mode offline et les mises à jour supplémentaires.&lt;/p>
-&lt;ol>
-&lt;li>La première étape consiste à copier le contenu de votre source d’installation dans un répertoire.&lt;/li>
-&lt;/ol>
-&lt;p>Deux solutions :&lt;/p>
-&lt;ul>
-&lt;li>
-&lt;p>Soit vous avez un cd et un simple copier/coller suffit&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Soit vous avez l’installeur (exe) et il vous suffit de le lancer en commande avec le commutateur /extract:RepertoireDeDestination&lt;/p>
-&lt;/li>
-&lt;/ul>
-&lt;ol start="2">
-&lt;li>La seconde étape consiste à télécharger et à paramétrer l’installeur de pré-requis pour qu’il utilise des sources locales (note, si vous savez que vos plateformes auront toujours un accès direct à internet lors des installations, vous pouvez passer cette étape)&lt;/li>
-&lt;/ol>
-&lt;p>Pour cela cet article &lt;a href="https://technet.microsoft.com/en-us/library/ff686793.aspx">https://technet.microsoft.com/en-us/library/ff686793.aspx&lt;/a> nous indique la marche à suivre, mais je suis gentil je vous ai déjà fait le travail.&lt;/p></description></item><item><title>Industrialisation des installations de ferme SharePoint 2010(CU, SP, Langues, SlipStream) Part 1</title><link>https://baywet.github.io/fr/industrialisation-des-installa-2011-07-06-15-47-00/</link><pubDate>Wed, 06 Jul 2011 15:47:00 +0000</pubDate><guid>https://baywet.github.io/fr/industrialisation-des-installa-2011-07-06-15-47-00/</guid><description>&lt;p>Le Service Pack 1 de SharePoint Server &amp;amp; Foundation vient de sortir (&lt;a href="../sp1-pour-sharepoint-2010">voir mon précédent post&lt;/a>) et déployer une ferme devient fastidieux, d’autant plus quand on a du support multilingue à effectuer.&lt;/p>
-&lt;p>Je vous propose de vous mâcher le travail en vous montrant comment créer une source d’installation qui intégrera :&lt;/p>
-&lt;ul>
-&lt;li>
-&lt;p>Les packs de langues (slipstream)&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Des Updates fortement recommandés&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Les prerequis en mode offline (pour les fermes déconnectées d’internet comme cela arrive souvent)&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Slipstream on Le blog de baywet</title><link>https://baywet.github.io/fr/tags/slipstream/</link><description>Recent content in Slipstream on Le blog de baywet</description><generator>Hugo</generator><language>fr</language><lastBuildDate>Thu, 20 Nov 2025 20:13:02 -0500</lastBuildDate><atom:link href="https://baywet.github.io/fr/tags/slipstream/index.xml" rel="self" type="application/rss+xml"/><item><title>Industrialisation des installations de ferme SharePoint 2010(CU, SP, Langues, SlipStream) Part 3</title><link>https://baywet.github.io/fr/industrialisation-des-installa-2011-07-06-16-42-00/</link><pubDate>Wed, 06 Jul 2011 16:42:00 +0000</pubDate><guid>https://baywet.github.io/fr/industrialisation-des-installa-2011-07-06-16-42-00/</guid><description>&lt;p&gt;Troisième partie, celle qui vous intéresse surement le plus, slipstream des Mises à jours, service packs et packs de langues&lt;/p&gt;
+&lt;p&gt;Premier point, les mises à jour cumulatives et hotfix. il ne faut pas les installer si vous installez un service pack plus récent (qui les contiendra)&lt;/p&gt;
+&lt;p&gt;Les mises à jour peuvent être soit multilingues (globales donc, une seule installation), soit régionalisées, auquel cas il faut les télécharger et installer autant de fois que de langues installées.&lt;/p&gt;</description></item><item><title>Industrialisation des installations de ferme SharePoint 2010(CU, SP, Langues, SlipStream) Part 2</title><link>https://baywet.github.io/fr/industrialisation-des-installa-2011-07-06-16-11-00/</link><pubDate>Wed, 06 Jul 2011 16:11:00 +0000</pubDate><guid>https://baywet.github.io/fr/industrialisation-des-installa-2011-07-06-16-11-00/</guid><description>&lt;p&gt;Deuxième partie en 2 étapes, les prérequis en mode offline et les mises à jour supplémentaires.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;La première étape consiste à copier le contenu de votre source d’installation dans un répertoire.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Deux solutions :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Soit vous avez un cd et un simple copier/coller suffit&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Soit vous avez l’installeur (exe) et il vous suffit de le lancer en commande avec le commutateur /extract:RepertoireDeDestination&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;La seconde étape consiste à télécharger et à paramétrer l’installeur de pré-requis pour qu’il utilise des sources locales (note, si vous savez que vos plateformes auront toujours un accès direct à internet lors des installations, vous pouvez passer cette étape)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Pour cela cet article &lt;a href="https://technet.microsoft.com/en-us/library/ff686793.aspx"&gt;https://technet.microsoft.com/en-us/library/ff686793.aspx&lt;/a&gt; nous indique la marche à suivre, mais je suis gentil je vous ai déjà fait le travail.&lt;/p&gt;</description></item><item><title>Industrialisation des installations de ferme SharePoint 2010(CU, SP, Langues, SlipStream) Part 1</title><link>https://baywet.github.io/fr/industrialisation-des-installa-2011-07-06-15-47-00/</link><pubDate>Wed, 06 Jul 2011 15:47:00 +0000</pubDate><guid>https://baywet.github.io/fr/industrialisation-des-installa-2011-07-06-15-47-00/</guid><description>&lt;p&gt;Le Service Pack 1 de SharePoint Server &amp;amp; Foundation vient de sortir (&lt;a href="../sp1-pour-sharepoint-2010"&gt;voir mon précédent post&lt;/a&gt;) et déployer une ferme devient fastidieux, d’autant plus quand on a du support multilingue à effectuer.&lt;/p&gt;
+&lt;p&gt;Je vous propose de vous mâcher le travail en vous montrant comment créer une source d’installation qui intégrera :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Les packs de langues (slipstream)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Des Updates fortement recommandés&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Les prerequis en mode offline (pour les fermes déconnectées d’internet comme cela arrive souvent)&lt;/p&gt;</description></item></channel></rss>

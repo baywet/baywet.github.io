@@ -1,17 +1,17 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Prerequisites on Le blog de baywet</title><link>https://baywet.github.io/fr/tags/prerequisites/</link><description>Recent content in Prerequisites on Le blog de baywet</description><generator>Hugo</generator><language>fr</language><lastBuildDate>Tue, 12 Aug 2025 07:59:57 -0400</lastBuildDate><atom:link href="https://baywet.github.io/fr/tags/prerequisites/index.xml" rel="self" type="application/rss+xml"/><item><title>Industrialisation des installations de ferme SharePoint 2010(CU, SP, Langues, SlipStream) Part 2</title><link>https://baywet.github.io/fr/industrialisation-des-installa-2011-07-06-16-11-00/</link><pubDate>Wed, 06 Jul 2011 16:11:00 +0000</pubDate><guid>https://baywet.github.io/fr/industrialisation-des-installa-2011-07-06-16-11-00/</guid><description>&lt;p>Deuxième partie en 2 étapes, les prérequis en mode offline et les mises à jour supplémentaires.&lt;/p>
-&lt;ol>
-&lt;li>La première étape consiste à copier le contenu de votre source d’installation dans un répertoire.&lt;/li>
-&lt;/ol>
-&lt;p>Deux solutions :&lt;/p>
-&lt;ul>
-&lt;li>
-&lt;p>Soit vous avez un cd et un simple copier/coller suffit&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Soit vous avez l’installeur (exe) et il vous suffit de le lancer en commande avec le commutateur /extract:RepertoireDeDestination&lt;/p>
-&lt;/li>
-&lt;/ul>
-&lt;ol start="2">
-&lt;li>La seconde étape consiste à télécharger et à paramétrer l’installeur de pré-requis pour qu’il utilise des sources locales (note, si vous savez que vos plateformes auront toujours un accès direct à internet lors des installations, vous pouvez passer cette étape)&lt;/li>
-&lt;/ol>
-&lt;p>Pour cela cet article &lt;a href="https://technet.microsoft.com/en-us/library/ff686793.aspx">https://technet.microsoft.com/en-us/library/ff686793.aspx&lt;/a> nous indique la marche à suivre, mais je suis gentil je vous ai déjà fait le travail.&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Prerequisites on Le blog de baywet</title><link>https://baywet.github.io/fr/tags/prerequisites/</link><description>Recent content in Prerequisites on Le blog de baywet</description><generator>Hugo</generator><language>fr</language><lastBuildDate>Thu, 20 Nov 2025 20:13:02 -0500</lastBuildDate><atom:link href="https://baywet.github.io/fr/tags/prerequisites/index.xml" rel="self" type="application/rss+xml"/><item><title>Industrialisation des installations de ferme SharePoint 2010(CU, SP, Langues, SlipStream) Part 2</title><link>https://baywet.github.io/fr/industrialisation-des-installa-2011-07-06-16-11-00/</link><pubDate>Wed, 06 Jul 2011 16:11:00 +0000</pubDate><guid>https://baywet.github.io/fr/industrialisation-des-installa-2011-07-06-16-11-00/</guid><description>&lt;p&gt;Deuxième partie en 2 étapes, les prérequis en mode offline et les mises à jour supplémentaires.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;La première étape consiste à copier le contenu de votre source d’installation dans un répertoire.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Deux solutions :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Soit vous avez un cd et un simple copier/coller suffit&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Soit vous avez l’installeur (exe) et il vous suffit de le lancer en commande avec le commutateur /extract:RepertoireDeDestination&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;La seconde étape consiste à télécharger et à paramétrer l’installeur de pré-requis pour qu’il utilise des sources locales (note, si vous savez que vos plateformes auront toujours un accès direct à internet lors des installations, vous pouvez passer cette étape)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Pour cela cet article &lt;a href="https://technet.microsoft.com/en-us/library/ff686793.aspx"&gt;https://technet.microsoft.com/en-us/library/ff686793.aspx&lt;/a&gt; nous indique la marche à suivre, mais je suis gentil je vous ai déjà fait le travail.&lt;/p&gt;</description></item></channel></rss>

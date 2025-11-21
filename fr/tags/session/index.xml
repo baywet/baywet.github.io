@@ -1,99 +1,99 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Session on Le blog de baywet</title><link>https://baywet.github.io/fr/tags/session/</link><description>Recent content in Session on Le blog de baywet</description><generator>Hugo</generator><language>fr</language><lastBuildDate>Tue, 12 Aug 2025 07:59:57 -0400</lastBuildDate><atom:link href="https://baywet.github.io/fr/tags/session/index.xml" rel="self" type="application/rss+xml"/><item><title>Global Azure Bootcamp 2017 – Edition de Montréal</title><link>https://baywet.github.io/fr/global-azure-bootcamp-2017-ed/</link><pubDate>Thu, 20 Apr 2017 23:30:00 +0000</pubDate><guid>https://baywet.github.io/fr/global-azure-bootcamp-2017-ed/</guid><description>&lt;p>Chaque année Microsoft organise in évènement mondial sur Azure. La particularité de cet évènement c’est qu’il dure 24h et est représenté localement dans le monde entier par les groupes usagers.&lt;/p>
-&lt;p>Le groupe MSDevMtl en organise un chez Microsoft Montréal (2000 McGill College) le 22 Avril (Samedi).&lt;/p>
-&lt;p>Au programme :&lt;/p>
-&lt;ul>
-&lt;li>
-&lt;p>Le portail Azure&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Web Apps&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Stockage&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Fonctions&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Cognitive Services&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>DocumentDB&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Application Insights&lt;/p>
-&lt;/li>
-&lt;/ul>
-&lt;p>La journée est animée par des conférenciers de Microsoft et des MVP et sera en Français&lt;/p></description></item><item><title>Conférencier au SharePoint Saturday New Hampshire 2015</title><link>https://baywet.github.io/fr/conferencier-au-sharepoint-sat-2015-10-23-14-00-00/</link><pubDate>Fri, 23 Oct 2015 14:00:00 +0000</pubDate><guid>https://baywet.github.io/fr/conferencier-au-sharepoint-sat-2015-10-23-14-00-00/</guid><description>&lt;p>Cette année encore j’ai l’occasion d’être conférencier au SPS de Nashua (New Hampshire). J’animerai cette fois une session autour du de multilinguisme dans SharePoint « Translating SharePoint from beginning to ending » (en anglais donc).&lt;/p>
-&lt;p>Nous y parlerons des options pour gérer le multilinguisme dans SharePoint et de comment effectuer une implémentation réussie.&lt;/p>
-&lt;p>Si vous êtes dans le coin le Samedi 24 Octobre 2015 n’hésitez pas à vous inscrire et à participer. Pour rappel les SPS ce sont des évènements gratuits organisés par la communauté avec des sessions de qualité. Une très bonne occasion de réseauter, d’apprendre plein de choses et de passer une bonne journée.&lt;/p></description></item><item><title>Conférencier au MSDEVMTL – Développement office 365</title><link>https://baywet.github.io/fr/conferencier-au-msdevmtl-deve/</link><pubDate>Wed, 27 May 2015 14:30:00 +0000</pubDate><guid>https://baywet.github.io/fr/conferencier-au-msdevmtl-deve/</guid><description>&lt;p>Le 8 Juin prochain j’aurai l’occasion d’intervenir au MSDEVMTL pour parler du développement office.&lt;/p>
-&lt;p>Au programme :&lt;/p>
-&lt;ul>
-&lt;li>Opportunités&lt;/li>
-&lt;li>Développement Office&lt;/li>
-&lt;li>Développement SharePoint&lt;/li>
-&lt;li>Développement Office 365&lt;/li>
-&lt;/ul>
-&lt;p>L’objectif étant de démontrer que le développement office/office 365/SharePoint a bien évolué ces dernières années aux développeurs .NET « classiques » et que les méthodologies de développement sont bien plus similaires à ce qu’ils connaissent.&lt;/p>
-&lt;p>Quand on parle de développement office (au sens large) c’est un marché de 1.4 milliards de clients potentiels dont on parle, une opportunité à ne pas rater à mon sens.&lt;/p></description></item><item><title>Conférencier au SharePoint Saturday Montréal 2015</title><link>https://baywet.github.io/fr/conferencier-au-sharepoint-sat-2015-05-21-00-49-38/</link><pubDate>Thu, 21 May 2015 00:49:38 +0000</pubDate><guid>https://baywet.github.io/fr/conferencier-au-sharepoint-sat-2015-05-21-00-49-38/</guid><description>&lt;p>Cette année encore j’aurai l’honneur d’être conférencier au SharePoint Saturday de Montréal &lt;a href="../sharepoint-saturday-montreal-2">sharepoint-saturday-montreal-2&lt;/a>&lt;/p>
-&lt;p>J’ai aussi eu l’occasion d’aider à l’organisation aussi cette année, c’est une expérience intéressante et je tiens à remercier Serge, Nico, Luc, Philippe, Seb, Fabrice et Alain pour leur implication sur le projet, c’est beaucoup plus de travail qu’on imagine !&lt;/p>
-&lt;p>Ma présentation sera à propos de l’importance des métadonnées en entreprise.&lt;/p>
-&lt;p>Nous allons commencer par effectuer un rappel théorique des différents types de métadonnées et quels sont les avantages et inconvénients de chacun. Ensuite nous verrons ce qui est supporté par SharePoint et quels sont les outils existants à disposition. Enfin nous terminerons avec l’importance de la mise en place de ces outils en entreprise et comment ils vont vous aider à effectuer une transition vers le Graph et améliorer la trouvabilité du contenu.&lt;/p></description></item><item><title>Conférencier au SPBizConf</title><link>https://baywet.github.io/fr/conferencier-au-spbizconf/</link><pubDate>Tue, 19 May 2015 22:57:05 +0000</pubDate><guid>https://baywet.github.io/fr/conferencier-au-spbizconf/</guid><description>&lt;p>Les 17 et 18 Juin 2015 se déroulera la spbizconf (&lt;a href="https://www.spbizconf.com/">https://www.spbizconf.com/&lt;/a> )&lt;/p>
-&lt;p>Cette conférence orientée principalement business (avec un peu de technique aussi) est gratuite, en ligne et se déroulera en Anglais.&lt;/p>
-&lt;p>Allez vite vous inscrire !&lt;/p>
-&lt;p>Pour ma part j’aurais la chance d’animer une session sur le Graph. On va faire un peu de théorie pour bien poser les bases, parler du Graph de Microsoft et de la vision puis finir par les cas d’utilisation réels et expliquer ce à quoi ça pourrait servir dans votre entreprise.&lt;/p></description></item><item><title>Ignite – Annonce des conférenciers et liste complète des sessions</title><link>https://baywet.github.io/fr/ignite-annonce-des-conferenci/</link><pubDate>Mon, 02 Mar 2015 22:53:42 +0000</pubDate><guid>https://baywet.github.io/fr/ignite-annonce-des-conferenci/</guid><description>&lt;p>Microsoft vient d’annoncer la liste complète des sessions, des conférenciers ainsi que le planning de l’ignite qui se tiendra à Chicago du 4 au 8 Mai prochains.&lt;/p>
-&lt;p>Pour plus de détails : &lt;a href="https://ignite.microsoft.com/Sessions#fbid=mGcNAILg5r6">https://ignite.microsoft.com/Sessions#fbid=mGcNAILg5r6&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://blogs.technet.com/b/exchange/archive/2015/03/02/be-the-first-to-learn-what-s-next-for-exchange-and-office-365-at-microsoft-ignite-full-session-list-now-available.aspx">https://blogs.technet.com/b/exchange/archive/2015/03/02/be-the-first-to-learn-what-s-next-for-exchange-and-office-365-at-microsoft-ignite-full-session-list-now-available.aspx&lt;/a>&lt;/p>
-&lt;p>Quelques rappels sur l’Ignite : &lt;a href="../evenements-annonce-des-sessi">evenements-annonce-des-sessi&lt;/a>&lt;/p></description></item><item><title>Evènements - Annonce des sessions de l’Ignite</title><link>https://baywet.github.io/fr/evenements-annonce-des-sessi/</link><pubDate>Thu, 29 Jan 2015 02:31:08 +0000</pubDate><guid>https://baywet.github.io/fr/evenements-annonce-des-sessi/</guid><description>&lt;p>Si vous ne le saviez pas déjà, Microsoft va organiser une conférence du 4 au 8 Mai à Chicago. Cette conférence va regrouper la SharePoint, Exchange, Lync, Project conférence ainsi que les teched nord Amérique. Nous y retrouverons aussi du contenu en rapport avec azure, windows, visual studio. Cet évènement va être un des évènements majeurs en informatique dans l’année, à ne pas manquer donc.&lt;/p>
-&lt;p>Aujourd’hui Microsoft vient de publier un article donnant plus de détails sur la conférence, voici l’url.&lt;/p></description></item><item><title>Sélectionné pour le SharePoint Saturday New York City !</title><link>https://baywet.github.io/fr/selectionne-pour-le-sharepoint/</link><pubDate>Fri, 06 Jun 2014 03:35:43 +0000</pubDate><guid>https://baywet.github.io/fr/selectionne-pour-le-sharepoint/</guid><description>&lt;p>Bonjour à tous,&lt;/p>
-&lt;p>Billet rapide pour vous dire que je présenterai ma session sur le multilinguisme dans SharePoint 2013 à New York.&lt;/p>
-&lt;p>L’évènement se passe le Samedi 26 Juillet, chez Microsoft New York, sur Time Square.&lt;/p>
-&lt;p>N’hésitez pas à vous y inscrire si vous pouvez venir, c’est l’occasion d’apprendre plein de choses !&lt;/p>
-&lt;p>&lt;a href="https://www.spsevents.org/city/NYC/NYC2014/sessions">https://www.spsevents.org/city/NYC/NYC2014/sessions&lt;/a>&lt;/p>
-&lt;p>A bientôt&lt;/p></description></item><item><title>Webcast pour les ITPros sur Office 365</title><link>https://baywet.github.io/fr/webcast-pour-les-itpros-sur-of/</link><pubDate>Sun, 23 Mar 2014 18:51:48 +0000</pubDate><guid>https://baywet.github.io/fr/webcast-pour-les-itpros-sur-of/</guid><description>&lt;p>English readers: full article available here &lt;a href="https://blogs.office.com/2014/03/19/ignite-live-webcast-series-march-24-28/">https://blogs.office.com/2014/03/19/ignite-live-webcast-series-march-24-28/&lt;/a> go ahead.&lt;/p>
-&lt;p>&lt;strong>Du 24 au 28 Mars Microsoft Corp organise une série de webcast d’une heure chacun sur office 365.&lt;/strong>&lt;/p>
-&lt;p>C’est gratuit et c’est un bon moyen de se former à cette « nouvelle » plateforme (ou du moins à ses nouveautés).&lt;/p>
-&lt;p>Ça se passera tous les soirs &lt;strong>de 18 à 19h pour la France&lt;/strong> (vérifiez que je ne me suis pas trompé dans la conversion de l’heure) et en &lt;strong>journée de 13 à 14h pour le Québec.&lt;/strong>&lt;/p></description></item><item><title>SlideShare Account now sharing my presentations! Compte SlideShare retrouvez mes présentations !</title><link>https://baywet.github.io/fr/slideshare-account-now-sharing/</link><pubDate>Wed, 12 Feb 2014 23:38:41 +0000</pubDate><guid>https://baywet.github.io/fr/slideshare-account-now-sharing/</guid><description>&lt;p>&lt;img src="https://baywet.github.io/fr/slideshare-account-now-sharing/clip_5F00_image001_5F00_thumb_5F00_02BD9920.png" alt="clip_5F00_image001_5F00_thumb_5F00_02BD9920.png">&lt;/p>
-&lt;p>English version:&lt;/p>
-&lt;p>Quick post to tell you I recently discovered SlideShare! (sooner or later…) The concept is awesome. &lt;strong>So I’ll keep my slide decks posted on this site. Check out my profile!&lt;/strong>&lt;/p>
-&lt;p>Version Française :&lt;/p>
-&lt;p>Post rapide pour vous dire que j’ai récemment découvert SlideShare ! (mieux vaut tard que jamais…) Le concept est génial. &lt;strong>Je vais donc poster mes présentations sur le site. N’hésitez pas à me suivre sur SlideShare !&lt;/strong>&lt;/p></description></item><item><title>Aidez-moi à être conférencier à la SP24 la première web conférence tout autour du monde !</title><link>https://baywet.github.io/fr/aidez-moi-a-tre-conferencier-a/</link><pubDate>Sun, 19 Jan 2014 22:06:00 +0000</pubDate><guid>https://baywet.github.io/fr/aidez-moi-a-tre-conferencier-a/</guid><description>&lt;p>&lt;img src="https://baywet.github.io/fr/aidez-moi-a-tre-conferencier-a/clip_5F00_image002_5F00_thumb_5F00_1B3E228B.png" alt="clip_5F00_image002_5F00_thumb_5F00_1B3E228B.png">&lt;/p>
-&lt;p>Plusieurs MVP très actifs organisent un évènement assez ambitieux les 16 et 17 Avril la SP24.&lt;/p>
-&lt;p>Le concept :&lt;/p>
-&lt;ul>
-&lt;li>
-&lt;p>Des conférenciers de renommée internationale&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Des sessions toutes plus intéressantes les unes que les autres&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Autour du globe&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>2 suites de sessions&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>49 sessions&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Plusieurs milliers de participants&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>24 heures en continu&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Vous pouvez même choisir les sessions qui seront présentées !&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Et en plus c’est gratuit&lt;/p>
-&lt;/li>
-&lt;/ul>
-&lt;h4 id="traduire-sharepoint-de-a-à-z">Traduire SharePoint de A à Z&lt;/h4>
-&lt;p>Vraiment motivé par ce concept j’ai décidé de proposer une session. Aidez-moi à présenter lors de cet évènement exceptionnel et votez maintenant ! (détails disponibles au lien ci-dessous)&lt;/p></description></item><item><title>SharePoint 2013 vectorized logo / logo SharePoint 2013 vectorialisé</title><link>https://baywet.github.io/fr/sharepoint-2013-vectorized-log/</link><pubDate>Tue, 15 Oct 2013 03:26:16 +0000</pubDate><guid>https://baywet.github.io/fr/sharepoint-2013-vectorized-log/</guid><description>&lt;p>English version bellow.&lt;/p>
-&lt;p>Je suis assez régulièrement amené à animer des sessions autour de SharePoint. Et qui dit session sur SharePoint dit logo de SharePoint.&lt;/p>
-&lt;p>Pour avoir des slides bien faits il faut disposer de graphiques de qualités. Et ce n’est pas simple de trouver des logos SharePoint 2013 de qualité.&lt;/p>
-&lt;p>Je suis récemment tombé sur les logos de SharePoint 2013 vectorialisés (ainsi que quelques versions png avec fond transparent) je partage donc avec vous ma découverte&lt;/p></description></item><item><title>Video de ma session aux techdays</title><link>https://baywet.github.io/fr/video-de-ma-session-aux-techda/</link><pubDate>Sun, 11 Mar 2012 10:00:00 +0000</pubDate><guid>https://baywet.github.io/fr/video-de-ma-session-aux-techda/</guid><description>&lt;p>Lors d’un précédent billet je vous annonçais que je serai speaker lors des techdays pour une session.&lt;/p>
-&lt;p>Je tiens dans un premier temps à remercier mes co-speakers à savoir Cécilia Penha et Fabrice Vaxelaire. Je remercie aussi Microsoft et plus particulièrement Nathalie Hesters et Na-Young Kwon respectivement chef de produit Visio et Project et chef de produit SharePoint pour m’avoir donné l’occasion de m’exprimer lors des techdays. Enfin je remercie tous ceux qui étaient présents pour assister à la session (la salle était plus que pleine !). Si vous avez des questions/remarques n’hésitez pas à me contacter.&lt;/p></description></item><item><title>Session aux Microsoft Techdays 2012</title><link>https://baywet.github.io/fr/session-aux-microsoft-techdays/</link><pubDate>Fri, 27 Jan 2012 15:05:00 +0000</pubDate><guid>https://baywet.github.io/fr/session-aux-microsoft-techdays/</guid><description>&lt;p>Comme chaque année Microsoft Franc organise les Microsoft Techdays au Palais des congrès les 7, 8 et 9 Février.&lt;/p>
-&lt;p>Cet évènement gratuit, qui n’est plus à présenter, propose plus de 300 sessions, vous permet de rencontrer 150 partenaires et communautés et a réuni l’an dernier 17 000 personnes.&lt;/p>
-&lt;p>J’ai l’immense honneur d’animer une session cette année « SharePoint votre portail métier d’entreprise » aux côtés de Cécilia Penha (MS France, CSS) et Fabrice Vaxelaire (Practice Leader MS, SOGETI) le 8 de 13h à 14h.&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Session on Le blog de baywet</title><link>https://baywet.github.io/fr/tags/session/</link><description>Recent content in Session on Le blog de baywet</description><generator>Hugo</generator><language>fr</language><lastBuildDate>Thu, 20 Nov 2025 20:13:02 -0500</lastBuildDate><atom:link href="https://baywet.github.io/fr/tags/session/index.xml" rel="self" type="application/rss+xml"/><item><title>Global Azure Bootcamp 2017 – Edition de Montréal</title><link>https://baywet.github.io/fr/global-azure-bootcamp-2017-ed/</link><pubDate>Thu, 20 Apr 2017 23:30:00 +0000</pubDate><guid>https://baywet.github.io/fr/global-azure-bootcamp-2017-ed/</guid><description>&lt;p&gt;Chaque année Microsoft organise in évènement mondial sur Azure. La particularité de cet évènement c’est qu’il dure 24h et est représenté localement dans le monde entier par les groupes usagers.&lt;/p&gt;
+&lt;p&gt;Le groupe MSDevMtl en organise un chez Microsoft Montréal (2000 McGill College) le 22 Avril (Samedi).&lt;/p&gt;
+&lt;p&gt;Au programme :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Le portail Azure&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Web Apps&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Stockage&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Fonctions&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Cognitive Services&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;DocumentDB&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Application Insights&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;La journée est animée par des conférenciers de Microsoft et des MVP et sera en Français&lt;/p&gt;</description></item><item><title>Conférencier au SharePoint Saturday New Hampshire 2015</title><link>https://baywet.github.io/fr/conferencier-au-sharepoint-sat-2015-10-23-14-00-00/</link><pubDate>Fri, 23 Oct 2015 14:00:00 +0000</pubDate><guid>https://baywet.github.io/fr/conferencier-au-sharepoint-sat-2015-10-23-14-00-00/</guid><description>&lt;p&gt;Cette année encore j’ai l’occasion d’être conférencier au SPS de Nashua (New Hampshire). J’animerai cette fois une session autour du de multilinguisme dans SharePoint « Translating SharePoint from beginning to ending » (en anglais donc).&lt;/p&gt;
+&lt;p&gt;Nous y parlerons des options pour gérer le multilinguisme dans SharePoint et de comment effectuer une implémentation réussie.&lt;/p&gt;
+&lt;p&gt;Si vous êtes dans le coin le Samedi 24 Octobre 2015 n’hésitez pas à vous inscrire et à participer. Pour rappel les SPS ce sont des évènements gratuits organisés par la communauté avec des sessions de qualité. Une très bonne occasion de réseauter, d’apprendre plein de choses et de passer une bonne journée.&lt;/p&gt;</description></item><item><title>Conférencier au MSDEVMTL – Développement office 365</title><link>https://baywet.github.io/fr/conferencier-au-msdevmtl-deve/</link><pubDate>Wed, 27 May 2015 14:30:00 +0000</pubDate><guid>https://baywet.github.io/fr/conferencier-au-msdevmtl-deve/</guid><description>&lt;p&gt;Le 8 Juin prochain j’aurai l’occasion d’intervenir au MSDEVMTL pour parler du développement office.&lt;/p&gt;
+&lt;p&gt;Au programme :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Opportunités&lt;/li&gt;
+&lt;li&gt;Développement Office&lt;/li&gt;
+&lt;li&gt;Développement SharePoint&lt;/li&gt;
+&lt;li&gt;Développement Office 365&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;L’objectif étant de démontrer que le développement office/office 365/SharePoint a bien évolué ces dernières années aux développeurs .NET « classiques » et que les méthodologies de développement sont bien plus similaires à ce qu’ils connaissent.&lt;/p&gt;
+&lt;p&gt;Quand on parle de développement office (au sens large) c’est un marché de 1.4 milliards de clients potentiels dont on parle, une opportunité à ne pas rater à mon sens.&lt;/p&gt;</description></item><item><title>Conférencier au SharePoint Saturday Montréal 2015</title><link>https://baywet.github.io/fr/conferencier-au-sharepoint-sat-2015-05-21-00-49-38/</link><pubDate>Thu, 21 May 2015 00:49:38 +0000</pubDate><guid>https://baywet.github.io/fr/conferencier-au-sharepoint-sat-2015-05-21-00-49-38/</guid><description>&lt;p&gt;Cette année encore j’aurai l’honneur d’être conférencier au SharePoint Saturday de Montréal &lt;a href="../sharepoint-saturday-montreal-2"&gt;sharepoint-saturday-montreal-2&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;J’ai aussi eu l’occasion d’aider à l’organisation aussi cette année, c’est une expérience intéressante et je tiens à remercier Serge, Nico, Luc, Philippe, Seb, Fabrice et Alain pour leur implication sur le projet, c’est beaucoup plus de travail qu’on imagine !&lt;/p&gt;
+&lt;p&gt;Ma présentation sera à propos de l’importance des métadonnées en entreprise.&lt;/p&gt;
+&lt;p&gt;Nous allons commencer par effectuer un rappel théorique des différents types de métadonnées et quels sont les avantages et inconvénients de chacun. Ensuite nous verrons ce qui est supporté par SharePoint et quels sont les outils existants à disposition. Enfin nous terminerons avec l’importance de la mise en place de ces outils en entreprise et comment ils vont vous aider à effectuer une transition vers le Graph et améliorer la trouvabilité du contenu.&lt;/p&gt;</description></item><item><title>Conférencier au SPBizConf</title><link>https://baywet.github.io/fr/conferencier-au-spbizconf/</link><pubDate>Tue, 19 May 2015 22:57:05 +0000</pubDate><guid>https://baywet.github.io/fr/conferencier-au-spbizconf/</guid><description>&lt;p&gt;Les 17 et 18 Juin 2015 se déroulera la spbizconf (&lt;a href="https://www.spbizconf.com/"&gt;https://www.spbizconf.com/&lt;/a&gt; )&lt;/p&gt;
+&lt;p&gt;Cette conférence orientée principalement business (avec un peu de technique aussi) est gratuite, en ligne et se déroulera en Anglais.&lt;/p&gt;
+&lt;p&gt;Allez vite vous inscrire !&lt;/p&gt;
+&lt;p&gt;Pour ma part j’aurais la chance d’animer une session sur le Graph. On va faire un peu de théorie pour bien poser les bases, parler du Graph de Microsoft et de la vision puis finir par les cas d’utilisation réels et expliquer ce à quoi ça pourrait servir dans votre entreprise.&lt;/p&gt;</description></item><item><title>Ignite – Annonce des conférenciers et liste complète des sessions</title><link>https://baywet.github.io/fr/ignite-annonce-des-conferenci/</link><pubDate>Mon, 02 Mar 2015 22:53:42 +0000</pubDate><guid>https://baywet.github.io/fr/ignite-annonce-des-conferenci/</guid><description>&lt;p&gt;Microsoft vient d’annoncer la liste complète des sessions, des conférenciers ainsi que le planning de l’ignite qui se tiendra à Chicago du 4 au 8 Mai prochains.&lt;/p&gt;
+&lt;p&gt;Pour plus de détails : &lt;a href="https://ignite.microsoft.com/Sessions#fbid=mGcNAILg5r6"&gt;https://ignite.microsoft.com/Sessions#fbid=mGcNAILg5r6&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blogs.technet.com/b/exchange/archive/2015/03/02/be-the-first-to-learn-what-s-next-for-exchange-and-office-365-at-microsoft-ignite-full-session-list-now-available.aspx"&gt;https://blogs.technet.com/b/exchange/archive/2015/03/02/be-the-first-to-learn-what-s-next-for-exchange-and-office-365-at-microsoft-ignite-full-session-list-now-available.aspx&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Quelques rappels sur l’Ignite : &lt;a href="../evenements-annonce-des-sessi"&gt;evenements-annonce-des-sessi&lt;/a&gt;&lt;/p&gt;</description></item><item><title>Evènements - Annonce des sessions de l’Ignite</title><link>https://baywet.github.io/fr/evenements-annonce-des-sessi/</link><pubDate>Thu, 29 Jan 2015 02:31:08 +0000</pubDate><guid>https://baywet.github.io/fr/evenements-annonce-des-sessi/</guid><description>&lt;p&gt;Si vous ne le saviez pas déjà, Microsoft va organiser une conférence du 4 au 8 Mai à Chicago. Cette conférence va regrouper la SharePoint, Exchange, Lync, Project conférence ainsi que les teched nord Amérique. Nous y retrouverons aussi du contenu en rapport avec azure, windows, visual studio. Cet évènement va être un des évènements majeurs en informatique dans l’année, à ne pas manquer donc.&lt;/p&gt;
+&lt;p&gt;Aujourd’hui Microsoft vient de publier un article donnant plus de détails sur la conférence, voici l’url.&lt;/p&gt;</description></item><item><title>Sélectionné pour le SharePoint Saturday New York City !</title><link>https://baywet.github.io/fr/selectionne-pour-le-sharepoint/</link><pubDate>Fri, 06 Jun 2014 03:35:43 +0000</pubDate><guid>https://baywet.github.io/fr/selectionne-pour-le-sharepoint/</guid><description>&lt;p&gt;Bonjour à tous,&lt;/p&gt;
+&lt;p&gt;Billet rapide pour vous dire que je présenterai ma session sur le multilinguisme dans SharePoint 2013 à New York.&lt;/p&gt;
+&lt;p&gt;L’évènement se passe le Samedi 26 Juillet, chez Microsoft New York, sur Time Square.&lt;/p&gt;
+&lt;p&gt;N’hésitez pas à vous y inscrire si vous pouvez venir, c’est l’occasion d’apprendre plein de choses !&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.spsevents.org/city/NYC/NYC2014/sessions"&gt;https://www.spsevents.org/city/NYC/NYC2014/sessions&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;A bientôt&lt;/p&gt;</description></item><item><title>Webcast pour les ITPros sur Office 365</title><link>https://baywet.github.io/fr/webcast-pour-les-itpros-sur-of/</link><pubDate>Sun, 23 Mar 2014 18:51:48 +0000</pubDate><guid>https://baywet.github.io/fr/webcast-pour-les-itpros-sur-of/</guid><description>&lt;p&gt;English readers: full article available here &lt;a href="https://blogs.office.com/2014/03/19/ignite-live-webcast-series-march-24-28/"&gt;https://blogs.office.com/2014/03/19/ignite-live-webcast-series-march-24-28/&lt;/a&gt; go ahead.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Du 24 au 28 Mars Microsoft Corp organise une série de webcast d’une heure chacun sur office 365.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;C’est gratuit et c’est un bon moyen de se former à cette « nouvelle » plateforme (ou du moins à ses nouveautés).&lt;/p&gt;
+&lt;p&gt;Ça se passera tous les soirs &lt;strong&gt;de 18 à 19h pour la France&lt;/strong&gt; (vérifiez que je ne me suis pas trompé dans la conversion de l’heure) et en &lt;strong&gt;journée de 13 à 14h pour le Québec.&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>SlideShare Account now sharing my presentations! Compte SlideShare retrouvez mes présentations !</title><link>https://baywet.github.io/fr/slideshare-account-now-sharing/</link><pubDate>Wed, 12 Feb 2014 23:38:41 +0000</pubDate><guid>https://baywet.github.io/fr/slideshare-account-now-sharing/</guid><description>&lt;p&gt;&lt;img src="https://baywet.github.io/fr/slideshare-account-now-sharing/clip_5F00_image001_5F00_thumb_5F00_02BD9920.png" alt="clip_5F00_image001_5F00_thumb_5F00_02BD9920.png"&gt;&lt;/p&gt;
+&lt;p&gt;English version:&lt;/p&gt;
+&lt;p&gt;Quick post to tell you I recently discovered SlideShare! (sooner or later…) The concept is awesome. &lt;strong&gt;So I’ll keep my slide decks posted on this site. Check out my profile!&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Version Française :&lt;/p&gt;
+&lt;p&gt;Post rapide pour vous dire que j’ai récemment découvert SlideShare ! (mieux vaut tard que jamais…) Le concept est génial. &lt;strong&gt;Je vais donc poster mes présentations sur le site. N’hésitez pas à me suivre sur SlideShare !&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>Aidez-moi à être conférencier à la SP24 la première web conférence tout autour du monde !</title><link>https://baywet.github.io/fr/aidez-moi-a-tre-conferencier-a/</link><pubDate>Sun, 19 Jan 2014 22:06:00 +0000</pubDate><guid>https://baywet.github.io/fr/aidez-moi-a-tre-conferencier-a/</guid><description>&lt;p&gt;&lt;img src="https://baywet.github.io/fr/aidez-moi-a-tre-conferencier-a/clip_5F00_image002_5F00_thumb_5F00_1B3E228B.png" alt="clip_5F00_image002_5F00_thumb_5F00_1B3E228B.png"&gt;&lt;/p&gt;
+&lt;p&gt;Plusieurs MVP très actifs organisent un évènement assez ambitieux les 16 et 17 Avril la SP24.&lt;/p&gt;
+&lt;p&gt;Le concept :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Des conférenciers de renommée internationale&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Des sessions toutes plus intéressantes les unes que les autres&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Autour du globe&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;2 suites de sessions&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;49 sessions&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Plusieurs milliers de participants&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;24 heures en continu&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Vous pouvez même choisir les sessions qui seront présentées !&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Et en plus c’est gratuit&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="traduire-sharepoint-de-a-à-z"&gt;Traduire SharePoint de A à Z&lt;/h4&gt;
+&lt;p&gt;Vraiment motivé par ce concept j’ai décidé de proposer une session. Aidez-moi à présenter lors de cet évènement exceptionnel et votez maintenant ! (détails disponibles au lien ci-dessous)&lt;/p&gt;</description></item><item><title>SharePoint 2013 vectorized logo / logo SharePoint 2013 vectorialisé</title><link>https://baywet.github.io/fr/sharepoint-2013-vectorized-log/</link><pubDate>Tue, 15 Oct 2013 03:26:16 +0000</pubDate><guid>https://baywet.github.io/fr/sharepoint-2013-vectorized-log/</guid><description>&lt;p&gt;English version bellow.&lt;/p&gt;
+&lt;p&gt;Je suis assez régulièrement amené à animer des sessions autour de SharePoint. Et qui dit session sur SharePoint dit logo de SharePoint.&lt;/p&gt;
+&lt;p&gt;Pour avoir des slides bien faits il faut disposer de graphiques de qualités. Et ce n’est pas simple de trouver des logos SharePoint 2013 de qualité.&lt;/p&gt;
+&lt;p&gt;Je suis récemment tombé sur les logos de SharePoint 2013 vectorialisés (ainsi que quelques versions png avec fond transparent) je partage donc avec vous ma découverte&lt;/p&gt;</description></item><item><title>Video de ma session aux techdays</title><link>https://baywet.github.io/fr/video-de-ma-session-aux-techda/</link><pubDate>Sun, 11 Mar 2012 10:00:00 +0000</pubDate><guid>https://baywet.github.io/fr/video-de-ma-session-aux-techda/</guid><description>&lt;p&gt;Lors d’un précédent billet je vous annonçais que je serai speaker lors des techdays pour une session.&lt;/p&gt;
+&lt;p&gt;Je tiens dans un premier temps à remercier mes co-speakers à savoir Cécilia Penha et Fabrice Vaxelaire. Je remercie aussi Microsoft et plus particulièrement Nathalie Hesters et Na-Young Kwon respectivement chef de produit Visio et Project et chef de produit SharePoint pour m’avoir donné l’occasion de m’exprimer lors des techdays. Enfin je remercie tous ceux qui étaient présents pour assister à la session (la salle était plus que pleine !). Si vous avez des questions/remarques n’hésitez pas à me contacter.&lt;/p&gt;</description></item><item><title>Session aux Microsoft Techdays 2012</title><link>https://baywet.github.io/fr/session-aux-microsoft-techdays/</link><pubDate>Fri, 27 Jan 2012 15:05:00 +0000</pubDate><guid>https://baywet.github.io/fr/session-aux-microsoft-techdays/</guid><description>&lt;p&gt;Comme chaque année Microsoft Franc organise les Microsoft Techdays au Palais des congrès les 7, 8 et 9 Février.&lt;/p&gt;
+&lt;p&gt;Cet évènement gratuit, qui n’est plus à présenter, propose plus de 300 sessions, vous permet de rencontrer 150 partenaires et communautés et a réuni l’an dernier 17 000 personnes.&lt;/p&gt;
+&lt;p&gt;J’ai l’immense honneur d’animer une session cette année « SharePoint votre portail métier d’entreprise » aux côtés de Cécilia Penha (MS France, CSS) et Fabrice Vaxelaire (Practice Leader MS, SOGETI) le 8 de 13h à 14h.&lt;/p&gt;</description></item></channel></rss>

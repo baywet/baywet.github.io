@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ucwa on Baywet's blog</title><link>https://baywet.github.io/tags/ucwa/</link><description>Recent content in Ucwa on Baywet's blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Tue, 12 Aug 2025 07:59:57 -0400</lastBuildDate><atom:link href="https://baywet.github.io/tags/ucwa/index.xml" rel="self" type="application/rss+xml"/><item><title>New SharePoint Framework PnP Samples available: using the Skype UCWA Web SDK to subscribe to people’s status</title><link>https://baywet.github.io/new-sharepoint-framework-pnp-s/</link><pubDate>Mon, 08 Jan 2018 09:00:00 +0000</pubDate><guid>https://baywet.github.io/new-sharepoint-framework-pnp-s/</guid><description>&lt;h2 id="tldr">TL;DR;&lt;/h2>
-&lt;p>I added two new SharePoint framework WebParts PnP sample to demonstrate how to use the Unified Communications Web API JavaScript SDK from Skype for business. This SDK allows you to do things like subscribe to a person status, start instant messaging conversations, calls…&lt;/p>
-&lt;p>&lt;img src="https://baywet.github.io/new-sharepoint-framework-pnp-s/16.gif" alt="16.gif">&lt;/p>
-&lt;p>To get a look:&lt;/p>
-&lt;ul>
-&lt;li>The &lt;a href="https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/js-skype-status">plain JS sample&lt;/a>&lt;/li>
-&lt;li>The &lt;a href="https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-skype-status">reactJS + Office UI Fabric React sample&lt;/a>(persona card)&lt;/li>
-&lt;/ul>
-&lt;h2 id="long-version">Long version&lt;/h2>
-&lt;p>I recently had the occasion to make my first contribution to PnP (besides creating issues and helping investigate those). In these two new samples I show you how to you how to leverage the Skype UCWA SDK to subscribe and display people skype status.&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ucwa on Baywet's blog</title><link>https://baywet.github.io/tags/ucwa/</link><description>Recent content in Ucwa on Baywet's blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Thu, 20 Nov 2025 20:13:02 -0500</lastBuildDate><atom:link href="https://baywet.github.io/tags/ucwa/index.xml" rel="self" type="application/rss+xml"/><item><title>New SharePoint Framework PnP Samples available: using the Skype UCWA Web SDK to subscribe to people’s status</title><link>https://baywet.github.io/new-sharepoint-framework-pnp-s/</link><pubDate>Mon, 08 Jan 2018 09:00:00 +0000</pubDate><guid>https://baywet.github.io/new-sharepoint-framework-pnp-s/</guid><description>&lt;h2 id="tldr"&gt;TL;DR;&lt;/h2&gt;
+&lt;p&gt;I added two new SharePoint framework WebParts PnP sample to demonstrate how to use the Unified Communications Web API JavaScript SDK from Skype for business. This SDK allows you to do things like subscribe to a person status, start instant messaging conversations, calls…&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://baywet.github.io/new-sharepoint-framework-pnp-s/16.gif" alt="16.gif"&gt;&lt;/p&gt;
+&lt;p&gt;To get a look:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The &lt;a href="https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/js-skype-status"&gt;plain JS sample&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;The &lt;a href="https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-skype-status"&gt;reactJS + Office UI Fabric React sample&lt;/a&gt;(persona card)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="long-version"&gt;Long version&lt;/h2&gt;
+&lt;p&gt;I recently had the occasion to make my first contribution to PnP (besides creating issues and helping investigate those). In these two new samples I show you how to you how to leverage the Skype UCWA SDK to subscribe and display people skype status.&lt;/p&gt;</description></item></channel></rss>

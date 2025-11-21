@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Visual Studio Code on Baywet's blog</title><link>https://baywet.github.io/tags/visual-studio-code/</link><description>Recent content in Visual Studio Code on Baywet's blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Tue, 12 Aug 2025 07:59:57 -0400</lastBuildDate><atom:link href="https://baywet.github.io/tags/visual-studio-code/index.xml" rel="self" type="application/rss+xml"/><item><title>Determine your technical debt using SonarQube - Bonus SonarLint extension configuration</title><link>https://baywet.github.io/determine-your-technical-debt-2017-10-04-08-00-00/</link><pubDate>Wed, 04 Oct 2017 08:00:00 +0000</pubDate><guid>https://baywet.github.io/determine-your-technical-debt-2017-10-04-08-00-00/</guid><description>&lt;h2 id="tl-dr">TL; DR&lt;/h2>
-&lt;p>You can display SonarQube static analysis results live in Visual Studio error and information console using the same rules set as the SonarQube project.&lt;/p>
-&lt;p>Installing the extension&lt;/p>
-&lt;p>Just go to &lt;a href="https://www.sonarlint.org/VisualStudio/index.html">https://www.sonarlint.org/VisualStudio/index.html&lt;/a> and proceed with the installation.&lt;/p>
-&lt;h2 id="binding-the-visual-studio-solution-to-the-sonarqube-analysis">Binding the Visual Studio solution to the SonarQube analysis&lt;/h2>
-&lt;p>&lt;img src="https://baywet.github.io/determine-your-technical-debt-2017-10-04-08-00-00/19.png" alt="19.png">&lt;/p>
-&lt;p>From the Team Explorer click SonarQube&lt;/p>
-&lt;p>&lt;img src="https://baywet.github.io/determine-your-technical-debt-2017-10-04-08-00-00/20.png" alt="20.png">&lt;/p>
-&lt;p>Click on connect.&lt;/p>
-&lt;p>(if you obtain a certificate error, you must install the self-signed certificate of the SonarQube server on your machine)&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Visual Studio Code on Baywet's blog</title><link>https://baywet.github.io/tags/visual-studio-code/</link><description>Recent content in Visual Studio Code on Baywet's blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Thu, 20 Nov 2025 20:13:02 -0500</lastBuildDate><atom:link href="https://baywet.github.io/tags/visual-studio-code/index.xml" rel="self" type="application/rss+xml"/><item><title>Determine your technical debt using SonarQube - Bonus SonarLint extension configuration</title><link>https://baywet.github.io/determine-your-technical-debt-2017-10-04-08-00-00/</link><pubDate>Wed, 04 Oct 2017 08:00:00 +0000</pubDate><guid>https://baywet.github.io/determine-your-technical-debt-2017-10-04-08-00-00/</guid><description>&lt;h2 id="tl-dr"&gt;TL; DR&lt;/h2&gt;
+&lt;p&gt;You can display SonarQube static analysis results live in Visual Studio error and information console using the same rules set as the SonarQube project.&lt;/p&gt;
+&lt;p&gt;Installing the extension&lt;/p&gt;
+&lt;p&gt;Just go to &lt;a href="https://www.sonarlint.org/VisualStudio/index.html"&gt;https://www.sonarlint.org/VisualStudio/index.html&lt;/a&gt; and proceed with the installation.&lt;/p&gt;
+&lt;h2 id="binding-the-visual-studio-solution-to-the-sonarqube-analysis"&gt;Binding the Visual Studio solution to the SonarQube analysis&lt;/h2&gt;
+&lt;p&gt;&lt;img src="https://baywet.github.io/determine-your-technical-debt-2017-10-04-08-00-00/19.png" alt="19.png"&gt;&lt;/p&gt;
+&lt;p&gt;From the Team Explorer click SonarQube&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://baywet.github.io/determine-your-technical-debt-2017-10-04-08-00-00/20.png" alt="20.png"&gt;&lt;/p&gt;
+&lt;p&gt;Click on connect.&lt;/p&gt;
+&lt;p&gt;(if you obtain a certificate error, you must install the self-signed certificate of the SonarQube server on your machine)&lt;/p&gt;</description></item></channel></rss>

@@ -1,20 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Quality on Baywet's blog</title><link>https://baywet.github.io/tags/quality/</link><description>Recent content in Quality on Baywet's blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Tue, 12 Aug 2025 07:59:57 -0400</lastBuildDate><atom:link href="https://baywet.github.io/tags/quality/index.xml" rel="self" type="application/rss+xml"/><item><title>Units tests using xUnit and Visual Studio Team Services for DNX projects</title><link>https://baywet.github.io/units-tests-using-xunit-and-vi/</link><pubDate>Tue, 01 Mar 2016 14:00:00 +0000</pubDate><guid>https://baywet.github.io/units-tests-using-xunit-and-vi/</guid><description>&lt;h2 id="introduction">Introduction&lt;/h2>
-&lt;p>DNX will soon be released and there’ll be a growing number of developers wanting to write unit tests to improve the quality of developments.&lt;/p>
-&lt;p>Ideally you’d like to run these unit tests in a continuous integration process in order to make sure you didn’t introduce any regression/bug or degraded performances.&lt;/p>
-&lt;p>In .NET world you have many tools to write unit tests:&lt;/p>
-&lt;ul>
-&lt;li>
-&lt;p>MSTest/VSTest&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>NUnit&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>xUnit&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>…&lt;/p>
-&lt;/li>
-&lt;/ul>
-&lt;p>(a non-exhaustive list &lt;a href="https://en.wikipedia.org/wiki/List_of_unit_testing_frameworks#C.23">https://en.wikipedia.org/wiki/List_of_unit_testing_frameworks#C.23&lt;/a> )&lt;/p>
-&lt;p>In our case we chose to use xUnit because it is widely used and supported by the community, and it’s one of the few to support DNX at the moment.&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Quality on Baywet's blog</title><link>https://baywet.github.io/tags/quality/</link><description>Recent content in Quality on Baywet's blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Thu, 20 Nov 2025 20:13:02 -0500</lastBuildDate><atom:link href="https://baywet.github.io/tags/quality/index.xml" rel="self" type="application/rss+xml"/><item><title>Units tests using xUnit and Visual Studio Team Services for DNX projects</title><link>https://baywet.github.io/units-tests-using-xunit-and-vi/</link><pubDate>Tue, 01 Mar 2016 14:00:00 +0000</pubDate><guid>https://baywet.github.io/units-tests-using-xunit-and-vi/</guid><description>&lt;h2 id="introduction"&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;DNX will soon be released and there’ll be a growing number of developers wanting to write unit tests to improve the quality of developments.&lt;/p&gt;
+&lt;p&gt;Ideally you’d like to run these unit tests in a continuous integration process in order to make sure you didn’t introduce any regression/bug or degraded performances.&lt;/p&gt;
+&lt;p&gt;In .NET world you have many tools to write unit tests:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;MSTest/VSTest&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;NUnit&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;xUnit&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;…&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;(a non-exhaustive list &lt;a href="https://en.wikipedia.org/wiki/List_of_unit_testing_frameworks#C.23"&gt;https://en.wikipedia.org/wiki/List_of_unit_testing_frameworks#C.23&lt;/a&gt; )&lt;/p&gt;
+&lt;p&gt;In our case we chose to use xUnit because it is widely used and supported by the community, and it’s one of the few to support DNX at the moment.&lt;/p&gt;</description></item></channel></rss>

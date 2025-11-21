@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cloud Service on Baywet's blog</title><link>https://baywet.github.io/tags/cloud-service/</link><description>Recent content in Cloud Service on Baywet's blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Tue, 12 Aug 2025 07:59:57 -0400</lastBuildDate><atom:link href="https://baywet.github.io/tags/cloud-service/index.xml" rel="self" type="application/rss+xml"/><item><title>Deploying cloud service via new 2015 build templates</title><link>https://baywet.github.io/deploying-cloud-service-via-ne/</link><pubDate>Tue, 04 Aug 2015 14:00:00 +0000</pubDate><guid>https://baywet.github.io/deploying-cloud-service-via-ne/</guid><description>&lt;h2 id="introduction-to-the-new-build-system">Introduction to the new build system&lt;/h2>
-&lt;p>Microsoft recently made a new build definitions model with the release of Visual Studio 2015 (TFS 2015’s bits are not yet available but this new build service is already available on Visual Studio Online).&lt;/p>
-&lt;p>Just as a reminder the “old” build models were based on two artifacts:&lt;/p>
-&lt;ul>
-&lt;li>The build process template: defined via XAML, it allows you to configure the sequence for the build process.&lt;/li>
-&lt;li>The build definition: links together the template, sources and some settings.&lt;/li>
-&lt;/ul>
-&lt;p>This methodology offers a wide range of possibilities to automate your build, packaging, testing and even deployment.&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cloud Service on Baywet's blog</title><link>https://baywet.github.io/tags/cloud-service/</link><description>Recent content in Cloud Service on Baywet's blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Thu, 20 Nov 2025 20:13:02 -0500</lastBuildDate><atom:link href="https://baywet.github.io/tags/cloud-service/index.xml" rel="self" type="application/rss+xml"/><item><title>Deploying cloud service via new 2015 build templates</title><link>https://baywet.github.io/deploying-cloud-service-via-ne/</link><pubDate>Tue, 04 Aug 2015 14:00:00 +0000</pubDate><guid>https://baywet.github.io/deploying-cloud-service-via-ne/</guid><description>&lt;h2 id="introduction-to-the-new-build-system"&gt;Introduction to the new build system&lt;/h2&gt;
+&lt;p&gt;Microsoft recently made a new build definitions model with the release of Visual Studio 2015 (TFS 2015’s bits are not yet available but this new build service is already available on Visual Studio Online).&lt;/p&gt;
+&lt;p&gt;Just as a reminder the “old” build models were based on two artifacts:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The build process template: defined via XAML, it allows you to configure the sequence for the build process.&lt;/li&gt;
+&lt;li&gt;The build definition: links together the template, sources and some settings.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This methodology offers a wide range of possibilities to automate your build, packaging, testing and even deployment.&lt;/p&gt;</description></item></channel></rss>

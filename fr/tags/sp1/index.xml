@@ -1,59 +1,59 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Sp1 on Le blog de baywet</title><link>https://baywet.github.io/fr/tags/sp1/</link><description>Recent content in Sp1 on Le blog de baywet</description><generator>Hugo</generator><language>fr</language><lastBuildDate>Tue, 12 Aug 2025 07:59:57 -0400</lastBuildDate><atom:link href="https://baywet.github.io/fr/tags/sp1/index.xml" rel="self" type="application/rss+xml"/><item><title>Remise à disposition du SP1 pour SharePoint 2013</title><link>https://baywet.github.io/fr/remise-a-disposition-du-sp1-po/</link><pubDate>Wed, 23 Apr 2014 04:06:23 +0000</pubDate><guid>https://baywet.github.io/fr/remise-a-disposition-du-sp1-po/</guid><description>&lt;p>La nouvelle circule depuis quelques heures sur les réseaux sociaux et autres média de communications : Microsoft vient de livrer une nouvelle version du SP1 de SharePoint 2013.&lt;/p>
-&lt;p>&lt;a href="https://blogs.technet.com/b/stefan_gossner/archive/2014/04/22/sp1-for-sharepoint-2013-has-been-rereleased.aspx">https://blogs.technet.com/b/stefan_gossner/archive/2014/04/22/sp1-for-sharepoint-2013-has-been-rereleased.aspx&lt;/a>&lt;/p>
-&lt;p>Pour ceux qui ont déjà installé le SP1 défectueux : installez le nouveau par-dessus et exécutez à nouveau le psconfig&lt;/p>
-&lt;p>Pour ceux qui n’avaient pas encore déployé le SP1 : installez simplement cette nouvelle version (+ ps config)&lt;/p>
-&lt;p>Pour ceux qui avaient téléchargé la version ISO avec le SP1 intégré en vue de l’installation d’une nouvelle ferme : vous pouvez garder vos ISO, Microsoft ne publiera pas de nouvelle version. (ces versions n’étaient pas impactées par le problème).&lt;/p></description></item><item><title>Retrait du SP1 de SP2013 / SP1 for SP2013 not available anymore</title><link>https://baywet.github.io/fr/retrait-du-sp1-de-sp2013-sp1/</link><pubDate>Thu, 03 Apr 2014 19:58:38 +0000</pubDate><guid>https://baywet.github.io/fr/retrait-du-sp1-de-sp2013-sp1/</guid><description>&lt;p>Billet rapide pour vous informer que Microsoft rencontre actuellement quelques soucis avec le SP1 pour SharePoint 2013.&lt;/p>
-&lt;p>Ils ont donc décidé de retirer le SP du téléchargement et demandent aux clients de patienter avant de l&amp;rsquo;installer si possible&lt;/p>
-&lt;p>&lt;a href="https://blogs.msdn.com/b/joerg_sinemus/archive/2014/02/26/sharepoint-2013-service-pack-1.aspx" title="https://blogs.msdn.com/b/joerg_sinemus/archive/2014/02/26/sharepoint-2013-service-pack-1.aspx">https://blogs.msdn.com/b/joerg_sinemus/archive/2014/02/26/sharepoint-2013-service-pack-1.aspx&lt;/a>&lt;/p>
-&lt;p>Quick post to inform you about the fact that Microsoft is having some issues with SP1 for SP2013 and it is no more available for dowanload. (see link above)&lt;/p></description></item><item><title>Service Pack 1 for Office suite 2013 (client and server) is out!</title><link>https://baywet.github.io/fr/service-pack-1-for-office-suit/</link><pubDate>Wed, 26 Feb 2014 02:28:24 +0000</pubDate><guid>https://baywet.github.io/fr/service-pack-1-for-office-suit/</guid><description>&lt;p>&lt;img src="https://baywet.github.io/fr/service-pack-1-for-office-suit/clip_5F00_image002_5F00_thumb_5F00_412AEB32.png" alt="clip_5F00_image002_5F00_thumb_5F00_412AEB32.png">&lt;/p>
-&lt;p>As expected the service pack 1 for office has been released right before the SharePoint Conference (3rd to 6th March, Las Vegas) by product teams.&lt;/p>
-&lt;p>This SP is targeted for the client office suite (word, excel, outlook…) and servers’ products (exchange, sharepoint, project, lync…) as usual.&lt;/p>
-&lt;h3 id="downloading-service-pack-1">Downloading Service Pack 1&lt;/h3>
-&lt;p>If you want to download this update or to get familiar with what’s new, everything is available at this address.&lt;/p></description></item><item><title>Le service Pack 1 de la gamme Office 2013 (client et serveur) est sorti !</title><link>https://baywet.github.io/fr/le-service-pack-1-de-la-gamme/</link><pubDate>Wed, 26 Feb 2014 02:27:33 +0000</pubDate><guid>https://baywet.github.io/fr/le-service-pack-1-de-la-gamme/</guid><description>&lt;p>&lt;img src="https://baywet.github.io/fr/le-service-pack-1-de-la-gamme/clip_5F00_image002_5F00_thumb_5F00_74DB7F8E.png" alt="clip_5F00_image002_5F00_thumb_5F00_74DB7F8E.png">&lt;/p>
-&lt;p>Comme on pouvait s’y attendre juste avant la SharePoint Conference (3 au 6 Mars, Las Vegas), le SP1 de la gamme office a été livré par les équipes de Microsoft.&lt;/p>
-&lt;p>Ce SP concerne donc comme d’habitude toute la suite office client (word, outlook, excel…) ainsi que les gammes serveurs (exchange, sharepoint, project, lync…).&lt;/p>
-&lt;h3 id="téléchargement-du-service-pack-1">Téléchargement du service pack 1&lt;/h3>
-&lt;p>Pour connaitre quelles sont les nouveautés et télécharger les mises à jour à installer tout est disponible à cette adresse.&lt;/p></description></item><item><title>Upgrade des bases de données mirrorées avec le SP1 de SharePoint</title><link>https://baywet.github.io/fr/upgrade-des-bases-de-donnees-m/</link><pubDate>Wed, 20 Jul 2011 19:25:00 +0000</pubDate><guid>https://baywet.github.io/fr/upgrade-des-bases-de-donnees-m/</guid><description>&lt;p>Vous n’êtes pas sans savoir que le SP1 de SharePoint 2010 est sorti il y a déjà deux semaines et vous êtes peut être en train de planifier un déploiement de ce dernier.&lt;/p>
-&lt;p>Cet article est un retour d’expérience de déploiement du SP1 sur un certain type de topologies : les installations en mode ferme avec des bases de données mises en mirroir (voir mes précédents sujets à ce propos)&lt;/p></description></item><item><title>Re-Realease de la mise à jour cumulative de Juin (CU1 June)</title><link>https://baywet.github.io/fr/re-realease-de-la-mise-a-jour/</link><pubDate>Tue, 19 Jul 2011 22:02:00 +0000</pubDate><guid>https://baywet.github.io/fr/re-realease-de-la-mise-a-jour/</guid><description>&lt;p>Deux jours après la sortie du service pack 1 pour SharePoint 2010, la mise à jour cumulative de Juin est sortie.&lt;/p>
-&lt;p>Elle corrige plusieurs dizaines de bugs sur le produit. Quatre jours plus tard, certains d’entre vous ont peut être remarqué qu’elle n’était plus disponible au téléchargement.&lt;/p>
-&lt;p>Plusieurs soucis majeurs étaient en cause : problèmes d’installation sur les machines équipées du .net FrameWork 4, problème de démarrage de service sur ce même type de machines, échecs de timerjobs..&lt;/p></description></item><item><title>Industrialisation des installations de ferme SharePoint 2010(CU, SP, Langues, SlipStream) Part 3</title><link>https://baywet.github.io/fr/industrialisation-des-installa-2011-07-06-16-42-00/</link><pubDate>Wed, 06 Jul 2011 16:42:00 +0000</pubDate><guid>https://baywet.github.io/fr/industrialisation-des-installa-2011-07-06-16-42-00/</guid><description>&lt;p>Troisième partie, celle qui vous intéresse surement le plus, slipstream des Mises à jours, service packs et packs de langues&lt;/p>
-&lt;p>Premier point, les mises à jour cumulatives et hotfix. il ne faut pas les installer si vous installez un service pack plus récent (qui les contiendra)&lt;/p>
-&lt;p>Les mises à jour peuvent être soit multilingues (globales donc, une seule installation), soit régionalisées, auquel cas il faut les télécharger et installer autant de fois que de langues installées.&lt;/p></description></item><item><title>Industrialisation des installations de ferme SharePoint 2010(CU, SP, Langues, SlipStream) Part 2</title><link>https://baywet.github.io/fr/industrialisation-des-installa-2011-07-06-16-11-00/</link><pubDate>Wed, 06 Jul 2011 16:11:00 +0000</pubDate><guid>https://baywet.github.io/fr/industrialisation-des-installa-2011-07-06-16-11-00/</guid><description>&lt;p>Deuxième partie en 2 étapes, les prérequis en mode offline et les mises à jour supplémentaires.&lt;/p>
-&lt;ol>
-&lt;li>La première étape consiste à copier le contenu de votre source d’installation dans un répertoire.&lt;/li>
-&lt;/ol>
-&lt;p>Deux solutions :&lt;/p>
-&lt;ul>
-&lt;li>
-&lt;p>Soit vous avez un cd et un simple copier/coller suffit&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Soit vous avez l’installeur (exe) et il vous suffit de le lancer en commande avec le commutateur /extract:RepertoireDeDestination&lt;/p>
-&lt;/li>
-&lt;/ul>
-&lt;ol start="2">
-&lt;li>La seconde étape consiste à télécharger et à paramétrer l’installeur de pré-requis pour qu’il utilise des sources locales (note, si vous savez que vos plateformes auront toujours un accès direct à internet lors des installations, vous pouvez passer cette étape)&lt;/li>
-&lt;/ol>
-&lt;p>Pour cela cet article &lt;a href="https://technet.microsoft.com/en-us/library/ff686793.aspx">https://technet.microsoft.com/en-us/library/ff686793.aspx&lt;/a> nous indique la marche à suivre, mais je suis gentil je vous ai déjà fait le travail.&lt;/p></description></item><item><title>Industrialisation des installations de ferme SharePoint 2010(CU, SP, Langues, SlipStream) Part 1</title><link>https://baywet.github.io/fr/industrialisation-des-installa-2011-07-06-15-47-00/</link><pubDate>Wed, 06 Jul 2011 15:47:00 +0000</pubDate><guid>https://baywet.github.io/fr/industrialisation-des-installa-2011-07-06-15-47-00/</guid><description>&lt;p>Le Service Pack 1 de SharePoint Server &amp;amp; Foundation vient de sortir (&lt;a href="../sp1-pour-sharepoint-2010">voir mon précédent post&lt;/a>) et déployer une ferme devient fastidieux, d’autant plus quand on a du support multilingue à effectuer.&lt;/p>
-&lt;p>Je vous propose de vous mâcher le travail en vous montrant comment créer une source d’installation qui intégrera :&lt;/p>
-&lt;ul>
-&lt;li>
-&lt;p>Les packs de langues (slipstream)&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Des Updates fortement recommandés&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Les prerequis en mode offline (pour les fermes déconnectées d’internet comme cela arrive souvent)&lt;/p></description></item><item><title>SP1 pour SharePoint 2010</title><link>https://baywet.github.io/fr/sp1-pour-sharepoint-2010/</link><pubDate>Tue, 28 Jun 2011 15:30:00 +0000</pubDate><guid>https://baywet.github.io/fr/sp1-pour-sharepoint-2010/</guid><description>&lt;p>Bonjour,&lt;/p>
-&lt;p>Ca fait longtemps que je n&amp;rsquo;ai pas publié d&amp;rsquo;article (beaucoup de travail en ce moment) alors je poste rapidemment pour vous dire que le SP1 d&amp;rsquo;office 2010 est sorti (MS voulait le faire coincider avec &lt;a href="https://www.technosoir.com/index.php/27-280611-microsoft-annonce-le-lancement-mondial-doffice-365-son-offre-cloud-pour-les-entreprises-de-toutes-tailles" title="annonce O365">l&amp;rsquo;annonce d&amp;rsquo;Office 365&lt;/a>)&lt;/p>
-&lt;p>Cela signifie donc un SP1 pour SharePoint.&lt;/p>
-&lt;p>Parmi les nouveautés :&lt;/p>
-&lt;ul>
-&lt;li>
-&lt;p>Corbeille de collection de sites&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>VSS Writers utilisés pour les déplacements de données lourds&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Réapparition de storman.aspx qui vous permet de gérer de manière granulaire le l&amp;rsquo;espace de stockage sur SharePoint&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Sp1 on Le blog de baywet</title><link>https://baywet.github.io/fr/tags/sp1/</link><description>Recent content in Sp1 on Le blog de baywet</description><generator>Hugo</generator><language>fr</language><lastBuildDate>Thu, 20 Nov 2025 20:13:02 -0500</lastBuildDate><atom:link href="https://baywet.github.io/fr/tags/sp1/index.xml" rel="self" type="application/rss+xml"/><item><title>Remise à disposition du SP1 pour SharePoint 2013</title><link>https://baywet.github.io/fr/remise-a-disposition-du-sp1-po/</link><pubDate>Wed, 23 Apr 2014 04:06:23 +0000</pubDate><guid>https://baywet.github.io/fr/remise-a-disposition-du-sp1-po/</guid><description>&lt;p&gt;La nouvelle circule depuis quelques heures sur les réseaux sociaux et autres média de communications : Microsoft vient de livrer une nouvelle version du SP1 de SharePoint 2013.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blogs.technet.com/b/stefan_gossner/archive/2014/04/22/sp1-for-sharepoint-2013-has-been-rereleased.aspx"&gt;https://blogs.technet.com/b/stefan_gossner/archive/2014/04/22/sp1-for-sharepoint-2013-has-been-rereleased.aspx&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Pour ceux qui ont déjà installé le SP1 défectueux : installez le nouveau par-dessus et exécutez à nouveau le psconfig&lt;/p&gt;
+&lt;p&gt;Pour ceux qui n’avaient pas encore déployé le SP1 : installez simplement cette nouvelle version (+ ps config)&lt;/p&gt;
+&lt;p&gt;Pour ceux qui avaient téléchargé la version ISO avec le SP1 intégré en vue de l’installation d’une nouvelle ferme : vous pouvez garder vos ISO, Microsoft ne publiera pas de nouvelle version. (ces versions n’étaient pas impactées par le problème).&lt;/p&gt;</description></item><item><title>Retrait du SP1 de SP2013 / SP1 for SP2013 not available anymore</title><link>https://baywet.github.io/fr/retrait-du-sp1-de-sp2013-sp1/</link><pubDate>Thu, 03 Apr 2014 19:58:38 +0000</pubDate><guid>https://baywet.github.io/fr/retrait-du-sp1-de-sp2013-sp1/</guid><description>&lt;p&gt;Billet rapide pour vous informer que Microsoft rencontre actuellement quelques soucis avec le SP1 pour SharePoint 2013.&lt;/p&gt;
+&lt;p&gt;Ils ont donc décidé de retirer le SP du téléchargement et demandent aux clients de patienter avant de l&amp;rsquo;installer si possible&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blogs.msdn.com/b/joerg_sinemus/archive/2014/02/26/sharepoint-2013-service-pack-1.aspx" title="https://blogs.msdn.com/b/joerg_sinemus/archive/2014/02/26/sharepoint-2013-service-pack-1.aspx"&gt;https://blogs.msdn.com/b/joerg_sinemus/archive/2014/02/26/sharepoint-2013-service-pack-1.aspx&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Quick post to inform you about the fact that Microsoft is having some issues with SP1 for SP2013 and it is no more available for dowanload. (see link above)&lt;/p&gt;</description></item><item><title>Service Pack 1 for Office suite 2013 (client and server) is out!</title><link>https://baywet.github.io/fr/service-pack-1-for-office-suit/</link><pubDate>Wed, 26 Feb 2014 02:28:24 +0000</pubDate><guid>https://baywet.github.io/fr/service-pack-1-for-office-suit/</guid><description>&lt;p&gt;&lt;img src="https://baywet.github.io/fr/service-pack-1-for-office-suit/clip_5F00_image002_5F00_thumb_5F00_412AEB32.png" alt="clip_5F00_image002_5F00_thumb_5F00_412AEB32.png"&gt;&lt;/p&gt;
+&lt;p&gt;As expected the service pack 1 for office has been released right before the SharePoint Conference (3rd to 6th March, Las Vegas) by product teams.&lt;/p&gt;
+&lt;p&gt;This SP is targeted for the client office suite (word, excel, outlook…) and servers’ products (exchange, sharepoint, project, lync…) as usual.&lt;/p&gt;
+&lt;h3 id="downloading-service-pack-1"&gt;Downloading Service Pack 1&lt;/h3&gt;
+&lt;p&gt;If you want to download this update or to get familiar with what’s new, everything is available at this address.&lt;/p&gt;</description></item><item><title>Le service Pack 1 de la gamme Office 2013 (client et serveur) est sorti !</title><link>https://baywet.github.io/fr/le-service-pack-1-de-la-gamme/</link><pubDate>Wed, 26 Feb 2014 02:27:33 +0000</pubDate><guid>https://baywet.github.io/fr/le-service-pack-1-de-la-gamme/</guid><description>&lt;p&gt;&lt;img src="https://baywet.github.io/fr/le-service-pack-1-de-la-gamme/clip_5F00_image002_5F00_thumb_5F00_74DB7F8E.png" alt="clip_5F00_image002_5F00_thumb_5F00_74DB7F8E.png"&gt;&lt;/p&gt;
+&lt;p&gt;Comme on pouvait s’y attendre juste avant la SharePoint Conference (3 au 6 Mars, Las Vegas), le SP1 de la gamme office a été livré par les équipes de Microsoft.&lt;/p&gt;
+&lt;p&gt;Ce SP concerne donc comme d’habitude toute la suite office client (word, outlook, excel…) ainsi que les gammes serveurs (exchange, sharepoint, project, lync…).&lt;/p&gt;
+&lt;h3 id="téléchargement-du-service-pack-1"&gt;Téléchargement du service pack 1&lt;/h3&gt;
+&lt;p&gt;Pour connaitre quelles sont les nouveautés et télécharger les mises à jour à installer tout est disponible à cette adresse.&lt;/p&gt;</description></item><item><title>Upgrade des bases de données mirrorées avec le SP1 de SharePoint</title><link>https://baywet.github.io/fr/upgrade-des-bases-de-donnees-m/</link><pubDate>Wed, 20 Jul 2011 19:25:00 +0000</pubDate><guid>https://baywet.github.io/fr/upgrade-des-bases-de-donnees-m/</guid><description>&lt;p&gt;Vous n’êtes pas sans savoir que le SP1 de SharePoint 2010 est sorti il y a déjà deux semaines et vous êtes peut être en train de planifier un déploiement de ce dernier.&lt;/p&gt;
+&lt;p&gt;Cet article est un retour d’expérience de déploiement du SP1 sur un certain type de topologies : les installations en mode ferme avec des bases de données mises en mirroir (voir mes précédents sujets à ce propos)&lt;/p&gt;</description></item><item><title>Re-Realease de la mise à jour cumulative de Juin (CU1 June)</title><link>https://baywet.github.io/fr/re-realease-de-la-mise-a-jour/</link><pubDate>Tue, 19 Jul 2011 22:02:00 +0000</pubDate><guid>https://baywet.github.io/fr/re-realease-de-la-mise-a-jour/</guid><description>&lt;p&gt;Deux jours après la sortie du service pack 1 pour SharePoint 2010, la mise à jour cumulative de Juin est sortie.&lt;/p&gt;
+&lt;p&gt;Elle corrige plusieurs dizaines de bugs sur le produit. Quatre jours plus tard, certains d’entre vous ont peut être remarqué qu’elle n’était plus disponible au téléchargement.&lt;/p&gt;
+&lt;p&gt;Plusieurs soucis majeurs étaient en cause : problèmes d’installation sur les machines équipées du .net FrameWork 4, problème de démarrage de service sur ce même type de machines, échecs de timerjobs..&lt;/p&gt;</description></item><item><title>Industrialisation des installations de ferme SharePoint 2010(CU, SP, Langues, SlipStream) Part 3</title><link>https://baywet.github.io/fr/industrialisation-des-installa-2011-07-06-16-42-00/</link><pubDate>Wed, 06 Jul 2011 16:42:00 +0000</pubDate><guid>https://baywet.github.io/fr/industrialisation-des-installa-2011-07-06-16-42-00/</guid><description>&lt;p&gt;Troisième partie, celle qui vous intéresse surement le plus, slipstream des Mises à jours, service packs et packs de langues&lt;/p&gt;
+&lt;p&gt;Premier point, les mises à jour cumulatives et hotfix. il ne faut pas les installer si vous installez un service pack plus récent (qui les contiendra)&lt;/p&gt;
+&lt;p&gt;Les mises à jour peuvent être soit multilingues (globales donc, une seule installation), soit régionalisées, auquel cas il faut les télécharger et installer autant de fois que de langues installées.&lt;/p&gt;</description></item><item><title>Industrialisation des installations de ferme SharePoint 2010(CU, SP, Langues, SlipStream) Part 2</title><link>https://baywet.github.io/fr/industrialisation-des-installa-2011-07-06-16-11-00/</link><pubDate>Wed, 06 Jul 2011 16:11:00 +0000</pubDate><guid>https://baywet.github.io/fr/industrialisation-des-installa-2011-07-06-16-11-00/</guid><description>&lt;p&gt;Deuxième partie en 2 étapes, les prérequis en mode offline et les mises à jour supplémentaires.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;La première étape consiste à copier le contenu de votre source d’installation dans un répertoire.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Deux solutions :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Soit vous avez un cd et un simple copier/coller suffit&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Soit vous avez l’installeur (exe) et il vous suffit de le lancer en commande avec le commutateur /extract:RepertoireDeDestination&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;La seconde étape consiste à télécharger et à paramétrer l’installeur de pré-requis pour qu’il utilise des sources locales (note, si vous savez que vos plateformes auront toujours un accès direct à internet lors des installations, vous pouvez passer cette étape)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Pour cela cet article &lt;a href="https://technet.microsoft.com/en-us/library/ff686793.aspx"&gt;https://technet.microsoft.com/en-us/library/ff686793.aspx&lt;/a&gt; nous indique la marche à suivre, mais je suis gentil je vous ai déjà fait le travail.&lt;/p&gt;</description></item><item><title>Industrialisation des installations de ferme SharePoint 2010(CU, SP, Langues, SlipStream) Part 1</title><link>https://baywet.github.io/fr/industrialisation-des-installa-2011-07-06-15-47-00/</link><pubDate>Wed, 06 Jul 2011 15:47:00 +0000</pubDate><guid>https://baywet.github.io/fr/industrialisation-des-installa-2011-07-06-15-47-00/</guid><description>&lt;p&gt;Le Service Pack 1 de SharePoint Server &amp;amp; Foundation vient de sortir (&lt;a href="../sp1-pour-sharepoint-2010"&gt;voir mon précédent post&lt;/a&gt;) et déployer une ferme devient fastidieux, d’autant plus quand on a du support multilingue à effectuer.&lt;/p&gt;
+&lt;p&gt;Je vous propose de vous mâcher le travail en vous montrant comment créer une source d’installation qui intégrera :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Les packs de langues (slipstream)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Des Updates fortement recommandés&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Les prerequis en mode offline (pour les fermes déconnectées d’internet comme cela arrive souvent)&lt;/p&gt;</description></item><item><title>SP1 pour SharePoint 2010</title><link>https://baywet.github.io/fr/sp1-pour-sharepoint-2010/</link><pubDate>Tue, 28 Jun 2011 15:30:00 +0000</pubDate><guid>https://baywet.github.io/fr/sp1-pour-sharepoint-2010/</guid><description>&lt;p&gt;Bonjour,&lt;/p&gt;
+&lt;p&gt;Ca fait longtemps que je n&amp;rsquo;ai pas publié d&amp;rsquo;article (beaucoup de travail en ce moment) alors je poste rapidemment pour vous dire que le SP1 d&amp;rsquo;office 2010 est sorti (MS voulait le faire coincider avec &lt;a href="https://www.technosoir.com/index.php/27-280611-microsoft-annonce-le-lancement-mondial-doffice-365-son-offre-cloud-pour-les-entreprises-de-toutes-tailles" title="annonce O365"&gt;l&amp;rsquo;annonce d&amp;rsquo;Office 365&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;Cela signifie donc un SP1 pour SharePoint.&lt;/p&gt;
+&lt;p&gt;Parmi les nouveautés :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Corbeille de collection de sites&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;VSS Writers utilisés pour les déplacements de données lourds&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Réapparition de storman.aspx qui vous permet de gérer de manière granulaire le l&amp;rsquo;espace de stockage sur SharePoint&lt;/p&gt;</description></item></channel></rss>
